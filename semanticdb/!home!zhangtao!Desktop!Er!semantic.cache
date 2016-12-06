@@ -1,0 +1,49 @@
+;; Object Er/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Er/"
+  :tables
+  (list
+    (semanticdb-table "lc_lc.py"
+      :major-mode 'jdee-mode
+      :tags nil
+      :file "lc_lc.py"
+      :pointmax 1689
+      :fsize 1688
+      :lastmodtime '(22595 64803 80035 647000)
+      :unmatched-syntax '((PAREN_BLOCK 1686 . 1688) (IDENTIFIER 1682 . 1686) (DOT 1681 . 1682) (IDENTIFIER 1678 . 1681) (PAREN_BLOCK 1667 . 1677) (IDENTIFIER 1660 . 1667) (DOT 1659 . 1660) (IDENTIFIER 1656 . 1659) (IDENTIFIER 1649 . 1655) (IDENTIFIER 1644 . 1648) (punctuation 1642 . 1643) (PAREN_BLOCK 1638 . 1640) (IDENTIFIER 1632 . 1638) (DOT 1631 . 1632) (IDENTIFIER 1628 . 1631) (PAREN_BLOCK 1533 . 1627) (IDENTIFIER 1525 . 1533) (DOT 1524 . 1525) (IDENTIFIER 1521 . 1524) (PAREN_BLOCK 1425 . 1520) (IDENTIFIER 1417 . 1425) (DOT 1416 . 1417) (IDENTIFIER 1413 . 1416) (PAREN_BLOCK 1404 . 1412) (IDENTIFIER 1398 . 1404) (DOT 1397 . 1398) (IDENTIFIER 1394 . 1397) (PAREN_BLOCK 1365 . 1392) (IDENTIFIER 1355 . 1365) (DOT 1354 . 1355) (PAREN_BLOCK 1352 . 1354) (IDENTIFIER 1349 . 1352) (DOT 1348 . 1349) (IDENTIFIER 1345 . 1348) (punctuation 1344 . 1345) (IDENTIFIER 1329 . 1343) (IDENTIFIER 1323 . 1328) (IDENTIFIER 1308 . 1322) (IDENTIFIER 1302 . 1307) (PAREN_BLOCK 1258 . 1300) (IDENTIFIER 1252 . 1258) (DOT 1251 . 1252) (IDENTIFIER 1237 . 1251) (PAREN_BLOCK 1190 . 1232) (IDENTIFIER 1184 . 1190) (DOT 1183 . 1184) (IDENTIFIER 1169 . 1183) (PAREN_BLOCK 1153 . 1164) (IDENTIFIER 1147 . 1153) (DOT 1146 . 1147) (IDENTIFIER 1136 . 1146) (PAREN_BLOCK 1116 . 1127) (IDENTIFIER 1110 . 1116) (DOT 1109 . 1110) (IDENTIFIER 1099 . 1109) (IDENTIFIER 1077 . 1090) (DIV 1075 . 1076) (PAREN_BLOCK 1020 . 1074) (IDENTIFIER 1002 . 1020) (DOT 1001 . 1002) (IDENTIFIER 999 . 1001) (EQ 997 . 998) (IDENTIFIER 987 . 996) (IDENTIFIER 965 . 978) (DIV 963 . 964) (PAREN_BLOCK 908 . 962) (IDENTIFIER 880 . 908) (DOT 879 . 880) (IDENTIFIER 877 . 879) (EQ 875 . 876) (IDENTIFIER 865 . 874) (COLON 855 . 856) (PAREN_BLOCK 851 . 855) (IDENTIFIER 846 . 851) (IDENTIFIER 843 . 845) (IDENTIFIER 841 . 842) (FOR 837 . 840) (BRACK_BLOCK 830 . 832) (EQ 828 . 829) (IDENTIFIER 817 . 827) (BRACK_BLOCK 810 . 812) (EQ 808 . 809) (IDENTIFIER 797 . 807) (COLON 791 . 792) (PAREN_BLOCK 783 . 791) (IDENTIFIER 778 . 783) (IDENTIFIER 775 . 777) (IDENTIFIER 773 . 774) (FOR 769 . 772) (BRACK_BLOCK 335 . 767) (EQ 333 . 334) (IDENTIFIER 331 . 332) (PAREN_BLOCK 292 . 330) (IDENTIFIER 274 . 292) (DOT 273 . 274) (IDENTIFIER 271 . 273) (EQ 269 . 270) (IDENTIFIER 255 . 268) (PAREN_BLOCK 211 . 254) (IDENTIFIER 183 . 211) (DOT 182 . 183) (IDENTIFIER 180 . 182) (EQ 178 . 179) (IDENTIFIER 164 . 177) (BRACK_BLOCK 159 . 161) (EQ 157 . 158) (IDENTIFIER 142 . 156) (BRACK_BLOCK 139 . 141) (EQ 137 . 138) (IDENTIFIER 122 . 136) (IDENTIFIER 117 . 120) (IDENTIFIER 114 . 116) (IDENTIFIER 86 . 88) (IDENTIFIER 83 . 85) (IDENTIFIER 67 . 69) (IDENTIFIER 64 . 66) (MINUS 45 . 46) (MULT 44 . 45) (MINUS 43 . 44) (NUMBER_LITERAL 41 . 42) (MINUS 40 . 41) (IDENTIFIER 37 . 40) (COLON 35 . 36) (IDENTIFIER 29 . 35) (MINUS 27 . 28) (MULT 26 . 27) (MINUS 25 . 26) (punctuation 23 . 24) (IDENTIFIER 16 . 22) (IDENTIFIER 12 . 15) (DIV 11 . 12) (IDENTIFIER 8 . 11) (DIV 7 . 8) (IDENTIFIER 4 . 7) (punctuation 1 . 4)))
+    (semanticdb-table "lc_avrg.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("networkx" include nil nil [48 69])
+            ("numpy" include nil nil [70 88])
+            ("plt" code nil nil [117 120])
+            ("l_average_list" variable nil nil [122 141])
+            ("c_average_list" variable nil nil [142 161])
+            ("p" variable nil nil [163 193])
+            ("for" code nil nil [195 695])
+            ("plt" code nil nil [696 720])
+            ("plt" code nil nil [721 739])
+            ("plt" code nil nil [740 763])
+            ("plt" code nil nil [764 776])
+            ("plt" code nil nil [777 871])
+            ("plt" code nil nil [872 884])
+            ("plt" code nil nil [885 913])
+            ("plt" code nil nil [914 924])
+            ("plt" code nil nil [926 950])
+            ("plt" code nil nil [951 969])
+            ("plt" code nil nil [970 993])
+            ("plt" code nil nil [994 1087])
+            ("plt" code nil nil [1088 1100])
+            ("plt" code nil nil [1101 1129])
+            ("plt" code nil nil [1130 1140])
+            ("print" code nil nil [1142 1160])
+            ("print" code nil nil [1161 1220])
+            ("print" code nil nil [1221 1269]))          
+      :file "lc_avrg.py"
+      :pointmax 1270
+      :fsize 1269
+      :lastmodtime '(22595 64944 548037 849000)
+      :unmatched-syntax nil))
+  :file "!home!zhangtao!Desktop!Er!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

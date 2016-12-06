@@ -1,0 +1,312 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/zhangtao/.kde/share/apps/aurorae/themes/" . "Yosemite/")
+ ("/home/zhangtao/.kde/share/apps/aurorae/" . "themes/")
+ ("/home/zhangtao/.kde/share/apps/" . "konsole/")
+ ("/home/zhangtao/.kde/share/" . "apps/")
+ ("/home/zhangtao/.kde/" . "share/")
+ ("/home/zhangtao/Dropbox/tmp/" . "english/")
+ ("c:/emacs-bin-w64-25.1-rc1-O2/" . "emacs/")
+ ("c:/" . "Users/")
+ ("c:/Users/zhangtao/Dropbox/Txt/" . "_book/")
+ ("C:/Users/zhangtao/Dropbox/Txt/" . "_book/")
+ ("C:/Users/zhangtao/Dropbox/" . "tmp/")
+ ("/home/zhangtao/tmp/ztao1991.github.io/themes/" . "next/")
+ ("/home/zhangtao/tmp/ztao1991.github.io/source/" . "_posts/")
+ ("/home/zhangtao/tmp/ztao1991.github.io/" . "themes/")
+ ("/home/zhangtao/.config/awesome/" . "awesome-shifty/")
+ ("/home/zhangtao/Dropbox/Txt/" . "_book/")
+ ("/home/zhangtao/.emacs.d/elpa/" . "smart-mode-line-powerline-theme-20160705.1738/")
+ ("c:/Users/zhangtao/Dropbox/txt/" . "_write/")
+ ("c:/Users/" . "zhangtao/")
+ ("c:/Users/zhangtao/Dropbox/org/" . "_write_picture/")
+ ("c:/Users/zhangtao/" . "Dropbox/")
+ ("c:/Users/zhangtao/Dropbox/" . "Txt/")
+ ("c:/Emacs/" . ".emacs.d/")
+ ("/home/zhangtao/tmp/" . "ztao1991.github.io/")
+ ("/home/zhangtao/.config/fcitx/" . "rime/")
+ ("/home/zhangtao/.config/" . "autostart/")
+ ("/home/zhangtao/.emacs.d/snippets/" . "org-mode/")
+ ("/home/zhangtao/Desktop/" . "Er/")
+ ("/home/zhangtao/.emacs.d/" . "elpa/")
+ ("/home/" . "zhangtao/")
+ ("/" . "home/")
+ ("/home/zhangtao/" . "Dropbox/")
+ ("/home/zhangtao/Dropbox/" . "Doc/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/zhangtao/.emacs.d/"
+ "/home/zhangtao/Dropbox/Doc/"
+ "/home/zhangtao/.emacs.d/elpa/solarized-theme-20161203.301/"
+ "/home/zhangtao/Downloads/"
+ "/home/zhangtao/.emacs.d/elpa/smart-mode-line-powerline-theme-20160705.1738/"
+ "/home/zhangtao/"
+ "/home/zhangtao/Inbox/"
+ "/home/zhangtao/.emacs.d/snippets/org-mode/"
+ "/home/zhangtao/Work/"
+ "/home/zhangtao/Desktop/Er/"
+ "/home/zhangtao/Dropbox/"
+ "/home/zhangtao/.kde/share/apps/konsole/"
+ "/home/zhangtao/Dropbox/Txt/"
+ "/home/zhangtao/.kde/share/apps/aurorae/themes/Yosemite/"
+ "/home/zhangtao/Txt/"
+ "/home/zhangtao/Dropbox/Write/"
+ "/home/zhangtao/Tmp/"
+ "/home/zhangtao/.config/"
+ "/home/zhangtao/Desktop/"
+ "/home/zhangtao/Dropbox/Picture/"
+ "/home/zhangtao/.emacs.d/lisp/"
+ "/home/zhangtao/Dropbox/Tmp/"
+ "/home/zhangtao/.config/awesome/"
+ "/home/zhangtao/Dropbox/template/"
+ "/home/zhangtao/.config/autostart/"
+ "/home/zhangtao/tmp/"
+ "/home/zhangtao/Dropbox/tmp/"
+ "/home/zhangtao/Dropbox/matlab/"
+ "/home/zhangtao/Public/"
+ "/home/zhangtao/Dropbox/File/"
+ "/home/zhangtao/Dropbox/tmp/english/"
+ "/home/zhangtao/Dropbox/Txt/_book/"
+ "/tmp/"
+ "/home/zhangtao/.emacs.d/snippets/c-mode/"
+ "c:/Users/zhangtao/Dropbox/Txt/"
+ "C:/Users/zhangtao/Dropbox/tmp/"
+ "c:/Users/zhangtao/Dropbox/.emacs.d/"
+ "c:/Users/zhangtao/Dropbox/tmp/"
+ "C:/Users/zhangtao/Dropbox/Txt/"
+ "c:/Users/zhangtao/Dropbox/"
+ "c:/Users/zhangtao/Dropbox/Doc/"
+ "c:/Users/zhangtao/Dropbox/Txt/_book/"
+ "/home/zhangtao/tmp/ztao1991.github.io/themes/next/"
+ "/home/zhangtao/tmp/ztao1991.github.io/"
+ "/home/zhangtao/tmp/ztao1991.github.io/source/_posts/"
+ "/home/zhangtao/.ssh/"
+ "/home/zhangtao/.tmp/"
+ "/home/zhangtao/.gnupg/"
+ "/home/zhangtao/.config/awesome/awesome-shifty/"
+ "/home/zhangtao/.emacs.d/elpa/xterm-color-20160802.1752/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ "phy.org"
+ "linux.txt"
+ "solarized-theme.el"
+ "init (1).el"
+ "physics.org"
+ "smart-mode-line-light-powerline-theme.el"
+ ".zshrc"
+ "Net_ex.txt"
+ "latex-cjk"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/tmp/" (22597 18592 259837 133000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "pulse-PKdhtXMmr18n/" ".X0-lock" "ssh-f4VoYAmaEk8C/" "fcitx-socket-:0" "kde-zhangtao/" "ksocket-zhangtao/" "sogou-qimpanel:0.pid" "systemd-private-93db6551f67f449e8acd86584bcafced-rtkit-daemon.service-rsVHsO/" "gpg-UP7Bt0/" "gpg-dIfsu0/" "sogou-qimpanel-cellzhangtao" "sogou-qimpanelzhangtao" "systemd-private-93db6551f67f449e8acd86584bcafced-cups.service-AdJmSc/" ".org.chromium.Chromium.uybutb/" "hsperfdata_zhangtao/" ".felix/" "jna--1432603594/" "ycm_temp/" "babel-123300dP/" ".vbox-zhangtao-ipc/" "babel-19188giU/" "../" "./")
+
+ ("/home/zhangtao/.emacs.d/" (22597 18588 759837 225000) "session.109c793430000147464061500000224380049" ".emacs.desktop.lock" "ido.last~" "ido.last" "lisp/" "auto-save-list/" "bookmarks" "session.109c793430000147780428400000020620018" "semanticdb/" "ac-comphist.dat" "eshell/" "themes/" "image-dired/" ".bookmarks.bmk" "elpa/" "foucs-mode.el" "url/" "abbrev_defs" "./" "smex-items" "thumbs/" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "pyim/" ".directory" "helm-history.txt" "snippets/" "srecode-map.el" "init.el" "init.el~" ".emacs.desktop" ".org-id-locations" "session.109c793430000148086180400000021520180" "writer.el" "../" "recentf" "session.109c793430000147894798600000032920013")
+
+ ("/home/zhangtao/Dropbox/Txt/" (22597 18219 471846 905000) "numbers.gpg" "inbox.txt" "contents.txt" "_log/" "list.txt" "auto/" "markdown.txt" "_book/" "linux.txt" "write.html" "log.txt" "_write/" "#linux.txt#" "missfont.log" "read.txt" "_physics/" "./" "todo.txt" "liangzilixue.html" "write.md" "liangzilixue.txt" "vim.txt" "contacts.txt" "email.txt" "music.txt" "book.txt" "physics.md" "physics.txt" "linux.html" "../" "#contacts.txt#" "write.txt")
+
+ ("/home/zhangtao/.emacs.d/elpa/solarized-theme-20161203.301/" (22597 18101 855849 988000) "solarized-theme-utils.el" "solarized-theme.el" "solarized-light-theme.el" "solarized-dark-theme.elc" "solarized.el" "solarized-theme.elc" "./" "solarized-theme-pkg.el" "solarized-dark-theme.el" "solarized-theme-utils.elc" "solarized-light-theme.elc" "solarized-theme-autoloads.el" "../")
+
+ ("/home/zhangtao/Downloads/" (22597 12469 907997 618000) "lplinux/" "Mathematica_11.0.1_LINUX.sh" "color-theme-ujelly-master.zip" "lplinux.tar.bz2" "init (1).el" "168983-yosemite.tar.gz" "vim-latex-1.9.0.tar.gz" "Plot-log.py" "monokai-emacs-master/" "org-article/" "《Java核心技术+卷1：基础知识（原书第9版）》.pdf" "zshrc (1)" "2009921173933590793.zip" "./" "vim-latex-1.9.0/" "BingWallpaper-2016-11-27.jpg" "monokai-emacs-master.zip" ".vimr" "zshrc" "color-theme-ujelly-master/" "Yosemite/" "1Password Emergency Kit A3-GJVG7A-vimkw6wlwdemsipyye2lhmixozemqrgc.pdf" ".16755/" ".directory" ".dropbox-dist/" "init.el" "../" ".minecraft/" "168521-Ultra-Flat Yosemite Light.0.3.tar.gz")
+
+ ("/home/zhangtao/" (22597 16808 947883 879000) ".w3m/" "Desktop/" "Documents/" ".config/" "Public/" ".dropbox/" ".kingsoft/" ".xsel.log" "Music/" ".Rhistory" ".vimrc" ".adobe/" "Downloads/" ".subversion/" ".icons/" ".xinputrc" "Tmp/" "Ipython/" ".zshrc" ".zsh-update" "Pictures/" ".zcompdump-ly400-5.0.7" ".gephi/" ".profile" "texmf/" "hmcl.json" ".xsession-errors" ".q3a/" ".mplayer/" ".gnome/" ".xinitrc" ".fehbg" ".fonts/" ".gtkrc-2.0" ".dbus/" ".bash_logout" ".java/" ".ICEauthority" ".bashrc" ".local/" ".pki/" ".nv/" ".nvidia-settings-rc" ".gpg-agent-info" ".gtkrc-2.0-kde4" ".ipython/" ".gnupg/" "hmcl.log" ".recently-used" ".face.icon" ".Xmodmap" "HMCL-2.1.7.jar" ".vim/" "Templates/" "Dropbox/" ".macromedia/" ".mozilla/" ".directory" ".bash_history" ".dropbox-dist/" ".i3/" ".oh-my-zsh/" ".thumbnails/" ".ipynb_checkpoints/" "Inbox/" ".dmrc" ".gvimrc" ".themes/" ".Xauthority" ".cache/" ".gconf/" ".zsh_history" ".viminfo" ".sunpinyin/" ".backup/" ".gnome2/" ".matlab/" ".minecraft/" ".lastpass/" "Videos/" ".emacs.d/" "App/" ".kde/" ".sogouinput/" "VirtualBox VMs/" "../" "./")
+
+ ("/home/zhangtao/.emacs.d/elpa/" (22596 58917 403167 563000) "org-wunderlist-readme.txt" "biblio-core-readme.txt" "powerline-readme.txt" "highlight-indent-guides-readme.txt" "popup-el/" "helm-core-20161109.1317/" "helm-swoop-20160619.953/" "find-file-in-project-20161026.145/" "auto-complete-20161029.643/" "auto-complete-readme.txt" "ace-jump-mode-readme.txt" "highlight-tail-readme.txt" "py-autopep8-20160925.352/" "ace-pinyin-readme.txt" "nlinum-relative-readme.txt" "ace-window-20161018.1624/" "writeroom-mode-readme.txt" "ag-readme.txt" "gntp-20141024.1950/" "org-pomodoro-readme.txt" "org-bullets-readme.txt" "dash-20161108.352/" "smart-mode-line-powerline-theme-20160705.1738/" "ace-jump-mode-20140616.115/" "molokai-theme-readme.txt" "neotree-readme.txt" "ht-20161015.1945/" "apel-20160427.152/" "xresources-theme-readme.txt" "basic-c-compile-readme.txt" "htmlize-20130207.1202/" "highlight-tail-20140415.1841/" "color-theme-readme.txt" "autopair-readme.txt" "evil-leader-readme.txt" "flatui-theme-20160618.1827/" "auto-complete-c-headers-readme.txt" "outline-presentation.el" "auto-complete-clang-readme.txt" "epl-20150517.433/" "org-contacts.el" "super-save-readme.txt" "helm-swoop-readme.txt" "popup-readme.txt" "color-theme-6.6.0/" "magit-readme.txt" "outline-magic-readme.txt" "smtpmail-multi-readme.txt" "expand-region-20161020.1412/" "ox-latex-chinese-readme.txt" "pkg-info-20150517.443/" "elpy-20161028.215/" "redo+-readme.txt" "color-theme-sanityinc-tomorrow-readme.txt" "highlight-indentation-20161012.209/" "evil-search-highlight-persist-readme.txt" "cal-china-x-20160102.124/" "organic-green-theme-readme.txt" "flim-20161029.1930/" "py-autopep8-readme.txt" "ace-pinyin-20160611.1755/" "unicad.el" "memoize-20130421.1234/" "pinyinlib-20160505.1248/" "git-commit-20161108.1335/" "powerline-20160702.1931/" "rich-minority-20160725.1255/" "semi-20160816.239/" "elpy-readme.txt" "company-20161111.1413/" "evil-find-char-pinyin-readme.txt" "jdee-readme.txt" "auto-complete-clang-async-readme.txt" "markdown-mode-readme.txt" "jdee-20161119.911/" "popup-20160709.729/" "flycheck-readme.txt" "smooth-scrolling-20161002.1249/" "helm-ag-20161105.744/" "window-numbering-readme.txt" "org-mu4e.el" "ag-20161027.1758/" "let-alist-1.0.4/" "focus-readme.txt" "visual-fill-column-20161109.337/" "dired+-readme.txt" "goto-chg-20131228.659/" "htmlize-readme.txt" "xterm-frobs-readme.txt" "smooth-scrolling-readme.txt" "notmuch-labeler-readme.txt" "python-mode-20161105.1431/" "yasnippet-readme.txt" "writeroom-mode-20160830.616/" "ace-jump-mode-readme.txt~" "python-mode-readme.txt" "abc-mode-readme.txt" "gnupg/" "archives/" ".directory" "org-bullets-20140918.1137/" "expand-region-readme.txt" "avy-20160814.250/" "xterm-color-readme.txt" "zenburn-theme-readme.txt" "auto-complete-clang-20140409.52/" "highlight-indentation-readme.txt" "autopair-20160304.437/" "seq-2.16/" "markdown-mode-20160928.932/" "swiper-readme.txt" "smart-mode-line-20160818.508/" "flycheck-20161111.222/" "yasnippet-20161109.1847/" "chinese-pyim-readme.txt" "minimap.el" "relative-line-numbers-20151006.1446/" "s-20160928.636/" "notmuch-readme.txt" "undo-tree-readme.txt" "helm-20161109.1317/" "tabbar-readme.txt" "green-phosphor-theme-readme.txt" "smex-20151212.1409/" "evil-surround-20161029.606/" "evil-surround-readme.txt" "evil-leader-20140606.543/" "ivy-20161111.341/" "pyvenv-20160527.442/" "pos-tip-20150318.813/" "monokai-theme-readme.txt" "linum-relative-readme.txt" "window-number-readme.txt" "super-save-20160426.729/" "seq-2.16.signed" "smart-mode-line-readme.txt" "solarized-theme-20161009.838/" "evil-20160827.1510/" "let-alist-1.0.4.signed" "focus-20161106.702/" "auctex-11.89/" "smex-readme.txt" "matlab-mode-20160902.459/" "evil-readme.txt" "git-commit-20160821.1338/" "minimap-1.2/" "cal-china-x-readme.txt" "flatui-theme-readme.txt" "async-20161103.1036/" "log4e-20150105.505/" "isearch+-readme.txt" "ace-window-readme.txt" "smooth-scroll.el" "org-beautify-theme-readme.txt" "evil-readme.txt~" "undo-tree-20161012.701/" "ivy-readme.txt" "linum-relative-20160510.118/" "zenburn-theme-20161018.437/" "with-editor-20161109.403/" "ox-latex-chinese-20160928.2153/" "powerline-20161121.2320/" "helm-ag-readme.txt" "../" "./")
+
+ ("/home/zhangtao/.emacs.d/eshell/" (22596 57333 783209 74000) "lastdir" "./" "history" "../")
+
+ ("/home/zhangtao/Dropbox/Picture/" (22596 56057 819242 521000) "background.jpg" "RenderPhoto.jpg" "Evernote Camera Roll 20160228 211754.jpg" "modern_architecture-wallpaper-3840x2160.jpg" "9175_201006281006371Qgpd.jpg" "屏幕快照/" "ocean_sunset_3-wallpaper-1920x1080.jpg" "la_digue_beach_seychelles-wide.jpg" "Bliss_windows_xp_meadow_stuff_ultra_3840x2160_hd-wallpaper-242610.jpg" "mclaren_p1_2014-wide.jpg" "17969435635butterfly___illinois-wallpaper-3840x21601.jpg" "Xterm_256color_chart.svg" "本机照片/" "white_osteospermum_flower-wallpaper-2048x1152.jpg" "Evernote Camera Roll 20160228 211756.jpg" "original.jpg" "hejp.png" "vim_cheat_sheet_for_programmers_colorblind.png" "Saved Pictures/" "登录QQ邮箱.png" "psb.jpg" "841d90ef76c6a7ef6ed11e91fafaaf51f2de669a.jpg" "cool_beach-wide.jpg" "9175_201107171057301uE4E.jpg" "2010_corvette_racing_sebring_cars-wide.jpg" "vim.jpg" "恒星爆炸.gif" "chevrolet-corvette-black-1920x1080-wallpaper-4823.jpg" "Evernote Camera Roll 20160228 211754 [2].jpg" "71009EA535EC4453CEF88139302AC3A0.jpg" "beautiful-vim-cheat-sheet.png" "black_cubes_3-wallpaper-1920x1080.jpg" "YLInLlY.png" "2015-06-10-154652_374x651_scrot.png" "./" "考编.PNG" "emacs_kbd_layout_2.png" "pier-wallpaper-1920x1080.jpg" "16.jpg" "up_movie_balloons_house-wide.jpg" "7111569fgw1f2t84gmnkij20sg0kujrq.jpg" "butterfly___illinois-wallpaper-3840x2160.jpg" "相片/" "big_hero.jpg" "下载.jpg" "捕获.PNG" "lake_sunrise-wallpaper-3840x2160.jpg" "tg_mj.gif" ".directory" "post-152203-1206884786.jpg" ".17969435635butterfly___illinois-wallpaper-3840x21601.jpg.swp" "beach_horizon-wide.jpg" "Camera Roll/" "c08111edcc9be04b7166360dd645d98e.jpg" "U_K{QD$`L63SPD}X`4$DZ_W.png" "6th_gear_racing_cars-wide.jpg" "vim.icns" "687474703a2f2f696e76697369626c65626c6f636b732e66696c65732e776f726470726573732e636f6d2f323030392f30342f656d6163735f63686561745f73686565742e6a7067.jpg" "9175_200904290915541.jpg" "32661c950a7b0208ad70fa3462d9f2d3562cc80f.gif" "mmexport1465886281095.jpg" "687474703a2f2f6661726d352e7374617469632e666c69636b722e636f6d2f343036322f343332393438383132395f633731356639376462352e6a7067.jpg" "Apple/" "5D9~20E`ZPZT[J)U]3~DV[3.png" "ios_7_galaxy-wide.jpg" "35ccaba52a87419c148c11f46be0a4ad.jpg" "EMACS.jpg" "../" "big_hero_6_movie_baymax-wallpaper-3840x2160.jpg" "Wallpapers/" "big_hero_6_movie_baymax-wallpaper-1366x768.jpg" "1ee42de302f000a15f426ded94d571c9.jpg" "3200x2000.jpg" "hilly_landscape-wallpaper-2560x1440.jpg" "L-W-HI.png" "vim_cheat_sheet_for_programmers_print.png" "Evernote Camera Roll 20160228 212125.jpg" "maldivian_beach-wide.jpg" "gtd_chart-e1362779039146.png" "7dd98d1001e93901508eb19f79ec54e737d19686.gif" "flooded_forest-wallpaper-3840x2160.jpg" "vim_icon-300.png" "相机导入/")
+
+ ("/home/zhangtao/Desktop/" (22596 11039 272218 892000) "Win10.desktop" "抓图5.png" "Hale-Engage-Impact.pdf" "Watts-CollectiveDynamicsOfSmallWorldNetworks.pdf" "thinkcomplexity2.pdf" "Home.desktop" "./" "Net_ex.pdf" ".directory" "Net_ex2.pdf" "Er/" "../" "trash.desktop")
+
+ ("/home/zhangtao/.emacs.d/snippets/org-mode/" (22596 9197 748190 227000) "latex-cjk" "titles" "./" "beamer-ppt" "../")
+
+ ("/home/zhangtao/Inbox/" (22596 10708 216213 738000) "auto/" "passwd" "抓图4.png" "./" "抓图2.png" "抓图1.png" "Net_ex.txt" "Net_ex2.pdf" "../" "抓图3.png")
+
+ ("/home/zhangtao/Dropbox/" (22596 48951 219428 805000) "Apps/" ".dropbox" "Doc/" ".vimrc" "Tmp/" "Exercise/" "Txt/" "course-1.png" "./" ".dropbox.cache/" "Linux/" "Template/" "Book/" ".vim/" "Sources/" ".directory" "Ex2.ipynb" ".ipynb_checkpoints/" "Inbox/" ".gvimrc" "../" "Read/" ".backup/" "Matlab/" ".emacs.d/" "Picture/")
+
+ ("/home/zhangtao/Work/" (22596 3426 548100 393000) "auto/" "Test_latex.log" "Test_latex.pdf" "./" "Net_ex.pdf" "Test_latex.tex" "Net_ex.txt" "Test_latex.aux" "../" "Net_ex.pyg")
+
+ ("/home/zhangtao/.kde/share/apps/konsole/" (22596 264 176051 168000) "./" "BlackOnWhite.colorscheme" "GreenOnBlack.colorscheme" "Shell.profile" "../")
+
+ ("/home/zhangtao/Desktop/Er/" (22596 1668 816073 32000) "lc_lc.pdf" "G.png" "lc.png" "lc_avrg.py" "Graph.py" "l_average.png" "./" "betweenness_centrality.png" "betweenness.py" "c_average.png" ".directory" "../" "lc_lc.py")
+
+ ("/home/zhangtao/Dropbox/File/" (22595 47081 206904 981000) "Emacs org-mode examples and cookbook.pdf" "minted.pdf" "./" "stna-lecture11.pdf" "vimlatexqrc.pdf" "org.pdf" "LaTeX Export for Org Mode _ 8.pdf" "../")
+
+ ("/home/zhangtao/.config/" (22595 49662 222837 325000) "fontconfig/" "awesome/" "Kingsoft/" "calibre/" "google-chrome/" "gnome-session/" "htop/" "gpick/" "goa-1.0/" "tracker/" "xfce4/" "enchant/" "qtcurve/" "pulse/" "libreoffice/" "gtk-2.0/" "transmission/" "dconf/" "smplayer/" "VirtualBox/" "./" "matplotlib/" "sogou-qimpanel/" "QtProject.conf" "evolution/" "shadowsocks.json" "SogouPY.users/" "autostart/" "akonadi/" "menus/" "vlc/" "gtk-3.0/" "synaptiks/" "Trolltech.conf" "kingsoft/" "fcitx/" "user-dirs.dirs" "ibus/" "audacious/" "../" "SogouPY/" "chromium/")
+
+ ("/home/zhangtao/Tmp/" (22595 50673 122810 826000) "figure_1000p=0.5.png" "G.png" "F_N.txt" "test.log" "SmallWorldNetworksHints.py" "auto/" "hellow.aux" "test.pdf" "figure_1000p=0.2.png" "lc_average.py" "c.c" "Degree-Distribution.png" "./" "test.tex" "cd3255251323243010.png" "figure1000_01.png" "Untitled1.ipynb" "figure_10000_0.01.png" "figure_1N100P0.1.png" "a.out" "hellow.tex" "test.txt" "figure_2N10000P0.0001.png" "cd3255251323243011.png" "ec.java" "hellow.log" "hellow.pdf" "../" "test.aux" "Untitled0.ipynb" "figure_10000p=0.1.png" "py.py" "Degree_Distribution.png" "#hellow.tex#" "il.tex")
+
+ ("/home/zhangtao/Dropbox/.backup/" (22593 29807 311387 278000) "awesome/" ".mutt/" ".msmtprc" ".zshrc" ".xinitrc" "./" ".bashrc" ".offlineimap.py" ".bash_history" "rime/" "rc." ".offlineimaprc" ".gvimrc" ".zsh_history" ".muttrc" "../" "rc.3.5")
+
+ ("/home/zhangtao/Txt/" (22592 7997 19516 251000) "inbox.txt" "./" "../")
+
+ ("/home/zhangtao/.kde/share/apps/aurorae/themes/Yosemite/" (22592 5211 127472 886000) "Yosemiterc" "maximize.svg" "metadata.desktop" "./" "decoration.svg" ".directory" "restore.svg" "close.svg" "../" "minimize.svg")
+
+ ("/home/zhangtao/.kde/share/apps/aurorae/themes/" (22545 56170 783992 245000) "./" "Yosemite/" "../")
+
+ ("/home/zhangtao/.kde/share/apps/aurorae/" (22545 56170 783992 245000) "themes/" "./" "../")
+
+ ("/home/zhangtao/.kde/share/apps/" (22581 34562 595019 89000) "RecentDocuments/" "dolphin/" "khelpcenter/" "kmail2/" "QtCurve/" "kded/" "klipper/" "kcookiejar/" "aurorae/" "kconf_update/" "color-schemes/" "kres-migrator/" "kwallet/" "remoteview/" "./" "plasma-desktop/" "kscreen/" "knewstuff3/" "activitymanager/" "kate/" "desktoptheme/" "networkmanagement/" "libkunitconversion/" "kssl/" "akonadi_migration_agent/" "konqueror/" "gwenview/" "kabc/" "korganizer/" "konsole/" "kpdf/" "konqsidebartng/" "okular/" "kfileplaces/" "../" "khtml/" "ksysguard/")
+
+ ("/home/zhangtao/.kde/share/applnk/" (22573 36327 167522 33000) "chrome-ojcflmmmcfpacggndoaaflkmcoblhnbh-Default.desktop" "./" "../")
+
+ ("/home/zhangtao/.kde/share/" (22573 36327 167522 33000) "applnk/" "./" "icons/" "autostart/" "config/" "../" "apps/" "kde4/")
+
+ ("/home/zhangtao/.kde/" (22542 39692 572030 524000) "share/" "cache-ly400/" "socket-ly400/" "./" "tmp-ly400/" "shutdown/" "env/" "Autostart/" "../")
+
+ ("/home/zhangtao/Public/" (22591 63616 167361 886000) "lc.png" "img-fd2d98cf358d9678153b0870be27e4dd.jpg" "Cache_18b529354caba07e..jpg" "img-2923e5208851b74eef8819e2f7861ab5.jpg" "img-d16b4d4301cd6a746a1e91fe789eb443.jpg" "img-f49c616fa03cafdf9eed29c3aa113286.jpg" "下载.png" "org (1).pdf" "2016级研究生火车票磁条家庭所在地火车站信息（物理学院+协同）.xlsx" "./" "Exercise_v1.2.pdf" "0YBeNFrJXQPYJ0D0LR87AN1a.jpg" ".directory" "附件二：火车站站名字典2016年.xls" "(18禁ア... AAC).ass" "../" "1AAC.txt" "数学方法论丛书-康托的无穷的数学和哲学.pdf" "img-e07927e6f38986ce9cea9421508cadcb.jpg" "shdowscosk/" "Exercise1.pdf")
+
+ ("/home/zhangtao/Dropbox/Doc/" (22589 36180 323909 341000) "ex1.md" "auto/" "physics.org" "linux.txt" "./" "phy.org" "toshcool.txt" "#linux.#" "tang.txt" "internet.txt" "Latex.md" "physics.md" "../")
+
+ ("/home/zhangtao/.emacs.d/elpa/jdee-20161119.911/" (22587 52743 552237 653000) "jdee-juci.elc" "jdee-flycheck.elc" "jdee-refactor.elc" "jdee-which-method.el" "jdee-annotations.el" "jdee-widgets.el" "jdee-checkstyle.el" "jdee-jdk-manager.elc" "jdee-open-source.elc" "jdee-file-util.elc" "jdee-gen.elc" "jdee-class.elc" "jdee-parse.elc" "jdee-bsh.elc" "jdee-bsh.el" "jdee-parse-expr.elc" "jdee-compile.el" "jcomplete.elc" "jdee-plugins.el" "jdee-junit.el" "jdee-util.elc" "beanshell.el" "jdee-open-source.el" "jdee-stacktrace.elc" "jdee-widgets.elc" "efc.el" "jdee-complete.elc" "jdee-import.el" "jdee-file-util.el" "jdee-bug.elc" "jdee-refactor.el" "jdee-java-properties.el" "jdee-project.elc" "jdee-project-file.elc" "jdee-which-method.elc" "jdee-javadoc.elc" "jdee-ecj-flymake.el" "jdee-import.elc" "jdee-maven.elc" "jdee-custom.el" "jdee-jdb.el" "jdee-dbs.el" "jdee-java-properties.elc" "jdee-jdk-manager.el" "jdee-java-grammar.elc" "jdee-run.el" "dir" "./" "jdee-db.el" "jdee-font-lock.elc" "jdee-compile.elc" "jdee-javadoc-gen.elc" "jdee-pkg.el" "jcomplete.el" "jdee-maven.el" "jdee-dbs.elc" "jdee-make.elc" "jdee-junit.elc" "jdee-dbo.el" "jdee-wiz.elc" "jdee-ejb.elc" "jdee.el" "jdee-plugins.elc" "jdee-parse-expr.el" "jdee-ant.el" "jdee-help.elc" "jdee-imenu.el" "jdee-class.el" "jdee-font-lock.el" "jdee-ecj-flymake.elc" "jdee-run.elc" "jdee-make.el" "jdee-bytecode.elc" "jdee-test.el" "jdee-stat.elc" "jdee-xref.el" "jdee-imenu.elc" "jdee-flycheck.el" "jdee-ejb.el" "jdee-test.elc" "efc.elc" "jdee-bookmark.el" "jdee-bookmark.elc" "jdee-ant.elc" "jdee.info" "jdee-archive.el" "jdee-gen.el" "jdee-package.elc" "jdee-javadoc-gen.el" "jdee-javadoc.el" "beanshell.elc" "jdee-stacktrace.el" "jdee-java-grammar.el" "jdee-archive.elc" "jdee-db.elc" "jdee-annotations.elc" "jdee-dbo.elc" "jdee-package.el" "jdee-xref.elc" "jdee.elc" "jdee-juci.el" "jdee-help.el" "jdee-complete.el" "../" "jdee-wiz.el" "jdee-util.el" "jdee-stat.el" "jdee-autoloads.el" "jdee-custom.elc" "jdee-project-file.el" "jdee-checkstyle.elc" "jdee-bug.el" "jdee-project.el" "jdee-jdb.elc" "jdee-parse.el" "jdee-bytecode.el")
+
+ ("/home/zhangtao/.emacs.d/snippets/" (22545 55948 0 0) "./" "c-mode/" "../" "org-mode/")
+
+ ("/home/zhangtao/.emacs.d/lisp/" (22581 30095 351151 81000) "./" "org-latex.el" "../" "org-pdf.el")
+
+ ("/home/zhangtao/Dropbox/Write/" (22580 16422 567366 878000) "enligh-1.md" "teacher-day" "auto/" "./" "vim.md" "9-10.txt" "enlish-1.txt" "ERsuiji.org" "../")
+
+ ("/home/zhangtao/Dropbox/Tmp/" (22578 46785 395466 907000) "121313.c" "p.py" "auto/" "ex13.py" "txt.txt" "ex17.py" "#hello.tex#" "NetworkX-2.txt" "test.c" "hellow.c" "./" "ppt.pdf" "ex16.py" "english/" "ppt" "test.txt" "ex1.py" "#ex17.py#" "ex14.py" "1213" "te.exe" "../" "1.c" "hellow" "ex15.py" "org.org" "K.py")
+
+ ("/home/zhangtao/Dropbox/Sources/" (22573 39274 539636 687000) "ERsuiji-1.py" ".#ERsuiji-1.py" "./" "ERsuiji.py" "../")
+
+ ("/home/zhangtao/.emacs.d/elpa/smart-mode-line-powerline-theme-20160705.1738/" (22545 57150 0 0) "smart-mode-line-powerline-theme.elc" "smart-mode-line-powerline-theme.el" "./" "smart-mode-line-powerline-theme-autoloads.el" "smart-mode-line-light-powerline-theme.elc" "smart-mode-line-powerline-theme-pkg.el" "smart-mode-line-light-powerline-theme.el" "../")
+
+ ("/home/zhangtao/.config/awesome/" (22572 14669 11619 101000) "./" "rc.lua-3.4" "rc.lua" "../")
+
+ ("/home/zhangtao/tmp/" (22572 11202 99721 537000) "test.log" "auto/" "hellow.aux" "test.pdf" "c.c" "./" "test.tex" "a.out" "hellow.tex" "test.txt" "hellow.log" "hellow.pdf" "../" "test.aux" "py.py" "#hellow.tex#")
+
+ ("/home/zhangtao/Dropbox/template/" (22569 36540 616193 23000) "breame-2.tex" "breame-1.tex" "./" "../")
+
+ ("/home/zhangtao/Dropbox/tmp/" (22569 11511 35803 416000) "121313.c" "p.py" "auto/" "ex13.py" "txt.txt" "ex17.py" "#hello.tex#" "test.c" "hellow.c" "./" "ppt.pdf" "ex16.py" "english/" "ppt" "test.txt" "ex1.py" "#ex17.py#" "ex14.py" "1213" "te.exe" "../" "1.c" "hellow" "ex15.py" "org.org" "K.py")
+
+ ("/home/zhangtao/.config/autostart/" (22568 15615 904003 641000) "./" "dropboxd.desktop" "../")
+
+ ("/home/" (22542 38712 153848 63000) "./" "lost+found/" "zhangtao/" "../")
+
+ ("/home/zhangtao/Dropbox/auto/" (22560 20581 735578 590000) "ERsuiji.el" "./" "../")
+
+ ("~/.emacs.d/" (22564 23121 539251 860000) "session.109c793430000147464061500000224380049" ".emacs.desktop.lock" "ido.last~" "ido.last" "auto-save-list/" "bookmarks" "session.109c793430000147780428400000020620018" "ac-comphist.dat" "eshell/" "themes/" "image-dired/" ".bookmarks.bmk" "elpa/" "foucs-mode.el" "url/" "abbrev_defs" "./" "smex-items" "thumbs/" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "pyim/" "helm-history.txt" "snippets/" "srecode-map.el" "init.el" "init.el~" ".emacs.desktop" ".org-id-locations" "writer.el" "../" "recentf")
+
+ ("/home/zhangtao/Dropbox/matlab/" (22557 50697 987613 745000) "permPairs.m" "erdosRenyi.m" "fibonacci.m" "goldrect.m" "./" "getNodeCoordinates.m" "plotGraphBasic.m" "../" "fern.m")
+
+ ("/home/zhangtao/.gnupg/" (22547 14356 551333 470000) "private-keys-v1.d/" "pubring.gpg~" "./" "gpg.conf" "pubring.gpg" "trustdb.gpg" "secring.gpg" "random_seed" "../")
+
+ ("/home/zhangtao/.emacs.d/elpa/cal-china-x-20160102.124/" (22545 56621 0 0) "cal-china-x-autoloads.el" "cal-china-x-pkg.el" "cal-china-x.elc" "jieqi.txt" "./" "cal-china-x-autoloads.el~" "cal-china-x.el" "../")
+
+ ("/home/zhangtao/.emacs.d/snippets/c-mode/" (22545 56053 0 0) "include" "./" "../")
+
+ ("/home/zhangtao/Dropbox/Txt/_book/" (22545 57138 692023 146000) "Evernote Snapshot 20150805 091915.jpg" "Evernote Snapshot 20150805 092123.jpg" "Evernote Snapshot 20160319 195954.png" "2a524fc2d56285358eea8e7f93ef76c6a7ef636c.gif" "Evernote Snapshot 20151222 091009.png" "8.%Image [7].png" "Evernote Snapshot 20150717 161835.jpg" "Evernote Snapshot 20150805 092314.jpg" "7. Image [6].png" "Evernote Snapshot 20150815 103325.jpg" "Evernote Snapshot 20150902 085204.jpg" "Evernote Snapshot 20160319 201215.png" "ScreenClip [1].png" "Evernote Snapshot 20151017 080519.png" "Evernote Snapshot 20150805 092624.jpg" "Evernote Snapshot 20150828 083132.jpg" "2. Image [1].png" "u=2992175072,1609692408&fm=21&gp=0.gif" "Evernote Snapshot 20151222 091414.png" "Evernote Snapshot 20150805 085802.jpg" "Evernote Snapshot 20150724 151232.jpg" "Evernote Snapshot 20150717 105434.jpg" "Evernote Snapshot 20151222 095020.png" "Evernote Snapshot 20150805 093624.jpg" "download (10).png" "Evernote Snapshot 20150826 094406.jpg" "5. Image [4].png" "6. Image [5].png" "Image [3].png" "Evernote Snapshot 20150805 092420.jpg" "Evernote Snapshot 20150815 102150.jpg" "Image [9].png" "Evernote Snapshot 20160319 200611.png" "Evernote Snapshot 20150808 143357.jpg" "Evernote Snapshot 20151222 091139.png" "./" "Evernote Snapshot 20150819 090647.jpg" "Evernote Snapshot 20151222 090535.png" "Evernote Snapshot 20151222 094531.png" "Evernote Snapshot 20151222 090417.png" "ScreenClip [4].png" "Evernote Snapshot 20150805 094311.jpg" "Evernote Snapshot 20151111 082328.png" "Evernote Snapshot 20151111 082328 [1].png" "Evernote Snapshot 20150805 092757.jpg" "Evernote Snapshot 20151222 091556.png" "Evernote Snapshot 20150805 083528.jpg" "Evernote Snapshot 20160319 201215 [1].png" "BbsImg140449051676386_498-204.gif" "4. Image [3].png" "Evernote Snapshot 20150923 080434.jpg" "Image [4].png" "Evernote Snapshot 20150805 090330.jpg" "ScreenClip [2].png" "8. Image [7].png" "BbsImg140455187820300_307-230.gif" "Evernote Snapshot 20150808 144937.jpg" "Evernote Snapshot 20151017 080825.png" "Evernote Snapshot 20151222 093314.jpg" "Evernote Snapshot 20150809 080542.jpg" "Evernote Snapshot 20151222 090251.png" "Evernote Snapshot 20150805 083317.jpg" "Image [1].png" "Image [7].png" "ScreenClip [3].png" "Evernote Snapshot 20160221 180306.png" "Evernote Snapshot 20151017 082246.png" "Evernote Snapshot 20151113 094428.png" "Evernote Snapshot 20150828 083823.jpg" "Image [8].png" "Evernote Snapshot 20160318 095907.png" "Image [10].png" "Evernote Snapshot 20151222 101349 [1].png" "Image [5].png" "Evernote Snapshot 20150724 151441.jpg" "Evernote Snapshot 20150924 091001.jpg" "BbsImg140449050666843_500-205.gif" "Image.png" "Evernote Snapshot 20160319 200319.png" "Evernote Snapshot 20150805 084010.jpg" "Evernote Snapshot 20151222 101349 [2].png" "Evernote Snapshot 20150819 090528.jpg" "Evernote Snapshot 20160318 100108.png" "2d80d158ccbf6c810c9572b6bf3eb13532fa40d4.gif" "Evernote Snapshot 20151222 101349.png" "Evernote Snapshot 20151222 090807.png" "../" "Evernote Snapshot 20150805 094311 [1].jpg" "BbsImg140449049791851_495-185.gif" "Image [2].png" "Evernote Snapshot 20150923 084406.jpg" "133992258053495.gif" "Evernote Snapshot 20150724 151843.jpg" "3. Image [2].png" "1. Image.png" "ScreenClip.png" "Evernote Snapshot 20150805 081538.jpg" "Image [6].png" "Evernote Snapshot 20160319 201215 [2].png")
+
+ ("/home/zhangtao/Dropbox/tmp/english/" (22545 56003 363986 900000) "./" "unit1-textA-note" "unit1-textA" "../")
+
+ ("/usr/local/share/info/" (22503 32135 800002 52000) "ert.info.gz" "cl.info.gz" "speedbar.info.gz" "reftex.info.gz" "flymake.info.gz" "mairix-el.info.gz" "elisp.info.gz" "nxml-mode.info.gz" "tramp.info.gz" "viper.info.gz" "wisent.info.gz" "eintr.info.gz" "dbus.info.gz" "emacs.info.gz" "bovine.info.gz" "ses.info.gz" "auth.info.gz" "org.info.gz" "octave-mode.info.gz" "emacs-mime.info.gz" "sasl.info.gz" "eieio.info.gz" "htmlfontify.info.gz" "ede.info.gz" "dired-x.info.gz" "efaq.info.gz" "mh-e.info.gz" "autotype.info.gz" "vhdl-mode.info.gz" "dir" "pcl-cvs.info.gz" "srecode.info.gz" "ccmode.info.gz" "url.info.gz" "./" "eshell.info.gz" "sc.info.gz" "widget.info.gz" "eww.info.gz" "erc.info.gz" "sieve.info.gz" "pgg.info.gz" "idlwave.info.gz" "forms.info.gz" "ada-mode.info.gz" "eudc.info.gz" "ido.info.gz" "vip.info.gz" "epa.info.gz" "message.info.gz" "info.info.gz" "gnus.info.gz" "remember.info.gz" "semantic.info.gz" "woman.info.gz" "emacs-gnutls.info.gz" "smtpmail.info.gz" "todo-mode.info.gz" "ediff.info.gz" "ebrowse.info.gz" "calc.info.gz" "newsticker.info.gz" "rcirc.info.gz" "edt.info.gz" "../")
+
+ ("/home/zhangtao/Dropbox/Linux/" (22494 26215 975117 397000) "shadowsocks.json" "字体/" "grub" "forge-installer.jar" "174684-ElCapitan_mod.zip" ".zsh_history" "infinality/" ".bashrc" "./" ".fonts.conf" ".zshrc" "HMCL-2.1.7.jar" ".bash_history" "Licensing/" "awesome/" ".zsh_history_root" "css/" "fstab" "168983-yosemite.tar.gz" "autostart/" ".Xresources" "YaHei Consolas Hybrid 1.12.ttf" "ppt" "../" ".bash_history_root" "zenburn.css" ".xinitrc")
+
+ ("/home/zhangtao/Dropbox/Txt/_write/" (22487 20337 884770 964000) "Evernote Snapshot 20150820 160128.jpg" "Image2.png" "Image1.png" "Evernote Snapshot 20150820 160306.jpg" "./" "20160221-180306.png" "519437a8-3bd8-428a-8577-1d41f5be1f49.png" "1467729507369.png" "Evernote Snapshot 20160221 180306.png" "keep.png" "../")
+
+ ("/home/zhangtao/.config/fcitx/rime/" (22489 18473 71390 678000) "luna_pinyin_simp.schema.yaml" "luna_pinyin_simp.prism.bin" "cangjie5_express.prism.bin" "cangjie5.schema.yaml" "luna_pinyin.schema.yaml" ".place_holder" "double_pinyin_mspy.prism.bin" "luna_pinyin.extended.table.bin" "emoji.reverse.bin" "luna_pinyin.sougou.dict.yaml" "luna_pinyin.custom.yaml" "cangjie5.reverse.bin" "emoji.table.bin" "default.custom.yaml" "user.yaml" "luna_pinyin_tw.schema.yaml" "./" "double_pinyin_flypy.prism.bin" "luna_pinyin.userdb.kct" "luna_pinyin_tw.prism.bin" "luna_pinyin_fluency.prism.bin" "luna_pinyin.reverse.bin" "luna_pinyin_fluency.schema.yaml" "english.reverse.bin" "double_pinyin_flypy.custom.yaml" "cangjie5.prism.bin" "english.schema.yaml" "double_pinyin_flypy.schema.yaml" "sync/" "emoji.schema.yaml" "symbols.yaml" "luna_pinyin.hanyu.dict.yaml" "emoji.prism.bin" "double_pinyin_abc.prism.bin" "english.prism.bin" "english.dict.yaml" "luna_pinyin.poetry.dict.yaml" "luna_pinyin.extended.reverse.bin" "english.table.bin" "luna_pinyin.extended.prism.bin" "installation.yaml" "trash/" "double_pinyin.prism.bin" "emoji.userdb.kct" "cangjie5.table.bin" "luna_pinyin.prism.bin" "default.yaml" "../" "luna_pinyin.table.bin" "luna_pinyin.cn_en.dict.yaml" "luna_pinyin.sougou-extend.dict.yaml" "luna_pinyin.extended.dict.yaml")
+
+ ("/home/zhangtao/Pictures/" (22489 23050 911382 237000) "pier-wallpaper-1920x1080.jpg" "vim.icns" "smplayer_screenshots/" "big_hero_6_movie_baymax-wallpaper-1366x768.jpg" "c08111edcc9be04b7166360dd645d98e.jpg" "3200x2000.jpg" "35ccaba52a87419c148c11f46be0a4ad.jpg" "big_hero.jpg" "flooded_forest-wallpaper-3840x2160.jpg" "Wallpapers/" "vim_cheat_sheet_for_programmers_print.png" "big_hero_6_movie_baymax-wallpaper-3840x2160.jpg" "RenderPhoto.jpg" "./" "1ee42de302f000a15f426ded94d571c9.jpg" "16.jpg" "相片/" "post-152203-1206884786.jpg" "hilly_landscape-wallpaper-2560x1440.jpg" "2015-06-10-154652_374x651_scrot.png" "white_osteospermum_flower-wallpaper-2048x1152.jpg" "lake_sunrise-wallpaper-3840x2160.jpg" "捕获.PNG" "gtd_chart-e1362779039146.png" "考编.PNG" "vim_icon-300.png" "black_cubes_3-wallpaper-1920x1080.jpg" "../" "ocean_sunset_3-wallpaper-1920x1080.jpg" "modern_architecture-wallpaper-3840x2160.jpg")
+
+ ("/etc/default/" (22487 24556 472092 756000) "intel-microcode" "irqbalance" "kerneloops" "grub~" "crda" "saned" "console-setup" "bsdmainutils" "devpts" "./" "alsa" "acpid" "cacerts" "useradd" "../" "im-config" "nss" "anacron" "cron" "google-chrome" "brltty" "dbus" "grub" "rsync" "apport" "ufw" "avahi-daemon" "acpi-support" "networking" "locale" "rcS" "keyboard" "speech-dispatcher" "rsyslog" "halt" "cryptdisks" "keyboard~")
+
+ ("C:/Users/zhangtao/Dropbox/tmp/" (22486 16134 0 0) "test.c" "te.exe" "ex1.py" "../" "./")
+
+ ("C:/Users/zhangtao/Dropbox/" (22486 14790 0 0) "vim.md" "Txt/" "tmp/" "teacher-day" "Picture/" "Log/" "Linux/" "liangzilixue.txt" "latex.tex" "File/" "Doc/" "desktop.ini" "auto/" ".emacs.d/" ".dropbox.cache/" ".dropbox" ".directory" ".backup/" "../" "./")
+
+ ("c:/Users/zhangtao/" (22486 13430 0 0) "软件/" "「开始」菜单/" "VirtualBox VMs/" "Videos/" "Templates/" "SendTo/" "Searches/" "Saved Games/" "Recent/" "PrintHood/" "Pictures/" "OneDrive/" "ntuser.ini" "NTUSER.DAT{f5b13604-4b48-11e6-80cb-e41d2d012050}.TMContainer00000000000000000002.regtrans-ms" "NTUSER.DAT{f5b13604-4b48-11e6-80cb-e41d2d012050}.TMContainer00000000000000000001.regtrans-ms" "NTUSER.DAT{f5b13604-4b48-11e6-80cb-e41d2d012050}.TM.blf" "NTUSER.DAT{f5b13603-4b48-11e6-80cb-e41d2d012050}.TxR.blf" "NTUSER.DAT{f5b13603-4b48-11e6-80cb-e41d2d012050}.TxR.2.regtrans-ms" "NTUSER.DAT{f5b13603-4b48-11e6-80cb-e41d2d012050}.TxR.1.regtrans-ms" "NTUSER.DAT{f5b13603-4b48-11e6-80cb-e41d2d012050}.TxR.0.regtrans-ms" "ntuser.dat.LOG2" "ntuser.dat.LOG1" "NTUSER.DAT" "NetHood/" "My Documents/" "Music/" "Local Settings/" "Links/" "Favorites/" "Evernote/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "Cookies/" "Contacts/" "Application Data/" "AppData/" ".VirtualBox/" ".idlerc/" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/txt/" (22486 14647 0 0) "_write/" "_physics/" "_log/" "_book/" "write.txt" "vim.txt" "todo.txt" "read.txt" "physics.txt" "numbers.gpg" "music.txt" "missfont.log" "markdown.txt" "log.txt" "list.txt" "linux.txt" "inbox.txt" "email.txt" "contents.txt" "contacts.txt" "book.txt" "auto/" "#contacts.txt#" "../" "./")
+
+ ("C:/Users/zhangtao/Dropbox/Txt/" (22486 14647 0 0) "_write/" "_physics/" "_log/" "_book/" "write.txt" "vim.txt" "todo.txt" "read.txt" "physics.txt" "numbers.gpg" "music.txt" "missfont.log" "markdown.txt" "log.txt" "list.txt" "linux.txt" "inbox.txt" "email.txt" "contents.txt" "contacts.txt" "book.txt" "auto/" "#contacts.txt#" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/Txt/" (22486 14647 0 0) "_write/" "_physics/" "_log/" "_book/" "write.txt" "vim.txt" "todo.txt" "read.txt" "physics.txt" "numbers.gpg" "music.txt" "missfont.log" "markdown.txt" "log.txt" "list.txt" "linux.txt" "inbox.txt" "email.txt" "contents.txt" "contacts.txt" "book.txt" "auto/" "#contacts.txt#" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/.emacs.d/" (22486 16011 0 0) "writer.el" "url/" "thumbs/" "themes/" "snippets/" "smex-items" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "recentf" "pyim/" "init.el~" "init.el" "ido.last~" "ido.last" "helm-history.txt" "foucs-mode.el" "eshell/" "elpa/" "bookmarks" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" ".org-id-locations" ".emacs.desktop.lock" ".emacs.desktop" ".bookmarks.bmk" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/tmp/" (22486 16134 0 0) "test.c" "te.exe" "ex1.py" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/" (22486 14790 0 0) "vim.md" "Txt/" "tmp/" "teacher-day" "Picture/" "Log/" "Linux/" "liangzilixue.txt" "latex.tex" "File/" "Doc/" "desktop.ini" "auto/" ".emacs.d/" ".dropbox.cache/" ".dropbox" ".directory" ".backup/" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/file/" (22485 29827 0 0) "大自然如何工作.pdf" "《数学软件Mathematica入门》.pdf" "WorkFlowy - Organize your brain_.pdf" "Vim实用技巧.pdf" "user_manual-1.9.0.pdf" "reference-1.9.0 .pdf" "Python科学计算2.pdf" "orgcard.pdf" "org.pdf" "Learn_Python_The_Hard_Way_zh-cn.pdf" "IMSLP51725-PMLP01457-Beethoven_Werke_Breitkopf_Serie_16_No_136_Op_27_No_1.pdf" "IMSLP51036-PMLP01457-Op.27-1.pdf" "emacs-writers-cheatsheet.pdf" "emacs-for-writers.pdf" "agel.pdf" "../" "./")
+
+ ("c:/Users/" (22479 16496 0 0) "zhangtao/" "Public/" "desktop.ini" "defaultuser0/" "Default User/" "Default/" "All Users/" "../" "./")
+
+ ("c:/$Recycle.Bin/" (22479 16578 0 0) "S-1-5-21-3491000077-16467940-1932019326-1001/" "../" "./")
+
+ ("c:/emacs-bin-w64-25.1-rc1-O2/" (22482 5338 0 0) "emacs/" "../" "./")
+
+ ("c:/emacs-bin-w64-25.1-rc1-O2/emacs/" (22429 52290 0 0) "var/" "share/" "libexec/" "bin/" "../" "./")
+
+ ("c:/emacs-bin-w64-25.1-rc1-O2/emacs/bin/" (22429 52319 0 0) "zlib1.dll" "runemacs.exe" "libXpm-noX4.dll" "libxml2-2.dll" "libwinpthread-1.dll" "libtiffxx-5.dll" "libtiff-5.dll" "libtasn1-6.dll" "libstdc++-6.dll" "librsvg-2-2.dll" "libpng16-16.dll" "libpixman-1-0.dll" "libpcre-1.dll" "libpangowin32-1.0-0.dll" "libpangoft2-1.0-0.dll" "libpangocairo-1.0-0.dll" "libpango-1.0-0.dll" "libp11-kit-0.dll" "libnettle-6-2.dll" "liblzma-5.dll" "libjpeg-8.dll" "libjbig-0.dll" "libintl-8.dll" "libidn-11.dll" "libiconv-2.dll" "libhogweed-4-2.dll" "libharfbuzz-icu-0.dll" "libharfbuzz-gobject-0.dll" "libharfbuzz-0.dll" "libgraphite2.dll" "libgomp-1.dll" "libgobject-2.0-0.dll" "libgnutlsxx-28.dll" "libgnutls-30.dll" "libgmp-10.dll" "libgmodule-2.0-0.dll" "libglib-2.0-0.dll" "libgio-2.0-0.dll" "libgif-7.dll" "libgdk_pixbuf-2.0-0.dll" "libgcc_s_seh-1.dll" "libfreetype-6.dll" "libfontconfig-1.dll" "libffi-6.dll" "libexpat-1.dll" "libdbus-1-3.dll" "libcroco-0.6-3.dll" "libcairo-script-interpreter-2.dll" "libcairo-gobject-2.dll" "libcairo-2.dll" "libbz2-1.dll" "etags.exe" "emacsclientw.exe" "emacsclient.exe" "emacs.exe" "emacs-25.1.exe" "ebrowse.exe" "ctags.exe" "addpm.exe" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/picture/" (22483 52844 0 0) "下载.jpg" "YLInLlY.png" "vim_cheat_sheet_for_programmers_print.png" "vim_cheat_sheet_for_programmers_colorblind.png" "vim.jpg" "up_movie_balloons_house-wide.jpg" "original.jpg" "mmexport1465886281095.jpg" "mclaren_p1_2014-wide.jpg" "maldivian_beach-wide.jpg" "la_digue_beach_seychelles-wide.jpg" "L-W-HI.png" "ios_7_galaxy-wide.jpg" "hejp.png" "emacs_kbd_layout_2.png" "cool_beach-wide.jpg" "chevrolet-corvette-black-1920x1080-wallpaper-4823.jpg" "Bliss_windows_xp_meadow_stuff_ultra_3840x2160_hd-wallpaper-242610.jpg" "beautiful-vim-cheat-sheet.png" "beach_horizon-wide.jpg" "background.jpg" "9175_201107171057301uE4E.jpg" "9175_201006281006371Qgpd.jpg" "9175_200904290915541.jpg" "7dd98d1001e93901508eb19f79ec54e737d19686.gif" "6th_gear_racing_cars-wide.jpg" "32661c950a7b0208ad70fa3462d9f2d3562cc80f.gif" "3200x2000.jpg" "2010_corvette_racing_sebring_cars-wide.jpg" "17969435635butterfly___illinois-wallpaper-3840x21601.jpg" ".directory" ".17969435635butterfly___illinois-wallpaper-3840x21601.jpg.swp" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/Linux/" (22482 41698 0 0) "字体/" "zenburn.css" "YaHei Consolas Hybrid 1.12.ttf" "shadowsocks.json" "Licensing/" "infinality/" "HMCL-2.1.7.jar" "grub" "fstab" "forge-installer.jar" "css/" "awesome/" "autostart/" ".zsh_history_root" ".zsh_history" ".zshrc" ".Xresources" ".xinitrc" ".fonts.conf" ".bash_history_root" ".bash_history" ".bashrc" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/linux/" (22482 41698 0 0) "字体/" "zenburn.css" "YaHei Consolas Hybrid 1.12.ttf" "shadowsocks.json" "Licensing/" "infinality/" "HMCL-2.1.7.jar" "grub" "fstab" "forge-installer.jar" "css/" "awesome/" "autostart/" ".zsh_history_root" ".zsh_history" ".zshrc" ".Xresources" ".xinitrc" ".fonts.conf" ".bash_history_root" ".bash_history" ".bashrc" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/Doc/" (22482 6025 0 0) "toshcool.txt" "linux.txt" "linux.pdf" "linux.html" "#linux.txt#" "../" "./")
+
+ ("c:/Users/zhangtao/Dropbox/Txt/_book/" (22482 6530 0 0) "u=2992175072,1609692408&fm=21&gp=0.gif" "ScreenClip.png" "ScreenClip [4].png" "ScreenClip [3].png" "ScreenClip [2].png" "ScreenClip [1].png" "Image.png" "Image [9].png" "Image [8].png" "Image [7].png" "Image [6].png" "Image [5].png" "Image [4].png" "Image [3].png" "Image [2].png" "Image [1].png" "Image [10].png" "Evernote Snapshot 20160319 201215.png" "Evernote Snapshot 20160319 201215 [2].png" "Evernote Snapshot 20160319 201215 [1].png" "Evernote Snapshot 20160319 200611.png" "Evernote Snapshot 20160319 200319.png" "Evernote Snapshot 20160319 195954.png" "Evernote Snapshot 20160318 100108.png" "Evernote Snapshot 20160318 095907.png" "Evernote Snapshot 20160221 180306.png" "Evernote Snapshot 20151222 101349.png" "Evernote Snapshot 20151222 101349 [2].png" "Evernote Snapshot 20151222 101349 [1].png" "Evernote Snapshot 20151222 095020.png" "Evernote Snapshot 20151222 094531.png" "Evernote Snapshot 20151222 093314.jpg" "Evernote Snapshot 20151222 091556.png" "Evernote Snapshot 20151222 091414.png" "Evernote Snapshot 20151222 091139.png" "Evernote Snapshot 20151222 091009.png" "Evernote Snapshot 20151222 090807.png" "Evernote Snapshot 20151222 090535.png" "Evernote Snapshot 20151222 090417.png" "Evernote Snapshot 20151222 090251.png" "Evernote Snapshot 20151113 094428.png" "Evernote Snapshot 20151111 082328.png" "Evernote Snapshot 20151111 082328 [1].png" "Evernote Snapshot 20151017 082246.png" "Evernote Snapshot 20151017 080825.png" "Evernote Snapshot 20151017 080519.png" "Evernote Snapshot 20150924 091001.jpg" "Evernote Snapshot 20150923 084406.jpg" "Evernote Snapshot 20150923 080434.jpg" "Evernote Snapshot 20150902 085204.jpg" "Evernote Snapshot 20150828 083823.jpg" "Evernote Snapshot 20150828 083132.jpg" "Evernote Snapshot 20150826 094406.jpg" "Evernote Snapshot 20150819 090647.jpg" "Evernote Snapshot 20150819 090528.jpg" "Evernote Snapshot 20150815 103325.jpg" "Evernote Snapshot 20150815 102150.jpg" "Evernote Snapshot 20150809 080542.jpg" "Evernote Snapshot 20150808 144937.jpg" "Evernote Snapshot 20150808 143357.jpg" "Evernote Snapshot 20150805 094311.jpg" "Evernote Snapshot 20150805 094311 [1].jpg" "Evernote Snapshot 20150805 093624.jpg" "Evernote Snapshot 20150805 092757.jpg" "Evernote Snapshot 20150805 092624.jpg" "Evernote Snapshot 20150805 092420.jpg" "Evernote Snapshot 20150805 092314.jpg" "Evernote Snapshot 20150805 092123.jpg" "Evernote Snapshot 20150805 091915.jpg" "Evernote Snapshot 20150805 090330.jpg" "Evernote Snapshot 20150805 085802.jpg" "Evernote Snapshot 20150805 084010.jpg" "Evernote Snapshot 20150805 083528.jpg" "Evernote Snapshot 20150805 083317.jpg" "Evernote Snapshot 20150805 081538.jpg" "Evernote Snapshot 20150724 151843.jpg" "Evernote Snapshot 20150724 151441.jpg" "Evernote Snapshot 20150724 151232.jpg" "Evernote Snapshot 20150717 161835.jpg" "Evernote Snapshot 20150717 105434.jpg" "download (10).png" "BbsImg140455187820300_307-230.gif" "BbsImg140449051676386_498-204.gif" "BbsImg140449050666843_500-205.gif" "BbsImg140449049791851_495-185.gif" "8.%Image [7].png" "8. Image [7].png" "7. Image [6].png" "6. Image [5].png" "5. Image [4].png" "4. Image [3].png" "3. Image [2].png" "2d80d158ccbf6c810c9572b6bf3eb13532fa40d4.gif" "2a524fc2d56285358eea8e7f93ef76c6a7ef636c.gif" "2. Image [1].png" "133992258053495.gif" "1. Image.png" "../" "./")
+
+ ("C:/Users/zhangtao/Dropbox/Txt/_book/" (22482 6530 0 0) "u=2992175072,1609692408&fm=21&gp=0.gif" "ScreenClip.png" "ScreenClip [4].png" "ScreenClip [3].png" "ScreenClip [2].png" "ScreenClip [1].png" "Image.png" "Image [9].png" "Image [8].png" "Image [7].png" "Image [6].png" "Image [5].png" "Image [4].png" "Image [3].png" "Image [2].png" "Image [1].png" "Image [10].png" "Evernote Snapshot 20160319 201215.png" "Evernote Snapshot 20160319 201215 [2].png" "Evernote Snapshot 20160319 201215 [1].png" "Evernote Snapshot 20160319 200611.png" "Evernote Snapshot 20160319 200319.png" "Evernote Snapshot 20160319 195954.png" "Evernote Snapshot 20160318 100108.png" "Evernote Snapshot 20160318 095907.png" "Evernote Snapshot 20160221 180306.png" "Evernote Snapshot 20151222 101349.png" "Evernote Snapshot 20151222 101349 [2].png" "Evernote Snapshot 20151222 101349 [1].png" "Evernote Snapshot 20151222 095020.png" "Evernote Snapshot 20151222 094531.png" "Evernote Snapshot 20151222 093314.jpg" "Evernote Snapshot 20151222 091556.png" "Evernote Snapshot 20151222 091414.png" "Evernote Snapshot 20151222 091139.png" "Evernote Snapshot 20151222 091009.png" "Evernote Snapshot 20151222 090807.png" "Evernote Snapshot 20151222 090535.png" "Evernote Snapshot 20151222 090417.png" "Evernote Snapshot 20151222 090251.png" "Evernote Snapshot 20151113 094428.png" "Evernote Snapshot 20151111 082328.png" "Evernote Snapshot 20151111 082328 [1].png" "Evernote Snapshot 20151017 082246.png" "Evernote Snapshot 20151017 080825.png" "Evernote Snapshot 20151017 080519.png" "Evernote Snapshot 20150924 091001.jpg" "Evernote Snapshot 20150923 084406.jpg" "Evernote Snapshot 20150923 080434.jpg" "Evernote Snapshot 20150902 085204.jpg" "Evernote Snapshot 20150828 083823.jpg" "Evernote Snapshot 20150828 083132.jpg" "Evernote Snapshot 20150826 094406.jpg" "Evernote Snapshot 20150819 090647.jpg" "Evernote Snapshot 20150819 090528.jpg" "Evernote Snapshot 20150815 103325.jpg" "Evernote Snapshot 20150815 102150.jpg" "Evernote Snapshot 20150809 080542.jpg" "Evernote Snapshot 20150808 144937.jpg" "Evernote Snapshot 20150808 143357.jpg" "Evernote Snapshot 20150805 094311.jpg" "Evernote Snapshot 20150805 094311 [1].jpg" "Evernote Snapshot 20150805 093624.jpg" "Evernote Snapshot 20150805 092757.jpg" "Evernote Snapshot 20150805 092624.jpg" "Evernote Snapshot 20150805 092420.jpg" "Evernote Snapshot 20150805 092314.jpg" "Evernote Snapshot 20150805 092123.jpg" "Evernote Snapshot 20150805 091915.jpg" "Evernote Snapshot 20150805 090330.jpg" "Evernote Snapshot 20150805 085802.jpg" "Evernote Snapshot 20150805 084010.jpg" "Evernote Snapshot 20150805 083528.jpg" "Evernote Snapshot 20150805 083317.jpg" "Evernote Snapshot 20150805 081538.jpg" "Evernote Snapshot 20150724 151843.jpg" "Evernote Snapshot 20150724 151441.jpg" "Evernote Snapshot 20150724 151232.jpg" "Evernote Snapshot 20150717 161835.jpg" "Evernote Snapshot 20150717 105434.jpg" "download (10).png" "BbsImg140455187820300_307-230.gif" "BbsImg140449051676386_498-204.gif" "BbsImg140449050666843_500-205.gif" "BbsImg140449049791851_495-185.gif" "8.%Image [7].png" "8. Image [7].png" "7. Image [6].png" "6. Image [5].png" "5. Image [4].png" "4. Image [3].png" "3. Image [2].png" "2d80d158ccbf6c810c9572b6bf3eb13532fa40d4.gif" "2a524fc2d56285358eea8e7f93ef76c6a7ef636c.gif" "2. Image [1].png" "133992258053495.gif" "1. Image.png" "../" "./")
+
+ ("/home/zhangtao/tmp/ztao1991.github.io/source/_posts/" (22476 63396 11024 785000) "./" "../")
+
+ ("/home/zhangtao/tmp/ztao1991.github.io/themes/next/" (22476 63740 63014 619000) "gulpfile.coffee" "bower.json" ".hound.yml" "source/" "_config.yml" "test/" ".bowerrc" "scripts/" ".javascript_ignore" "languages/" ".gitignore" ".jshintrc" "./" ".editorconfig" "../" "layout/" "README.en.md" ".github/" "README.md" "package.json")
+
+ ("/home/zhangtao/tmp/ztao1991.github.io/themes/" (22476 60112 607121 798000) "next/" "landscape/" "./" "../")
+
+ ("/home/zhangtao/tmp/ztao1991.github.io/" (22476 61673 855075 668000) "scaffolds/" ".npmignore" "themes/" "source/" "_config.yml" "public/" "README" "node_modules/" "blog/" ".git/" "./" "db.json" "../" "README.md" "package.json" ".deploy_git/")
+
+ ("/home/zhangtao/tmp/ztao1991.github.io/source/" (22476 60112 603121 798000) "./" "../" "_posts/")
+
+ ("/home/zhangtao/.ssh/" (22476 58902 779157 545000) "known_hosts" "id_rsa.pub" "id_rsa" "./" "../")
+
+ ("/home/zhangtao/.tmp/" (22474 17169 338896 572000) "mutt-ly400-1000-3827-17630869251111217058" "python.py" "./" "../")
+
+ ("/home/zhangtao/Games/" (22465 39853 793467 408000) "HMCL-2.1.7.jar" "Xonotic/" "HMCL-2.3.5.4.jar" "forge-installer.jar" "UrbanTerror42/" "./" "../")
+
+ ("/home/zhangtao/.config/awesome/awesome-shifty/" (22464 14667 547453 999000) "init.lua" ".git/" "./" "../" "README.md" "example.rc.lua")
+
+ ("/home/zhangtao/.emacs.d/elpa/expand-region-20160729.131/" (22462 46148 135335 979000) "erlang-mode-expansions.elc" "cperl-mode-expansions.elc" "python-el-expansions.el" "er-basic-expansions.elc" "expand-region-custom.elc" "python-mode-expansions.elc" "jsp-expansions.el" "python-el-expansions.elc" "latex-mode-expansions.el" "octave-expansions.el" "clojure-mode-expansions.elc" "sml-mode-expansions.el" "expand-region.elc" "text-mode-expansions.el" "jsp-expansions.elc" "nxml-mode-expansions.el" "expand-region-custom.el" "text-mode-expansions.elc" "cc-mode-expansions.elc" "expand-region-core.el" "js-mode-expansions.elc" "html-mode-expansions.elc" "cc-mode-expansions.el" "the-org-mode-expansions.el" "web-mode-expansions.el" "feature-mode-expansions.elc" "expand-region.el" "python-mode-expansions.el" "subword-mode-expansions.el" "js2-mode-expansions.elc" "the-org-mode-expansions.elc" "ruby-mode-expansions.elc" "enh-ruby-mode-expansions.elc" "css-mode-expansions.elc" "./" "er-basic-expansions.el" "nxml-mode-expansions.elc" "expand-region-pkg.el" "python-el-fgallina-expansions.elc" "feature-mode-expansions.el" "js-mode-expansions.el" "subword-mode-expansions.elc" "cperl-mode-expansions.el" "../" "octave-expansions.elc" "latex-mode-expansions.elc" "erlang-mode-expansions.el" "python-el-fgallina-expansions.el" "sml-mode-expansions.elc" "expand-region-autoloads.el" "js2-mode-expansions.el" "expand-region-core.elc" "clojure-mode-expansions.el" "ruby-mode-expansions.el" "html-mode-expansions.el" "web-mode-expansions.elc" "css-mode-expansions.el" "enh-ruby-mode-expansions.el")
+
+ ("/home/zhangtao/.emacs.d/elpa/xterm-color-20160802.1752/" (22448 35755 370139 115000) "xterm-color.elc" "xterm-color-pkg.el" "./" "xterm-color-autoloads.el" "xterm-color.el" "../" "xterm-color-pkg.elc")
+
+ ("/home/zhangtao/.emacs.d/elpa/solarized-theme-20160515.442/" (22422 39329 896818 914000) "solarized-light-theme.elc" "solarized-theme.elc" "solarized-theme-utils.el" "solarized-theme-autoloads.el" "solarized-theme-pkg.el" "solarized-theme-utils.elc" "solarized-light-theme.el" "./" "../" "solarized.el" "solarized-dark-theme.elc" "solarized-theme.el" "solarized-dark-theme.el")
+
+ ("/home/zhangtao/.emacs.d/elpa/writeroom-mode-20160613.1611/" (22429 28269 487819 426000) "dir" "writeroom-mode-pkg.el" "writeroom-mode.elc" "writeroom-mode.el" "./" "../" "writeroom-mode-autoloads.el" "writeroom-mode.info")
+
+ ("/home/zhangtao/Dropbox/txt/" (22429 24229 503938 794000) "physics.txt" "inbox.txt" "linux.txt" "diary" "_physics/" "book.txt" "contents.txt" "log.txt" "todo.txt" "email.txt" "numbers.gpg" "markdown.txt" "read.txt" "_book/" "list.txt" "./" "todo.txt_archive" "write.txt" "../" "_log/" "vim.md" "_write/" "music.txt")
+
+ ("/opt/foxitsoftware/foxitreader/" (22423 6935 772172 695000) "maintenancetool" "platforms/" "InstallationLog.txt" "rmssdk/" "countinstalltion" "Activation" "components.xml" "Uninstall.desktop" "FoxitReader" "ReleaseNote_Linux.txt" "FoxitReader.sh" "imageformats/" "Activation.sh" "run/" "network.xml" "maintenancetool.dat" "installUpdate" "FoxitReader.desktop" "Activation.desktop" "sensors/" "maintenancetool.sh" "../" "./" "fxplugins/" "maintenancetool.ini" "platforminputcontexts/" "images/" "updater.sh" "printsupport/" "lib/" "updater" "countinstalltion.sh" "Update.desktop" "platformthemes/" "manual/" "config.xml" "sqldrivers/")
+
+ ("/etc/" (22422 58126 923626 571000) "modules" "fstab" "subgid-" "kernel-img.conf" "emacs24/" "dconf/" "sane.d/" "ucf.conf" "hosts.deny" "cupshelpers/" "bluetooth/" "python3.5/" "locale.alias" "rpc" "passwd-" "environment" "os-release" "update-motd.d/" "binfmt.d/" "sensors3.conf" "iproute2/" "pulse/" "udisks2/" "pki/" "login.defs" "popularity-contest.conf" "selinux/" "magic.mime" "dbus-1/" "protocols" "apt/" "apparmor/" "papersize" "guest-session/" "shadow" "aptdaemon/" "polkit-1/" "brltty.conf" "ltrace.conf" "rc3.d/" "ghostscript/" "init/" "X11/" "groff/" "hosts.allow" "ssh/" "alternatives/" "ld.so.cache" "machine-id" "sysctl.conf" "python2.7/" "usb_modeswitch.conf" "dkms/" "ssl/" "gss/" "timezone" "pam.d/" "localtime" "ca-certificates/" "cracklib/" "gconf/" "calendar/" "xdg/" "locale.gen" "updatedb.conf" "subuid-" "logrotate.d/" "at-spi2/" "ld.so.conf.d/" "bash_completion.d/" "iftab" "thermald/" "UPower/" "security/" "lintianrc" "mailcap.order" "debian_version" "gtk-3.0/" "brltty/" "rmt" "ImageMagick-6/" "anacrontab" "update-manager/" "rc5.d/" "rc6.d/" "fwupd.conf" "acpi/" "securetty" "cron.d/" "dhcp/" "services" "insserv.conf.d/" "rc.local" "modules-load.d/" "emacs/" "gnome/" "networks" "rsyslog.conf" "manpath.config" "python/" "vim/" "timidity/" "group-" "kerneloops.conf" "libreoffice/" ".#fstab" "apport/" "rc2.d/" "apparmor.d/" "modprobe.d/" "speech-dispatcher/" "rsyslog.d/" "udev/" "pm/" "logcheck/" "vdpau_wrapper.cfg" "gai.conf" "signon-ui/" "pnm2ppa.conf" "avahi/" "vtrgb" "mtools.conf" "ld.so.conf" "ppp/" "compizconfig/" "ldap/" "terminfo/" "ca-certificates.conf" "mke2fs.conf" "usb_modeswitch.d/" "chatscripts/" "subgid" "mtab" "console-setup/" "prime-discrete" "cron.hourly/" "opt/" "skel/" "wildmidi/" "python3/" "gtk-2.0/" "fonts/" "bash_completion" "wpa_supplicant/" "brlapi.key" "doc-base/" "openal/" "fuse.conf" "debconf.conf" "nanorc" "magic" "init.d/" "issue" "whoopsie" "group" "dictionaries-common/" "#fstab#" "pcmcia/" "lsb-release" "cups/" "zsh_command_not_found" "NetworkManager/" "dnsmasq.d/" "passwd" "gshadow-" "nsswitch.conf" "host.conf" "hosts" ".pwd.lock" "ifplugd/" "systemd/" "rc4.d/" "insserv/" "kernel/" "upstart-xsessions" "profile" "bindresvport.blacklist" "signond.conf" "resolv.conf" "network/" "dpkg/" "gdb/" "sudoers" "apg.conf" "presage.xml" "lightdm/" "sensors.d/" "wgetrc" "zsh/" "shells" "xml/" "shadow-" "firefox/" "deluser.conf" "drirc" "crontab" "cron.weekly/" "depmod.d/" "resolvconf/" "mailcap" "adduser.conf" "cron.daily/" "libnl-3/" "logrotate.conf" "ufw/" "profile.d/" "libaudit.conf" "sgml/" "insserv.conf" "issue.net" "rcS.d/" "hdparm.conf" "hostname" "subuid" "legal" "sudoers.d/" "apm/" "update-notifier/" "kbd/" "OpenCL/" "gshadow" "hp/" "default/" "gnome-app-install/" "pam.conf" "tmpfiles.d/" "thunderbird/" "libpaper.d/" "rc1.d/" "initramfs-tools/" "rc0.d/" "sysctl.d/" "perl/" "cron.monthly/" "libao.conf" "inputrc" "appstream.conf" "bash.bashrc" "grub.d/" "mime.types" "newt/" "../" "./")
+
+ ("/home/zhangtao/.shadowsocks/" (22412 35597 364421 811000) "shadowsocks.json" "../" "./")
+
+ ("/home/zhangtao/.fvwm/" (22404 38915 332206 708000) ".FvwmConsole-History" ".fvwm2rc" "../" "./")
+
+ ("/home/zhangtao/.emacs.d/elpa/yasnippet-20160612.620/" (22388 22690 0 0) "yasnippet.el" "yasnippet-autoloads.el" "yasnippet-pkg.el" "../" "yasnippet.elc" "./" "snippets/")
+
+ ("/home/zhangtao/Dropbox/.emacs.d/" (22401 50704 575783 840000) "eshell/" "session.109c793430000146762783800000165100045" "helm-history.txt" "ido.last" "elpa/" "pyim/" "smex-items" "url/" "recentf~" "ac-comphist.dat" "session.2b65b4ac1-d6c6-4d8a-a7c6-476de07de1c1" "foucs-mode.el" "../" "init.el" "session.2cc98ba49-6728-40ac-a631-ecbbf4ca91d3" "themes/" "bookmarks" ".bookmarks.bmk" "recentf" "init.el~" "./" "ido.last~" "writer.el" "auto-save-list/" "snippets/")
+
+ ("c:/Users/zhangtao/Dropbox/txt/_write/" (22389 57740 0 0) "keep.png" "Image2.png" "Image1.png" "Evernote Snapshot 20150820 160306.jpg" "Evernote Snapshot 20150820 160128.jpg" "../" "./")
+
+ ("c:/Emacs/.emacs.d/" (22391 29947 0 0) "writer.el" "themes/" "snippets/" "smex-items" "session.254b37a11-efb2-4ecf-ac84-4d5bb85b97d9" "recentf" "pyim/" "init.el~" "init.el" "ido.last~" "ido.last" "foucs-mode.el" "eshell/" "elpa/" "bookmarks" "auto-save-list/" "ac-comphist.dat" ".bookmarks.bmk" "#init.el#" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

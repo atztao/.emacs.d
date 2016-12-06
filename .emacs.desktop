@@ -1,0 +1,41 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun Aug  7 22:54:19 2016
+;; Desktop file format version 206
+;; Emacs version 24.4.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (22439 19355 817622 424000) (desktop . "206") "zhangtao@ly400" nil nil ((((font-backend xft x) (font . "-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") (font-parameter . "Inconsolata-12") (border-width . 0) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (foreground-color . "#DCDCCC") (background-color . "#3F3F3F") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 0) (right-fringe . 0) (scroll-bar-foreground) (scroll-bar-background . "grey75") (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (fullscreen) (tool-bar-position . top) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (alpha) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "#FFFFEF") (environment) (frameset--id . "1D4C-A895-10AD-84C4") (frameset--mini t . t) (height . 44) (width . 170) (modeline . t) (minibuffer . t) (unsplittable) (left . 0) (top . 17) (icon-name) (visibility . t) (display . ":0") (explicit-name)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 68) (min-pixel-width . 80) (min-pixel-height-ignore . 34) (min-pixel-width-ignore . 16) (min-pixel-height-safe . 17) (min-pixel-width-safe . 16)) leaf (pixel-width . 1360) (pixel-height . 731) (total-width . 170) (total-height . 43) (normal-height . 1.0) (normal-width . 1.0) (buffer "linux.txt" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 17306) (start . 17262))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("gray" "gary" "mode-l"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/.config/awesome/rc.lua" "/home/zhangtao/Dropbox/Txt/linux.txt" "/home/zhangtao/.emacs.d/init.el"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/zhangtao/Dropbox/Txt/linux.txt"
+  "linux.txt"
+  'org-mode
+  '(visual-line-mode undo-tree-mode helm-mode yas-minor-mode TeX-PDF-mode super-save-mode org-indent-mode)
+  17306
+  '(19335 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/zhangtao/.emacs.d/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(visual-line-mode undo-tree-mode helm-mode yas-minor-mode TeX-PDF-mode super-save-mode)
+  10074
+  '(8791 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-dos) (truncate-lines)))
+

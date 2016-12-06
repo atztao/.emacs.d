@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: latex-cjk
+# key: pdf
+# --
+#+LaTeX_CLASS_OPTIONS: [a4paper,twoside,twocolumn]
+
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont{WenQuanYi Micro Hei}
+
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \usemintedstyle{emacs}
+
+#+LATEX_HEADER_EXTRA:  \usepackage{mdframed}
+#+LATEX_HEADER_EXTRA: \BeforeBeginEnvironment{minted}{\begin{mdframed}}
+#+LATEX_HEADER_EXTRA: \AfterEndEnvironment{minted}{\end{mdframed}}
+#+LaTeX_HEADER: \newminted{common-lisp}{fontsize=\footnotesize}
+
+#+OPTIONS: ^:nil _:nil f:nil toc:t num:t
+#+TITLE: $1    
+#+AUTHOR: zhangtao   
+#+EMAIL: ztao1991@gmail.com     
+#+DATE: $2
