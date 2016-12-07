@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ eval-buffer
+ ag
+ relative-line-numbers-mode
  key-chord-mode
  package-list-packages
- eval-buffer
  cvs-status-mode
  indent-region
- markdown-mode
- writeroom-mode
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 359)
+ (eval-buffer . 360)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 20)
+ (ag . 21)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -287,7 +287,7 @@
  (list-packages . 5)
  (package-menu-mark-delete . 5)
  (package-menu-execute . 3)
- (relative-line-numbers-mode . 2)
+ (relative-line-numbers-mode . 3)
  (java-mode . 2)
  (org-babel-tangle . 1)
  (htmlize-file . 1)
