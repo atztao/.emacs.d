@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- writeroom-mode
- load-theme
- eval-buffer
- helm-occur
- occur
+ key-chord-mode
  package-list-packages
- disable-theme
+ eval-buffer
+ cvs-status-mode
+ indent-region
+ markdown-mode
+ writeroom-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 98)
- (indent-region . 14)
+ (package-list-packages . 99)
+ (indent-region . 15)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 80)
+ (markdown-mode . 81)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 356)
+ (eval-buffer . 359)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -294,4 +294,6 @@
  (er/mark-email . 1)
  (jde-mode . 1)
  (jdee-mode . 7)
+ (cvs-status-mode . 1)
+ (key-chord-mode . 2)
 )
