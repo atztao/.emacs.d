@@ -329,7 +329,6 @@ directory to make multiple eshell windows easier."
 ;;(format-mode-line header-line-format "_")
 
 (setq-default mode-line-format nil)
-;;(set-face-attribute 'mode-line nil  :height 60)
 
 ;;(set-face-attribute 'mode-line nil  :height 90)
 ;;(set-face-inverse-video-p 'vertical-border nil)
@@ -367,17 +366,16 @@ directory to make multiple eshell windows easier."
 ;; (setf rm-blacklist "")
 ;; (setq rm-blacklist '(" GitGutter" " MRev" " company" " mate" " Projectile"))
 
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "black"
-;;                     :background "gray"
-;;                     :box nil)
-;; (set-face-attribute 'modeline-inactive nil
-;;                     :foreground "black"
-;;                     :background "gray"
-;;                     :box nil)
+;; ;; (set-face-attribute 'mode-line nil
+;; ;;                     :foreground "black"
+;; ;;                     :background "gray"
+;; ;;                     :box nil)
+;; ;; (set-face-attribute 'modeline-inactive nil
+;; ;;                     :foreground "black"
+;; ;;                     :background "gray"
+;; ;;                     :box nil)
 
     
-;; Hidden minor-mode, by rich-minority
 ;; (setq rm-excluded-modes
 ;; 	  '(" Guide"			;; guide-key mode
 ;; 	" hc"				;; hardcore mode
@@ -967,6 +965,11 @@ directory to make multiple eshell windows easier."
 
 (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
 (advice-add 'org-latex-compile :after #'delete-file)
+
+(setq TeX-view-program-selection
+ '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+ '(("PDF Viewer" "okular --unique %o#src:%n%b")))
 
 ;;-------------------------------------------------------
 ;;org-latex

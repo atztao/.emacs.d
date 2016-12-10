@@ -2,6 +2,9 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/zhangtao/Dropbox/Networks/Exercise/" . "Net_ex2/")
+ ("/home/zhangtao/Dropbox/Networks/" . "Exercise/")
+ ("/home/zhangtao/Dropbox/Inbox/" . "auto/")
  ("/home/zhangtao/.kde/share/apps/aurorae/themes/" . "Yosemite/")
  ("/home/zhangtao/.kde/share/apps/aurorae/" . "themes/")
  ("/home/zhangtao/.kde/share/apps/" . "konsole/")
@@ -33,31 +36,33 @@
  ("/home/zhangtao/.emacs.d/" . "elpa/")
  ("/home/" . "zhangtao/")
  ("/" . "home/")
- ("/home/zhangtao/" . "Dropbox/")
- ("/home/zhangtao/Dropbox/" . "Doc/")
+ ("/home/zhangtao/" . "Tmp/")
+ ("/home/zhangtao/Dropbox/" . "Networks/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/zhangtao/Tmp/"
+ "/home/zhangtao/Inbox/"
+ "/home/zhangtao/Dropbox/Networks/Exercise/Net_ex2/"
+ "/home/zhangtao/Dropbox/Txt/"
+ "/home/zhangtao/Desktop/"
  "/home/zhangtao/.emacs.d/"
+ "/home/zhangtao/Dropbox/Inbox/"
+ "/home/zhangtao/"
  "/home/zhangtao/Dropbox/Doc/"
+ "/home/zhangtao/.kde/share/apps/konsole/"
  "/home/zhangtao/.emacs.d/elpa/solarized-theme-20161203.301/"
  "/home/zhangtao/Downloads/"
  "/home/zhangtao/.emacs.d/elpa/smart-mode-line-powerline-theme-20160705.1738/"
- "/home/zhangtao/"
- "/home/zhangtao/Inbox/"
  "/home/zhangtao/.emacs.d/snippets/org-mode/"
  "/home/zhangtao/Work/"
  "/home/zhangtao/Desktop/Er/"
  "/home/zhangtao/Dropbox/"
- "/home/zhangtao/.kde/share/apps/konsole/"
- "/home/zhangtao/Dropbox/Txt/"
  "/home/zhangtao/.kde/share/apps/aurorae/themes/Yosemite/"
  "/home/zhangtao/Txt/"
  "/home/zhangtao/Dropbox/Write/"
- "/home/zhangtao/Tmp/"
  "/home/zhangtao/.config/"
- "/home/zhangtao/Desktop/"
  "/home/zhangtao/Dropbox/Picture/"
  "/home/zhangtao/.emacs.d/lisp/"
  "/home/zhangtao/Dropbox/Tmp/"
@@ -87,37 +92,63 @@
  "/home/zhangtao/.ssh/"
  "/home/zhangtao/.tmp/"
  "/home/zhangtao/.gnupg/"
- "/home/zhangtao/.config/awesome/awesome-shifty/"
- "/home/zhangtao/.emacs.d/elpa/xterm-color-20160802.1752/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "init.el"
- "phy.org"
- "linux.txt"
- "solarized-theme.el"
- "init (1).el"
- "physics.org"
- "smart-mode-line-light-powerline-theme.el"
- ".zshrc"
+ "Test_fonts.tex"
+ "Net_ex3.txt"
  "Net_ex.txt"
- "latex-cjk"
+ "lc_lc.py"
+ "linux.txt"
+ "Watts-CollectiveDynamicsOfSmallWorldNetworks.pdf"
+ "init.el"
+ "enlish-1.txt"
+ ".zshrc"
+ "toshcool.txt"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/tmp/" (22597 18592 259837 133000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "pulse-PKdhtXMmr18n/" ".X0-lock" "ssh-f4VoYAmaEk8C/" "fcitx-socket-:0" "kde-zhangtao/" "ksocket-zhangtao/" "sogou-qimpanel:0.pid" "systemd-private-93db6551f67f449e8acd86584bcafced-rtkit-daemon.service-rsVHsO/" "gpg-UP7Bt0/" "gpg-dIfsu0/" "sogou-qimpanel-cellzhangtao" "sogou-qimpanelzhangtao" "systemd-private-93db6551f67f449e8acd86584bcafced-cups.service-AdJmSc/" ".org.chromium.Chromium.uybutb/" "hsperfdata_zhangtao/" ".felix/" "jna--1432603594/" "ycm_temp/" "babel-123300dP/" ".vbox-zhangtao-ipc/" "babel-19188giU/" "../" "./")
+ ("/home/zhangtao/Tmp/" (22602 32421 991848 987000) "figure_1000p=0.5.png" "G.png" "F_N.txt" "test.log" "SmallWorldNetworksHints.py" "auto/" "hellow.aux" "test.pdf" "figure_1000p=0.2.png" "lc_average.py" "c.c" "Test_fonts.tex" "Degree-Distribution.png" "./" "test.tex" "cd3255251323243010.png" "figure1000_01.png" "Untitled1.ipynb" "figure_10000_0.01.png" "figure_1N100P0.1.png" ".directory" "a.out" "hellow.tex" "test.txt" "figure_2N10000P0.0001.png" "cd3255251323243011.png" "ec.java" "hellow.log" "hellow.pdf" "../" "test.aux" "Untitled0.ipynb" "figure_10000p=0.1.png" "py.py" "Degree_Distribution.png" "#hellow.tex#" "il.tex")
 
- ("/home/zhangtao/.emacs.d/" (22597 18588 759837 225000) "session.109c793430000147464061500000224380049" ".emacs.desktop.lock" "ido.last~" "ido.last" "lisp/" "auto-save-list/" "bookmarks" "session.109c793430000147780428400000020620018" "semanticdb/" "ac-comphist.dat" "eshell/" "themes/" "image-dired/" ".bookmarks.bmk" "elpa/" "foucs-mode.el" "url/" "abbrev_defs" "./" "smex-items" "thumbs/" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "pyim/" ".directory" "helm-history.txt" "snippets/" "srecode-map.el" "init.el" "init.el~" ".emacs.desktop" ".org-id-locations" "session.109c793430000148086180400000021520180" "writer.el" "../" "recentf" "session.109c793430000147894798600000032920013")
+ ("/home/zhangtao/" (22602 32434 171848 627000) ".w3m/" "Desktop/" "Documents/" ".config/" "Public/" ".dropbox/" ".kingsoft/" ".xsel.log" "Music/" ".Rhistory" ".vimrc" ".adobe/" "Downloads/" ".subversion/" ".icons/" ".xinputrc" "Tmp/" "Ipython/" ".zshrc" ".zsh-update" "Test_fonts.aux" "Pictures/" ".zshrc~" ".zcompdump-ly400-5.0.7" ".gephi/" ".profile" "texmf/" "hmcl.json" "missfont.log" ".xsession-errors" ".q3a/" ".mplayer/" ".gnome/" ".xinitrc" ".fehbg" ".gtkrc-2.0" ".dbus/" ".texmf-var/" ".bash_logout" ".java/" ".ICEauthority" ".bashrc" ".local/" ".pki/" ".nv/" ".nvidia-settings-rc" ".gpg-agent-info" ".gtkrc-2.0-kde4" "dorogovsev-mednez-review.pdf" ".ipython/" ".gnupg/" "hmcl.log" ".gitconfig" ".recently-used" ".face.icon" ".Xmodmap" "HMCL-2.1.7.jar" ".vim/" "Templates/" "Dropbox/" ".macromedia/" ".mozilla/" ".directory" ".bash_history" ".dropbox-dist/" ".i3/" ".oh-my-zsh/" "Test_fonts.log" "texput.log" ".thumbnails/" ".ipynb_checkpoints/" "Inbox/" ".dmrc" ".gvimrc" ".themes/" ".Xauthority" ".cache/" ".gconf/" ".zsh_history" ".viminfo" ".sunpinyin/" ".backup/" ".gnome2/" ".matlab/" ".minecraft/" ".lastpass/" "Videos/" ".emacs.d/" "Test_fonts.pdf" "App/" ".kde/" ".ssh/" ".sogouinput/" "VirtualBox VMs/" "../" "./")
 
- ("/home/zhangtao/Dropbox/Txt/" (22597 18219 471846 905000) "numbers.gpg" "inbox.txt" "contents.txt" "_log/" "list.txt" "auto/" "markdown.txt" "_book/" "linux.txt" "write.html" "log.txt" "_write/" "#linux.txt#" "missfont.log" "read.txt" "_physics/" "./" "todo.txt" "liangzilixue.html" "write.md" "liangzilixue.txt" "vim.txt" "contacts.txt" "email.txt" "music.txt" "book.txt" "physics.md" "physics.txt" "linux.html" "../" "#contacts.txt#" "write.txt")
+ ("/home/zhangtao/Inbox/" (22602 32810 251837 515000) "Net_ex3.pyg" "auto/" "passwd" "Net_ex3.txt" "Net_ex3.py" "Net_ex3.pdf" "抓图4.png" "./" "抓图2.png" "抓图1.png" "Net_ex.txt" "Net_ex2.pdf" "../" "抓图3.png")
+
+ ("/home/zhangtao/Public/" (22601 14882 852791 75000) "Tex_Fonts.txt" "lc.png" "img-fd2d98cf358d9678153b0870be27e4dd.jpg" "Cache_18b529354caba07e..jpg" "yanghuan.demo.log" "img-2923e5208851b74eef8819e2f7861ab5.jpg" "auto/" "抓图6.png" "img-d16b4d4301cd6a746a1e91fe789eb443.jpg" "img-f49c616fa03cafdf9eed29c3aa113286.jpg" "下载.png" ".#Tex_Fonts.txt" "org (1).pdf" "2016级研究生火车票磁条家庭所在地火车站信息（物理学院+协同）.xlsx" "./" "Exercise_v1.2.pdf" "0YBeNFrJXQPYJ0D0LR87AN1a.jpg" "Net_ex.pdf" ".directory" "附件二：火车站站名字典2016年.xls" "Net_ex2.pdf" "(18禁ア... AAC).ass" "../" "1AAC.txt" "数学方法论丛书-康托的无穷的数学和哲学.pdf" "yanghuan.demo.tex" "img-e07927e6f38986ce9cea9421508cadcb.jpg" "shdowscosk/" "Exercise1.pdf")
+
+ ("/home/zhangtao/Dropbox/Networks/Exercise/Net_ex2/" (22598 34480 895757 604000) "G.png" "lc.png" "lc_avrg.py" "Graph.py" "l_average.png" "./" "betweenness_centrality.png" "betweenness.py" "c_average.png" ".directory" "../" "lc_lc.py")
+
+ ("/home/zhangtao/Dropbox/Networks/Exercise/" (22598 34986 639772 220000) "Net_ex1.pdf" "Net_ex2.org" "./" "Nex_ex1.txt" "Net_ex2.pdf" "Net_ex2/" "Net_ex2.txt" "../")
+
+ ("/home/zhangtao/Dropbox/Networks/" (22598 46810 268113 936000) "Exercise/" ".git/" "./" "README.md" "../")
+
+ ("/home/zhangtao/Dropbox/Txt/" (22600 1153 551491 229000) "inbox.txt" "contents.txt" "_log/" "list.txt" "auto/" "markdown.txt" "_book/" "linux.txt" "log.txt" "_write/" "#linux.txt#" "missfont.log" "read.txt" "_physics/" "./" "todo.txt" "liangzilixue.txt" "vim.txt" "contacts.txt" "email.txt" "music.txt" "book.txt" "physics.txt" "../" "#contacts.txt#" "write.txt")
+
+ ("/tmp/" (22600 266 635517 434000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "pulse-PKdhtXMmr18n/" "systemd-private-0c6c36760e57459ca9290656bf9f5ca2-cups.service-hod4tJ/" ".X0-lock" "fcitx-socket-:0" "gpg-CoL3v6/" "kde-zhangtao/" "ksocket-zhangtao/" "ycm_temp/" ".org.chromium.Chromium.TiYAAU/" "babel-15433KEA/" "../" "./")
+
+ ("/home/zhangtao/.emacs.d/" (22600 297 35516 536000) "session.109c793430000147464061500000224380049" ".emacs.desktop.lock" "ido.last~" "ido.last" "lisp/" "auto-save-list/" "bookmarks" "session.109c793430000147780428400000020620018" "semanticdb/" "ac-comphist.dat" ".git/" "eshell/" "themes/" "image-dired/" ".bookmarks.bmk" "elpa/" "foucs-mode.el" "url/" "abbrev_defs" "./" "smex-items" "thumbs/" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "pyim/" ".directory" "helm-history.txt" "snippets/" "srecode-map.el" "init.el" "init.el~" ".emacs.desktop" ".org-id-locations" "session.109c793430000148086180400000021520180" "writer.el" "../" "recentf" "session.109c793430000147894798600000032920013")
+
+ ("/home/zhangtao/Dropbox/" (22599 63448 351586 996000) "Apps/" ".dropbox" "Doc/" ".vimrc" "Tmp/" "Networks/" "Txt/" "course-1.png" "./" ".dropbox.cache/" "Linux/" "Template/" "Book/" ".vim/" "Sources/" ".directory" "Ex2.ipynb" ".ipynb_checkpoints/" "Inbox/" ".gvimrc" "../" "Read/" ".backup/" "Matlab/" ".emacs.d/" "Picture/")
+
+ ("/home/zhangtao/.kde/share/apps/konsole/" (22599 62502 159614 952000) "./" "BlackOnWhite.colorscheme" "GreenOnBlack.colorscheme" "Shell.profile" "../")
+
+ ("/home/zhangtao/Dropbox/Inbox/" (22598 48143 180152 459000) "enligh-1.md" "teacher-day" "auto/" "#enlish-1.txt#" "./" "vim.md" "enlish-1.txt" "../")
+
+ ("/home/zhangtao/Downloads/" (22598 42701 243995 181000) "Android安卓跟Linux系列.zip" "./" "hosts" "20140506162754691.doc" ".vimr" ".16755/" ".directory" ".dropbox-dist/" "../" ".minecraft/")
+
+ ("/home/zhangtao/Dropbox/Inbox/auto/" (22573 39618 151650 54000) "ERsuiji.el" "./" "ppt.el" "../")
+
+ ("/home/zhangtao/.ssh/" (22598 32052 7687 406000) "id_rsa" "id_rsa.pub" "./" "known_hosts" "../")
+
+ ("/home/zhangtao/Desktop/Er/" (22597 29405 114671 971000) "lc_lc.pdf" "G.png" "lc.png" "lc_avrg.py" "Graph.py" "l_average.png" "./" "betweenness_centrality.png" "betweenness.py" "c_average.png" ".directory" "../" "lc_lc.py")
+
+ ("/home/zhangtao/Dropbox/Template/" (22569 36540 616193 23000) "breame-2.tex" "breame-1.tex" "./" "../")
+
+ ("/home/zhangtao/.adobe/" (22578 42695 755348 712000) "./" "Flash_Player/" "../")
 
  ("/home/zhangtao/.emacs.d/elpa/solarized-theme-20161203.301/" (22597 18101 855849 988000) "solarized-theme-utils.el" "solarized-theme.el" "solarized-light-theme.el" "solarized-dark-theme.elc" "solarized.el" "solarized-theme.elc" "./" "solarized-theme-pkg.el" "solarized-dark-theme.el" "solarized-theme-utils.elc" "solarized-light-theme.elc" "solarized-theme-autoloads.el" "../")
-
- ("/home/zhangtao/Downloads/" (22597 12469 907997 618000) "lplinux/" "Mathematica_11.0.1_LINUX.sh" "color-theme-ujelly-master.zip" "lplinux.tar.bz2" "init (1).el" "168983-yosemite.tar.gz" "vim-latex-1.9.0.tar.gz" "Plot-log.py" "monokai-emacs-master/" "org-article/" "《Java核心技术+卷1：基础知识（原书第9版）》.pdf" "zshrc (1)" "2009921173933590793.zip" "./" "vim-latex-1.9.0/" "BingWallpaper-2016-11-27.jpg" "monokai-emacs-master.zip" ".vimr" "zshrc" "color-theme-ujelly-master/" "Yosemite/" "1Password Emergency Kit A3-GJVG7A-vimkw6wlwdemsipyye2lhmixozemqrgc.pdf" ".16755/" ".directory" ".dropbox-dist/" "init.el" "../" ".minecraft/" "168521-Ultra-Flat Yosemite Light.0.3.tar.gz")
-
- ("/home/zhangtao/" (22597 16808 947883 879000) ".w3m/" "Desktop/" "Documents/" ".config/" "Public/" ".dropbox/" ".kingsoft/" ".xsel.log" "Music/" ".Rhistory" ".vimrc" ".adobe/" "Downloads/" ".subversion/" ".icons/" ".xinputrc" "Tmp/" "Ipython/" ".zshrc" ".zsh-update" "Pictures/" ".zcompdump-ly400-5.0.7" ".gephi/" ".profile" "texmf/" "hmcl.json" ".xsession-errors" ".q3a/" ".mplayer/" ".gnome/" ".xinitrc" ".fehbg" ".fonts/" ".gtkrc-2.0" ".dbus/" ".bash_logout" ".java/" ".ICEauthority" ".bashrc" ".local/" ".pki/" ".nv/" ".nvidia-settings-rc" ".gpg-agent-info" ".gtkrc-2.0-kde4" ".ipython/" ".gnupg/" "hmcl.log" ".recently-used" ".face.icon" ".Xmodmap" "HMCL-2.1.7.jar" ".vim/" "Templates/" "Dropbox/" ".macromedia/" ".mozilla/" ".directory" ".bash_history" ".dropbox-dist/" ".i3/" ".oh-my-zsh/" ".thumbnails/" ".ipynb_checkpoints/" "Inbox/" ".dmrc" ".gvimrc" ".themes/" ".Xauthority" ".cache/" ".gconf/" ".zsh_history" ".viminfo" ".sunpinyin/" ".backup/" ".gnome2/" ".matlab/" ".minecraft/" ".lastpass/" "Videos/" ".emacs.d/" "App/" ".kde/" ".sogouinput/" "VirtualBox VMs/" "../" "./")
 
  ("/home/zhangtao/.emacs.d/elpa/" (22596 58917 403167 563000) "org-wunderlist-readme.txt" "biblio-core-readme.txt" "powerline-readme.txt" "highlight-indent-guides-readme.txt" "popup-el/" "helm-core-20161109.1317/" "helm-swoop-20160619.953/" "find-file-in-project-20161026.145/" "auto-complete-20161029.643/" "auto-complete-readme.txt" "ace-jump-mode-readme.txt" "highlight-tail-readme.txt" "py-autopep8-20160925.352/" "ace-pinyin-readme.txt" "nlinum-relative-readme.txt" "ace-window-20161018.1624/" "writeroom-mode-readme.txt" "ag-readme.txt" "gntp-20141024.1950/" "org-pomodoro-readme.txt" "org-bullets-readme.txt" "dash-20161108.352/" "smart-mode-line-powerline-theme-20160705.1738/" "ace-jump-mode-20140616.115/" "molokai-theme-readme.txt" "neotree-readme.txt" "ht-20161015.1945/" "apel-20160427.152/" "xresources-theme-readme.txt" "basic-c-compile-readme.txt" "htmlize-20130207.1202/" "highlight-tail-20140415.1841/" "color-theme-readme.txt" "autopair-readme.txt" "evil-leader-readme.txt" "flatui-theme-20160618.1827/" "auto-complete-c-headers-readme.txt" "outline-presentation.el" "auto-complete-clang-readme.txt" "epl-20150517.433/" "org-contacts.el" "super-save-readme.txt" "helm-swoop-readme.txt" "popup-readme.txt" "color-theme-6.6.0/" "magit-readme.txt" "outline-magic-readme.txt" "smtpmail-multi-readme.txt" "expand-region-20161020.1412/" "ox-latex-chinese-readme.txt" "pkg-info-20150517.443/" "elpy-20161028.215/" "redo+-readme.txt" "color-theme-sanityinc-tomorrow-readme.txt" "highlight-indentation-20161012.209/" "evil-search-highlight-persist-readme.txt" "cal-china-x-20160102.124/" "organic-green-theme-readme.txt" "flim-20161029.1930/" "py-autopep8-readme.txt" "ace-pinyin-20160611.1755/" "unicad.el" "memoize-20130421.1234/" "pinyinlib-20160505.1248/" "git-commit-20161108.1335/" "powerline-20160702.1931/" "rich-minority-20160725.1255/" "semi-20160816.239/" "elpy-readme.txt" "company-20161111.1413/" "evil-find-char-pinyin-readme.txt" "jdee-readme.txt" "auto-complete-clang-async-readme.txt" "markdown-mode-readme.txt" "jdee-20161119.911/" "popup-20160709.729/" "flycheck-readme.txt" "smooth-scrolling-20161002.1249/" "helm-ag-20161105.744/" "window-numbering-readme.txt" "org-mu4e.el" "ag-20161027.1758/" "let-alist-1.0.4/" "focus-readme.txt" "visual-fill-column-20161109.337/" "dired+-readme.txt" "goto-chg-20131228.659/" "htmlize-readme.txt" "xterm-frobs-readme.txt" "smooth-scrolling-readme.txt" "notmuch-labeler-readme.txt" "python-mode-20161105.1431/" "yasnippet-readme.txt" "writeroom-mode-20160830.616/" "ace-jump-mode-readme.txt~" "python-mode-readme.txt" "abc-mode-readme.txt" "gnupg/" "archives/" ".directory" "org-bullets-20140918.1137/" "expand-region-readme.txt" "avy-20160814.250/" "xterm-color-readme.txt" "zenburn-theme-readme.txt" "auto-complete-clang-20140409.52/" "highlight-indentation-readme.txt" "autopair-20160304.437/" "seq-2.16/" "markdown-mode-20160928.932/" "swiper-readme.txt" "smart-mode-line-20160818.508/" "flycheck-20161111.222/" "yasnippet-20161109.1847/" "chinese-pyim-readme.txt" "minimap.el" "relative-line-numbers-20151006.1446/" "s-20160928.636/" "notmuch-readme.txt" "undo-tree-readme.txt" "helm-20161109.1317/" "tabbar-readme.txt" "green-phosphor-theme-readme.txt" "smex-20151212.1409/" "evil-surround-20161029.606/" "evil-surround-readme.txt" "evil-leader-20140606.543/" "ivy-20161111.341/" "pyvenv-20160527.442/" "pos-tip-20150318.813/" "monokai-theme-readme.txt" "linum-relative-readme.txt" "window-number-readme.txt" "super-save-20160426.729/" "seq-2.16.signed" "smart-mode-line-readme.txt" "solarized-theme-20161009.838/" "evil-20160827.1510/" "let-alist-1.0.4.signed" "focus-20161106.702/" "auctex-11.89/" "smex-readme.txt" "matlab-mode-20160902.459/" "evil-readme.txt" "git-commit-20160821.1338/" "minimap-1.2/" "cal-china-x-readme.txt" "flatui-theme-readme.txt" "async-20161103.1036/" "log4e-20150105.505/" "isearch+-readme.txt" "ace-window-readme.txt" "smooth-scroll.el" "org-beautify-theme-readme.txt" "evil-readme.txt~" "undo-tree-20161012.701/" "ivy-readme.txt" "linum-relative-20160510.118/" "zenburn-theme-20161018.437/" "with-editor-20161109.403/" "ox-latex-chinese-20160928.2153/" "powerline-20161121.2320/" "helm-ag-readme.txt" "../" "./")
 
@@ -129,21 +160,11 @@
 
  ("/home/zhangtao/.emacs.d/snippets/org-mode/" (22596 9197 748190 227000) "latex-cjk" "titles" "./" "beamer-ppt" "../")
 
- ("/home/zhangtao/Inbox/" (22596 10708 216213 738000) "auto/" "passwd" "抓图4.png" "./" "抓图2.png" "抓图1.png" "Net_ex.txt" "Net_ex2.pdf" "../" "抓图3.png")
-
- ("/home/zhangtao/Dropbox/" (22596 48951 219428 805000) "Apps/" ".dropbox" "Doc/" ".vimrc" "Tmp/" "Exercise/" "Txt/" "course-1.png" "./" ".dropbox.cache/" "Linux/" "Template/" "Book/" ".vim/" "Sources/" ".directory" "Ex2.ipynb" ".ipynb_checkpoints/" "Inbox/" ".gvimrc" "../" "Read/" ".backup/" "Matlab/" ".emacs.d/" "Picture/")
-
  ("/home/zhangtao/Work/" (22596 3426 548100 393000) "auto/" "Test_latex.log" "Test_latex.pdf" "./" "Net_ex.pdf" "Test_latex.tex" "Net_ex.txt" "Test_latex.aux" "../" "Net_ex.pyg")
-
- ("/home/zhangtao/.kde/share/apps/konsole/" (22596 264 176051 168000) "./" "BlackOnWhite.colorscheme" "GreenOnBlack.colorscheme" "Shell.profile" "../")
-
- ("/home/zhangtao/Desktop/Er/" (22596 1668 816073 32000) "lc_lc.pdf" "G.png" "lc.png" "lc_avrg.py" "Graph.py" "l_average.png" "./" "betweenness_centrality.png" "betweenness.py" "c_average.png" ".directory" "../" "lc_lc.py")
 
  ("/home/zhangtao/Dropbox/File/" (22595 47081 206904 981000) "Emacs org-mode examples and cookbook.pdf" "minted.pdf" "./" "stna-lecture11.pdf" "vimlatexqrc.pdf" "org.pdf" "LaTeX Export for Org Mode _ 8.pdf" "../")
 
  ("/home/zhangtao/.config/" (22595 49662 222837 325000) "fontconfig/" "awesome/" "Kingsoft/" "calibre/" "google-chrome/" "gnome-session/" "htop/" "gpick/" "goa-1.0/" "tracker/" "xfce4/" "enchant/" "qtcurve/" "pulse/" "libreoffice/" "gtk-2.0/" "transmission/" "dconf/" "smplayer/" "VirtualBox/" "./" "matplotlib/" "sogou-qimpanel/" "QtProject.conf" "evolution/" "shadowsocks.json" "SogouPY.users/" "autostart/" "akonadi/" "menus/" "vlc/" "gtk-3.0/" "synaptiks/" "Trolltech.conf" "kingsoft/" "fcitx/" "user-dirs.dirs" "ibus/" "audacious/" "../" "SogouPY/" "chromium/")
-
- ("/home/zhangtao/Tmp/" (22595 50673 122810 826000) "figure_1000p=0.5.png" "G.png" "F_N.txt" "test.log" "SmallWorldNetworksHints.py" "auto/" "hellow.aux" "test.pdf" "figure_1000p=0.2.png" "lc_average.py" "c.c" "Degree-Distribution.png" "./" "test.tex" "cd3255251323243010.png" "figure1000_01.png" "Untitled1.ipynb" "figure_10000_0.01.png" "figure_1N100P0.1.png" "a.out" "hellow.tex" "test.txt" "figure_2N10000P0.0001.png" "cd3255251323243011.png" "ec.java" "hellow.log" "hellow.pdf" "../" "test.aux" "Untitled0.ipynb" "figure_10000p=0.1.png" "py.py" "Degree_Distribution.png" "#hellow.tex#" "il.tex")
 
  ("/home/zhangtao/Dropbox/.backup/" (22593 29807 311387 278000) "awesome/" ".mutt/" ".msmtprc" ".zshrc" ".xinitrc" "./" ".bashrc" ".offlineimap.py" ".bash_history" "rime/" "rc." ".offlineimaprc" ".gvimrc" ".zsh_history" ".muttrc" "../" "rc.3.5")
 
@@ -162,8 +183,6 @@
  ("/home/zhangtao/.kde/share/" (22573 36327 167522 33000) "applnk/" "./" "icons/" "autostart/" "config/" "../" "apps/" "kde4/")
 
  ("/home/zhangtao/.kde/" (22542 39692 572030 524000) "share/" "cache-ly400/" "socket-ly400/" "./" "tmp-ly400/" "shutdown/" "env/" "Autostart/" "../")
-
- ("/home/zhangtao/Public/" (22591 63616 167361 886000) "lc.png" "img-fd2d98cf358d9678153b0870be27e4dd.jpg" "Cache_18b529354caba07e..jpg" "img-2923e5208851b74eef8819e2f7861ab5.jpg" "img-d16b4d4301cd6a746a1e91fe789eb443.jpg" "img-f49c616fa03cafdf9eed29c3aa113286.jpg" "下载.png" "org (1).pdf" "2016级研究生火车票磁条家庭所在地火车站信息（物理学院+协同）.xlsx" "./" "Exercise_v1.2.pdf" "0YBeNFrJXQPYJ0D0LR87AN1a.jpg" ".directory" "附件二：火车站站名字典2016年.xls" "(18禁ア... AAC).ass" "../" "1AAC.txt" "数学方法论丛书-康托的无穷的数学和哲学.pdf" "img-e07927e6f38986ce9cea9421508cadcb.jpg" "shdowscosk/" "Exercise1.pdf")
 
  ("/home/zhangtao/Dropbox/Doc/" (22589 36180 323909 341000) "ex1.md" "auto/" "physics.org" "linux.txt" "./" "phy.org" "toshcool.txt" "#linux.#" "tang.txt" "internet.txt" "Latex.md" "physics.md" "../")
 
@@ -273,8 +292,6 @@
 
  ("/home/zhangtao/tmp/ztao1991.github.io/source/" (22476 60112 603121 798000) "./" "../" "_posts/")
 
- ("/home/zhangtao/.ssh/" (22476 58902 779157 545000) "known_hosts" "id_rsa.pub" "id_rsa" "./" "../")
-
  ("/home/zhangtao/.tmp/" (22474 17169 338896 572000) "mutt-ly400-1000-3827-17630869251111217058" "python.py" "./" "../")
 
  ("/home/zhangtao/Games/" (22465 39853 793467 408000) "HMCL-2.1.7.jar" "Xonotic/" "HMCL-2.3.5.4.jar" "forge-installer.jar" "UrbanTerror42/" "./" "../")
@@ -292,20 +309,6 @@
  ("/home/zhangtao/Dropbox/txt/" (22429 24229 503938 794000) "physics.txt" "inbox.txt" "linux.txt" "diary" "_physics/" "book.txt" "contents.txt" "log.txt" "todo.txt" "email.txt" "numbers.gpg" "markdown.txt" "read.txt" "_book/" "list.txt" "./" "todo.txt_archive" "write.txt" "../" "_log/" "vim.md" "_write/" "music.txt")
 
  ("/opt/foxitsoftware/foxitreader/" (22423 6935 772172 695000) "maintenancetool" "platforms/" "InstallationLog.txt" "rmssdk/" "countinstalltion" "Activation" "components.xml" "Uninstall.desktop" "FoxitReader" "ReleaseNote_Linux.txt" "FoxitReader.sh" "imageformats/" "Activation.sh" "run/" "network.xml" "maintenancetool.dat" "installUpdate" "FoxitReader.desktop" "Activation.desktop" "sensors/" "maintenancetool.sh" "../" "./" "fxplugins/" "maintenancetool.ini" "platforminputcontexts/" "images/" "updater.sh" "printsupport/" "lib/" "updater" "countinstalltion.sh" "Update.desktop" "platformthemes/" "manual/" "config.xml" "sqldrivers/")
-
- ("/etc/" (22422 58126 923626 571000) "modules" "fstab" "subgid-" "kernel-img.conf" "emacs24/" "dconf/" "sane.d/" "ucf.conf" "hosts.deny" "cupshelpers/" "bluetooth/" "python3.5/" "locale.alias" "rpc" "passwd-" "environment" "os-release" "update-motd.d/" "binfmt.d/" "sensors3.conf" "iproute2/" "pulse/" "udisks2/" "pki/" "login.defs" "popularity-contest.conf" "selinux/" "magic.mime" "dbus-1/" "protocols" "apt/" "apparmor/" "papersize" "guest-session/" "shadow" "aptdaemon/" "polkit-1/" "brltty.conf" "ltrace.conf" "rc3.d/" "ghostscript/" "init/" "X11/" "groff/" "hosts.allow" "ssh/" "alternatives/" "ld.so.cache" "machine-id" "sysctl.conf" "python2.7/" "usb_modeswitch.conf" "dkms/" "ssl/" "gss/" "timezone" "pam.d/" "localtime" "ca-certificates/" "cracklib/" "gconf/" "calendar/" "xdg/" "locale.gen" "updatedb.conf" "subuid-" "logrotate.d/" "at-spi2/" "ld.so.conf.d/" "bash_completion.d/" "iftab" "thermald/" "UPower/" "security/" "lintianrc" "mailcap.order" "debian_version" "gtk-3.0/" "brltty/" "rmt" "ImageMagick-6/" "anacrontab" "update-manager/" "rc5.d/" "rc6.d/" "fwupd.conf" "acpi/" "securetty" "cron.d/" "dhcp/" "services" "insserv.conf.d/" "rc.local" "modules-load.d/" "emacs/" "gnome/" "networks" "rsyslog.conf" "manpath.config" "python/" "vim/" "timidity/" "group-" "kerneloops.conf" "libreoffice/" ".#fstab" "apport/" "rc2.d/" "apparmor.d/" "modprobe.d/" "speech-dispatcher/" "rsyslog.d/" "udev/" "pm/" "logcheck/" "vdpau_wrapper.cfg" "gai.conf" "signon-ui/" "pnm2ppa.conf" "avahi/" "vtrgb" "mtools.conf" "ld.so.conf" "ppp/" "compizconfig/" "ldap/" "terminfo/" "ca-certificates.conf" "mke2fs.conf" "usb_modeswitch.d/" "chatscripts/" "subgid" "mtab" "console-setup/" "prime-discrete" "cron.hourly/" "opt/" "skel/" "wildmidi/" "python3/" "gtk-2.0/" "fonts/" "bash_completion" "wpa_supplicant/" "brlapi.key" "doc-base/" "openal/" "fuse.conf" "debconf.conf" "nanorc" "magic" "init.d/" "issue" "whoopsie" "group" "dictionaries-common/" "#fstab#" "pcmcia/" "lsb-release" "cups/" "zsh_command_not_found" "NetworkManager/" "dnsmasq.d/" "passwd" "gshadow-" "nsswitch.conf" "host.conf" "hosts" ".pwd.lock" "ifplugd/" "systemd/" "rc4.d/" "insserv/" "kernel/" "upstart-xsessions" "profile" "bindresvport.blacklist" "signond.conf" "resolv.conf" "network/" "dpkg/" "gdb/" "sudoers" "apg.conf" "presage.xml" "lightdm/" "sensors.d/" "wgetrc" "zsh/" "shells" "xml/" "shadow-" "firefox/" "deluser.conf" "drirc" "crontab" "cron.weekly/" "depmod.d/" "resolvconf/" "mailcap" "adduser.conf" "cron.daily/" "libnl-3/" "logrotate.conf" "ufw/" "profile.d/" "libaudit.conf" "sgml/" "insserv.conf" "issue.net" "rcS.d/" "hdparm.conf" "hostname" "subuid" "legal" "sudoers.d/" "apm/" "update-notifier/" "kbd/" "OpenCL/" "gshadow" "hp/" "default/" "gnome-app-install/" "pam.conf" "tmpfiles.d/" "thunderbird/" "libpaper.d/" "rc1.d/" "initramfs-tools/" "rc0.d/" "sysctl.d/" "perl/" "cron.monthly/" "libao.conf" "inputrc" "appstream.conf" "bash.bashrc" "grub.d/" "mime.types" "newt/" "../" "./")
-
- ("/home/zhangtao/.shadowsocks/" (22412 35597 364421 811000) "shadowsocks.json" "../" "./")
-
- ("/home/zhangtao/.fvwm/" (22404 38915 332206 708000) ".FvwmConsole-History" ".fvwm2rc" "../" "./")
-
- ("/home/zhangtao/.emacs.d/elpa/yasnippet-20160612.620/" (22388 22690 0 0) "yasnippet.el" "yasnippet-autoloads.el" "yasnippet-pkg.el" "../" "yasnippet.elc" "./" "snippets/")
-
- ("/home/zhangtao/Dropbox/.emacs.d/" (22401 50704 575783 840000) "eshell/" "session.109c793430000146762783800000165100045" "helm-history.txt" "ido.last" "elpa/" "pyim/" "smex-items" "url/" "recentf~" "ac-comphist.dat" "session.2b65b4ac1-d6c6-4d8a-a7c6-476de07de1c1" "foucs-mode.el" "../" "init.el" "session.2cc98ba49-6728-40ac-a631-ecbbf4ca91d3" "themes/" "bookmarks" ".bookmarks.bmk" "recentf" "init.el~" "./" "ido.last~" "writer.el" "auto-save-list/" "snippets/")
-
- ("c:/Users/zhangtao/Dropbox/txt/_write/" (22389 57740 0 0) "keep.png" "Image2.png" "Image1.png" "Evernote Snapshot 20150820 160306.jpg" "Evernote Snapshot 20150820 160128.jpg" "../" "./")
-
- ("c:/Emacs/.emacs.d/" (22391 29947 0 0) "writer.el" "themes/" "snippets/" "smex-items" "session.254b37a11-efb2-4ecf-ac84-4d5bb85b97d9" "recentf" "pyim/" "init.el~" "init.el" "ido.last~" "ido.last" "foucs-mode.el" "eshell/" "elpa/" "bookmarks" "auto-save-list/" "ac-comphist.dat" ".bookmarks.bmk" "#init.el#" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----

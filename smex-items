@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ markdown-mode
  ag
  relative-line-numbers-mode
  key-chord-mode
  package-list-packages
  cvs-status-mode
- indent-region
 )
 
 ;; ----- smex-data -----
@@ -16,7 +16,7 @@
  (indent-region . 15)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 81)
+ (markdown-mode . 82)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 34)
+ (org-beamer-export-to-pdf . 35)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 360)
+ (eval-buffer . 361)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
