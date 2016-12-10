@@ -940,6 +940,7 @@ directory to make multiple eshell windows easier."
 (setq-default TeX-master nil)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
 ;;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
@@ -947,6 +948,7 @@ directory to make multiple eshell windows easier."
 (require 'tex)
 (TeX-global-PDF-mode t)
 (setq preview-image-type 'svg)
+
 
 ;; (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
 ;; 			      "xelatex -interaction nonstopmode %f"))
@@ -966,6 +968,14 @@ directory to make multiple eshell windows easier."
 (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
 (advice-add 'org-latex-compile :after #'delete-file)
 
+;;Latex Sync Preview
+(add-hook 'LaTeX-mode-hook 'server-start)
+(setq TeX-PDF-mode t) ;; use pdflatex instead of latex
+;; Enable synctex correlation
+(setq TeX-source-correlate-method 'synctex)
+;; Enable synctex generation. Even though the command shows
+;; as "latex" pdflatex is actually called
+(custom-set-variables '(LaTeX-command "latex -synctex=1") )
 (setq TeX-view-program-selection
  '((output-pdf "PDF Viewer")))
 (setq TeX-view-program-list
