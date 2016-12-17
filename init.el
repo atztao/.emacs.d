@@ -27,7 +27,7 @@
 
 (setq frame-title-format
       (list '(:eval (projectile-project-name)) 
-	    "I'm Here @ "
+	    "(●—●) I'm Here @ "
 	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;;(set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
@@ -56,6 +56,9 @@
 ;;(setq default-directory "C:/Users/zhangtao/Dropbox/")
 ;;(cd "~/emacs/home/")  
 (setq default-directory "~/Dropbox/")
+
+(setq-default fill-column 80)
+
 
 ;;eshell
 ;;(setq shell-file-name "cmdproxy")
@@ -158,16 +161,17 @@ directory to make multiple eshell windows easier."
 ;;fonts
 ;;---------------------------
 ;;(set-default-font "Consolas-10")
-;;(set-default-font "Source Code Pro-10")
+(set-default-font "Source Code Pro 11")
 ;;(set-default-font "Inconsolata-13")
-(set-default-font "Monaco-11")
+;;(set-default-font "Monaco-10")
+;;(set-default-font "Courier New:style=Bold-10")
 ;;(set-default-font "Roboto Mono-11")
 
-(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
+;;(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Microsoft Yahei")
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
-;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
-;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12"))
+(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
+;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12"))
 
 ;;Fullscreen
 ;; (global-set-key [f11] 'my-fullscreen) 
@@ -257,7 +261,7 @@ directory to make multiple eshell windows easier."
 ;;----------------------------------------------------------------------------------
 
 (require 'package)
-(setq package-archives '(;; ("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ;; ("marmalade" . "https://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.org/packages/")))
 ;;(package-refresh-contents)
@@ -302,7 +306,7 @@ directory to make multiple eshell windows easier."
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
-;;(setq frame-background-mode 'light)
+(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
 
 ;; (set-background-color "black")
@@ -314,7 +318,7 @@ directory to make multiple eshell windows easier."
 
 ;;zenburn
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;;(load "~/.emacs.d/themes/color-theme-tomorrow.el")
+(load "~/.emacs.d/themes/color-theme-tomorrow.el")
 ;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 
 ;;(load "~/.emacs.d/themes/ujelly-theme.el")
@@ -328,7 +332,7 @@ directory to make multiple eshell windows easier."
 ;;--------------------------
 ;;(format-mode-line header-line-format "_")
 
-(setq-default mode-line-format nil)
+;;(setq-default mode-line-format nil)
 
 ;;(set-face-attribute 'mode-line nil  :height 90)
 ;;(set-face-inverse-video-p 'vertical-border nil)
@@ -425,7 +429,7 @@ directory to make multiple eshell windows easier."
 (setq calendar-holidays cal-china-x-important-holidays)
 (setq my-holidays '((holiday-fixed 2 14 "情人节") (holiday-fixed 9 10 "教师节") (holiday-float 6 0 3 "父亲节")
 		    (holiday-lunar 1 1 "春节" 0) (holiday-lunar 1 15 "元宵节" 0) (holiday-solar-term "清明" "清明节") (holiday-lunar 5 5 "端午节" 0) (holiday-lunar 7 7 "七夕情人节" 0) (holiday-lunar 8 15 "中秋节" 0)
-		    (holiday-lunar 12 23 "妈妈生日" 0) (holiday-lunar 5 5 "爸爸生日" 0) (holiday-lunar 10 17 "姐姐生日" 0) (holiday-lunar 10 18 "姐夫生日" 0) (holiday-fixed 10 29 "宝宝生日" 0) ))
+		    (holiday-lunar 12 23 "妈妈生日" 0) (holiday-lunar 5 5 "爸爸生日" 0) (holiday-lunar 10 17 "姐姐生日" 0) (holiday-lunar 10 18 "姐夫生日" 0) (holiday-fixed 10 29 "宝宝生日") ))
 (setq calendar-holidays my-holidays)
 ;;(holiday-lunar 9 17 "宝宝生日" 0)
 
@@ -584,113 +588,113 @@ directory to make multiple eshell windows easier."
 ;evil-mode
 ;-------------------------------------------------------------------------------------------------------------------------
 
-;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
-;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
+(setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
+(setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
 
-;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20160608.229/")
-;; (require 'evil) 
-;; (evil-mode 1) 
+(add-to-list 'load-path "~/.emacs.d/elpa/evil-20160608.229/")
+(require 'evil) 
+(evil-mode 1) 
 
-;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;; ;; (setcdr evil-insert-state-map nil)
+;; remove all keybindings from insert-state keymap, use emacs-state when editing
+;; (setcdr evil-insert-state-map nil)
  
-;; ;; ESC to switch back normal-state
-;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
+;; ESC to switch back normal-state
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
  
-;; ;; TAB to indent in normal-state
-;; (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
+;; TAB to indent in normal-state
+(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
  
-;; ;; Use j/k to move one visual line insted of gj/gk
-;; (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-;; (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-;; (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-;; (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;; Use j/k to move one visual line insted of gj/gk
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
-;; ;; (add-to-list 'evil-emacs-state-modes 'org-mode)
-;; ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
-;; ;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
+;; (add-to-list 'evil-emacs-state-modes 'org-mode)
+;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
+;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
-;; ;;(setq evil-default-state 'emacs)
-;; (define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
-;; ;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
+;;(setq evil-default-state 'emacs)
+(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
 
-;; ;;(define-key evil-motion-state-map ";" 'smex)
-;; (define-key evil-motion-state-map ":" 'evil-ex)
-;; (define-key evil-ex-map "e" 'ido-find-file)
-;; ;;(define-key evil-ex-map "q" 'ido-kill-buffer)
-;; (global-set-key (kbd "C-s") 'evil-write)
+;;(define-key evil-motion-state-map ";" 'smex)
+(define-key evil-motion-state-map ":" 'evil-ex)
+(define-key evil-ex-map "e" 'ido-find-file)
+;;(define-key evil-ex-map "q" 'ido-kill-buffer)
+(global-set-key (kbd "C-s") 'evil-write)
 
-;; (evil-set-initial-state 'ibuffer-mode 'normal)
-;; (setq evil-insert-state-cursor 'box)
+(evil-set-initial-state 'ibuffer-mode 'normal)
+(setq evil-insert-state-cursor 'box)
 
-;; ;; esc quits
-;; (defun minibuffer-keyboard-quit ()
-;;   (interactive)
-;;   (if (and delete-selection-mode transient-mark-mode mark-active)
-;;       (setq deactivate-mark  t)
-;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-;;     (abort-recursive-edit)))
-;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
-;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
-;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-;; (global-set-key [escape] 'evil-exit-emacs-state)
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'evil-exit-emacs-state)
 
-;; ;; change mode-line color by evil state
-;; ;; (lexical-let ((default-color (cons (face-background 'mode-line)
-;; ;;                                    (face-foreground 'mode-line))))
-;; ;;   (add-hook 'post-command-hook
-;; ;;     (lambda ()
-;; ;;       (let ((color (cond ((minibufferp) default-color)
-;; ;;                          ((evil-insert-state-p) '("#e80000" . "#ffffff"))
-;; ;;                          ((evil-emacs-state-p)  '("#af00d7" . "#ffffff"))
-;; ;;                          ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
-;; ;;                          (t default-color))))
-;; ;;         (set-face-background 'mode-line (car color))
-;; ;;         (set-face-foreground 'mode-line (cdr color))))))
+;; change mode-line color by evil state
+;; (lexical-let ((default-color (cons (face-background 'mode-line)
+;;                                    (face-foreground 'mode-line))))
+;;   (add-hook 'post-command-hook
+;;     (lambda ()
+;;       (let ((color (cond ((minibufferp) default-color)
+;;                          ((evil-insert-state-p) '("#e80000" . "#ffffff"))
+;;                          ((evil-emacs-state-p)  '("#af00d7" . "#ffffff"))
+;;                          ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+;;                          (t default-color))))
+;;         (set-face-background 'mode-line (car color))
+;;         (set-face-foreground 'mode-line (cdr color))))))
 
-;; ;; (setq evil-emacs-state-cursor '("red" box))
-;; ;; (setq evil-normal-state-cursor '("green" box))
-;; ;; (setq evil-visual-state-cursor '("orange" box))
-;; ;; (setq evil-insert-state-cursor '("red" bar))
-;; ;; (setq evil-replace-state-cursor '("red" bar))
-;; ;; (setq evil-operator-state-cursor '("red" hollow))
+;; (setq evil-emacs-state-cursor '("red" box))
+;; (setq evil-normal-state-cursor '("green" box))
+;; (setq evil-visual-state-cursor '("orange" box))
+;; (setq evil-insert-state-cursor '("red" bar))
+;; (setq evil-replace-state-cursor '("red" bar))
+;; (setq evil-operator-state-cursor '("red" hollow))
 
-;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
-;; (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-;; (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
-;; ;; ;;evil-leader
-;; (require 'evil-leader)
-;; (global-evil-leader-mode)
-;; ;;(evil-leader/set-leader ";")
-;; (evil-leader/set-leader ",")
-;; ;;(evil-leader/set-leader "<SPC>")
-;; (setq evil-leader/in-all-states 1)
+;; ;;evil-leader
+(require 'evil-leader)
+(global-evil-leader-mode)
+;;(evil-leader/set-leader ";")
+(evil-leader/set-leader ",")
+;;(evil-leader/set-leader "<SPC>")
+(setq evil-leader/in-all-states 1)
 
-;; (evil-leader/set-key "e" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
-;; (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
-;; (evil-leader/set-key "x" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+(evil-leader/set-key "e" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
+(evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
+(evil-leader/set-key "x" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
 
-;; (setq-default tab-width 4 indent-tabs-mode nil)
-;; (define-key global-map (kbd "RET") 'newline-and-indent)
-;; (setq evil-move-cursor-back nil)
+(setq-default tab-width 4 indent-tabs-mode nil)
+(define-key global-map (kbd "RET") 'newline-and-indent)
+(setq evil-move-cursor-back nil)
 
-;; (require 'evil-surround)
-;; (global-evil-surround-mode 1)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
-;; (require 'key-chord)
-;; ;;(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
-;; (setq key-chord-two-keys-delay 0.5)
-;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-;; (key-chord-mode 1)
+(require 'key-chord)
+;;(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+(key-chord-mode 1)
 
 ;;-------------------------------------------------------------------------------------------------------------------------
 
@@ -759,15 +763,20 @@ directory to make multiple eshell windows easier."
 ;python+c languge
 ;----------------
 ;;we should install ipython
-(add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
-(require 'python-mode)
+;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
+;; (require 'python-mode)
 
 (elpy-enable)
 ;;(elpy-use-ipython)
 
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; (global-flycheck-mode)
+(setq elpy-rpc-python-command "python3")
+(setq python-shell-interpreter "python3")
+;;(elpy-use-ipython "ipython3")
 
 ;;apt-get install ipython then M-x edit-abbrevs
 ;;(require 'ipython)
@@ -776,12 +785,13 @@ directory to make multiple eshell windows easier."
 ;;pip install autopep8
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
 (require 'tramp)
 
 ;-----------------
 ;Java + Jdee
 ;-----------------
-;; (add-to-list 'load-path (format "%s/dist/jdee-2.4.1/lisp" -path))
+;;(add-to-list 'load-path (format "%s/dist/jdee-2.4.1/lisp" -path))
 ;; (autoload 'jde-mode "jde" "JDE mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
@@ -898,7 +908,6 @@ directory to make multiple eshell windows easier."
 (setq org-agenda-include-diary t)
 ;;(setq org-agenda-files '("~/org"))
 
-
 ;;org-timeline
 ;; (defvar org-timeline-files nil
 ;;   "The files to be included in `org-timeline-all-files'. Follows
@@ -935,20 +944,48 @@ directory to make multiple eshell windows easier."
 (load "auctex.el" nil t t)
 (load "preview.el" nil t t)
 (require 'tex-mik)
+(require 'tex)
+
+(TeX-global-PDF-mode t)
+(setq preview-image-type 'svg)
+;; only start server for okular comms when in latex mode
+(add-hook 'LaTeX-mode-hook 'server-start)
+(setq TeX-PDF-mode t) ;; use pdflatex instead of latex
+(setq TeX-newline-function 'newline-and-indent)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Standard emacs/latex config
+;; http://emacswiki.org/emacs/AUCTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
+(setq-default TeX-engine 'xetex)
+(setq-default TeX-PDF-mode t)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-;;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+; enable auto-fill mode, nice for text
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
-(setq TeX-PDF-mode t)
-(require 'tex)
-(TeX-global-PDF-mode t)
-(setq preview-image-type 'svg)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Enable synctex correlation
+(setq TeX-source-correlate-method 'synctex)
+;; Enable synctex generation. Even though the command shows
+;; as "latex" pdflatex is actually called
+;;(custom-set-variables '(LaTeX-command "latex -synctex=1") )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Use Okular as the pdf viewer. Build okular 
+;; command, so that Okular jumps to the current line 
+;; in the viewer.
+(setq TeX-view-program-selection
+ '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+ '(("PDF Viewer" "okular --unique %o#src:%n%b")))
 
 ;; (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
 ;; 			      "xelatex -interaction nonstopmode %f"))
@@ -967,19 +1004,6 @@ directory to make multiple eshell windows easier."
 
 (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
 (advice-add 'org-latex-compile :after #'delete-file)
-
-;;Latex Sync Preview
-(add-hook 'LaTeX-mode-hook 'server-start)
-(setq TeX-PDF-mode t) ;; use pdflatex instead of latex
-;; Enable synctex correlation
-(setq TeX-source-correlate-method 'synctex)
-;; Enable synctex generation. Even though the command shows
-;; as "latex" pdflatex is actually called
-(custom-set-variables '(LaTeX-command "latex -synctex=1") )
-(setq TeX-view-program-selection
- '((output-pdf "PDF Viewer")))
-(setq TeX-view-program-list
- '(("PDF Viewer" "okular --unique %o#src:%n%b")))
 
 ;;-------------------------------------------------------
 ;;org-latex
@@ -1000,6 +1024,7 @@ directory to make multiple eshell windows easier."
            '(("frame" "")
              ("fontsize" "\\scriptsize")
              ("linenos=false" "")))
+
 ;; (setq org-latex-to-pdf-process 
 ;;       '("xelatex --shell-escape -interaction nonstopmode %f"
 ;; 	"xelatex --shell-escape -interaction nonstopmode %f"))
@@ -1163,7 +1188,6 @@ directory to make multiple eshell windows easier."
 ;;(setq eww-search-prefix "http://www.bing.com/search?q=")
 
 
-
  ;; '(markdown-command
  ;;   "/usr/bin/pandoc -c ~/Dropbox/Linux/css/markdown/Clearness.css")
  ;; '(matlab-shell-command-switches (quote ("-nodesktop -nosplash")))
@@ -1176,3 +1200,5 @@ directory to make multiple eshell windows easier."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt"))))
+
+

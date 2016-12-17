@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** Make change \n")
- (rear-context-string . "09-10 周六 17:17]\n")
- (position . 258))
+ (front-context-string . "** PyCUDA and Py")
+ (rear-context-string . "-12-01 四 21:02]\n")
+ (position . 295))
 )

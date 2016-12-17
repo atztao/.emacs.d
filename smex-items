@@ -2,18 +2,18 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- markdown-mode
- ag
- relative-line-numbers-mode
- key-chord-mode
+ load-theme
  package-list-packages
- cvs-status-mode
+ java-mode
+ jdee-mode
+ indent-region
+ org-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 99)
- (indent-region . 15)
+ (package-list-packages . 102)
+ (indent-region . 16)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
  (markdown-mode . 82)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 50)
- (load-theme . 99)
+ (load-theme . 106)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 35)
+ (org-beamer-export-to-pdf . 42)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 361)
+ (eval-buffer . 393)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -152,7 +152,7 @@
  (powerline-default-theme . 5)
  (highlight-tail-reload . 1)
  (column-number-mode . 1)
- (line-number-mode . 3)
+ (line-number-mode . 5)
  (html2text . 1)
  (html-mode . 4)
  (query-replace . 5)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 64)
+ (disable-theme . 67)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 21)
+ (ag . 22)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 11)
+ (python-mode . 12)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -275,7 +275,7 @@
  (ruler-mode . 2)
  (super-save-mode . 2)
  (version . 1)
- (cua-rectangle-mark-mode . 3)
+ (cua-rectangle-mark-mode . 4)
  (image-dired . 1)
  (xwidget-webkit-mode . 3)
  (html-autoview-mode . 1)
@@ -287,13 +287,16 @@
  (list-packages . 5)
  (package-menu-mark-delete . 5)
  (package-menu-execute . 3)
- (relative-line-numbers-mode . 3)
- (java-mode . 2)
+ (relative-line-numbers-mode . 4)
+ (java-mode . 3)
  (org-babel-tangle . 1)
  (htmlize-file . 1)
  (er/mark-email . 1)
- (jde-mode . 1)
- (jdee-mode . 7)
+ (jde-mode . 2)
+ (jdee-mode . 8)
  (cvs-status-mode . 1)
  (key-chord-mode . 2)
+ (ein:notebooklist-open . 4)
+ (ipython3 . 2)
+ (pyhotn . 1)
 )
