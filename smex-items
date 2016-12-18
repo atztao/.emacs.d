@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ magit-push
+ magit-commit
+ magit-status
  magit-log-all
  dired
- magit-push
- magit-status
  magit-stash
- magit-commit
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 396)
+ (eval-buffer . 397)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -302,8 +302,8 @@
  (search-forward . 1)
  (magit-clone . 8)
  (magit-stash . 5)
- (magit-commit . 4)
- (magit-status . 5)
- (magit-push . 2)
+ (magit-commit . 5)
+ (magit-status . 6)
+ (magit-push . 3)
  (magit-log-all . 2)
 )

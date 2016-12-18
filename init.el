@@ -527,61 +527,60 @@ directory to make multiple eshell windows easier."
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
 ;;-----------------------
-;; (setq tramp-mode nil)
+(setq tramp-mode nil)
 
-;; (require 'helm-config)
-;; (require 'helm)
-;; (helm-mode t)
+(require 'helm-config)
+(require 'helm)
+(helm-mode t)
 
-;; (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
-;; (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
+(defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
+(defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
-;; (setq helm-ff-transformer-show-only-basename nil
-;;       helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-;;       helm-yank-symbol-first                 t
-;;       helm-move-to-line-cycle-in-source      t
-;;       helm-M-x-fuzzy-match                   t
-;; ;;      helm-recentf-fuzzy-match               t
-;; ;;      helm-ff-file-name-history-use-recentf  t
-;;       helm-buffers-fuzzy-matching            t
-;;       helm-ff-auto-update-initial-value      t)
+(setq helm-ff-transformer-show-only-basename nil
+      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
+      helm-yank-symbol-first                 t
+      helm-move-to-line-cycle-in-source      t
+      helm-M-x-fuzzy-match                   t
+;;      helm-recentf-fuzzy-match               t
+;;      helm-ff-file-name-history-use-recentf  t
+      helm-buffers-fuzzy-matching            t
+      helm-ff-auto-update-initial-value      t)
 
-;; ;; (autoload 'helm-descbinds      "helm-descbinds" t)
-;; ;; (autoload 'helm-eshell-history "helm-eshell"    t)
-;; ;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
+;; (autoload 'helm-descbinds      "helm-descbinds" t)
+;; (autoload 'helm-eshell-history "helm-eshell"    t)
+;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
 
-;; ;; (global-set-key (kbd "C-h a")    #'helm-apropos)
-;; ;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
-;; ;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
+;; (global-set-key (kbd "C-h a")    #'helm-apropos)
+;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
+;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
 
-;; ;; (add-hook 'eshell-mode-hook
-;; ;;           #'(lambda ()
-;; ;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-;; ;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+;; (add-hook 'eshell-mode-hook
+;;           #'(lambda ()
+;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
 
-;; ;; (global-set-key (kbd "C-x b")   #'helm-mini)
-;; ;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-;; ;; (global-set-key (kbd "M-x") #'helm-M-x)
-;; ;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
-;; ;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
-;; ;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
+;; (global-set-key (kbd "C-x b")   #'helm-mini)
+;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+;; (global-set-key (kbd "M-x") #'helm-M-x)
+;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
+;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
+;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
 
-;; ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-;; ;; (global-set-key (kbd "M-i") 'helm-swoop)
-;; ;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+;; (global-set-key (kbd "M-i") 'helm-swoop)
+;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
-;; (global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
+
+;;(global-set-key (kbd "C-s")   #'helm-swoop)
 ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-;; (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-;; ;;(global-set-key (kbd "C-s")   #'helm-swoop)
-;; ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-;; ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-
-;; (helm-autoresize-mode 1)
-
+(helm-autoresize-mode 1)
 
 ;-------------------------------------------------------------------------------------------------------------------------
 ;evil-mode
@@ -595,7 +594,7 @@ directory to make multiple eshell windows easier."
 (evil-mode 1) 
 
 ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;; (setcdr evil-insert-state-map nil)
+(setcdr evil-insert-state-map nil)
  
 ;; ESC to switch back normal-state
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
@@ -609,9 +608,10 @@ directory to make multiple eshell windows easier."
 (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
 (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
-;; (add-to-list 'evil-emacs-state-modes 'org-mode)
 ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
-;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
+(add-to-list 'evil-emacs-state-modes 'magit-mode)
+;; (add-to-list 'evil-emacs-state-modes 'org-mode)
+(add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
 ;;(setq evil-default-state 'emacs)
 (define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
@@ -624,19 +624,19 @@ directory to make multiple eshell windows easier."
 (global-set-key (kbd "C-s") 'evil-write)
 
 ;;magit
-(evil-set-initial-state 'magit-mode 'normal)
-(evil-set-initial-state 'magit-status-mode 'normal)
-(evil-set-initial-state 'magit-diff-mode 'normal)
-(evil-set-initial-state 'magit-log-mode 'normal)
-(evil-define-key 'normal magit-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
-(evil-define-key 'normal magit-log-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
-(evil-define-key 'normal magit-diff-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
+;;(evil-set-initial-state 'magit-mode 'normal)
+;;(evil-set-initial-state 'magit-status-mode 'normal)
+;;(evil-set-initial-state 'magit-diff-mode 'normal)
+;;(evil-set-initial-state 'magit-log-mode 'normal)
+;;(evil-define-key 'normal magit-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section)
+;;(evil-define-key 'normal magit-log-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section)
+;;(evil-define-key 'normal magit-diff-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section)
 
 
 (evil-set-initial-state 'ibuffer-mode 'normal)
