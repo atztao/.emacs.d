@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- magit-stash
- magit-status
- magit-commit
+ eval-buffer
+ magit-log-all
  dired
- magit-clone
- helm-swoop
- helm-ag
+ magit-push
+ magit-status
+ magit-stash
+ magit-commit
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 395)
+ (eval-buffer . 396)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -177,7 +177,7 @@
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
- (dired . 8)
+ (dired . 10)
  (desktop-save . 2)
  (toggle-read-only . 1)
  (read-only-mode . 6)
@@ -303,5 +303,7 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 4)
- (magit-status . 3)
+ (magit-status . 5)
+ (magit-push . 2)
+ (magit-log-all . 2)
 )

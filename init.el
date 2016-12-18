@@ -623,6 +623,22 @@ directory to make multiple eshell windows easier."
 ;;(define-key evil-ex-map "q" 'ido-kill-buffer)
 (global-set-key (kbd "C-s") 'evil-write)
 
+;;magit
+(evil-set-initial-state 'magit-mode 'normal)
+(evil-set-initial-state 'magit-status-mode 'normal)
+(evil-set-initial-state 'magit-diff-mode 'normal)
+(evil-set-initial-state 'magit-log-mode 'normal)
+(evil-define-key 'normal magit-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-log-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-diff-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+
+
 (evil-set-initial-state 'ibuffer-mode 'normal)
 (setq evil-insert-state-cursor 'box)
 
@@ -681,6 +697,12 @@ directory to make multiple eshell windows easier."
 (evil-leader/set-key "e" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
 (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
 (evil-leader/set-key "x" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+
+(evil-leader/set-key "h" 'dired-jump)
+(evil-leader/set-key "v" 'split-window-right)
+(evil-leader/set-key "," 'other-window)
+(evil-leader/set-key "b" 'ibuffer)
+(evil-leader/set-key "x" 'helm-M-x)
 
 (setq-default tab-width 4 indent-tabs-mode nil)
 (define-key global-map (kbd "RET") 'newline-and-indent)
