@@ -350,7 +350,6 @@ directory to make multiple eshell windows easier."
 
 ;;(set-face-background 'fringe "#809088")
 
-
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
 ;; (require 'smart-mode-line)

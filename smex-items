@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
- load-theme
- package-list-packages
- java-mode
- jdee-mode
- indent-region
- org-mode
+ magit-stash
+ magit-status
+ magit-commit
+ dired
+ magit-clone
+ helm-swoop
+ helm-ag
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 102)
+ (package-list-packages . 103)
  (indent-region . 16)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 393)
+ (eval-buffer . 395)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -142,7 +142,7 @@
  (make-face-bold . 1)
  (helm-find . 1)
  (occur . 8)
- (helm-swoop . 49)
+ (helm-swoop . 50)
  (ido-find-file . 2)
  (ido-toggle-regexp . 1)
  (helm-occur . 7)
@@ -177,14 +177,14 @@
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
- (dired . 5)
+ (dired . 8)
  (desktop-save . 2)
  (toggle-read-only . 1)
  (read-only-mode . 6)
  (helm-swoop-from-isearch . 3)
  (find-name-dired . 3)
  (helm-grep-mode-jump . 4)
- (helm-ag . 11)
+ (helm-ag . 13)
  (helm-ag-mode . 3)
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
@@ -299,4 +299,9 @@
  (ein:notebooklist-open . 4)
  (ipython3 . 2)
  (pyhotn . 1)
+ (search-forward . 1)
+ (magit-clone . 8)
+ (magit-stash . 5)
+ (magit-commit . 4)
+ (magit-status . 3)
 )
