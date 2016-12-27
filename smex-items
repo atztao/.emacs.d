@@ -7,7 +7,7 @@
  magit-status
  magit-log-all
  dired
- magit-stash
+ load-theme
 )
 
 ;; ----- smex-data -----
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 42)
+ (org-beamer-export-to-pdf . 43)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 397)
+ (eval-buffer . 399)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
