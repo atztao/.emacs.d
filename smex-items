@@ -3,11 +3,11 @@
 (
  eval-buffer
  magit-push
- magit-commit
  magit-status
- magit-log-all
- dired
  load-theme
+ disable-theme
+ magit-commit
+ package-list-packages
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 50)
- (load-theme . 106)
+ (load-theme . 107)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 43)
+ (org-beamer-export-to-pdf . 53)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 399)
+ (eval-buffer . 421)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 67)
+ (disable-theme . 68)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -303,7 +303,7 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 6)
- (magit-push . 3)
+ (magit-status . 7)
+ (magit-push . 4)
  (magit-log-all . 2)
 )

@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/contacts.txt")
- (front-context-string . "** \n:PROPERTIES:")
- (rear-context-string)
- (position . 11))
+ (filename . "~/Dropbox/Txt/inbox.txt")
+ (front-context-string . "** TODO 牛仔裤\n[201")
+ (rear-context-string . "-09-03 六 21:37]\n")
+ (position . 2660))
 )

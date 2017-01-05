@@ -3,12 +3,13 @@
 # key: ppt
 # --
 #+LATEX_CLASS: beamer
-#+LATEX_CLASS_OPTIONS: [bigger][presentation]
+#+LATEX_CLASS_OPTIONS: [bigger]
 #+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
 
 #+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \usepackage[default]{sourcecodepro}
 #+LATEX_HEADER: \setCJKmainfont{WenQuanYi Micro Hei}
-#+LATEX_HEADER: \setmainfont{Consolas}
+#+LATEX_HEADER: \setmainfont{Source Code Pro}
 
 #+LATEX_HEADER: \usepackage{graphicx}
 #+LATEX_HEADER: \usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{/home/zhangtao/Dropbox/Template/background-ppt.png}}

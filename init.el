@@ -50,8 +50,8 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(add-to-list 'default-frame-alist '(height . 25))
-(add-to-list 'default-frame-alist '(width . 58))
+(add-to-list 'default-frame-alist '(height . 22))
+(add-to-list 'default-frame-alist '(width . 56))
 
 ;;(setq default-directory "C:/Users/zhangtao/Dropbox/")
 ;;(cd "~/emacs/home/")  
@@ -160,17 +160,17 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
-;;(set-default-font "Consolas-10")
-;;(set-default-font "Source Code Pro 11")
-;;(set-default-font "Inconsolata-13")
-(set-default-font "Monaco-10")
-;;(set-default-font "Courier New:style=Bold-10")
+;;(set-default-font "Consolas-11")
+(set-default-font "Source Code Pro:style=Regular-11")
+;;(set-default-font "Inconsolata-12")
+;;(set-default-font "Monaco-10")
+;;(set-default-font "Courier New:style=Bold-12")
 ;;(set-default-font "Roboto Mono-11")
 
-(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
+;;(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Microsoft Yahei")
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
-;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
+(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12"))
 
 ;;Fullscreen
@@ -306,7 +306,7 @@ directory to make multiple eshell windows easier."
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(setq frame-background-mode 'light)
+;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
 
 ;; (set-background-color "black")
@@ -317,12 +317,12 @@ directory to make multiple eshell windows easier."
 (set-mouse-color "goldenrod")
 
 ;;zenburn
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
+;; ;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 
-;;(load "~/.emacs.d/themes/ujelly-theme.el")
-;;(load "~/.emacs.d/themes/monokai-theme.el")
+;; ;;(load "~/.emacs.d/themes/ujelly-theme.el")
+;; ;;(load "~/.emacs.d/themes/monokai-theme.el")
 ;; (load-theme 'zenburn t)
 ;; (set-cursor-color "red")
 
@@ -365,9 +365,9 @@ directory to make multiple eshell windows easier."
 ;; ;;(setq sml/theme 'powerline)
 ;; (sml/setup)
 
-;; (rich-minority-mode 1)
-;; (setf rm-blacklist "")
-;; (setq rm-blacklist '(" GitGutter" " MRev" " company" " mate" " Projectile"))
+;;(rich-minority-mode 1)
+(setf rm-blacklist "")
+(setq rm-blacklist '(" GitGutter" " MRev" " company" " mate" " Projectile"))
 
 (set-face-attribute 'mode-line nil
                     :foreground "black"
@@ -839,8 +839,12 @@ directory to make multiple eshell windows easier."
 ;; (setq org-bullets-face-name (quote org-bullet-face))
 ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 ;; (setq org-bullets-face-name (quote org-bullet-face))
-;; (set-face-attribute 'org-bullet-face 
-;;    t :foreground "burlywood" :weight 'normal :height 1.6)
+;; ;; (set-face-attribute 'org-bullet-face 
+;; ;;    t :foreground "burlywood" :weight 'normal :height 1.6)
+
+;; ;;(setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
+;; (setq org-bullets-bullet-list '("◉" "○" "◎" "●" "◯"))
+;; (setq org-ellipsis "↴");; ⤵ ▼, ↴, , ∞, ⬎, ⤷, ⤵ ≫
 
 (setq org-startup-indented t)
 
@@ -1220,6 +1224,8 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt"))))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt"))))
 
 
