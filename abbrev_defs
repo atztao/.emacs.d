@@ -11,7 +11,11 @@
 
 (define-abbrev-table 'ag-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'bibtex-mode-abbrev-table '())
 
 (define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
 
@@ -19,9 +23,13 @@
 
 (define-abbrev-table 'bsh-script-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -71,7 +79,19 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'jde-mode-abbrev-table
+  '(
+    ("catch" "catch" c-electric-continued-statement 0)
+    ("else" "else" c-electric-continued-statement 0)
+    ("finally" "finally" c-electric-continued-statement 0)
+    ("while" "while" c-electric-continued-statement 0)
+   ))
+
+(define-abbrev-table 'jde-run-mode-abbrev-table '())
 
 (define-abbrev-table 'jdee-mode-abbrev-table
   '(
@@ -91,7 +111,9 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -105,7 +127,9 @@
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 

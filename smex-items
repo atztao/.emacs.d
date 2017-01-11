@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- magit-push
- magit-status
+ jdb
+ jdee-mode
+ lisp-interaction-mode
+ python-mode
+ java-mode
  load-theme
- disable-theme
- magit-commit
- package-list-packages
 )
 
 ;; ----- smex-data -----
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 53)
+ (org-beamer-export-to-pdf . 76)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 421)
+ (eval-buffer . 442)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 7)
  (highlight-regexp . 1)
@@ -228,7 +228,7 @@
  (xterm-color-test . 2)
  (thumbs . 1)
  (customize-face . 1)
- (lisp-interaction-mode . 7)
+ (lisp-interaction-mode . 8)
  (show-paren-mode . 1)
  (cvs-status . 1)
  (pp-macroexpand-last-sexp . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 12)
+ (python-mode . 13)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -288,12 +288,12 @@
  (package-menu-mark-delete . 5)
  (package-menu-execute . 3)
  (relative-line-numbers-mode . 4)
- (java-mode . 3)
+ (java-mode . 4)
  (org-babel-tangle . 1)
  (htmlize-file . 1)
  (er/mark-email . 1)
- (jde-mode . 2)
- (jdee-mode . 8)
+ (jde-mode . 3)
+ (jdee-mode . 10)
  (cvs-status-mode . 1)
  (key-chord-mode . 2)
  (ein:notebooklist-open . 4)
@@ -306,4 +306,5 @@
  (magit-status . 7)
  (magit-push . 4)
  (magit-log-all . 2)
+ (jdb . 2)
 )

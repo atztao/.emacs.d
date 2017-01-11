@@ -43,14 +43,15 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/zhangtao/.emacs.d/"
- "/home/zhangtao/.emacs.d/snippets/org-mode/"
  "/home/zhangtao/Dropbox/Networks/Exercise/Net_ex4/"
+ "/home/zhangtao/.emacs.d/"
+ "/home/zhangtao/Dropbox/Networks/Exercise/Net_ex2/"
+ "/home/zhangtao/Dropbox/"
  "/home/zhangtao/Dropbox/Txt/"
+ "/home/zhangtao/.emacs.d/snippets/org-mode/"
  "/home/zhangtao/Dropbox/Template/"
  "/home/zhangtao/Desktop/"
  "/home/zhangtao/Dropbox/Networks/Exercise/Net_ex3/"
- "/home/zhangtao/Dropbox/Networks/Exercise/Net_ex2/"
  "/home/zhangtao/"
  "/home/zhangtao/Public/"
  "/home/zhangtao/Tmp/"
@@ -68,7 +69,6 @@
  "/home/zhangtao/.emacs.d/elpa/smart-mode-line-powerline-theme-20160705.1738/"
  "/home/zhangtao/Work/"
  "/home/zhangtao/Desktop/Er/"
- "/home/zhangtao/Dropbox/"
  "/home/zhangtao/.kde/share/apps/aurorae/themes/Yosemite/"
  "/home/zhangtao/Txt/"
  "/home/zhangtao/.config/"
@@ -97,41 +97,43 @@
 
 ;; ----- ido-work-file-list -----
 (
- "init.el"
- "beamer-ppt"
  "Global_Topology_of_Networks.org"
+ "init.el"
+ "lc_lc.py"
+ "HelloWorld.java"
  "linux.txt"
+ "write.txt"
+ "beamer-ppt"
  "Test_ppt.org"
  "Test_fonts.tex"
  "Global_Topology_of_Networks.pyg"
- "write.txt"
- "#pt.py#"
- "Net_ex3.org"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/tmp/" (22638 15281 519627 490000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "pulse-PKdhtXMmr18n/" "systemd-private-0fc4195c54334c2382091420154a2574-cups.service-ApQ5RL/" ".X0-lock" "kde-zhangtao/" "ksocket-zhangtao/" "sogou-qimpanel:0.pid" "systemd-private-0fc4195c54334c2382091420154a2574-rtkit-daemon.service-7W9pui/" "tracker-extract-files.1000/" "emacs1000/" "gpg-8wWnaz/" "ycm_temp/" ".vbox-zhangtao-ipc/" "exim4-config.config.D0HzsY" "exim4.config.7KWpGM" "exim4-base.config.ekbk5A" "exim4-daemon-light.config.5xb4Ep" "renderlog" "wps-zhangtao/" "qtsingleapp-smplay-ca73-3e8-lockfile" "WizNote/" "Special-Message-for-WizNote-SingleApplication" "docview1000/" "hsperfdata_zhangtao/" "mozilla_zhangtao0/" "plugtmp/" "mt20023.tmp/" ".org.chromium.Chromium.1ZZUjI/" ".org.chromium.Chromium.8YOrWo/" "ssh-OPtvxoIj6JFP/" "fcitx-socket-:0" "sogou-qimpanel-cellzhangtao" "sogou-qimpanelzhangtao" "linux-image-3.16.0-4-amd64.config.T8oDFo" ".org.chromium.Chromium.awE9kn/" "babel-2643xuj/" "../" "./")
+ ("/home/zhangtao/.emacs.d/" (22646 17057 367848 651000) "request/" "session.109c793430000147464061500000224380049" ".emacs.desktop.lock" ".init.el.swp" "ido.last~" "ido.last" "lisp/" "auto-save-list/" "bookmarks" "session.109c793430000147780428400000020620018" "jdee-2.4.1/" "semanticdb/" "ac-comphist.dat" ".git/" "eshell/" "themes/" "image-dired/" ".bookmarks.bmk" "elpa/" "foucs-mode.el" "url/" "abbrev_defs" "./" "smex-items" "thumbs/" "Template/" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "pyim/" ".directory" "helm-history.txt" "snippets/" "srecode-map.el" "init.el" "init.el~" ".emacs.desktop" ".org-id-locations" "session.109c793430000148086180400000021520180" "writer.el" "../" "recentf" "session.109c793430000147894798600000032920013")
 
- ("/home/zhangtao/.emacs.d/" (22638 15277 707627 603000) "request/" "session.109c793430000147464061500000224380049" ".emacs.desktop.lock" ".init.el.swp" "ido.last~" "ido.last" "lisp/" "auto-save-list/" "bookmarks" "session.109c793430000147780428400000020620018" "semanticdb/" "ac-comphist.dat" ".git/" "eshell/" "themes/" "image-dired/" ".bookmarks.bmk" "elpa/" "foucs-mode.el" "url/" "abbrev_defs" "./" "smex-items" "thumbs/" "Template/" "session.109c793430000147312841300000019770013" "session.101d5d03253c11551147221069415221300000125400034" "pyim/" ".directory" "helm-history.txt" "snippets/" "srecode-map.el" "init.el" "init.el~" ".emacs.desktop" ".org-id-locations" "session.109c793430000148086180400000021520180" "writer.el" "../" "recentf" "session.109c793430000147894798600000032920013")
+ ("/tmp/" (22646 17036 179849 277000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "pulse-PKdhtXMmr18n/" ".X0-lock" "kde-zhangtao/" "ksocket-zhangtao/" "sogou-qimpanel:0.pid" "systemd-private-0fc4195c54334c2382091420154a2574-rtkit-daemon.service-7W9pui/" "tracker-extract-files.1000/" "emacs1000/" "gpg-8wWnaz/" "ycm_temp/" ".vbox-zhangtao-ipc/" "exim4-config.config.D0HzsY" "exim4.config.7KWpGM" "exim4-base.config.ekbk5A" "exim4-daemon-light.config.5xb4Ep" "renderlog" "wps-zhangtao/" "qtsingleapp-smplay-ca73-3e8-lockfile" "WizNote/" "Special-Message-for-WizNote-SingleApplication" "docview1000/" "hsperfdata_zhangtao/" "mozilla_zhangtao0/" "plugtmp/" "mt20023.tmp/" ".org.chromium.Chromium.1ZZUjI/" ".org.chromium.Chromium.8YOrWo/" "ssh-OPtvxoIj6JFP/" "fcitx-socket-:0" "sogou-qimpanel-cellzhangtao" "sogou-qimpanelzhangtao" "linux-image-3.16.0-4-amd64.config.T8oDFo" "flycheck4844ETBc" "flycheck4844RdHc" "flycheck4844enNc" "flycheck4844FGgc" "flycheck4844SQmc" "flycheck4844fasc" "flycheck4844euBc" "flycheck4844r4Hc" "flycheck48444COc" "flycheck4844SXac" "flycheck4844fhgc" "flycheck4844srmc" "flycheck484451sc" "flycheck4844GAzc" "flycheck48444JCc" "flycheck4844FUIc" "flycheck4844SeOc" "flycheck4844foUc" "flycheck4844syac" "flycheck484458gc" "flycheck4844GHnc" "flycheck4844TRtc" "flycheck4844gbzc" "flycheck4844SlCc" "flycheck4844fvIc" "flycheck4844s5Oc" "flycheck48445DVc" "flycheck4844GObc" "flycheck4844TYhc" "flycheck4844ginc" "flycheck4844tstc" "flycheck484462zc" "flycheck4844tzhc" "flycheck484469nc" "flycheck4844HIuc" "flycheck4844US0c" "flycheck4844GcDc" "flycheck4844TmJc" "flycheck4844gwPc" "flycheck4844t6Vc" "flycheck48446Ecc" "flycheck4844HPic" "flycheck4844UZoc" "flycheck4844hjuc" "flycheck4844g3Dc" "flycheck4844tBKc" ".felix/" "jna--1432603594/" "udev.config.FDYYlS" "exim4-config.config.Ofj6RD" "exim4.config.iTVUrp" "exim4-base.config.K9Sw5a" "exim4-daemon-light.config.JjEIMW" "plugtmp-1/" ".java_pid7287" "jxbrowser-chromium-39.0.2171.52.5.2.1/" "qtsingleapp-TeXstu-2db3-3e8-lockfile" "qtsingleapp-TexMak-44c1-3e8-lockfile" "J31247.log" "J31247.aux" "texstudio_y31247.tex" "texstudio_y31247.log" "texstudio_y31247.aux" "texstudio_y31247.pdf" "qtsingleapp-RStudi-c679-3e8-lockfile" "33443-rsession.pid" "33443-rsession" "Rtmpc05VzH/" "RtmpzsCzSg/" "oracle-java8-installer.config.msC7kZ" "JDEE_flycheck_15689M6O/" "JDEE_flycheck_15689ZEV/" "JDEE_flycheck_15689mOb/" "JDEE_flycheck_15689zYh/" "JDEE_flycheck_15689Ajn/" "JDEE_flycheck_15689Ntt/" "JDEE_flycheck_15689a3z/" "JDEE_flycheck_19311U5C/" "JDEE_flycheck_19588Y7C/" "JDEE_flycheck_19636i7C/" ".org.chromium.Chromium.5p9410/" "dvipdfmx.sJf7VN" "systemd-private-0fc4195c54334c2382091420154a2574-cups.service-B5DiWj/" ".org.chromium.Chromium.YxmoUt" ".org.chromium.Chromium.lNw2NX" "babel-15550MKk/" "../" "./")
+
+ ("/home/zhangtao/Downloads/" (22646 14814 839914 911000) "pycharm-community-2016.3.2.tar.gz" "rstudio-1.0.136-amd64.deb" "jdee-bin-2.4.1.tar.bz2" "xflux64.tgz" "jdee-2.4.1/" "hmcl.json" "bb2984.rar" "./" "hmcl.log" ".vimr" "66eb322d8c60fe87df375a3cc2998b06 (1).doc" "66eb322d8c60fe87df375a3cc2998b06.doc" ".16755/" ".directory" "bb2984/" ".dropbox-dist/" "sogoupinyin_2.1.0.0082_amd64.deb" "../" ".minecraft/" "xflux")
+
+ ("/home/zhangtao/" (22646 16703 719859 100000) ".w3m/" "Desktop/" "Documents/" "R/" ".config/" "Net_pkt.py" "Public/" ".python_history" ".dropbox/" ".kingsoft/" ".xsel.log" "Music/" ".rstudio-desktop/" ".Rhistory" "node_modules/" ".vimrc" ".adobe/" "Downloads/" ".subversion/" ".icons/" ".xinputrc" "Tmp/" "git/" "Ipython/" ".zshrc" ".zsh-update" "Test_fonts.aux" "Pictures/" ".zshrc~" "Net_pkt.py~" ".zcompdump-ly400-5.0.7" ".gephi/" ".profile" ".PyCharmCE2016.3/" "Net_ex3.py" "texmf/" "hmcl.json" ".xsession-errors" ".q3a/" ".mplayer/" ".gnome/" ".xinitrc" "Net_ex3.ipynb" ".fehbg" ".magit/" "P_t.png" ".gtkrc-2.0" ".dbus/" ".texmf-var/" ".supertux/" "Untitled0.py" ".bash_logout" ".java/" ".ICEauthority" ".wiznote/" ".bashrc" ".local/" ".pki/" ".nv/" ".nvidia-settings-rc" ".gpg-agent-info" ".gtkrc-2.0-kde4" ".ipython/" ".gnupg/" "hmcl.log" ".gitconfig" ".recently-used" ".face.icon" ".Xmodmap" ".aptitude/" "HMCL-2.1.7.jar" ".vim/" "Templates/" "Dropbox/" ".macromedia/" ".mozilla/" ".directory" ".bash_history" "mozilla.pdf" ".dropbox-dist/" ".jython-cache/" ".swp" ".i3/" ".hexo/" ".oh-my-zsh/" "Test_fonts.log" ".thumbnails/" ".ipynb_checkpoints/" "Inbox/" ".dmrc" ".npm/" ".gvimrc" ".themes/" ".Xauthority" ".cache/" "latex-fonts.pdf" ".gconf/" ".zsh_history" ".viminfo" ".sunpinyin/" ".nvm/" ".backup/" "Untitled0.ipynb" "Test_fonts.out" ".gnome2/" "P_kt.png" ".matlab/" ".gstreamer-0.10/" ".minecraft/" "cuda_8.0.44_linux.run" ".lastpass/" "Videos/" ".emacs.d/" "Test_fonts.pdf" "App/" ".kde/" ".ssh/" ".sogouinput/" ".swo" "VirtualBox VMs/" "../" "./")
+
+ ("/home/zhangtao/Dropbox/Networks/Exercise/Net_ex4/" (22645 64135 307809 267000) "auto/" "_image/" "Global_Topology_of_Networks.org" "./" "Global_Topology_of_Networks.pdf" ".directory" "../")
+
+ ("/home/zhangtao/Dropbox/" (22645 60493 927916 857000) "init.pdf" "Apps/" ".dropbox" "init.pyg" "Doc/" "auto/" "init.aux" ".vimrc" "《数值分析》李庆扬第五版同步辅导及习题全解.pdf" "Tmp/" "Networks/" "Ipython/" "Write/" "HelloWorld.java" "《数值分析》李庆扬课后答案.pdf" "Txt/" "course-1.png" "./" ".dropbox.cache/" "Linux/" "Template/" "Book/" ".vim/" "init.tex" "init.log" "Sources/" ".directory" "init.out" "ztao1991.github.io/" "Ex2.ipynb" ".ipynb_checkpoints/" "Inbox/" ".gvimrc" "../" "Read/" ".backup/" "Matlab/" ".emacs.d/" "Picture/")
+
+ ("/home/zhangtao/.kde/share/apps/konsole/" (22645 59567 275944 237000) "./" "BlackOnWhite.colorscheme" "GreenOnBlack.colorscheme" "Shell.profile" "../")
+
+ ("/home/zhangtao/Dropbox/Networks/Exercise/Net_ex2/" (22645 58038 635989 403000) "G.png" "lc.png" "lc_avrg.py" "Graph.py" "Net_ex2.org" "l_average.png" "Untitled0.py" "./" "lc_lc.pyc" "betweenness_centrality.png" "betweenness.py" ".idea/" "c_average.png" ".directory" "Net_ex2.pdf" ".ipynb_checkpoints/" "Net_ex2.txt" "../" "Untitled0.ipynb" "lc_lc.py")
+
+ ("/home/zhangtao/.config/" (22643 42005 367410 355000) "fontconfig/" "R/" "awesome/" "Kingsoft/" "calibre/" "google-chrome/" "gnome-session/" "xm1/" "htop/" "gpick/" "goa-1.0/" "uGet/" "tracker/" "xfce4/" "enchant/" "qtcurve/" "pulse/" "libreoffice/" "gtk-2.0/" "transmission/" "dconf/" "smplayer/" "VirtualBox/" "./" "matplotlib/" "sogou-qimpanel/" "QtProject.conf" "evolution/" "zathura/" "shadowsocks.json" "SogouPY.users/" "RStudio/" "autostart/" "akonadi/" "menus/" "vlc/" "gtk-3.0/" "supertuxkart/" "synaptiks/" "Trolltech.conf" "kingsoft/" "fcitx/" "user-dirs.dirs" "ibus/" "audacious/" "../" "texstudio/" "eog/" "totem/" "SogouPY/" "chromium/")
+
+ ("/home/zhangtao/Dropbox/Txt/" (22644 60171 303963 501000) "#diary#" "inbox.txt" "contents.txt" "_log/" "list.txt" "auto/" "markdown.txt" "_book/" "diary" "linux.txt" "log.txt" "_write/" "read.txt" "_physics/" "./" "todo.txt" "liangzilixue.txt" "vim.txt" "Index.txt" "contacts.txt" "email.txt" "music.txt" "book.txt" "physics.txt" "../" "#contacts.txt#" "write.txt")
+
+ ("/home/zhangtao/Desktop/" (22641 46212 243951 654000) "Netwoks/" "pt.py" "Win10.desktop" "e734400874f0bd8d28f245a2e9d6752e_b.jpg" "《数值分析》李庆扬第五版同步辅导及习题全解.pdf" "01-12-077.pdf" "数值计算种种/" "抓图5.png" "Home.desktop" "./" "Random-Graphs-with-Arbitrary-Degree-Distributions-and-Their-Applications.pdf" ".directory" "数值分析第五版-李庆扬--课后习题答案.doc" "Net_image/" "epjb.pdf" "lect19-20.pdf" "清华大学第五版《数值分析》课后答案.pdf" "chapter8.1-topology.pdf" "../" "trash.desktop")
 
  ("/home/zhangtao/.emacs.d/snippets/org-mode/" (22638 15275 823627 658000) "latex-cjk" "titles" "./" "beamer-ppt" "../")
-
- ("/home/zhangtao/Downloads/" (22638 15038 511634 670000) "2016-2017学年度第一学期政治期末考试学术学位硕士研究生考场安排表（含补考补登）.xls" "2016-2017学年度第一学期政治期末考试学术学位硕士研究生考场安排表（含补考补登） (3).xls" "license.pdf" "Wiz-windows-x86-4.5.6-20161216.exe" "flash_player_ppapi_linux.x86_64.tar.gz" "videoplayback.mp4" "cuda_8.0.44_linux.run.aria2" "libpepflashplayer.so" "Wunderlistux-linux-x64-build.tar.gz" "YaHei.Consolas.1.12.7z" "Inconsolata.otf" "finite DM.pdf" "piano.mp4" "2016-2017学年度第一学期政治期末考试学术学位硕士研究生考场安排表（含补考补登） (1).xls" "fonts-master/" "source-code-pro-2.030R-ro-1.050R-it/" "PhysRevLett.89.208701.pdf" "WizTeam/" "汪小帆_复杂网络理论及其应用.pdf" "fonts-master (1).zip" "网络科学导论.pdf" "t1.rmvb" "./" "wiznote_2.3.2.4_amd64.deb" "readme.txt" "fa1bbd373212c2094e815dc774e592a6?fid=743629895-250528-154919822993158&time=1483272791&rt=sh&sign=FDTAERV-DCb740ccc5511e5e8fedcff06b081203-rxyWi%2BowYBMNK8vKVgsshwJngsQ%3D&expires=8h&chkv=1&chkbd=0&chkpc=&dp-logid=19539760203145659&dp-ca" ".vimr" "pycharm-community-2016.3.1/" "YaHei.Consolas.1.12.ttf" "[92np.com][你的名字_君の名は_君之名_Your Name][日语中字][DVD-MP4][480P].torrent" "SourceCodePro-BoldIt-inf-ly1--base.tfm" "20163230d6d011a6-c286-4e8a-b1ea-16d5a535f88d.pdf" "2016-2017学年度第一学期英语期末考试学术学位硕士研究生考场安排表（含补考补登） .xls" ".16755/" ".directory" "source-code-pro-2.030R-ro-1.050R-it.zip" ".dropbox-dist/" "fonts-master.zip" "Emacs For Writers.mp4" "wunderlist-20161225-14-55-21.json" "manifest.json" "kobe.mp4" "flash_player_npapi_linux.x86_64.tar.gz" "从统计物理学看复杂网络研究.pdf" "NetSci-2014-6.pptx" "../" "pycharm-community-2016.3.1.tar.gz" "LGPL/" "2016-2017学年度第一学期政治期末考试学术学位硕士研究生考场安排表（含补考补登） (2).xls" ".minecraft/" "cuda_8.0.44_linux.run")
-
- ("/home/zhangtao/.kde/share/apps/konsole/" (22638 14530 59649 693000) "./" "BlackOnWhite.colorscheme" "GreenOnBlack.colorscheme" "Shell.profile" "../")
-
- ("/home/zhangtao/" (22638 14731 315643 747000) ".w3m/" "Desktop/" "Documents/" ".config/" "Net_pkt.py" "Public/" ".python_history" ".dropbox/" ".kingsoft/" ".xsel.log" "Music/" ".Rhistory" "node_modules/" ".vimrc" ".adobe/" "Downloads/" ".subversion/" ".icons/" ".xinputrc" "Tmp/" "git/" "Ipython/" ".zshrc" ".zsh-update" "Test_fonts.aux" "Pictures/" ".zshrc~" "Net_pkt.py~" ".zcompdump-ly400-5.0.7" ".gephi/" ".profile" ".PyCharmCE2016.3/" "Net_ex3.py" "texmf/" "hmcl.json" ".xsession-errors" ".q3a/" ".mplayer/" ".gnome/" ".xinitrc" "Net_ex3.ipynb" ".fehbg" ".magit/" "P_t.png" ".gtkrc-2.0" ".dbus/" ".texmf-var/" ".bash_logout" ".java/" ".ICEauthority" ".wiznote/" ".bashrc" ".local/" ".pki/" ".nv/" ".nvidia-settings-rc" ".gpg-agent-info" ".gtkrc-2.0-kde4" ".ipython/" ".gnupg/" "hmcl.log" ".gitconfig" ".recently-used" ".face.icon" ".Xmodmap" "HMCL-2.1.7.jar" ".vim/" "Templates/" "Dropbox/" ".macromedia/" ".mozilla/" ".directory" ".bash_history" "mozilla.pdf" ".dropbox-dist/" ".jython-cache/" ".swp" ".i3/" ".hexo/" ".oh-my-zsh/" "Test_fonts.log" ".thumbnails/" ".ipynb_checkpoints/" "Inbox/" ".dmrc" ".npm/" ".gvimrc" ".themes/" ".Xauthority" ".cache/" ".gconf/" ".zsh_history" ".viminfo" ".sunpinyin/" ".nvm/" ".backup/" "Test_fonts.out" ".gnome2/" "P_kt.png" ".matlab/" ".gstreamer-0.10/" ".minecraft/" "cuda_8.0.44_linux.run" ".lastpass/" "Videos/" ".emacs.d/" "Test_fonts.pdf" "App/" ".kde/" ".ssh/" ".sogouinput/" ".swo" "VirtualBox VMs/" "../" "./")
-
- ("/home/zhangtao/Dropbox/Networks/Exercise/Net_ex4/" (22638 15132 363631 897000) "auto/" "_image/" "Global_Topology_of_Networks.org" "Global_Topology_of_Networks.pyg" "./" "Global_Topology_of_Networks.pdf" ".directory" "note.org" "../")
-
- ("/home/zhangtao/.config/" (22638 13068 855692 867000) "fontconfig/" "awesome/" "Kingsoft/" "calibre/" "google-chrome/" "gnome-session/" "htop/" "gpick/" "goa-1.0/" "uGet/" "tracker/" "xfce4/" "enchant/" "qtcurve/" "pulse/" "libreoffice/" "gtk-2.0/" "transmission/" "dconf/" "smplayer/" "VirtualBox/" "./" "matplotlib/" "sogou-qimpanel/" "QtProject.conf" "evolution/" "zathura/" "shadowsocks.json" "SogouPY.users/" "autostart/" "akonadi/" "menus/" "vlc/" "gtk-3.0/" "synaptiks/" "Trolltech.conf" "kingsoft/" "fcitx/" "user-dirs.dirs" "ibus/" "audacious/" "../" "eog/" "totem/" "SogouPY/" "chromium/")
-
- ("/home/zhangtao/Dropbox/Txt/" (22638 12929 771696 976000) "#diary#" "inbox.txt" "contents.txt" "_log/" "list.txt" "auto/" "markdown.txt" "_book/" "diary" "linux.txt" "log.txt" "_write/" "read.txt" "_physics/" "./" "todo.txt" "liangzilixue.txt" "vim.txt" "Index.txt" "contacts.txt" "email.txt" "music.txt" "book.txt" "physics.txt" "../" "#contacts.txt#" "write.txt")
-
- ("/home/zhangtao/Desktop/" (22637 3021 335809 1000) "Netwoks/" "pt.py" "Win10.desktop" "e734400874f0bd8d28f245a2e9d6752e_b.jpg" "《数值分析》李庆扬第五版同步辅导及习题全解.pdf" "01-12-077.pdf" "数值计算种种/" "抓图5.png" "《数值分析》李庆扬课后答案.pdf" "Home.desktop" "./" "Random-Graphs-with-Arbitrary-Degree-Distributions-and-Their-Applications.pdf" ".directory" "数值分析第五版-李庆扬--课后习题答案.doc" "Net_image/" "epjb.pdf" "lect19-20.pdf" "chapter8.1-topology.pdf" "../" "trash.desktop")
-
- ("/home/zhangtao/Dropbox/" (22636 63149 751968 777000) "Apps/" ".dropbox" "Doc/" ".vimrc" "Tmp/" "Networks/" "Write/" "Txt/" "course-1.png" "./" ".dropbox.cache/" "Linux/" "Template/" "Book/" ".vim/" "Sources/" ".directory" "ztao1991.github.io/" "Ex2.ipynb" ".ipynb_checkpoints/" "Inbox/" ".gvimrc" "../" "Read/" ".backup/" "Matlab/" ".emacs.d/" "Picture/")
 
  ("/home/zhangtao/Dropbox/.ipynb_checkpoints/" (22585 3671 690998 716000) "./" "Ex2-checkpoint.ipynb" "../")
 
@@ -142,8 +144,6 @@
  ("/home/zhangtao/Dropbox/Write/" (22626 34197 227647 885000) ".git/" "./" "List.org" "English.org" "README.md" "../")
 
  ("/home/zhangtao/Dropbox/Networks/Exercise/Net_ex1/" (22626 30263 831764 104000) "Net_ex1.pdf" "./" "Nex_ex1.txt" "Nex_ex1.org" "../")
-
- ("/home/zhangtao/Dropbox/Networks/Exercise/Net_ex2/" (22626 30578 207754 815000) "G.png" "lc.png" "lc_avrg.py" "Graph.py" "Net_ex2.org" "l_average.png" "Untitled0.py" "./" "lc_lc.pyc" "betweenness_centrality.png" "betweenness.py" ".idea/" "c_average.png" ".directory" "Net_ex2.pdf" ".ipynb_checkpoints/" "Net_ex2.txt" "../" "Untitled0.ipynb" "lc_lc.py")
 
  ("/home/zhangtao/Dropbox/Networks/" (22618 35331 794081 933000) "Exercise/" ".git/" "./" "README.md" "../")
 

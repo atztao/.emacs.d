@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** TODO 牛仔裤\n[201")
- (rear-context-string . "-09-03 六 21:37]\n")
- (position . 2660))
+ (front-context-string . "** http://stacko")
+ (rear-context-string . "me.][Go Home.]]\n")
+ (position . 1997))
 )

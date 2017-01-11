@@ -110,10 +110,12 @@ directory to make multiple eshell windows easier."
 
 ;;Browser
 (setq gnus-button-url 'browse-url-generic
-      browse-url-generic-program "google-chrome-stable"
+      browse-url-generic-program "chromium"
       browse-url-browser-function gnus-button-url)
 
-;(setq line-spacing '0.20)
+;;(setq line-spacing '0.20)
+(setq-default line-spacing 2)
+
 (global-visual-line-mode 1)
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore)
@@ -161,11 +163,20 @@ directory to make multiple eshell windows easier."
 ;;fonts
 ;;---------------------------
 ;;(set-default-font "Consolas-11")
-(set-default-font "Source Code Pro:style=Regular-11")
+;;(set-default-font "Source Code Pro:style=Regular-11")
 ;;(set-default-font "Inconsolata-12")
-;;(set-default-font "Monaco-10")
+(set-default-font "Monaco-9")
+;;(set-default-font "Menlo-10")
 ;;(set-default-font "Courier New:style=Bold-12")
 ;;(set-default-font "Roboto Mono-11")
+
+;; (set-face-attribute
+;;  'default nil :font "Consolas 11")
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "PingFang SC" :size 10)))
+
 
 ;;(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Microsoft Yahei")
@@ -812,10 +823,10 @@ directory to make multiple eshell windows easier."
 ;-----------------
 ;Java + Jdee
 ;-----------------
-;;(add-to-list 'load-path (format "%s/dist/jdee-2.4.1/lisp" -path))
-;; (autoload 'jde-mode "jde" "JDE mode" t)
-;; (setq auto-mode-alist
-;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
+(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
+(autoload 'jde-mode "jde" "JDE mode" t)
+(setq auto-mode-alist
+      (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
 ;-----------------
 ;markdown-mode
@@ -1027,7 +1038,7 @@ directory to make multiple eshell windows easier."
 				:help "Run pdflatex with output in /tmp")
 			      TeX-command-list)))
 
-(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
+(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
 (advice-add 'org-latex-compile :after #'delete-file)
 
 ;;-------------------------------------------------------
