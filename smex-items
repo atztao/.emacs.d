@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ magit-status
+ magit-push
+ magit-log-all
  eval-buffer
  jdb
  jdee-mode
  lisp-interaction-mode
- python-mode
- java-mode
- load-theme
 )
 
 ;; ----- smex-data -----
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 7)
- (magit-push . 4)
- (magit-log-all . 2)
+ (magit-status . 13)
+ (magit-push . 8)
+ (magit-log-all . 3)
  (jdb . 2)
 )

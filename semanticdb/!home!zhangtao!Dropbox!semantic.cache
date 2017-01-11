@@ -1,0 +1,30 @@
+;; Object Dropbox/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Dropbox/"
+  :tables
+  (list
+    (semanticdb-table "HelloWorld.java"
+      :major-mode 'jde-mode
+      :tags 
+        '( ("HelloWorld" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [55 68]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [31 119]))                  
+                :type "class")
+                nil [1 121]))          
+      :file "HelloWorld.java"
+      :pointmax 122
+      :fsize 121
+      :lastmodtime '(22644 62060 923907 669000)
+      :unmatched-syntax nil))
+  :file "!home!zhangtao!Dropbox!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
