@@ -17,14 +17,15 @@
                                 :type "String")
                                 (reparse-symbol formal_parameters) [55 68]))                          
                         :type "void")
-                        (reparse-symbol class_member_declaration) [31 119]))                  
+                        (reparse-symbol class_member_declaration) [31 140]))                  
                 :type "class")
-                nil [1 121]))          
+                nil [1 142]))          
       :file "HelloWorld.java"
-      :pointmax 122
-      :fsize 121
-      :lastmodtime '(22644 62060 923907 669000)
-      :unmatched-syntax nil))
+      :pointmax 143
+      :fsize 142
+      :lastmodtime '(22657 46139 35995 71000)
+      :unmatched-syntax nil)
+)
   :file "!home!zhangtao!Dropbox!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

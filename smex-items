@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- magit-status
- magit-push
- magit-log-all
  eval-buffer
- jdb
- jdee-mode
- lisp-interaction-mode
+ customize-variable
+ shell
+ magit-push
+ magit-status
+ replace-string
+ markdown-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 103)
+ (package-list-packages . 105)
  (indent-region . 16)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 82)
+ (markdown-mode . 83)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -37,7 +37,7 @@
  (w3m-search . 3)
  (w3m-browse-url . 1)
  (shell-mode . 7)
- (shell . 9)
+ (shell . 10)
  (org-insert-link . 3)
  (org-plot/gnuplot . 8)
  (emacs-lisp-mode . 5)
@@ -94,7 +94,7 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 50)
+ (replace-string . 51)
  (load-theme . 107)
  (auto-complete . 6)
  (org-previous-block . 1)
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 76)
+ (org-beamer-export-to-pdf . 92)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,9 +115,9 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 442)
+ (eval-buffer . 456)
  (org-md-export-as-markdown . 1)
- (org-md-export-to-markdown . 7)
+ (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
  (font-lock-mode . 3)
  (enriched-mode . 1)
@@ -177,7 +177,7 @@
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
- (dired . 10)
+ (dired . 11)
  (desktop-save . 2)
  (toggle-read-only . 1)
  (read-only-mode . 6)
@@ -275,7 +275,7 @@
  (ruler-mode . 2)
  (super-save-mode . 2)
  (version . 1)
- (cua-rectangle-mark-mode . 4)
+ (cua-rectangle-mark-mode . 5)
  (image-dired . 1)
  (xwidget-webkit-mode . 3)
  (html-autoview-mode . 1)
@@ -304,7 +304,14 @@
  (magit-stash . 5)
  (magit-commit . 5)
  (magit-status . 13)
- (magit-push . 8)
- (magit-log-all . 3)
+ (magit-push . 11)
+ (magit-log-all . 2)
  (jdb . 2)
+ (jdee-make . 2)
+ (jdee-run . 1)
+ (cua-selection-mode . 2)
+ (deft . 2)
+ (hippie-expand . 1)
+ (markdown . 1)
+ (customize-variable . 3)
 )

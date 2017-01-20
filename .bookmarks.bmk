@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** 绝对运动中的对象是什么? ")
- (rear-context-string . "-01-07 六 18:24]\n")
- (position . 2428))
+ (front-context-string . "** \nUse TRAMP. C")
+ (rear-context-string . "-01-15 日 14:01]\n")
+ (position . 2466))
 )

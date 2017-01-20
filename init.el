@@ -4,7 +4,7 @@
 
 ;; (define-key emacs-lisp-mode-map (kbd "C-x C-r") 'eval-region)
 ;; (define-key lisp-interaction-mode-map (kbd "C-x C-r") 'eval-region)
-
+;; (define-key org-mode-map (kbd "<tab>") 'org-cycle)
 ;;(server-start)
 ;;(desktop-save-mode) 
 ;; (defun frame-setting ()
@@ -411,6 +411,15 @@ directory to make multiple eshell windows easier."
 	" hl-highlight"			;; hl-anything
 	))
 
+
+;;-----------------------
+;;deft-mode
+(require 'deft)
+(setq deft-extensions '("txt" "tex" "org" "py"))
+(setq deft-directory "~/Dropbox/Txt/")
+(setq deft-recursive t)
+(global-set-key [f8] 'deft)
+
 ;;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
@@ -445,6 +454,10 @@ directory to make multiple eshell windows easier."
 
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(defun close-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
 
 ;;-----------------------
 ;;ido-mode
@@ -538,7 +551,7 @@ directory to make multiple eshell windows easier."
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
 ;;-----------------------
-(setq tramp-mode nil)
+;;(setq tramp-mode nil)
 
 (require 'helm-config)
 (require 'helm)
@@ -621,7 +634,7 @@ directory to make multiple eshell windows easier."
 
 ;; ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
 ;; (add-to-list 'evil-emacs-state-modes 'magit-mode)
-;; ;; (add-to-list 'evil-emacs-state-modes 'org-mode)
+;; ;;(add-to-list 'evil-emacs-state-modes 'org-mode)
 ;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
 ;; ;;(setq evil-default-state 'emacs)
@@ -733,7 +746,7 @@ directory to make multiple eshell windows easier."
 ;;expand-region
 
 (require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-c =") 'er/expand-region)
 
 ;--------------
 ;ace-jump
@@ -819,7 +832,7 @@ directory to make multiple eshell windows easier."
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 (require 'tramp)
-
+(add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 ;-----------------
 ;Java + Jdee
 ;-----------------
@@ -1028,7 +1041,7 @@ directory to make multiple eshell windows easier."
 
 ;;(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
-(setq org-latex-create-formula-image-program 'dvipng)
+;;(setq org-latex-create-formula-image-program 'dvipng)
 
 (setq org-latex-create-formula-image-program 'imagemagick)
 (add-hook 'LaTeX-mode-hook (lambda ()
@@ -1038,7 +1051,9 @@ directory to make multiple eshell windows easier."
 				:help "Run pdflatex with output in /tmp")
 			      TeX-command-list)))
 
-(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
+;;(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
+(setq org-latex-logfiles-extensions (quote ("lof" "lot" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
+
 (advice-add 'org-latex-compile :after #'delete-file)
 
 ;;-------------------------------------------------------
@@ -1235,6 +1250,8 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(jde-jdk (quote ("1.6")))  
+ '(jde-jdk-registry (quote (("1.6" . "/usr/lib/jvm/java-8-oracle/"))))
  '(org-agenda-files
    (quote
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt"))))
