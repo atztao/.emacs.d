@@ -1,0 +1,33 @@
+;; Object Net_ex3/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Net_ex3/"
+  :tables
+  (list
+    (semanticdb-table "P_kt.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("networkx" include nil nil [1 22])
+            ("numpy" include nil nil [23 41])
+            ("matplotlib.pyplot" include nil nil [42 73])
+            ("math" include nil nil [74 85])
+            ("h" variable nil nil [87 92])
+            ("k_average" variable nil nil [93 106])
+            ("N" variable nil nil [107 114])
+            ("p" function (:arguments 
+              ( ("k" variable nil (reparse-symbol function_parameters) [123 124]))              ) nil [117 192])
+            ("f" function (:arguments 
+              ( ("k" variable nil (reparse-symbol function_parameters) [200 201]))              ) nil [194 221])
+            ("f_avg" function (:arguments 
+              ( ("k" variable nil (reparse-symbol function_parameters) [233 234]))              ) nil [223 385])
+            ("pt" function (:arguments 
+              ( ("k" variable nil (reparse-symbol function_parameters) [394 395])
+                ("t" variable nil (reparse-symbol function_parameters) [397 398]))              ) nil [387 935])
+            ("print" code nil nil [936 954]))          
+      :file "P_kt.py"
+      :pointmax 955
+      :fsize 954
+      :lastmodtime '(22631 13181 631770 670000)
+      :unmatched-syntax nil))
+  :file "!home!zhangtao!Dropbox!Networks!Exercise!Net_ex3!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

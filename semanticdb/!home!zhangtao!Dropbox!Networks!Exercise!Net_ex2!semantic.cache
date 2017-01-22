@@ -1,0 +1,28 @@
+;; Object Net_ex2/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Net_ex2/"
+  :tables
+  (list
+    (semanticdb-table "Graph.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("numpy" include nil nil [48 66])
+            ("networkx" include nil nil [85 106])
+            ("matplotlib.pyplot" include nil nil [107 138])
+            ("G" variable nil nil [140 181])
+            ("plt" code nil nil [196 236])
+            ("nx" code nil nil [237 289])
+            ("plt" code nil nil [290 310])
+            ("plt" code nil nil [311 321])
+            ("l_average" variable nil nil [323 369])
+            ("c_average" variable nil nil [387 423])
+            ("print" code nil nil [425 478])
+            ("print" code nil nil [488 531]))          
+      :file "Graph.py"
+      :pointmax 532
+      :fsize 531
+      :lastmodtime '(22645 58038 631989 403000)
+      :unmatched-syntax nil))
+  :file "!home!zhangtao!Dropbox!Networks!Exercise!Net_ex2!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
