@@ -3,9 +3,14 @@
 # key: pdf
 # --
 #+LaTeX_CLASS_OPTIONS: [a4paper,twoside,12pt]
-#+LATEX_HEADER: \usepackage{xeCJK}
-#+LATEX_HEADER: \setCJKmainfont{WenQuanYi Micro Hei}
-#+LATEX_HEADER: \setmainfont{Monaco}
+#+LATEX_HEADER: \usepackage{xeCJK,fontspec}
+#+LATEX_HEADER: \setmainfont{Times New Roman}
+#+LATEX_HEADER: \setsansfont{Helvetica}
+#+LATEX_HEADER: \setmonofont{Courier New}
+#+LATEX_HEADER: \setCJKmainfont{SimSun} 
+#+LATEX_HEADER: \setCJKsansfont{Microsoft YaHei} 
+#+LATEX_HEADER: \setCJKmonofont{FZYTK.ttf} 
+
 #+LATEX_HEADER:\usepackage[colorlinks=false, linkcolor=red, anchorcolor=blue, citecolor=green]{hyperref}
 #+LaTeX_HEADER: \usepackage{minted}
 #+LaTeX_HEADER: \usemintedstyle{emacs}

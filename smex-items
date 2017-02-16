@@ -1,8 +1,8 @@
 
 ;; ----- smex-history -----
 (
- magit-status
  eval-buffer
+ magit-status
  load-theme
  package-delete
  package-menu-execute
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 488)
+ (eval-buffer . 490)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
@@ -303,7 +303,7 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 18)
+ (magit-status . 19)
  (magit-push . 16)
  (magit-log-all . 2)
  (jdb . 2)
