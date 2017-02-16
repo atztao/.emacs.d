@@ -1,10 +1,10 @@
 ;;; monokai-theme.el --- A fruity color theme for Emacs.
 
-;; Copyright (C) 2011-2016
+;; Copyright (C) 2011-2013
 
 ;; Author: Kelvin Smith <oneKelvinSmith@gmail.com>
 ;; URL: http://github.com/oneKelvinSmith/monokai-emacs
-;; Version: 3.0.0
+;; Version: 0.2.0
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -36,9 +36,6 @@
 ;; Color Scheme Designer 3 for complementary colours.
 ;; - http://colorschemedesigner.com/
 ;;
-;; Xterm 256 Color Chart
-;; - https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
-;;
 ;; K. Adam Christensen for his personal monokai theme that addresses 256 colours.
 ;; - https://github.com/pope/personal/blob/master/etc/emacs.d/monokai-theme.el
 ;;
@@ -63,8 +60,13 @@ Also affects 'linum-mode' background."
   :type 'boolean
   :group 'monokai)
 
-(defcustom monokai-use-variable-pitch nil
+(defcustom monokai-use-variable-pitch t
   "Use variable pitch face for some headings and titles."
+  :type 'boolean
+  :group 'monokai)
+
+(defcustom monokai-high-contrast-mode-line nil
+  "Make the active/inactive mode line stand out more."
   :type 'boolean
   :group 'monokai)
 
@@ -93,5769 +95,5286 @@ Also affects 'linum-mode' background."
   :type 'number
   :group 'monokai)
 
-;; Primary colors
-(defcustom monokai-yellow "#E6DB74"
-  "Primary colors - yellow"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-orange "#FD971F"
-  "Primary colors - orange"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-red "#F92672"
-  "Primary colors - red"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-magenta "#FD5FF0"
-  "Primary colors - magenta"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-blue "#66D9EF"
-  "Primary colors - blue"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-green "#A6E22E"
-  "Primary colors - green"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-cyan "#A1EFE4"
-  "Primary colors - cyan"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-violet "#AE81FF"
-  "Primary colors - violet"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-gray "#64645E"
-  "Primary colors - gray"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-foreground "#F8F8F2"
-  "Adaptive colors - foreground"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-background "#272822"
-  "Adaptive colors - background"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-comments "#75715E"
-  "Adaptive colors - comments"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-emphasis "#F8F8F0"
-  "Adaptive colors - emphasis"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-line-number "#8F908A"
-  "Adaptive colors - line number"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-highlight "#49483E"
-  "Adaptive colors - highlight"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-highlight-alt "#3E3D31"
-  "Adaptive colors - highlight"
-  :type 'string
-  :group 'monokai)
-
-(defcustom monokai-highlight-line "#3C3D37"
-  "Adaptive colors - line highlight"
-  :type 'string
-  :group 'monokai)
-
-(let* (;; Variable pitch
-       (monokai-pitch (if monokai-use-variable-pitch
-                          'variable-pitch
-                        'default))
-
-       ;; Definitions for guis that support 256 colors
-       (monokai-class '((class color) (min-colors 257)))
-
+(let* ((class                    '((class color) (min-colors 257)))
+       ;; Primary colors
+       (yellow                   "#E6DB74")
+       (orange                   "#FD971F")
+       (red                      "#F92672")
+       (magenta                  "#FD5FF0")
+       (violet                   "#AE81FF")
+       (blue                     "#66D9EF")
+       (cyan                     "#A1EFE4")
+       (green                    "#A6E22E")
+       (gray                     "#474747")
        ;; Darker and lighter accented colors
-       (monokai-yellow-d       "#BEB244")
-       (monokai-yellow-l       "#FFF7A8")
-       (monokai-orange-d       "#D47402")
-       (monokai-orange-l       "#FFAC4A")
-       (monokai-red-d          "#F70057")
-       (monokai-red-l          "#FA518D")
-       (monokai-magenta-d      "#FB35EA")
-       (monokai-magenta-l      "#FE8CF4")
-       (monokai-violet-d       "#945AFF")
-       (monokai-violet-l       "#C9ACFF")
-       (monokai-blue-d         "#40CAE4")
-       (monokai-blue-l         "#92E7F7")
-       (monokai-cyan-d         "#74DBCD")
-       (monokai-cyan-l         "#D3FBF6")
-       (monokai-green-d        "#86C30D")
-       (monokai-green-l        "#BBEF53")
-       (monokai-gray-d         "#35331D")
-       (monokai-gray-l         "#7B7962")
+       (yellow-d                 "#968B26")
+       (yellow-l                 "#F3EA98")
+       (orange-d                 "#A45E0A")
+       (orange-l                 "#FEB257")
+       (red-d                    "#A20C41")
+       (red-l                    "#FC5C94")
+       (magenta-d                "#A41F99")
+       (magenta-l                "#FE87F4")
+       (violet-d                 "#562AA6")
+       (violet-l                 "#C2A1FF")
+       (blue-d                   "#21889B")
+       (blue-l                   "#8DE6F7")
+       (cyan-d                   "#349B8D")
+       (cyan-l                   "#BBF7EF")
+       (green-d                  "#67930F")
+       (green-l                  "#C1F161")
+       (gray-d                   "#333333")
+       (gray-l                   "#6b6b6b")
+       ;; Adaptive colors
+       (monokai-fg               "#F8F8F2")
+       (monokai-bg               "#272822")
+       (monokai-hl-line          "#3E3D31")
+       (monokai-hl               "#49483E")
+       (monokai-emph             "#F8F8F0")
+       (monokai-comments         "#75715E")
        ;; Adaptive higher/lower contrast accented colors
-       (monokai-foreground-hc  "#141414")
-       (monokai-foreground-lc  "#171A0B")
+       (monokai-fg-hc            "#141414")
+       (monokai-fg-lc            "#171A0B")
        ;; High contrast colors
-       (monokai-yellow-hc      "#FFFACE")
-       (monokai-yellow-lc      "#9A8F21")
-       (monokai-orange-hc      "#FFBE74")
-       (monokai-orange-lc      "#A75B00")
-       (monokai-red-hc         "#FEB0CC")
-       (monokai-red-lc         "#F20055")
-       (monokai-magenta-hc     "#FEC6F9")
-       (monokai-magenta-lc     "#F309DF")
-       (monokai-violet-hc      "#F0E7FF")
-       (monokai-violet-lc      "#7830FC")
-       (monokai-blue-hc        "#CAF5FD")
-       (monokai-blue-lc        "#1DB4D0")
-       (monokai-cyan-hc        "#D3FBF6")
-       (monokai-cyan-lc        "#4BBEAE")
-       (monokai-green-hc       "#CCF47C")
-       (monokai-green-lc       "#679A01")
-
-       ;; Distinct fringe
-       (monokai-fringe-bg (if monokai-distinct-fringe-background
-                              monokai-gray
-                            monokai-background))
+       (yellow-hc                yellow-l)
+       (yellow-lc                yellow-d)
+       (orange-hc                orange-l)
+       (orange-lc                orange-d)
+       (red-hc                   red-l)
+       (red-lc                   red-d)
+       (magenta-hc               magenta-l)
+       (magenta-lc               magenta-d)
+       (violet-hc                violet-l)
+       (violet-lc                violet-d)
+       (blue-hc                  blue-l)
+       (blue-lc                  blue-d)
+       (cyan-hc                  cyan-l)
+       (cyan-lc                  cyan-d)
+       (green-hc                 green-l)
+       (green-lc                 green-d)
+       ;; customize based face properties
+       (s-variable-pitch         (if monokai-use-variable-pitch
+                                     'variable-pitch 'default))
+       (s-fringe-bg              (if monokai-distinct-fringe-background
+                                     monokai-hl monokai-bg))
+       (s-mode-line-fg           (if monokai-high-contrast-mode-line
+                                     monokai-bg monokai-fg))
+       (s-mode-line-bg           (if monokai-high-contrast-mode-line
+                                     monokai-fg monokai-hl-line))
+       (s-mode-line-buffer-id-fg (if monokai-high-contrast-mode-line
+                                     'unspecified green))
+       (s-mode-line-inactive-fg  (if monokai-high-contrast-mode-line
+                                     monokai-fg monokai-comments))
+       (s-mode-line-inactive-bg  (if monokai-high-contrast-mode-line
+                                     monokai-hl-line monokai-bg))
+       (s-mode-line-inactive-bc  (if monokai-high-contrast-mode-line
+                                     monokai-fg monokai-hl-line))
 
        ;; Definitions for terminals that do not support 256 colors
-       (monokai-256-class '((class color) (min-colors 89)))
+       (terminal-class                    '((class color) (min-colors 89)))
        ;; Primary colors
-       (monokai-256-yellow         "#CDC673")
-       (monokai-256-orange         "#FF8C00")
-       (monokai-256-red            "#FF1493")
-       (monokai-256-magenta        "#D700D7")
-       (monokai-256-violet         "#AF87FF")
-       (monokai-256-blue           "#5FD7FF")
-       (monokai-256-cyan           "#5FFFFF")
-       (monokai-256-green          "#87D700")
-       (monokai-256-gray           "#3D3D3D")
+       (terminal-yellow                   "#CDC673")
+       (terminal-orange                   "#FF8C00")
+       (terminal-red                      "#FF1493")
+       (terminal-magenta                  "#D700D7")
+       (terminal-violet                   "#AF87FF")
+       (terminal-blue                     "#5FD7FF")
+       (terminal-cyan                     "#5FFFFF")
+       (terminal-green                    "#87D700")
+       (terminal-gray                     "#444444")
        ;; Darker and lighter accented colors
-       (monokai-256-yellow-d       "#878700")
-       (monokai-256-yellow-l       "#FFFF87")
-       (monokai-256-orange-d       "#AF5F00")
-       (monokai-256-orange-l       "#FFAF5F")
-       (monokai-256-red-d          "#870000")
-       (monokai-256-red-l          "#FF5F87")
-       (monokai-256-magenta-d      "#AF0087")
-       (monokai-256-magenta-l      "#FF87DF")
-       (monokai-256-violet-d       "#5F00AF")
-       (monokai-256-violet-l       "#AF87D7")
-       (monokai-256-blue-d         "#008787")
-       (monokai-256-blue-l         "#87D7FF")
-       (monokai-256-cyan-d         "#5FAFAF")
-       (monokai-256-cyan-l         "#AFFFFF")
-       (monokai-256-green-d        "#5F8700")
-       (monokai-256-green-l        "#AFD700")
-       (monokai-256-gray-d         "#333333")
-       (monokai-256-gray-l         "#707070")
+       ;;
+       ;; TODO: find terminal equivalents for all window colors (on the right)
+       ;;
+       (terminal-yellow-d                 "#968B26")
+       (terminal-yellow-l                 "#FFF68F")
+       (terminal-orange-d                 "#A0522D")
+       (terminal-orange-l                 "#FFA54F")
+       (terminal-red-d                    "#5F0000")
+       (terminal-red-l                    "#EE6AA7")
+       (terminal-magenta-d                "#A41F99")
+       (terminal-magenta-l                "#FE87F4")
+       (terminal-violet-d                 "#562AA6")
+       (terminal-violet-l                 "#C2A1FF")
+       (terminal-blue-d                   "#21889B")
+       (terminal-blue-l                   "#8DE6F7")
+       (terminal-cyan-d                   "#349B8D")
+       (terminal-cyan-l                   "#AFEEEE")
+       (terminal-green-d                  "#6B8E23")
+       (terminal-green-l                  "#B3EE3A")
+       (terminal-gray-d                   "#3a3a3a")
+       (terminal-gray-l                   "#6c6c6c")
        ;; Adaptive colors
-       (monokai-256-foreground     "#F5F5F5")
-       (monokai-256-background     "#1B1E1C")
-       (monokai-256-comments       "#8B8878")
-       (monokai-256-emphasis       "#FFFAFA")
-       (monokai-256-line-number    "#8F908A")
-       (monokai-256-highlight      "#474747")
-       (monokai-256-highlight-alt  "#3E3E3E")
-       (monokai-256-highlight-line "#000000")
+       (terminal-monokai-fg               "#F5F5F5")
+       (terminal-monokai-bg               "#1B1E1C")
+       (terminal-monokai-hl-line          "#212121")
+       (terminal-monokai-hl               "#303030")
+       (terminal-monokai-emph             "#FFFAFA")
+       (terminal-monokai-comments         "#8B8878")
        ;; Adaptive higher/lower contrast accented colors
-       (monokai-256-foreground-hc  "#171A0B")
-       (monokai-256-foreground-lc  "#141414")
+       (terminal-monokai-fg-hc            "#171A0B")
+       (terminal-monokai-fg-lc            "#141414")
        ;; High contrast colors
-       (monokai-256-yellow-hc      monokai-256-yellow-d)
-       (monokai-256-yellow-lc      monokai-256-yellow-l)
-       (monokai-256-orange-hc      monokai-256-orange-d)
-       (monokai-256-orange-lc      monokai-256-orange-l)
-       (monokai-256-red-hc         monokai-256-red-d)
-       (monokai-256-red-lc         monokai-256-red-l)
-       (monokai-256-magenta-hc     monokai-256-magenta-d)
-       (monokai-256-magenta-lc     monokai-256-magenta-l)
-       (monokai-256-violet-hc      monokai-256-violet-d)
-       (monokai-256-violet-lc      monokai-256-violet-l)
-       (monokai-256-blue-hc        monokai-256-blue-d)
-       (monokai-256-blue-lc        monokai-256-blue-l)
-       (monokai-256-cyan-hc        monokai-256-cyan-d)
-       (monokai-256-cyan-lc        monokai-256-cyan-l)
-       (monokai-256-green-hc       monokai-256-green-d)
-       (monokai-256-green-lc       monokai-256-green-l)
-
-       ;; Distinct fringe
-       (monokai-256-fringe-bg (if monokai-distinct-fringe-background
-                                  monokai-256-gray
-                                monokai-256-background)))
+       (terminal-yellow-hc                yellow-d)
+       (terminal-yellow-lc                yellow-l)
+       (terminal-orange-hc                orange-d)
+       (terminal-orange-lc                orange-l)
+       (terminal-red-hc                   red-d)
+       (terminal-red-lc                   red-l)
+       (terminal-magenta-hc               magenta-d)
+       (terminal-magenta-lc               magenta-l)
+       (terminal-violet-hc                violet-d)
+       (terminal-violet-lc                violet-l)
+       (terminal-blue-hc                  blue-d)
+       (terminal-blue-lc                  blue-l)
+       (terminal-cyan-hc                  cyan-d)
+       (terminal-cyan-lc                  cyan-l)
+       (terminal-green-hc                 green-d)
+       (terminal-green-lc                 green-l)
+       ;; customize based face properties
+       (terminal-s-variable-pitch         (if monokai-use-variable-pitch
+                                              'variable-pitch 'default))
+       (terminal-s-fringe-bg              (if monokai-distinct-fringe-background
+                                              terminal-monokai-hl terminal-monokai-bg))
+       (terminal-s-mode-line-fg           (if monokai-high-contrast-mode-line
+                                              terminal-monokai-bg terminal-monokai-fg))
+       (terminal-s-mode-line-bg           (if monokai-high-contrast-mode-line
+                                              terminal-monokai-fg terminal-monokai-hl-line))
+       (terminal-s-mode-line-buffer-id-fg (if monokai-high-contrast-mode-line
+                                              'unspecified terminal-green))
+       (terminal-s-mode-line-inactive-fg  (if monokai-high-contrast-mode-line
+                                              terminal-monokai-fg terminal-monokai-comments))
+       (terminal-s-mode-line-inactive-bg  (if monokai-high-contrast-mode-line
+                                              terminal-monokai-hl-line terminal-monokai-bg))
+       (terminal-s-mode-line-inactive-bc  (if monokai-high-contrast-mode-line
+                                              terminal-monokai-fg terminal-monokai-hl-line)))
 
   ;; Define faces
   (custom-theme-set-faces
    'monokai
-
-   ;; font lock for syntax highlighting
-   `(font-lock-builtin-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight normal))))
-
-   `(font-lock-comment-delimiter-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
-   `(font-lock-comment-face
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-background))))
-
-   `(font-lock-constant-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
-
-   `(font-lock-doc-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
-   `(font-lock-function-name-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
-
-   `(font-lock-keyword-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight normal))))
-
-   `(font-lock-negation-char-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
-
-   `(font-lock-preprocessor-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-
-   `(font-lock-regexp-grouping-construct
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight normal))))
-
-   `(font-lock-regexp-grouping-backslash
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :weight normal))))
-
-   `(font-lock-string-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
-
-   `(font-lock-type-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :italic nil))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :italic nil))))
-
-   `(font-lock-variable-name-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
-
-   `(font-lock-warning-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold
-                                   :italic t
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight bold
-                                        :italic t
-                                        :underline t))))
-
-   `(c-annotation-face
-     ((,monokai-class (:inherit font-lock-constant-face))
-      (,monokai-256-class  (:inherit font-lock-constant-face))))
-
-   ;; general colouring
    '(button ((t (:underline t))))
 
+   ;; basic coloring
    `(default
-      ((,monokai-class (:foreground ,monokai-foreground
-                                    :background ,monokai-background))
-       (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                         :background ,monokai-256-background))))
-
-   `(highlight
-     ((,monokai-class (:background ,monokai-highlight))
-      (,monokai-256-class  (:background ,monokai-256-highlight))))
-
-   `(lazy-highlight
-     ((,monokai-class (:inherit highlight
-                                :background ,monokai-comments))
-      (,monokai-256-class  (:inherit highlight
-                                     :background ,monokai-256-comments))))
-
-   `(region
-     ((,monokai-class (:inherit highlight
-                                :background ,monokai-highlight))
-      (,monokai-256-class  (:inherit highlight
-                                     :background ,monokai-256-highlight))))
-
-   `(secondary-selection
-     ((,monokai-class (:inherit region
-                                :background ,monokai-highlight-alt))
-      (,monokai-256-class  (:inherit region
-                                     :background ,monokai-256-highlight-alt))))
+      ((,class (:foreground ,monokai-fg
+                            :background ,monokai-bg))
+       (,terminal-class (:foreground ,terminal-monokai-fg
+                                     :background ,terminal-monokai-bg))))
 
    `(shadow
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(match
-     ((,monokai-class (:background ,monokai-green
-                                   :foreground ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-green
-                                        :foreground ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :weight bold))))
 
    `(cursor
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-foreground
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-foreground
-                                        :inverse-video t))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,monokai-fg
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-monokai-fg
+                                    :inverse-video t))))
 
    `(mouse
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-foreground
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-foreground
-                                        :inverse-video t))))
-
-   `(escape-glyph
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,monokai-fg
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-monokai-fg
+                                    :inverse-video t))))
 
    `(escape-glyph-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,red)))
+     ((,terminal-class (:foreground ,terminal-red))))
 
    `(fringe
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :background ,monokai-fringe-bg))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :background ,monokai-256-fringe-bg))))
+     ((,class (:foreground ,monokai-fg
+                           :background ,s-fringe-bg))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :background ,terminal-s-fringe-bg))))
+
+   `(highlight
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(link
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :underline t
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :underline t
-                                        :weight bold))))
+     ((,class (:foreground ,blue
+                           :underline t
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :underline t
+                                    :weight bold))))
 
    `(link-visited
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :underline t
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :underline t
-                                        :weight normal))))
+     ((,class (:foreground ,blue
+                           :underline t
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :underline t
+                                    :weight normal))))
 
    `(success
-     ((,monokai-class (:foreground ,monokai-green ))
-      (,monokai-256-class  (:foreground ,monokai-256-green ))))
+     ((,class (:foreground ,green ))
+      (,terminal-class (:foreground ,terminal-green ))))
 
    `(warning
-     ((,monokai-class (:foreground ,monokai-yellow ))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow ))))
+     ((,class (:foreground ,yellow ))
+      (,terminal-class (:foreground ,terminal-yellow ))))
 
    `(error
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
-   `(eval-sexp-fu-flash
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-green))))
+   `(lazy-highlight
+     ((,class (:foreground ,monokai-bg
+                           :background ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-yellow
+                                    :weight normal))))
 
-   `(eval-sexp-fu-flash-error
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-red))))
+   `(escape-glyph
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
-   `(trailing-whitespace
-     ((,monokai-class (:background ,monokai-red))
-      (,monokai-256-class  (:background ,monokai-256-red))))
+   ;; compilation
+   `(compilation-column-face
+     ((,class (:foreground ,cyan
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :underline nil))))
 
-   `(vertical-border
-     ((,monokai-class (:foreground ,monokai-gray))
-      (,monokai-256-class  (:foreground ,monokai-256-gray))))
+   `(compilation-column-number
+     ((,class (:inherit font-lock-doc-face
+                        :foreground ,cyan
+                        :underline nil))
+      (,terminal-class (:inherit font-lock-doc-face
+                                 :foreground ,terminal-cyan
+                                 :underline nil))))
 
-   `(menu
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :background ,monokai-256-background))))
+   `(compilation-enter-directory-face
+     ((,class (:foreground ,green
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-green
+                                    :underline nil))))
 
-   `(minibuffer-prompt
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+   `(compilation-error
+     ((,class (:inherit error
+                        :underline nil))
+      (,terminal-class (:inherit error
+                                 :underline nil))))
 
-   ;; mode-line and powerline
-   `(mode-line-buffer-id
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
+   `(compilation-error-face
+     ((,class (:foreground ,red
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-red
+                                    :underline nil))))
 
-   `(mode-line
-     ((,monokai-class (:inverse-video unspecified
-                                      :underline unspecified
-                                      :foreground ,monokai-emphasis
-                                      :background ,monokai-highlight
-                                      :box (:line-width 1
-                                                        :color ,monokai-gray
-                                                        :style unspecified)))
-      (,monokai-256-class  (:inverse-video unspecified
-                                           :underline unspecified
-                                           :foreground ,monokai-256-foreground
-                                           :background ,monokai-256-background
-                                           :box (:line-width 1
-                                                             :color ,monokai-256-highlight
-                                                             :style unspecified)))))
+   `(compilation-face
+     ((,class (:foreground ,monokai-fg
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :underline nil))))
 
-   `(powerline-active1
-     ((,monokai-class (:background ,monokai-gray-d))
-      (,monokai-256-class  (:background ,monokai-256-gray-d))))
+   `(compilation-info
+     ((,class (:foreground ,monokai-comments
+                           :underline nil
+                           :bold nil))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :underline nil
+                                    :bold nil))))
 
-   `(powerline-active2
-     ((,monokai-class (:background ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-background))))
+   `(compilation-info-face
+     ((,class (:foreground ,blue
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :underline nil))))
 
+   `(compilation-leave-directory-face
+     ((,class (:foreground ,green
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-green
+                                    :underline nil))))
 
-   `(mode-line-inactive
-     ((,monokai-class (:inverse-video unspecified
-                                      :underline unspecified
-                                      :foreground ,monokai-comments
-                                      :background ,monokai-gray
-                                      :box (:line-width 1
-                                                        :color ,monokai-gray
-                                                        :style unspecified)))
-      (,monokai-256-class  (:inverse-video unspecified
-                                           :underline unspecified
-                                           :foreground ,monokai-256-comments
-                                           :background ,monokai-256-gray
-                                           :box (:line-width 1
-                                                             :color ,monokai-256-gray
-                                                             :style unspecified)))))
+   `(compilation-line-face
+     ((,class (:foreground ,green
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-green
+                                    :underline nil))))
 
-   `(powerline-inactive1
-     ((,monokai-class (:background ,monokai-gray-d))
-      (,monokai-256-class  (:background ,monokai-256-gray-d))))
+   `(compilation-line-number
+     ((,class (:foreground ,green
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-green
+                                    :underline nil))))
 
-   `(powerline-inactive2
-     ((,monokai-class (:background ,monokai-gray))
-      (,monokai-256-class  (:background ,monokai-256-gray))))
+   `(compilation-warning
+     ((,class (:inherit warning
+                        :underline nil))
+      (,terminal-class (:inherit warning
+                                 :underline nil))))
 
-   ;; header-line
-   `(header-line
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-highlight
-                                   :box (:color ,monokai-gray
-                                                :line-width 1
-                                                :style unspecified)))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-highlight
-                                        :box (:color ,monokai-256-gray
-                                                     :line-width 1
-                                                     :style unspecified)))))
+   `(compilation-warning-face
+     ((,class (:foreground ,yellow
+                           :weight normal
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal
+                                    :underline nil))))
+
+   `(compilation-mode-line-exit
+     ((,class (:inherit compilation-info
+                        :foreground ,green
+                        :weight bold))
+      (,terminal-class (:inherit compilation-info
+                                 :foreground ,terminal-green
+                                 :weight bold))))
+
+   `(compilation-mode-line-fail
+     ((,class (:inherit compilation-error
+                        :foreground ,red
+                        :weight bold))
+      (,terminal-class (:inherit compilation-error
+                                 :foreground ,terminal-red
+                                 :weight bold))))
+
+   `(compilation-mode-line-run
+     ((,class (:foreground ,orange
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold))))
 
    ;; cua
    `(cua-global-mark
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-monokai-bg))))
 
    `(cua-rectangle
-     ((,monokai-class (:inherit region))
-      (,monokai-256-class  (:inherit region))))
+    ((,class (:inherit region
+                        :background ,magenta
+                        :foreground ,monokai-bg))
+      (,terminal-class (:inherit region
+                                 :background ,terminal-magenta
+                                 :foreground ,terminal-monokai-bg))))
 
    `(cua-rectangle-noselect
-     ((,monokai-class (:inherit secondary-selection))
-      (,monokai-256-class  (:inherit secondary-selection))))
+     ((,class (:inherit region
+                        :background ,monokai-hl
+                        :foreground ,monokai-comments))
+      (,terminal-class (:inherit region
+                                 :background ,terminal-monokai-hl
+                                 :foreground ,terminal-monokai-comments))))
 
    ;; diary
    `(diary
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,class (:foreground ,terminal-yellow))))
 
    ;; dired
    `(dired-directory
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight normal))))
 
    `(dired-flagged
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(dired-header
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,blue))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-blue))))
 
    `(dired-ignored
-     ((,monokai-class (:inherit shadow))
-      (,monokai-256-class  (:inherit shadow))))
+     ((,class (:inherit shadow))
+      (,terminal-class (:inherit shadow))))
 
    `(dired-mark
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(dired-marked
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :inherit bold))))
+     ((,class (:foreground ,magenta
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :weight bold))))
 
    `(dired-perm-write
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :underline t))))
+     ((,class (:foreground ,monokai-fg
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :underline t))))
 
    `(dired-symlink
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :slant italic))))
+     ((,class (:foreground ,cyan
+                           :weight normal
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :weight normal
+                                    :slant italic))))
 
    `(dired-warning
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :underline t))))
+     ((,class (:foreground ,orange
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :underline t))))
 
    ;; dropdown
    `(dropdown-list-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-blue))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-blue))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,cyan))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-cyan))))
 
    `(dropdown-list-selection-face
-     ((,monokai-class (:background ,monokai-green
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-green
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,cyan-lc
+                           :foreground ,cyan-hc))
+      (,terminal-class (:background ,terminal-cyan-lc
+                                    :foreground ,terminal-cyan-hc))))
 
    ;; ecb
    `(ecb-default-highlight-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-bg))))
 
    `(ecb-history-bucket-node-dir-soure-path-face
-     ((,monokai-class (:inherit ecb-history-bucket-node-face
-                                :foreground ,monokai-yellow))
-      (,monokai-256-class  (:inherit ecb-history-bucket-node-face
-                                     :foreground ,monokai-256-yellow))))
+     ((,class (:inherit ecb-history-bucket-node-face
+                        :foreground ,yellow))
+      (,terminal-class (:inherit ecb-history-bucket-node-face
+                                 :foreground ,terminal-yellow))))
 
    `(ecb-source-in-directories-buffer-face
-     ((,monokai-class (:inherit ecb-directories-general-face
-                                :foreground ,monokai-foreground))
-      (,monokai-256-class  (:inherit ecb-directories-general-face
-                                     :foreground ,monokai-256-foreground))))
+     ((,class (:inherit ecb-directories-general-face
+                        :foreground ,monokai-fg))
+      (,terminal-class (:inherit ecb-directories-general-face
+                                 :foreground ,terminal-monokai-fg))))
 
    `(ecb-history-dead-buffer-face
-     ((,monokai-class (:inherit ecb-history-general-face
-                                :foreground ,monokai-comments))
-      (,monokai-256-class  (:inherit ecb-history-general-face
-                                     :foreground ,monokai-256-comments))))
+     ((,class (:inherit ecb-history-general-face
+                        :foreground ,monokai-comments))
+      (,terminal-class (:inherit ecb-history-general-face
+                                 :foreground ,terminal-monokai-comments))))
 
    `(ecb-directory-not-accessible-face
-     ((,monokai-class (:inherit ecb-directories-general-face
-                                :foreground ,monokai-comments))
-      (,monokai-256-class  (:inherit ecb-directories-general-face
-                                     :foreground ,monokai-256-comments))))
+     ((,class (:inherit ecb-directories-general-face
+                        :foreground ,monokai-comments))
+      (,terminal-class (:inherit ecb-directories-general-face
+                                 :foreground ,terminal-monokai-comments))))
 
    `(ecb-bucket-node-face
-     ((,monokai-class (:inherit ecb-default-general-face
-                                :weight normal
-                                :foreground ,monokai-blue))
-      (,monokai-256-class  (:inherit ecb-default-general-face
-                                     :weight normal
-                                     :foreground ,monokai-256-blue))))
+     ((,class (:inherit ecb-default-general-face
+                        :weight normal
+                        :foreground ,blue))
+      (,terminal-class (:inherit ecb-default-general-face
+                                 :weight normal
+                                 :foreground ,terminal-blue))))
 
    `(ecb-tag-header-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(ecb-analyse-bucket-element-face
-     ((,monokai-class (:inherit ecb-analyse-general-face
-                                :foreground ,monokai-green))
-      (,monokai-256-class  (:inherit ecb-analyse-general-face
-                                     :foreground ,monokai-256-green))))
+     ((,class (:inherit ecb-analyse-general-face
+                        :foreground ,green))
+      (,terminal-class (:inherit ecb-analyse-general-face
+                                 :foreground ,terminal-green))))
 
    `(ecb-directories-general-face
-     ((,monokai-class (:inherit ecb-default-general-face
-                                :height 1.0))
-      (,monokai-256-class  (:inherit ecb-default-general-face
-                                     :height 1.0))))
+     ((,class (:inherit ecb-default-general-face
+                        :height 1.0))
+      (,terminal-class (:inherit ecb-default-general-face
+                                 :height 1.0))))
 
    `(ecb-method-non-semantic-face
-     ((,monokai-class (:inherit ecb-methods-general-face
-                                :foreground ,monokai-cyan))
-      (,monokai-256-class  (:inherit ecb-methods-general-face
-                                     :foreground ,monokai-256-cyan))))
+     ((,class (:inherit ecb-methods-general-face
+                        :foreground ,cyan))
+      (,terminal-class (:inherit ecb-methods-general-face
+                                 :foreground ,terminal-cyan))))
 
    `(ecb-mode-line-prefix-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(ecb-tree-guide-line-face
-     ((,monokai-class (:inherit ecb-default-general-face
-                                :foreground ,monokai-gray
-                                :height 1.0))
-      (,monokai-256-class  (:inherit ecb-default-general-face
-                                     :foreground ,monokai-256-gray
-                                     :height 1.0))))
+     ((,class (:inherit ecb-default-general-face
+                        :foreground ,monokai-hl
+                        :height 1.0))
+      (,terminal-class (:inherit ecb-default-general-face
+                                 :foreground ,terminal-monokai-hl
+                                 :height 1.0))))
 
    ;; ee
    `(ee-bookmarked
-     ((,monokai-class (:foreground ,monokai-emphasis))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis))))
+     ((,class (:foreground ,monokai-emph))
+      (,terminal-class (:foreground ,terminal-monokai-emph))))
 
    `(ee-category
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(ee-link
-     ((,monokai-class (:inherit link))
-      (,monokai-256-class  (:inherit link))))
+     ((,class (:inherit link))
+      (,terminal-class (:inherit link))))
 
    `(ee-link-visited
-     ((,monokai-class (:inherit link-visited))
-      (,monokai-256-class  (:inherit link-visited))))
+     ((,class (:inherit link-visited))
+      (,terminal-class (:inherit link-visited))))
 
    `(ee-marked
-     ((,monokai-class (:foreground ,monokai-magenta
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta
-                                        :weight bold))))
+     ((,class (:foreground ,magenta
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :weight bold))))
 
    `(ee-omitted
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(ee-shadow
-     ((,monokai-class (:inherit shadow))
-      (,monokai-256-class  (:inherit shadow))))
+     ((,class (:inherit shadow))
+      (,terminal-class (:inherit shadow))))
 
    ;; grep
    `(grep-context-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(grep-error-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold
-                                        :underline t))))
+     ((,class (:foreground ,red
+                           :weight bold
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold
+                                    :underline t))))
 
    `(grep-hit-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(grep-match-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
+     ((,class (:foreground ,orange
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold))))
 
-   ;; isearch
+   ;; faces used by isearch
    `(isearch
-     ((,monokai-class (:inherit region
-                                :background ,monokai-green))
-      (,monokai-256-class  (:inherit region
-                                     :background ,monokai-256-green))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,magenta
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-magenta
+                                    :weight normal))))
 
    `(isearch-fail
-     ((,monokai-class (:inherit isearch
-                                :foreground ,monokai-red
-                                :background ,monokai-background
-                                :bold t))
-      (,monokai-256-class  (:inherit isearch
-                                     :foreground ,monokai-256-red
-                                     :background ,monokai-256-background
-                                     :bold t))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg
+                           :bold t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg
+                                    :bold t))))
 
+   ;; man
+   `(Man-overstrike
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
+
+   `(Man-reverse
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
+
+   `(Man-underline
+     ((,class (:foreground ,green :underline t))
+      (,terminal-class (:foreground ,terminal-green :underline t))))
+
+   ;; misc faces
+   `(menu
+     ((,class (:foreground ,monokai-fg
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :background ,terminal-monokai-bg))))
+
+   `(minibuffer-prompt
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
+
+   `(mode-line
+     ((,class (:inverse-video unspecified
+                              :underline unspecified
+                              :foreground ,s-mode-line-fg
+                              :background ,s-mode-line-bg
+                              :box (:line-width 1
+                                                :color ,s-mode-line-bg
+                                                :style unspecified)))
+      (,terminal-class (:inverse-video unspecified
+                                       :underline unspecified
+                                       :foreground ,terminal-s-mode-line-fg
+                                       :background ,terminal-s-mode-line-bg
+                                       :box (:line-width 1
+                                                         :color ,terminal-s-mode-line-bg
+                                                         :style unspecified)))))
+
+   `(mode-line-buffer-id
+     ((,class (:foreground ,s-mode-line-buffer-id-fg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-s-mode-line-buffer-id-fg
+                                    :weight bold))))
+
+   `(mode-line-inactive
+     ((,class (:inverse-video unspecified
+                              :underline unspecified
+                              :foreground ,s-mode-line-inactive-fg
+                              :background ,s-mode-line-inactive-bg
+                              :box (:line-width 1
+                                                :color ,s-mode-line-inactive-bc
+                                                :style unspecified)))
+      (,terminal-class (:inverse-video unspecified
+                                       :underline unspecified
+                                       :foreground ,terminal-s-mode-line-inactive-fg
+                                       :background ,terminal-s-mode-line-inactive-bg
+                                       :box (:line-width 1
+                                                         :color ,terminal-s-mode-line-inactive-bc
+                                                         :style unspecified)))))
+
+   `(header-line
+     ((,class (:inverse-video unspecified
+                              :underline unspecified
+                              :foreground ,monokai-emph
+                              :background ,monokai-hl
+                              :box (:line-width 1
+                                                :color ,monokai-hl
+                                                :style unspecified)))
+      (,terminal-class (:inverse-video unspecified
+                                       :underline unspecified
+                                       :foreground ,terminal-monokai-emph
+                                       :background ,terminal-monokai-hl
+                                       :box (:line-width 1
+                                                         :color ,terminal-monokai-hl
+                                                         :style unspecified)))))
+
+   `(region
+     ((,class (:background ,monokai-hl
+                           :inherit t))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :inherit t))))
+
+   `(secondary-selection
+     ((,class (:background ,monokai-hl
+                           :inherit t))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :inherit t))))
+
+
+   `(trailing-whitespace
+     ((,class (:background ,red))
+      (,terminal-class (:background ,terminal-red))))
+
+   `(vertical-border
+     ((,class (:foreground ,monokai-hl))
+      (,terminal-class (:foreground ,terminal-monokai-hl))))
+
+   ;; font lock
+   `(font-lock-builtin-face
+     ((,class (:foreground ,red
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight normal))))
+
+   `(font-lock-comment-delimiter-face
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
+
+   `(font-lock-comment-face
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
+
+   `(font-lock-constant-face
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
+
+   `(font-lock-doc-face
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
+
+   `(font-lock-function-name-face
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
+
+   `(font-lock-keyword-face
+     ((,class (:foreground ,red
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight normal))))
+
+   `(font-lock-negation-char-face
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
+
+   `(font-lock-preprocessor-face
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
+
+   `(font-lock-regexp-grouping-construct
+     ((,class (:foreground ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal))))
+
+   `(font-lock-regexp-grouping-backslash
+     ((,class (:foreground ,violet
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-violet
+                                    :weight normal))))
+
+   `(font-lock-string-face
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
+
+   `(font-lock-type-face
+     ((,class (:foreground ,blue
+                           :italic nil))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :italic nil))))
+
+   `(font-lock-variable-name-face
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
+
+   `(font-lock-warning-face
+     ((,class (:foreground ,orange
+                           :weight bold
+                           :italic t
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold
+                                    :italic t
+                                    :underline t))))
+
+   `(c-annotation-face
+     ((,class (:inherit font-lock-constant-face))
+      (,terminal-class (:inherit font-lock-constant-face))))
+
+
+   ;;; external
 
    ;; ace-jump-mode
    `(ace-jump-face-background
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-background
-                                   :inverse-video nil))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-background
-                                        :inverse-video nil))))
+     ((,class (:foreground ,monokai-comments
+                           :background ,monokai-bg
+                           :inverse-video nil))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-monokai-bg
+                                    :inverse-video nil))))
 
    `(ace-jump-face-foreground
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :background ,monokai-background
-                                   :inverse-video nil
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :background ,monokai-256-background
-                                        :inverse-video nil
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :background ,monokai-bg
+                           :inverse-video nil
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :background ,terminal-monokai-bg
+                                    :inverse-video nil
+                                    :weight bold))))
 
    ;; auctex
    `(font-latex-bold-face
-     ((,monokai-class (:inherit bold
-                                :foreground ,monokai-emphasis))
-      (,monokai-256-class  (:inherit bold
-                                     :foreground ,monokai-256-emphasis))))
+     ((,class (:inherit bold
+                        :foreground ,monokai-emph))
+      (,terminal-class (:inherit bold
+                                 :foreground ,terminal-monokai-emph))))
 
    `(font-latex-doctex-documentation-face
-     ((,monokai-class (:background unspecified))
-      (,monokai-256-class  (:background unspecified))))
+     ((,class (:background unspecified))
+      (,terminal-class (:background unspecified))))
 
    `(font-latex-doctex-preprocessor-face
-     ((,monokai-class
+     ((,class
        (:inherit (font-latex-doctex-documentation-face
                   font-lock-builtin-face
                   font-lock-preprocessor-face)))
-      (,monokai-class
+      (,class
        (:inherit (font-latex-doctex-documentation-face
                   font-lock-builtin-face
                   font-lock-preprocessor-face)))))
 
    `(font-latex-italic-face
-     ((,monokai-class (:inherit italic :foreground ,monokai-emphasis))
-      (,monokai-256-class  (:inherit italic :foreground ,monokai-256-emphasis))))
+     ((,class (:inherit italic :foreground ,monokai-emph))
+      (,terminal-class (:inherit italic :foreground ,terminal-monokai-emph))))
 
    `(font-latex-math-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
    `(font-latex-sectioning-0-face
-     ((,monokai-class (:inherit font-latex-sectioning-1-face
-                                :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:inherit font-latex-sectioning-1-face
-                                     :height ,monokai-height-plus-1))))
+     ((,class (:inherit font-latex-sectioning-1-face
+                        :height ,monokai-height-plus-1))
+      (,terminal-class (:inherit font-latex-sectioning-1-face
+                                 :height ,monokai-height-plus-1))))
 
    `(font-latex-sectioning-1-face
-     ((,monokai-class (:inherit font-latex-sectioning-2-face
-                                :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:inherit font-latex-sectioning-2-face
-                                     :height ,monokai-height-plus-1))))
+     ((,class (:inherit font-latex-sectioning-2-face
+                        :height ,monokai-height-plus-1))
+      (,terminal-class (:inherit font-latex-sectioning-2-face
+                                 :height ,monokai-height-plus-1))))
 
    `(font-latex-sectioning-2-face
-     ((,monokai-class (:inherit font-latex-sectioning-3-face
-                                :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:inherit font-latex-sectioning-3-face
-                                     :height ,monokai-height-plus-1))))
+     ((,class (:inherit font-latex-sectioning-3-face
+                        :height ,monokai-height-plus-1))
+      (,terminal-class (:inherit font-latex-sectioning-3-face
+                                 :height ,monokai-height-plus-1))))
 
    `(font-latex-sectioning-3-face
-     ((,monokai-class (:inherit font-latex-sectioning-4-face
-                                :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:inherit font-latex-sectioning-4-face
-                                     :height ,monokai-height-plus-1))))
+     ((,class (:inherit font-latex-sectioning-4-face
+                        :height ,monokai-height-plus-1))
+      (,terminal-class (:inherit font-latex-sectioning-4-face
+                                 :height ,monokai-height-plus-1))))
 
    `(font-latex-sectioning-4-face
-     ((,monokai-class (:inherit font-latex-sectioning-5-face
-                                :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:inherit font-latex-sectioning-5-face
-                                     :height ,monokai-height-plus-1))))
+     ((,class (:inherit font-latex-sectioning-5-face
+                        :height ,monokai-height-plus-1))
+      (,terminal-class (:inherit font-latex-sectioning-5-face
+                                 :height ,monokai-height-plus-1))))
 
    `(font-latex-sectioning-5-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-yellow
-                                :weight bold))
-      (,monokai-256-class  (:inherit ,monokai-pitch :
-                                     foreground ,monokai-256-yellow
-                                     :weight bold))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,yellow
+                        :weight bold))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch :
+                                 foreground ,terminal-yellow
+                                 :weight bold))))
 
    `(font-latex-sedate-face
-     ((,monokai-class (:foreground ,monokai-emphasis))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis))))
+     ((,class (:foreground ,monokai-emph))
+      (,terminal-class (:foreground ,terminal-monokai-emph))))
 
    `(font-latex-slide-title-face
-     ((,monokai-class (:inherit (,monokai-pitch font-lock-type-face)
-                                :weight bold
-                                :height ,monokai-height-plus-3))
-      (,monokai-256-class  (:inherit (,monokai-pitch font-lock-type-face)
-                                     :weight bold
-                                     :height ,monokai-height-plus-3))))
+     ((,class (:inherit (,s-variable-pitch font-lock-type-face)
+                        :weight bold
+                        :height ,monokai-height-plus-3))
+      (,terminal-class (:inherit (,terminal-s-variable-pitch font-lock-type-face)
+                                 :weight bold
+                                 :height ,monokai-height-plus-3))))
 
    `(font-latex-string-face
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(font-latex-subscript-face
-     ((,monokai-class (:height ,monokai-height-minus-1))
-      (,monokai-256-class  (:height ,monokai-height-minus-1))))
+     ((,class (:height ,monokai-height-minus-1))
+      (,terminal-class (:height ,monokai-height-minus-1))))
 
    `(font-latex-superscript-face
-     ((,monokai-class (:height ,monokai-height-minus-1))
-      (,monokai-256-class  (:height ,monokai-height-minus-1))))
+     ((,class (:height ,monokai-height-minus-1))
+      (,terminal-class (:height ,monokai-height-minus-1))))
 
    `(font-latex-verbatim-face
-     ((,monokai-class (:inherit fixed-pitch
-                                :foreground ,monokai-foreground
-                                :slant italic))
-      (,monokai-256-class  (:inherit fixed-pitch
-                                     :foreground ,monokai-256-foreground
-                                     :slant italic))))
+     ((,class (:inherit fixed-pitch
+                        :foreground ,monokai-fg
+                        :slant italic))
+      (,terminal-class (:inherit fixed-pitch
+                                 :foreground ,terminal-monokai-fg
+                                 :slant italic))))
 
    `(font-latex-warning-face
-     ((,monokai-class (:inherit bold
-                                :foreground ,monokai-orange))
-      (,monokai-256-class  (:inherit bold
-                                     :foreground ,monokai-256-orange))))
+     ((,class (:inherit bold
+                        :foreground ,orange))
+      (,terminal-class (:inherit bold
+                                 :foreground ,terminal-orange))))
 
    ;; auto-complete
    `(ac-candidate-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-blue))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-blue))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,cyan))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-cyan))))
 
    `(ac-selection-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,cyan-lc
+                           :foreground ,cyan-hc))
+      (,terminal-class (:background ,terminal-cyan-lc
+                                    :foreground ,terminal-cyan-hc))))
 
    `(ac-candidate-mouse-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,cyan-hc
+                           :foreground ,cyan-lc))
+      (,terminal-class (:background ,terminal-cyan-hc
+                                    :foreground ,terminal-cyan-lc))))
 
    `(ac-completion-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :underline t))))
+     ((,class (:foreground ,monokai-emph
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :underline t))))
 
    `(ac-gtags-candidate-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-blue))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-blue))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,blue))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-blue))))
 
    `(ac-gtags-selection-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,blue-lc
+                           :foreground ,blue-hc))
+      (,terminal-class (:background ,terminal-blue-lc
+                                    :foreground ,terminal-blue-hc))))
 
    `(ac-yasnippet-candidate-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-yellow))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-yellow))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,yellow))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-yellow))))
 
    `(ac-yasnippet-selection-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,yellow-hc))
+      (,terminal-class (:background ,terminal-yellow-lc
+                                    :foreground ,terminal-yellow-hc))))
 
    ;; auto highlight symbol
    `(ahs-definition-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-blue))))
+     ((,class (:foreground ,magenta
+                           :background unspecified
+                           :slant normal))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background unspecified
+                                    :slant normal))))
 
    `(ahs-edit-mode-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-highlight))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-highlight))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,magenta))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-magenta))))
 
    `(ahs-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta
-                                        :background unspecified))))
+     ((,class (:foreground ,magenta
+                           :background unspecified))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background unspecified))))
 
    `(ahs-plugin-bod-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-violet ))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-cyan ))))
+     ((,class (:foreground ,magenta
+                           :background unspecified ))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background unspecified ))))
 
    `(ahs-plugin-defalt-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-orange))))
+     ((,class (:foreground ,magenta
+                           :background unspecified))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background unspecified))))
 
    `(ahs-plugin-whole-buffer-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-green))))
+     ((,class (:foreground ,magenta
+                           :background unspecified))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background unspecified))))
 
    `(ahs-warning-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:foreground ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    ;; android mode
    `(android-mode-debug-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(android-mode-error-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight bold))))
+     ((,class (:foreground ,orange
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold))))
 
    `(android-mode-info-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(android-mode-verbose-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(android-mode-warning-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    ;; anzu-mode
    `(anzu-mode-line
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :weight bold))))
+     ((,class (:foreground ,magenta
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :weight bold))))
 
    ;; bm
    `(bm-face
-     ((,monokai-class (:background ,monokai-yellow-lc
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow-lc
+                                    :foreground ,terminal-monokai-bg))))
 
    `(bm-fringe-face
-     ((,monokai-class (:background ,monokai-yellow-lc
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow-lc
+                                    :foreground ,terminal-monokai-bg))))
 
    `(bm-fringe-persistent-face
-     ((,monokai-class (:background ,monokai-green-lc
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-green-lc
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,green-lc
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-green-lc
+                                    :foreground ,terminal-monokai-bg))))
 
    `(bm-persistent-face
-     ((,monokai-class (:background ,monokai-green-lc
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-green-lc
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,green-lc
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-green-lc
+                                    :foreground ,terminal-monokai-bg))))
 
    ;; calfw
    `(cfw:face-day-title
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(cfw:face-annotation
-     ((,monokai-class (:inherit cfw:face-day-title
-                                :foreground ,monokai-yellow))
-      (,monokai-256-class  (:inherit cfw:face-day-title
-                                     :foreground ,monokai-256-yellow))))
+     ((,class (:inherit cfw:face-day-title
+                        :foreground ,yellow))
+      (,terminal-class (:inherit cfw:face-day-title
+                                 :foreground ,terminal-yellow))))
 
    `(cfw:face-default-content
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(cfw:face-default-day
-     ((,monokai-class (:inherit cfw:face-day-title
-                                :weight bold))
-      (,monokai-256-class  (:inherit cfw:face-day-title
-                                     :weight bold))))
+     ((,class (:inherit cfw:face-day-title
+                        :weight bold))
+      (,terminal-class (:inherit cfw:face-day-title
+                                 :weight bold))))
 
    `(cfw:face-disable
-     ((,monokai-class (:inherit cfw:face-day-title
-                                :foreground ,monokai-comments))
-      (,monokai-256-class  (:inherit cfw:face-day-title
-                                     :foreground ,monokai-256-comments))))
+     ((,class (:inherit cfw:face-day-title
+                        :foreground ,monokai-comments))
+      (,terminal-class (:inherit cfw:face-day-title
+                                 :foreground ,terminal-monokai-comments))))
 
    `(cfw:face-grid
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(cfw:face-header
-     ((,monokai-class (:foreground ,monokai-blue-hc
-                                   :background ,monokai-blue-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue-hc
-                                        :background ,monokai-256-blue-lc
-                                        :weight bold))))
+     ((,class (:foreground ,blue-hc
+                           :background ,blue-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue-hc
+                                    :background ,terminal-blue-lc
+                                    :weight bold))))
 
    `(cfw:face-holiday
-     ((,monokai-class (:background nil
-                                   :foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:background nil
-                                        :foreground ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:background nil
+                           :foreground ,red
+                           :weight bold))
+      (,terminal-class (:background nil
+                                    :foreground ,terminal-red
+                                    :weight bold))))
 
    `(cfw:face-periods
-     ((,monokai-class (:foreground ,monokai-magenta))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta))))
+     ((,class (:foreground ,magenta))
+      (,terminal-class (:foreground ,terminal-magenta))))
 
    `(cfw:face-select
-     ((,monokai-class (:background ,monokai-magenta-lc
-                                   :foreground ,monokai-magenta-hc))
-      (,monokai-256-class  (:background ,monokai-256-magenta-lc
-                                        :foreground ,monokai-256-magenta-hc))))
+     ((,class (:background ,magenta-lc
+                           :foreground ,magenta-hc))
+      (,terminal-class (:background ,terminal-magenta-lc
+                                    :foreground ,terminal-magenta-hc))))
 
    `(cfw:face-saturday
-     ((,monokai-class (:foreground ,monokai-cyan-hc
-                                   :background ,monokai-cyan-lc))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan-hc
-                                        :background ,monokai-256-cyan-lc))))
+     ((,class (:foreground ,cyan-hc
+                           :background ,cyan-lc))
+      (,terminal-class (:foreground ,terminal-cyan-hc
+                                    :background ,terminal-cyan-lc))))
 
    `(cfw:face-sunday
-     ((,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red-hc
-                                        :background ,monokai-256-red-lc
-                                        :weight bold))))
+     ((,class (:foreground ,red-hc
+                           :background ,red-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red-hc
+                                    :background ,terminal-red-lc
+                                    :weight bold))))
 
    `(cfw:face-title
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-yellow
-                                :weight bold
-                                :height ,monokai-height-plus-4))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-yellow
-                                     :weight bold
-                                     :height ,monokai-height-plus-4))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,yellow
+                        :weight bold
+                        :height ,monokai-height-plus-4))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-yellow
+                                 :weight bold
+                                 :height ,monokai-height-plus-4))))
 
    `(cfw:face-today
-     ((,monokai-class (:weight bold
-                               :background ,monokai-highlight-line
-                               :foreground nil))
-      (,monokai-256-class  (:weight bold
-                                    :background ,monokai-256-highlight-line
-                                    :foreground nil))))
+     ((,class (:weight bold
+                       :background ,monokai-hl
+                       :foreground nil))
+      (,terminal-class (:weight bold
+                                :background ,terminal-monokai-hl
+                                :foreground nil))))
 
    `(cfw:face-today-title
-     ((,monokai-class (:background ,monokai-yellow-lc
-                                   :foreground ,monokai-yellow-hc
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc
-                                        :foreground ,monokai-256-yellow-hc
-                                        :weight bold))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,yellow-hc
+                           :weight bold))
+      (,terminal-class (:background ,terminal-yellow-lc
+                                    :foreground ,terminal-yellow-hc
+                                    :weight bold))))
 
    `(cfw:face-toolbar
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg))))
 
    `(cfw:face-toolbar-button-off
-     ((,monokai-class (:background ,monokai-yellow-lc
-                                   :foreground ,monokai-yellow-hc
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc
-                                        :foreground ,monokai-256-yellow-hc
-                                        :weight bold))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,yellow-hc
+                           :weight bold))
+      (,terminal-class (:background ,terminal-yellow-lc
+                                    :foreground ,terminal-yellow-hc
+                                    :weight bold))))
 
    `(cfw:face-toolbar-button-on
-     ((,monokai-class (:background ,monokai-yellow-hc
-                                   :foreground ,monokai-yellow-lc
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-yellow-hc
-                                        :foreground ,monokai-256-yellow-lc
-                                        :weight bold))))
+     ((,class (:background ,yellow-hc
+                           :foreground ,yellow-lc
+                           :weight bold))
+      (,terminal-class (:background ,terminal-yellow-hc
+                                    :foreground ,terminal-yellow-lc
+                                    :weight bold))))
 
-   ;; cider
-   `(cider-enlightened
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :background nil
-                                   :box (:color ,monokai-yellow :line-width -1 :style nil)))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :background nil
-                                        :box (:color ,monokai-256-yellow :line-width -1 :style nil))) ))
 
-   `(cider-enlightened-local
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
-
-   `(cider-instrumented-face
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :background nil
-                                   :box (:color ,monokai-violet :line-width -1 :style nil)))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :background nil
-                                        :box (:color ,monokai-256-violet :line-width -1 :style nil)))))
-
-   `(cider-result-overlay-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background nil
-                                   :box (:color ,monokai-blue :line-width -1 :style nil)))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background nil
-                                        :box (:color ,monokai-256-blue :line-width -1 :style nil)))))
-
-   `(cider-test-error-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-orange))))
-
-   `(cider-test-failure-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-red))))
-
-   `(cider-test-success-face
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-green))))
-
-   `(cider-traced-face
-     ((,monokai-class :box (:color ,monokai-blue :line-width -1 :style nil))
-      (,monokai-256-class  :box (:color ,monokai-256-blue :line-width -1 :style nil))))
-
-   ;; clojure-test
+   ;; clojure-test-mode
    `(clojure-test-failure-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold
-                                        :underline t))))
+     ((,class (:foreground ,orange
+                           :weight bold
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold
+                                    :underline t))))
 
    `(clojure-test-error-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold
-                                        :underline t))))
+     ((,class (:foreground ,red
+                           :weight bold
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold
+                                    :underline t))))
 
    `(clojure-test-success-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold
-                                        :underline t))))
+     ((,class (:foreground ,green
+                           :weight bold
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-green
+                                    :weight bold
+                                    :underline t))))
 
    ;; company-mode
    `(company-tooltip
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,cyan))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-cyan))))
 
    `(company-tooltip-selection
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,cyan-lc
+                           :foreground ,cyan-hc))
+      (,terminal-class (:background ,terminal-cyan-lc
+                                    :foreground ,terminal-cyan-hc))))
 
    `(company-tooltip-mouse
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,cyan-hc
+                           :foreground ,cyan-lc))
+      (,terminal-class (:background ,terminal-cyan-hc
+                                    :foreground ,terminal-cyan-lc))))
 
    `(company-tooltip-common
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :underline t))))
+     ((,class (:foreground ,monokai-emph
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :underline t))))
 
    `(company-tooltip-common-selection
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-blue
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-blue
-                                        :underline t))))
+     ((,class (:foreground ,monokai-emph
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :underline t))))
 
    `(company-preview
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,cyan))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-cyan))))
 
    `(company-preview-common
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :underline t))))
+     ((,class (:foreground ,monokai-emph
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :underline t))))
 
    `(company-scrollbar-bg
-     ((,monokai-class (:background ,monokai-gray))
-      (,monokai-256-class  (:background ,monokai-256-gray))))
+     ((,class (:background ,gray-l))
+      (,terminal-class (:background ,terminal-gray-l))))
 
    `(company-scrollbar-fg
-     ((,monokai-class (:background ,monokai-comments))
-      (,monokai-256-class  (:background ,monokai-256-comments))))
+     ((,class (:background ,yellow-d))
+      (,terminal-class (:background ,terminal-yellow-d))))
 
-   `(company-tooltip-annotation
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-green))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-green))))
-
-   `(company-template-field
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-blue))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-blue))))
-
-   ;; compilation
-   `(compilation-column-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :underline nil))))
-
-   `(compilation-column-number
-     ((,monokai-class (:inherit font-lock-doc-face
-                                :foreground ,monokai-cyan
-                                :underline nil))
-      (,monokai-256-class  (:inherit font-lock-doc-face
-                                     :foreground ,monokai-256-cyan
-                                     :underline nil))))
-
-   `(compilation-enter-directory-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :underline nil))))
-
-   `(compilation-error
-     ((,monokai-class (:inherit error
-                                :underline nil))
-      (,monokai-256-class  (:inherit error
-                                     :underline nil))))
-
-   `(compilation-error-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :underline nil))))
-
-   `(compilation-face
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :underline nil))))
-
-   `(compilation-info
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :underline nil
-                                   :bold nil))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :underline nil
-                                        :bold nil))))
-
-   `(compilation-info-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :underline nil))))
-
-   `(compilation-leave-directory-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :underline nil))))
-
-   `(compilation-line-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :underline nil))))
-
-   `(compilation-line-number
-     ((,monokai-class (:foreground ,monokai-green
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :underline nil))))
-
-   `(compilation-warning
-     ((,monokai-class (:inherit warning
-                                :underline nil))
-      (,monokai-256-class  (:inherit warning
-                                     :underline nil))))
-
-   `(compilation-warning-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight normal
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight normal
-                                        :underline nil))))
-
-   `(compilation-mode-line-exit
-     ((,monokai-class (:inherit compilation-info
-                                :foreground ,monokai-green
-                                :weight bold))
-      (,monokai-256-class  (:inherit compilation-info
-                                     :foreground ,monokai-256-green
-                                     :weight bold))))
-
-   `(compilation-mode-line-fail
-     ((,monokai-class (:inherit compilation-error
-                                :foreground ,monokai-red
-                                :weight bold))
-      (,monokai-256-class  (:inherit compilation-error
-                                     :foreground ,monokai-256-red
-                                     :weight bold))))
-
-   `(compilation-mode-line-run
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight bold))))
-
-   ;; CSCOPE
+   ;; cscope
    `(cscope-file-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
+     ((,class (:foreground ,green
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-green
+                                    :weight bold))))
 
    `(cscope-function-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(cscope-line-number-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(cscope-line-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(cscope-mouse-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-fg))))
 
    ;; ctable
    `(ctbl:face-cell-select
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis
-                                   :underline ,monokai-emphasis
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis
-                                        :underline ,monokai-256-emphasis
-                                        :weight bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :underline ,monokai-emph
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :underline ,terminal-monokai-emph
+                                    :weight bold))))
 
    `(ctbl:face-continue-bar
-     ((,monokai-class (:background ,monokai-gray
-                                   :foreground ,monokai-yellow))
-      (,monokai-256-class  (:background ,monokai-256-gray
-                                        :foreground ,monokai-256-yellow))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,yellow))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-yellow))))
 
    `(ctbl:face-row-select
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground
-                                   :underline t))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground
-                                        :underline t))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg
+                           :underline t))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg
+                                    :underline t))))
 
    ;; coffee
    `(coffee-mode-class-name
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(coffee-mode-function-param
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :slant italic))))
+     ((,class (:foreground ,violet
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-violet
+                                    :slant italic))))
 
    ;; custom
    `(custom-face-tag
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-3
-                                :foreground ,monokai-violet
-                                :weight bold))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-3
-                                     :foreground ,monokai-256-violet
-                                     :weight bold))))
+     ((,class (:inherit ,s-variable-pitch
+                        :height ,monokai-height-plus-3
+                        :foreground ,violet
+                        :weight bold))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :height ,monokai-height-plus-3
+                                 :foreground ,terminal-violet
+                                 :weight bold))))
 
    `(custom-variable-tag
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-cyan
-                                :height ,monokai-height-plus-3))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-cyan
-                                     :height ,monokai-height-plus-3))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,cyan
+                        :height ,monokai-height-plus-3))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-cyan
+                                 :height ,monokai-height-plus-3))))
 
    `(custom-comment-tag
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(custom-group-tag
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-blue
-                                :height ,monokai-height-plus-3))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-blue
-                                     :height ,monokai-height-plus-3))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,blue
+                        :height ,monokai-height-plus-3))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-blue
+                                 :height ,monokai-height-plus-3))))
 
    `(custom-group-tag-1
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-red
-                                :height ,monokai-height-plus-3))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-red
-                                     :height ,monokai-height-plus-3))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,red
+                        :height ,monokai-height-plus-3))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-red
+                                 :height ,monokai-height-plus-3))))
 
    `(custom-state
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    ;; diff
    `(diff-added
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,green
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-green
+                                    :background ,terminal-monokai-bg))))
 
    `(diff-changed
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,blue
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :background ,terminal-monokai-bg))))
 
    `(diff-removed
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg))))
 
    `(diff-header
-     ((,monokai-class (:background ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-background))))
+     ((,class (:background ,monokai-bg))
+      (,terminal-class (:background ,terminal-monokai-bg))))
 
    `(diff-file-header
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-foreground
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-foreground
-                                        :weight bold))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,monokai-fg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-monokai-fg
+                                    :weight bold))))
 
    `(diff-refine-added
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-green))))
+     ((,class :foreground ,monokai-bg
+              :background ,green)
+      (,terminal-class :foreground ,terminal-monokai-bg
+                       :background ,terminal-green)))
 
    `(diff-refine-change
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-blue))))
+     ((,class :foreground ,monokai-bg
+              :background ,blue)
+      (,terminal-class :foreground ,terminal-monokai-bg
+                       :background ,terminal-blue)))
 
    `(diff-refine-removed
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-red))))
-
-   ;; diff-hl
-   `(diff-hl-change
-     ((,monokai-class (:background ,monokai-blue-lc
-                                   :foreground ,monokai-blue-hc))
-      (,monokai-256-class  (:background ,monokai-256-blue-lc
-                                        :foreground ,monokai-256-blue-hc))))
-
-   `(diff-hl-delete
-     ((,monokai-class (:background ,monokai-red-lc
-                                   :foreground ,monokai-red-hc))
-      (,monokai-256-class  (:background ,monokai-256-red-lc
-                                        :foreground ,monokai-256-red-hc))))
-
-   `(diff-hl-insert
-     ((,monokai-class (:background ,monokai-green-lc
-                                   :foreground ,monokai-green-hc))
-      (,monokai-256-class  (:background ,monokai-256-green-lc
-                                        :foreground ,monokai-256-green-hc))))
-
-   `(diff-hl-unknown
-     ((,monokai-class (:background ,monokai-violet-lc
-                                   :foreground ,monokai-violet-hc))
-      (,monokai-256-class  (:background ,monokai-256-violet-lc
-                                        :foreground ,monokai-256-violet-hc))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,red))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-red))))
 
    ;; ediff
    `(ediff-fine-diff-A
-     ((,monokai-class (:background ,monokai-orange-lc))
-      (,monokai-256-class  (:background ,monokai-256-orange-lc))))
+     ((,class (:background ,orange-lc))
+      (,terminal-class (:background ,terminal-orange-lc))))
 
    `(ediff-fine-diff-B
-     ((,monokai-class (:background ,monokai-green-lc))
-      (,monokai-256-class  (:background ,monokai-256-green-lc))))
+     ((,class (:background ,green-lc))
+      (,terminal-class (:background ,terminal-green-lc))))
 
    `(ediff-fine-diff-C
-     ((,monokai-class (:background ,monokai-yellow-lc))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc))))
+     ((,class (:background ,yellow-lc))
+      (,terminal-class (:background ,terminal-yellow-lc))))
 
    `(ediff-current-diff-C
-     ((,monokai-class (:background ,monokai-blue-lc))
-      (,monokai-256-class  (:background ,monokai-256-blue-lc))))
+     ((,class (:background ,blue-lc))
+      (,terminal-class (:background ,terminal-blue-lc))))
 
    `(ediff-even-diff-A
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-foreground-lc ))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-foreground-lc ))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-fg-lc ))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-fg-lc ))))
 
    `(ediff-odd-diff-A
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-foreground-hc ))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-foreground-hc ))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-fg-hc ))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-fg-hc ))))
 
    `(ediff-even-diff-B
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-foreground-hc ))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-foreground-hc ))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-fg-hc ))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-fg-hc ))))
 
    `(ediff-odd-diff-B
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-foreground-lc ))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-foreground-lc ))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-fg-lc ))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-fg-lc ))))
 
    `(ediff-even-diff-C
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-foreground ))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-foreground ))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-fg ))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-fg ))))
 
    `(ediff-odd-diff-C
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-background ))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-background ))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-bg ))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-bg ))))
+
+   ;; diff-hl
+   `(diff-hl-change
+     ((,class (:background ,blue-lc
+                           :foreground ,blue-hc))
+      (,terminal-class (:background ,terminal-blue-lc
+                                    :foreground ,terminal-blue-hc))))
+
+   `(diff-hl-delete
+     ((,class (:background ,red-lc
+                           :foreground ,red-hc))
+      (,terminal-class (:background ,terminal-red-lc
+                                    :foreground ,terminal-red-hc))))
+
+   `(diff-hl-insert
+     ((,class (:background ,green-lc
+                           :foreground ,green-hc))
+      (,terminal-class (:background ,terminal-green-lc
+                                    :foreground ,terminal-green-hc))))
+
+   `(diff-hl-unknown
+     ((,class (:background ,cyan-lc
+                           :foreground ,cyan-hc))
+      (,terminal-class (:background ,terminal-cyan-lc
+                                    :foreground ,terminal-cyan-hc))))
 
    ;; edts
    `(edts-face-error-line
-     ((,(append '((supports :underline (:style line))) monokai-class)
-       (:underline (:style line :color ,monokai-red)
+     ((,(append '((supports :underline (:style line))) class)
+       (:underline (:style line :color ,red)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style line))) monokai-256-class )
-       (:underline (:style line :color ,monokai-256-red)
+      (,class (:foreground ,red-hc
+                           :background ,red-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style line))) terminal-class)
+       (:underline (:style line :color ,terminal-red)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-red-hc
-                                        :background ,monokai-256-red-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-red-hc
+                                    :background ,terminal-red-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(edts-face-warning-line
-     ((,(append '((supports :underline (:style line))) monokai-class)
-       (:underline (:style line :color ,monokai-yellow)
+     ((,(append '((supports :underline (:style line))) class)
+       (:underline (:style line :color ,yellow)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-yellow-hc
-                                   :background ,monokai-yellow-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style line))) monokai-256-class )
-       (:underline (:style line :color ,monokai-256-yellow)
+      (,class (:foreground ,yellow-hc
+                           :background ,yellow-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style line))) terminal-class)
+       (:underline (:style line :color ,terminal-yellow)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow-hc
-                                        :background ,monokai-256-yellow-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-yellow-hc
+                                    :background ,terminal-yellow-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(edts-face-error-fringe-bitmap
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background unspecified
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background unspecified
-                                        :weight bold))))
+     ((,class (:foreground ,red
+                           :background unspecified
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background unspecified
+                                    :weight bold))))
 
    `(edts-face-warning-fringe-bitmap
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :background unspecified
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :background unspecified
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :background unspecified
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :background unspecified
+                                    :weight bold))))
 
    `(edts-face-error-mode-line
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground unspecified))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground unspecified))))
+     ((,class (:background ,red
+                           :foreground unspecified))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground unspecified))))
 
    `(edts-face-warning-mode-line
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground unspecified))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground unspecified))))
+     ((,class (:background ,yellow
+                           :foreground unspecified))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground unspecified))))
 
 
    ;; elfeed
    `(elfeed-search-date-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(elfeed-search-feed-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(elfeed-search-tag-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(elfeed-search-title-face
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
-
-   ;; ein
-   `(ein:cell-input-area
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
-   `(ein:cell-input-prompt
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
-   `(ein:cell-output-prompt
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-   `(ein:notification-tab-normal
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
-   `(ein:notification-tab-selected
-     ((,monokai-class (:foreground ,monokai-orange :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange :inherit bold))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    ;; enhanced ruby mode
    `(enh-ruby-string-delimiter-face
-     ((,monokai-class (:inherit font-lock-string-face))
-      (,monokai-256-class  (:inherit font-lock-string-face))))
+     ((,class (:inherit font-lock-string-face))
+      (,terminal-class (:inherit font-lock-string-face))))
 
    `(enh-ruby-heredoc-delimiter-face
-     ((,monokai-class (:inherit font-lock-string-face))
-      (,monokai-256-class  (:inherit font-lock-string-face))))
+     ((,class (:inherit font-lock-string-face))
+      (,terminal-class (:inherit font-lock-string-face))))
 
    `(enh-ruby-regexp-delimiter-face
-     ((,monokai-class (:inherit font-lock-string-face))
-      (,monokai-256-class  (:inherit font-lock-string-face))))
+     ((,class (:inherit font-lock-string-face))
+      (,terminal-class (:inherit font-lock-string-face))))
 
    `(enh-ruby-op-face
-     ((,monokai-class (:inherit font-lock-keyword-face))
-      (,monokai-256-class  (:inherit font-lock-keyword-face))))
+     ((,class (:inherit font-lock-keyword-face))
+      (,terminal-class (:inherit font-lock-keyword-face))))
 
-   ;; erm-syn
    `(erm-syn-errline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,red)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
+      (,class (:foreground ,red-hc
+                           :background ,red-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-red)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-red-hc
-                                        :background ,monokai-256-red-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-red-hc
+                                    :background ,terminal-red-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(erm-syn-warnline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-orange)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,orange)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-orange-hc
-                                   :background ,monokai-orange-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-orange)
+      (,class (:foreground ,orange-hc
+                           :background ,orange-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-orange)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-orange-hc
-                                        :background ,monokai-256-orange-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-orange-hc
+                                    :background ,terminal-orange-lc
+                                    :weight bold
+                                    :underline t))))
 
    ;; epc
    `(epc:face-title
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :underline nil))))
+     ((,class (:foreground ,blue
+                           :background ,monokai-bg
+                           :weight normal
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :underline nil))))
 
    ;; erc
    `(erc-action-face
-     ((,monokai-class (:inherit erc-default-face))
-      (,monokai-256-class  (:inherit erc-default-face))))
+     ((,class (:inherit erc-default-face))
+      (,terminal-class (:inherit erc-default-face))))
 
    `(erc-bold-face
-     ((,monokai-class (:weight bold))
-      (,monokai-256-class  (:weight bold))))
+     ((,class (:weight bold))
+      (,terminal-class (:weight bold))))
 
    `(erc-current-nick-face
-     ((,monokai-class (:foreground ,monokai-blue :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight bold))))
+     ((,class (:foreground ,blue :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    `(erc-dangerous-host-face
-     ((,monokai-class (:inherit font-lock-warning-face))
-      (,monokai-256-class  (:inherit font-lock-warning-face))))
+     ((,class (:inherit font-lock-warning-face))
+      (,terminal-class (:inherit font-lock-warning-face))))
 
    `(erc-default-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(erc-highlight-face
-     ((,monokai-class (:inherit erc-default-face
-                                :background ,monokai-highlight))
-      (,monokai-256-class  (:inherit erc-default-face
-                                     :background ,monokai-256-highlight))))
+     ((,class (:inherit erc-default-face
+                        :background ,monokai-hl))
+      (,terminal-class (:inherit erc-default-face
+                                 :background ,terminal-monokai-hl))))
 
    `(erc-direct-msg-face
-     ((,monokai-class (:inherit erc-default-face))
-      (,monokai-256-class  (:inherit erc-default-face))))
+     ((,class (:inherit erc-default-face))
+      (,terminal-class (:inherit erc-default-face))))
 
    `(erc-error-face
-     ((,monokai-class (:inherit font-lock-warning-face))
-      (,monokai-256-class  (:inherit font-lock-warning-face))))
+     ((,class (:inherit font-lock-warning-face))
+      (,terminal-class (:inherit font-lock-warning-face))))
 
    `(erc-fool-face
-     ((,monokai-class (:inherit erc-default-face))
-      (,monokai-256-class  (:inherit erc-default-face))))
+     ((,class (:inherit erc-default-face))
+      (,terminal-class (:inherit erc-default-face))))
 
    `(erc-input-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(erc-keyword-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight bold))))
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    `(erc-nick-default-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(erc-my-nick-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:foreground ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    `(erc-nick-msg-face
-     ((,monokai-class (:inherit erc-default-face))
-      (,monokai-256-class  (:inherit erc-default-face))))
+     ((,class (:inherit erc-default-face))
+      (,terminal-class (:inherit erc-default-face))))
 
    `(erc-notice-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(erc-pal-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight bold))))
+     ((,class (:foreground ,orange
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold))))
 
    `(erc-prompt-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :background ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :background ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:foreground ,orange
+                           :background ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :background ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(erc-timestamp-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(erc-underline-face
      ((t (:underline t))))
 
    ;; eshell
    `(eshell-prompt
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :inherit bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(eshell-ls-archive
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :inherit bold))))
+     ((,class (:foreground ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    `(eshell-ls-backup
-     ((,monokai-class (:inherit font-lock-comment-face))
-      (,monokai-256-class  (:inherit font-lock-comment-face))))
+     ((,class (:inherit font-lock-comment-face))
+      (,terminal-class (:inherit font-lock-comment-face))))
 
    `(eshell-ls-clutter
-     ((,monokai-class (:inherit font-lock-comment-face))
-      (,monokai-256-class  (:inherit font-lock-comment-face))))
+     ((,class (:inherit font-lock-comment-face))
+      (,terminal-class (:inherit font-lock-comment-face))))
 
    `(eshell-ls-directory
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :inherit bold))))
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    `(eshell-ls-executable
-     ((,monokai-class (:foreground ,monokai-green
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :inherit bold))))
+     ((,class (:foreground ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    `(eshell-ls-unreadable
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(eshell-ls-missing
-     ((,monokai-class (:inherit font-lock-warning-face))
-      (,monokai-256-class  (:inherit font-lock-warning-face))))
+     ((,class (:inherit font-lock-warning-face))
+      (,terminal-class (:inherit font-lock-warning-face))))
 
    `(eshell-ls-product
-     ((,monokai-class (:inherit font-lock-doc-face))
-      (,monokai-256-class  (:inherit font-lock-doc-face))))
+     ((,class (:inherit font-lock-doc-face))
+      (,terminal-class (:inherit font-lock-doc-face))))
 
    `(eshell-ls-special
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :inherit bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(eshell-ls-symlink
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :inherit bold))))
-
-   ;; evil-ex-substitute
-   `(evil-ex-substitute-matches
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-red-l
-                                   :inherit italic))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-red-l
-                                        :inherit italic))))
-   `(evil-ex-substitute-replacement
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-green-l
-                                   :inherit italic))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line :foreground ,monokai-256-green-l :inherit italic))))
-
-   ;; evil-search-highlight-persist
-   `(evil-search-highlight-persist-highlight-face
-     ((,monokai-class (:inherit region))
-      (,monokai-256-class  (:inherit region))))
+     ((,class (:foreground ,cyan
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :weight bold))))
 
    ;; fic
    `(fic-author-face
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-orange
-                                   :underline t
-                                   :slant italic))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-orange
-                                        :underline t
-                                        :slant italic))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,orange
+                           :underline t
+                           :slant italic))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-orange
+                                    :underline t
+                                    :slant italic))))
 
    `(fic-face
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-orange
-                                   :weight normal
-                                   :slant italic))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-orange
-                                        :weight normal
-                                        :slant italic))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,orange
+                           :weight normal
+                           :slant italic))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-orange
+                                    :weight normal
+                                    :slant italic))))
 
    `(font-lock-fic-face
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-orange
-                                   :weight normal
-                                   :slant italic))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-orange
-                                        :weight normal
-                                        :slant italic))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,orange
+                           :weight normal
+                           :slant italic))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-orange
+                                    :weight normal
+                                    :slant italic))))
 
    ;; flx
    `(flx-highlight-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight normal
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight normal
-                                        :underline nil))))
+     ((,class (:foreground ,blue
+                           :weight normal
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight normal
+                                    :underline nil))))
 
    ;; flymake
    `(flymake-errline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,red)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
-      (,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
+      (,class (:foreground ,red-hc
+                           :background ,red-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-red)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-red-hc
-                                        :background ,monokai-256-red-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-red-hc
+                                    :background ,terminal-red-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(flymake-infoline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-green)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,green)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
-      (,monokai-class (:foreground ,monokai-green-hc
-                                   :background ,monokai-green-lc))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-green)
+      (,class (:foreground ,green-hc
+                           :background ,green-lc))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-green)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-green-hc
-                                        :background ,monokai-256-green-lc))))
+      (,terminal-class (:foreground ,terminal-green-hc
+                                    :background ,terminal-green-lc))))
 
    `(flymake-warnline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-yellow)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,yellow)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
-      (,monokai-class (:foreground ,monokai-yellow-hc
-                                   :background ,monokai-yellow-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-yellow)
+      (,class (:foreground ,yellow-hc
+                           :background ,yellow-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-yellow)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow-hc
-                                        :background ,monokai-256-yellow-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-yellow-hc
+                                    :background ,terminal-yellow-lc
+                                    :weight bold
+                                    :underline t))))
 
    ;; flycheck
    `(flycheck-error
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,red)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
+      (,class (:foreground ,red-hc
+                           :background ,red-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-red)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-red-hc
-                                        :background ,monokai-256-red-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-red-hc
+                                    :background ,terminal-red-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(flycheck-warning
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-yellow)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,yellow)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-yellow-hc
-                                   :background ,monokai-yellow-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-yellow)
+      (,class (:foreground ,yellow-hc
+                           :background ,yellow-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-yellow)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow-hc
-                                        :background ,monokai-256-yellow-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-yellow-hc
+                                    :background ,terminal-yellow-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(flycheck-info
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-blue)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,blue)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-blue-hc
-                                   :background ,monokai-blue-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-blue)
+      (,class (:foreground ,blue-hc
+                           :background ,blue-lc
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-blue)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-blue-hc
-                                        :background ,monokai-256-blue-lc
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-blue-hc
+                                    :background ,terminal-blue-lc
+                                    :weight bold
+                                    :underline t))))
 
    `(flycheck-fringe-error
-     ((,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red-hc
-                                        :background ,monokai-256-red-lc
-                                        :weight bold))))
+     ((,class (:foreground ,red-hc
+                           :background ,red-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red-hc
+                                    :background ,terminal-red-lc
+                                    :weight bold))))
 
    `(flycheck-fringe-warning
-     ((,monokai-class (:foreground ,monokai-yellow-hc
-                                   :background ,monokai-yellow-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow-hc
-                                        :background ,monokai-256-yellow-lc
-                                        :weight bold))))
+     ((,class (:foreground ,yellow-hc
+                           :background ,yellow-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow-hc
+                                    :background ,terminal-yellow-lc
+                                    :weight bold))))
 
    `(flycheck-fringe-info
-     ((,monokai-class (:foreground ,monokai-blue-hc
-                                   :background ,monokai-blue-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue-hc
-                                        :background ,monokai-256-blue-lc
-                                        :weight bold))))
+     ((,class (:foreground ,blue-hc
+                           :background ,blue-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue-hc
+                                    :background ,terminal-blue-lc
+                                    :weight bold))))
 
    ;; flyspell
    `(flyspell-duplicate
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-yellow)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,yellow)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-yellow)
+      (,class (:foreground ,yellow
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-yellow)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold
+                                    :underline t))))
 
    `(flyspell-incorrect
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
+     ((,(append '((supports :underline (:style wave))) class)
+       (:underline (:style wave :color ,red)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-red
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
+      (,class (:foreground ,red
+                           :weight bold
+                           :underline t))
+      (,(append '((supports :underline (:style wave))) terminal-class)
+       (:underline (:style wave :color ,terminal-red)
                    :inherit unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold
-                                        :underline t))))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold
+                                    :underline t))))
 
 
    ;; git-gutter
    `(git-gutter:added
-     ((,monokai-class (:background ,monokai-green
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-green
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,green
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-green
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter:deleted
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,red
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter:modified
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter:unchanged
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    ;; git-gutter-fr
    `(git-gutter-fr:added
-     ((,monokai-class (:foreground ,monokai-green
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :inherit bold))))
+     ((,class (:foreground ,green
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-green
+                                    :weight bold))))
 
    `(git-gutter-fr:deleted
-     ((,monokai-class (:foreground ,monokai-red
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :inherit bold))))
+     ((,class (:foreground ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    `(git-gutter-fr:modified
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :inherit bold))))
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    ;; git-gutter+ and git-gutter+-fr
    `(git-gutter+-added
-     ((,monokai-class (:background ,monokai-green
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-green
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,green
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-green
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter+-deleted
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,red
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter+-modified
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter+-unchanged
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-background
-                                   :inherit bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-background
-                                        :inherit bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(git-gutter-fr+-added
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
+     ((,class (:foreground ,green
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-green
+                                    :weight bold))))
 
    `(git-gutter-fr+-deleted
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:foreground ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    `(git-gutter-fr+-modified
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight bold))))
-
-   ;; git-timemachine
-   `(git-timemachine-minibuffer-detail-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-highlight-line
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-blue
-                                        :background ,monokai-256-highlight-line
-                                        :inherit bold))))
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    ;; guide-key
    `(guide-key/highlight-command-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(guide-key/key-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(guide-key/prefix-command-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    ;; gnus
    `(gnus-group-mail-1
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-mail-1-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-mail-1-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-mail-1-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-mail-1-empty))))
 
    `(gnus-group-mail-1-empty
-     ((,monokai-class (:inherit gnus-group-news-1-empty))
-      (,monokai-256-class  (:inherit gnus-group-news-1-empty))))
+     ((,class (:inherit gnus-group-news-1-empty))
+      (,terminal-class (:inherit gnus-group-news-1-empty))))
 
    `(gnus-group-mail-2
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-mail-2-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-mail-2-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-mail-2-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-mail-2-empty))))
 
    `(gnus-group-mail-2-empty
-     ((,monokai-class (:inherit gnus-group-news-2-empty))
-      (,monokai-256-class  (:inherit gnus-group-news-2-empty))))
+     ((,class (:inherit gnus-group-news-2-empty))
+      (,terminal-class (:inherit gnus-group-news-2-empty))))
 
    `(gnus-group-mail-3
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-mail-3-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-mail-3-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-mail-3-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-mail-3-empty))))
 
    `(gnus-group-mail-3-empty
-     ((,monokai-class (:inherit gnus-group-news-3-empty))
-      (,monokai-256-class  (:inherit gnus-group-news-3-empty))))
+     ((,class (:inherit gnus-group-news-3-empty))
+      (,terminal-class (:inherit gnus-group-news-3-empty))))
 
    `(gnus-group-mail-low
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-mail-low-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-mail-low-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-mail-low-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-mail-low-empty))))
 
    `(gnus-group-mail-low-empty
-     ((,monokai-class (:inherit gnus-group-news-low-empty))
-      (,monokai-256-class  (:inherit gnus-group-news-low-empty))))
+     ((,class (:inherit gnus-group-news-low-empty))
+      (,terminal-class (:inherit gnus-group-news-low-empty))))
 
    `(gnus-group-news-1
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-1-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-1-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-1-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-1-empty))))
 
    `(gnus-group-news-2
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-2-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-2-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-2-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-2-empty))))
 
    `(gnus-group-news-3
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-3-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-3-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-3-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-3-empty))))
 
    `(gnus-group-news-4
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-4-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-4-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-4-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-4-empty))))
 
    `(gnus-group-news-5
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-5-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-5-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-5-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-5-empty))))
 
    `(gnus-group-news-6
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-6-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-6-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-6-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-6-empty))))
 
    `(gnus-group-news-low
-     ((,monokai-class (:weight bold
-                               :inherit gnus-group-news-low-empty))
-      (,monokai-256-class  (:weight bold
-                                    :inherit gnus-group-news-low-empty))))
+     ((,class (:weight bold
+                       :inherit gnus-group-news-low-empty))
+      (,terminal-class (:weight bold
+                                :inherit gnus-group-news-low-empty))))
 
    `(gnus-header-content
-     ((,monokai-class (:inherit message-header-other))
-      (,monokai-256-class  (:inherit message-header-other))))
+     ((,class (:inherit message-header-other))
+      (,terminal-class (:inherit message-header-other))))
 
    `(gnus-header-from
-     ((,monokai-class (:inherit message-header-other))
-      (,monokai-256-class  (:inherit message-header-other))))
+     ((,class (:inherit message-header-other))
+      (,terminal-class (:inherit message-header-other))))
 
    `(gnus-header-name
-     ((,monokai-class (:inherit message-header-name))
-      (,monokai-256-class  (:inherit message-header-name))))
+     ((,class (:inherit message-header-name))
+      (,terminal-class (:inherit message-header-name))))
 
    `(gnus-header-newsgroups
-     ((,monokai-class (:inherit message-header-other))
-      (,monokai-256-class  (:inherit message-header-other))))
+     ((,class (:inherit message-header-other))
+      (,terminal-class (:inherit message-header-other))))
 
    `(gnus-header-subject
-     ((,monokai-class (:inherit message-header-subject))
-      (,monokai-256-class  (:inherit message-header-subject))))
+     ((,class (:inherit message-header-subject))
+      (,terminal-class (:inherit message-header-subject))))
 
    `(gnus-summary-cancelled
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(gnus-summary-high-ancient
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight bold))))
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    `(gnus-summary-high-read
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
+     ((,class (:foreground ,green
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-green
+                                    :weight bold))))
 
    `(gnus-summary-high-ticked
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight bold))))
+     ((,class (:foreground ,orange
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold))))
 
    `(gnus-summary-high-unread
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-fg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :weight bold))))
 
    `(gnus-summary-low-ancient
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-summary-low-read
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-summary-low-ticked
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(gnus-summary-low-unread
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(gnus-summary-normal-ancient
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-summary-normal-read
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-summary-normal-ticked
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(gnus-summary-normal-unread
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(gnus-summary-selected
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(gnus-cite-1
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-cite-2
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-cite-3
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-cite-4
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-cite-5
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-cite-6
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-cite-7
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(gnus-cite-8
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(gnus-cite-9
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(gnus-cite-10
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(gnus-cite-11
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(gnus-group-news-1-empty
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(gnus-group-news-2-empty
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-group-news-3-empty
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(gnus-group-news-4-empty
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-group-news-5-empty
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(gnus-group-news-6-empty
-     ((,monokai-class (:foreground ,monokai-blue-lc))
-      (,monokai-256-class  (:foreground ,monokai-256-blue-lc))))
+     ((,class (:foreground ,blue-lc))
+      (,terminal-class (:foreground ,terminal-blue-lc))))
 
    `(gnus-group-news-low-empty
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(gnus-signature
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(gnus-x-face
-     ((,monokai-class (:background ,monokai-foreground
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-foreground
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,monokai-fg
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-monokai-fg
+                                    :foreground ,terminal-monokai-bg))))
 
 
-   ;; helm
+   ;; helm (these probably need tweaking)
    `(helm-apt-deinstalled
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(helm-apt-installed
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(helm-bookmark-directory
-     ((,monokai-class (:inherit helm-ff-directory))
-      (,monokai-256-class  (:inherit helm-ff-directory))))
+     ((,class (:inherit helm-ff-directory))
+      (,terminal-class (:inherit helm-ff-directory))))
 
    `(helm-bookmark-file
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(helm-bookmark-gnus
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(helm-bookmark-info
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(helm-bookmark-man
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
    `(helm-bookmark-w3m
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(helm-bookmarks-su
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
-   `(helm-buffer-file
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
-
-   `(helm-buffer-directory
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
-
-   `(helm-buffer-process
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+   `(helm-buffer-not-saved
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(helm-buffer-saved-out
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background
-                                        :inverse-video t))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg
+                                    :inverse-video t))))
 
    `(helm-buffer-size
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(helm-candidate-number
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis
-                                   :bold t))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis
-                                        :bold t))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :bold t))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :bold t))))
 
    `(helm-ff-directory
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,blue))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-blue))))
 
    `(helm-ff-executable
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(helm-ff-file
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-monokai-fg))))
 
    `(helm-ff-invalid-symlink
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-orange
-                                   :slant italic))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-orange
-                                        :slant italic))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,orange
+                           :slant italic))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-orange
+                                    :slant italic))))
 
    `(helm-ff-prefix
-     ((,monokai-class (:background ,monokai-green
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-green
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-monokai-bg))))
 
    `(helm-ff-symlink
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(helm-grep-file
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :underline t))))
+     ((,class (:foreground ,cyan
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :underline t))))
 
    `(helm-grep-finish
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(helm-grep-lineno
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(helm-grep-match
-     ((,monokai-class (:inherit helm-match)))
-     ((,monokai-256-class  (:inherit helm-match))))
+     ((,class (:inherit match)))
+     ((,terminal-class (:inherit match))))
 
    `(helm-grep-running
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(helm-header
-     ((,monokai-class (:inherit header-line))
-      (,monokai-256-class  (:inherit terminal-header-line))))
+     ((,class (:inherit header-line))
+      (,terminal-class (:inherit terminal-header-line))))
 
    `(helm-lisp-completion-info
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(helm-lisp-show-completion
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :background ,monokai-highlight-line
-                                   :bold t))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :background ,monokai-256-highlight-line
-                                        :bold t))))
+     ((,class (:foreground ,yellow
+                           :background ,monokai-hl
+                           :bold t))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :background ,terminal-monokai-hl
+                                    :bold t))))
 
    `(helm-M-x-key
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :underline t))))
+     ((,class (:foreground ,orange
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :underline t))))
 
    `(helm-moccur-buffer
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :underline t))))
+     ((,class (:foreground ,cyan
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :underline t))))
 
    `(helm-match
-     ((,monokai-class (:foreground ,monokai-green :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green :inherit bold))))
-
-   `(helm-match-item
-     ((,monokai-class (:inherit helm-match))
-      (,monokai-256-class  (:inherit helm-match))))
+     ((,class (:inherit match))
+      (,terminal-class (:inherit match))))
 
    `(helm-selection
-     ((,monokai-class (:background ,monokai-highlight
-                                   :inherit bold
-                                   :underline nil))
-      (,monokai-256-class  (:background ,monokai-256-highlight
-                                        :inherit bold
-                                        :underline nil))))
+     ((,class (:background ,monokai-hl
+                           :underline t))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :underline t))))
 
    `(helm-selection-line
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis
-                                   :underline nil))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis
-                                        :underline nil))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :underline nil))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :underline nil))))
 
    `(helm-separator
-     ((,monokai-class (:foreground ,monokai-gray))
-      (,monokai-256-class  (:foreground ,monokai-256-gray))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(helm-source-header
-     ((,monokai-class (:background ,monokai-violet-l
-                                   :foreground ,monokai-background
-                                   :underline nil))
-      (,monokai-256-class  (:background ,monokai-256-violet-l
-                                        :foreground ,monokai-256-background
-                                        :underline nil))))
+     ((,class (:background ,blue-lc
+                           :foreground ,monokai-bg
+                           :underline nil))
+      (,terminal-class (:background ,terminal-blue-lc
+                                    :foreground ,terminal-monokai-bg
+                                    :underline nil))))
 
    `(helm-swoop-target-line-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(helm-swoop-target-line-block-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(helm-swoop-target-word-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,magenta
+                           :background unspecified))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background unspecified))))
 
    `(helm-time-zone-current
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(helm-time-zone-home
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(helm-visible-mark
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-magenta :bold t))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-magenta :bold t))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,magenta :bold t))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-magenta :bold t))))
 
    ;; helm-ls-git
    `(helm-ls-git-modified-not-staged-face
-     ((,monokai-class :foreground ,monokai-blue)
-      (,monokai-256-class  :foreground ,monokai-256-blue)))
+     ((,class :foreground ,blue)
+      (,terminal-class :foreground ,terminal-blue)))
 
    `(helm-ls-git-modified-and-staged-face
-     ((,monokai-class :foreground ,monokai-blue-l)
-      (,monokai-256-class  :foreground ,monokai-256-blue-l)))
+     ((,class :foreground ,blue-l)
+      (,terminal-class :foreground ,terminal-blue-l)))
 
    `(helm-ls-git-renamed-modified-face
-     ((,monokai-class :foreground ,monokai-blue-l)
-      (,monokai-256-class  :foreground ,monokai-256-blue-l)))
+     ((,class :foreground ,blue-l)
+      (,terminal-class :foreground ,terminal-blue-l)))
 
    `(helm-ls-git-untracked-face
-     ((,monokai-class :foreground ,monokai-orange)
-      (,monokai-256-class  :foreground ,monokai-256-orange)))
+     ((,class :foreground ,orange)
+      (,terminal-class :foreground ,terminal-orange)))
 
    `(helm-ls-git-added-copied-face
-     ((,monokai-class :foreground ,monokai-green)
-      (,monokai-256-class  :foreground ,monokai-256-green)))
+     ((,class :foreground ,green)
+      (,terminal-class :foreground ,terminal-green)))
 
    `(helm-ls-git-added-modified-face
-     ((,monokai-class :foreground ,monokai-green-l)
-      (,monokai-256-class  :foreground ,monokai-256-green-l)))
+     ((,class :foreground ,green-l)
+      (,terminal-class :foreground ,terminal-green-l)))
 
    `(helm-ls-git-deleted-not-staged-face
-     ((,monokai-class :foreground ,monokai-red)
-      (,monokai-256-class  :foreground ,monokai-256-red)))
+     ((,class :foreground ,red)
+      (,terminal-class :foreground ,terminal-red)))
 
    `(helm-ls-git-deleted-and-staged-face
-     ((,monokai-class :foreground ,monokai-red-l)
-      (,monokai-256-class  :foreground ,monokai-256-red-l)))
+     ((,class :foreground ,red-l)
+      (,terminal-class :foreground ,terminal-red-l)))
 
    `(helm-ls-git-conflict-face
-     ((,monokai-class :foreground ,monokai-yellow)
-      (,monokai-256-class  :foreground ,monokai-256-yellow)))
+     ((,class :foreground ,yellow)
+      (,terminal-class :foreground ,terminal-yellow)))
 
    ;; hi-lock-mode
-   `(hi-yellow
-     ((,monokai-class (:foreground ,monokai-yellow-lc
-                                   :background ,monokai-yellow-hc))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow-lc
-                                        :background ,monokai-256-yellow-hc))))
+   `(hi-yellown
+     ((,class (:foreground ,yellow-lc
+                           :background ,yellow-hc))
+      (,terminal-class (:foreground ,terminal-yellow-lc
+                                    :background ,terminal-yellow-hc))))
 
    `(hi-pink
-     ((,monokai-class (:foreground ,monokai-magenta-lc
-                                   :background ,monokai-magenta-hc))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta-lc
-                                        :background ,monokai-256-magenta-hc))))
+     ((,class (:foreground ,magenta-lc
+                           :background ,magenta-hc))
+      (,terminal-class (:foreground ,terminal-magenta-lc
+                                    :background ,terminal-magenta-hc))))
 
    `(hi-green
-     ((,monokai-class (:foreground ,monokai-green-lc
-                                   :background ,monokai-green-hc))
-      (,monokai-256-class  (:foreground ,monokai-256-green-lc
-                                        :background ,monokai-256-green-hc))))
+     ((,class (:foreground ,green-lc
+                           :background ,green-hc))
+      (,terminal-class (:foreground ,terminal-green-lc
+                                    :background ,terminal-green-hc))))
 
    `(hi-blue
-     ((,monokai-class (:foreground ,monokai-blue-lc
-                                   :background ,monokai-blue-hc))
-      (,monokai-256-class  (:foreground ,monokai-256-blue-lc
-                                        :background ,monokai-256-blue-hc))))
+     ((,class (:foreground ,blue-lc
+                           :background ,blue-hc))
+      (,terminal-class (:foreground ,terminal-blue-lc
+                                    :background ,terminal-blue-hc))))
 
    `(hi-black-b
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(hi-blue-b
-     ((,monokai-class (:foreground ,monokai-blue-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue-lc
-                                        :weight bold))))
+     ((,class (:foreground ,blue-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue-lc
+                                    :weight bold))))
 
    `(hi-green-b
-     ((,monokai-class (:foreground ,monokai-green-lc
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green-lc
-                                        :weight bold))))
+     ((,class (:foreground ,green-lc
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-green-lc
+                                    :weight bold))))
 
    `(hi-red-b
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold))))
+     ((,class (:foreground ,red
+                           :weight bold))))
 
    `(hi-black-hb
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg
+                                    :weight bold))))
 
    ;; highlight-changes
    `(highlight-changes
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(highlight-changes-delete
-     ((,monokai-class (:foreground ,monokai-red
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :underline t))))
+     ((,class (:foreground ,red
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :underline t))))
 
    ;; highlight-indentation
    `(highlight-indentation-face
-     ((,monokai-class (:background ,monokai-gray))
-      (,monokai-256-class  (:background ,monokai-256-gray))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(highlight-indentation-current-column-face
-     ((,monokai-class (:background ,monokai-gray))
-      (,monokai-256-class  (:background ,monokai-256-gray))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    ;; hl-line-mode
    `(hl-line
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl-line
+                           :inherit t))
+      (,terminal-class (:background ,terminal-monokai-hl-line
+                                    :inherit t))))
 
    `(hl-line-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl-line
+                           :inherit t))
+      (,terminal-class (:background ,terminal-monokai-hl-line
+                                    :inherit t))))
 
    ;; ido-mode
    `(ido-first-match
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight normal))))
+     ((,class (:foreground ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal))))
 
    `(ido-only-match
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-yellow
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-yellow
-                                        :weight normal))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-yellow
+                                    :weight normal))))
 
    `(ido-subdir
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(ido-incomplete-regexp
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold ))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold ))))
+     ((,class (:foreground ,red
+                           :weight bold ))
+      (,terminal-class (:foreground ,terminal-red
+                                    :weight bold ))))
 
    `(ido-indicator
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-background
-                                   :width condensed))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground ,monokai-256-background
-                                        :width condensed))))
+     ((,class (:background ,red
+                           :foreground ,monokai-bg
+                           :width condensed))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground ,terminal-monokai-bg
+                                    :width condensed))))
 
    `(ido-virtual
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
-   ;; info
-   `(info-header-xref
-     ((,monokai-class (:foreground ,monokai-green
-                                   :inherit bold
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :inherit bold
-                                        :underline t))))
-
-   `(info-menu
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
-
-   `(info-node
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :inherit bold))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :inherit bold))))
-
-   `(info-quoted-name
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
-
-   `(info-reference-item
-     ((,monokai-class (:background nil
-                                   :underline t
-                                   :inherit bold))
-      (,monokai-256-class  (:background nil
-                                        :underline t
-                                        :inherit bold))))
-
-   `(info-string
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
-
-   `(info-title-1
-     ((,monokai-class (:height ,monokai-height-plus-4))
-      (,monokai-256-class  (:height ,monokai-height-plus-4))))
-
-   `(info-title-2
-     ((,monokai-class (:height ,monokai-height-plus-3))
-      (,monokai-256-class  (:height ,monokai-height-plus-3))))
-
-   `(info-title-3
-     ((,monokai-class (:height ,monokai-height-plus-2))
-      (,monokai-256-class  (:height ,monokai-height-plus-2))))
-
-   `(info-title-4
-     ((,monokai-class (:height ,monokai-height-plus-1))
-      (,monokai-256-class  (:height ,monokai-height-plus-1))))
-
-   ;; ivy
-   `(ivy-current-match
-     ((,monokai-class (:background ,monokai-gray :inherit bold))
-      (,monokai-256-class  (:background ,monokai-gray-l :inherit bold))))
-
-   `(ivy-minibuffer-match-face-1
-     ((,monokai-class (:inherit bold))
-      (,monokai-256-class  (:inherit bold))))
-
-   `(ivy-minibuffer-match-face-2
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :underline t))))
-
-   `(ivy-minibuffer-match-face-3
-     ((,monokai-class (:foreground ,monokai-green
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :underline t))))
-
-   `(ivy-minibuffer-match-face-4
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :underline t))))
-
-   `(ivy-remote
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
-
-   `(swiper-line-face
-     ((,monokai-class (:background ,monokai-highlight-line))))
-
-   `(swiper-match-face-1
-     ((,monokai-class (:background ,monokai-gray-d))))
-
-   `(swiper-match-face-2
-     ((,monokai-class (:background ,monokai-green))))
-
-   `(swiper-match-face-3
-     ((,monokai-class (:background ,monokai-orange))))
-
-   `(swiper-match-face-4
-     ((,monokai-class (:background ,monokai-magenta))))
-
-   ;; jabber
    `(jabber-activity-face
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-red))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-red))))
+     ((,class (:weight bold
+                       :foreground ,red))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-red))))
 
    `(jabber-activity-personal-face
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-blue))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-blue))))
+     ((,class (:weight bold
+                       :foreground ,blue))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-blue))))
 
    `(jabber-chat-error
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-red))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-red))))
+     ((,class (:weight bold
+                       :foreground ,red))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-red))))
 
    `(jabber-chat-prompt-foreign
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-red))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-red))))
+     ((,class (:weight bold
+                       :foreground ,red))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-red))))
 
    `(jabber-chat-prompt-local
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-blue))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-blue))))
+     ((,class (:weight bold
+                       :foreground ,blue))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-blue))))
 
    `(jabber-chat-prompt-system
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-green))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-green))))
+     ((,class (:weight bold
+                       :foreground ,green))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-green))))
 
    `(jabber-chat-text-foreign
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(jabber-chat-text-local
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(jabber-chat-rare-time-face
-     ((,monokai-class (:underline t
-                                  :foreground ,monokai-green))
-      (,monokai-256-class  (:underline t
-                                       :foreground ,monokai-256-green))))
+     ((,class (:underline t
+                          :foreground ,green))
+      (,terminal-class (:underline t
+                                   :foreground ,terminal-green))))
 
    `(jabber-roster-user-away
-     ((,monokai-class (:slant italic
-                              :foreground ,monokai-green))
-      (,monokai-256-class  (:slant italic
-                                   :foreground ,monokai-256-green))))
+     ((,class (:slant italic
+                      :foreground ,green))
+      (,terminal-class (:slant italic
+                               :foreground ,terminal-green))))
 
    `(jabber-roster-user-chatty
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-orange))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-orange))))
+     ((,class (:weight bold
+                       :foreground ,orange))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-orange))))
 
    `(jabber-roster-user-dnd
-     ((,monokai-class (:slant italic
-                              :foreground ,monokai-red))
-      (,monokai-256-class  (:slant italic
-                                   :foreground ,monokai-256-red))))
+     ((,class (:slant italic
+                      :foreground ,red))
+      (,terminal-class (:slant italic
+                               :foreground ,terminal-red))))
 
    `(jabber-roster-user-error
-     ((,monokai-class (:weight light
-                               :slant italic
-                               :foreground ,monokai-red))
-      (,monokai-256-class  (:weight light
-                                    :slant italic
-                                    :foreground ,monokai-256-red))))
+     ((,class (:weight light
+                       :slant italic
+                       :foreground ,red))
+      (,terminal-class (:weight light
+                                :slant italic
+                                :foreground ,terminal-red))))
 
    `(jabber-roster-user-offline
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(jabber-roster-user-online
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-blue))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-blue))))
+     ((,class (:weight bold
+                       :foreground ,blue))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-blue))))
 
    `(jabber-roster-user-xa
-     ((,monokai-class (:slant italic
-                              :foreground ,monokai-magenta))
-      (,monokai-256-class  (:slant italic
-                                   :foreground ,monokai-256-magenta))))
+     ((,class (:slant italic
+                      :foreground ,magenta))
+      (,terminal-class (:slant italic
+                               :foreground ,terminal-magenta))))
 
    ;; js2-mode colors
    `(js2-error
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(js2-external-variable
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
-
-   `(js2-function-call
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(js2-function-param
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(js2-instance-member
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,magenta)))
+     ((,terminal-class (:foreground ,terminal-magenta))))
 
    `(js2-jsdoc-html-tag-delimiter
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(js2-jsdoc-html-tag-name
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(js2-jsdoc-tag
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(js2-jsdoc-type
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(js2-jsdoc-value
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
    `(js2-magic-paren
-     ((,monokai-class (:underline t))
-      (,monokai-256-class  (:underline t))))
-
-   `(js2-object-property
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:underline t))
+      (,terminal-class (:underline t))))
 
    `(js2-private-function-call
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,yellow)))
+     ((,terminal-class (:foreground ,terminal-yellow))))
 
    `(js2-private-member
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(js2-warning
-     ((,monokai-class (:underline ,monokai-orange))
-      (,monokai-256-class  (:underline ,monokai-256-orange))))
+     ((,class (:underline ,orange))
+      (,terminal-class (:underline ,terminal-orange))))
 
    ;; jedi
    `(jedi:highlight-function-argument
-     ((,monokai-class (:inherit bold))
-      (,monokai-256-class  (:inherit bold))))
+     ((,class (:inherit bold))
+      (,terminal-class (:inherit bold))))
 
    ;; linum-mode
    `(linum
-     ((,monokai-class (:foreground ,monokai-line-number
-                                   :background ,monokai-fringe-bg))
-      (,monokai-256-class  (:foreground ,monokai-256-line-number
-                                        :background ,monokai-256-fringe-bg))))
-
-   ;; linum-relative-current-face
-   `(linum-relative-current-face
-     ((,monokai-class (:foreground ,monokai-line-number
-                                   :background ,monokai-highlight-line))
-      (,monokai-256-class  (:foreground ,monokai-256-line-number
-                                        :background ,monokai-256-highlight-line))))
+     ((,class (:foreground ,monokai-comments
+                           :background ,s-fringe-bg))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-s-fringe-bg))))
 
    ;; lusty-explorer
    `(lusty-directory-face
-     ((,monokai-class (:inherit dimonokai-red-directory))
-      (,monokai-256-class  (:inherit dimonokai-red-directory))))
+     ((,class (:inherit dired-directory))
+      (,terminal-class (:inherit dired-directory))))
 
    `(lusty-file-face
-     ((,monokai-class nil)
-      (,monokai-256-class  nil)))
+     ((,class nil)
+      (,terminal-class nil)))
 
    `(lusty-match-face
-     ((,monokai-class (:inherit ido-first-match))
-      (,monokai-256-class  (:inherit ido-first-match))))
+     ((,class (:inherit ido-first-match))
+      (,terminal-class (:inherit ido-first-match))))
 
    `(lusty-slash-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :weight bold))))
+     ((,class (:foreground ,cyan
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :weight bold))))
 
    ;; magit
-   ;;
-   ;; TODO: Add supports for all magit faces
-   ;; https://github.com/magit/magit/search?utf8=%E2%9C%93&q=face
-   ;;
-   `(magit-diff-added
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-background))))
-
-   `(magit-diff-added-highlight
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-highlight-line))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-highlight-line))))
-
-   `(magit-diff-removed
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background))))
-
-   `(magit-diff-removed-highlight
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-highlight-line))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-highlight-line))))
-
    `(magit-section-title
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(magit-branch
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight bold))))
+     ((,class (:foreground ,orange
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight bold))))
 
    `(magit-item-highlight
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :weight unspecified))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :weight unspecified))))
+     ((,class (:background ,monokai-hl
+                           :weight unspecified))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :weight unspecified))))
 
    `(magit-log-author
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(magit-log-graph
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(magit-log-head-label-bisect-bad
-     ((,monokai-class (:background ,monokai-red-hc
-                                   :foreground ,monokai-red-lc
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-red-hc
-                                        :foreground ,monokai-256-red-lc
-                                        :box 1))))
+     ((,class (:background ,red-hc
+                           :foreground ,red-lc
+                           :box 1))
+      (,terminal-class (:background ,terminal-red-hc
+                                    :foreground ,terminal-red-lc
+                                    :box 1))))
 
    `(magit-log-head-label-bisect-good
-     ((,monokai-class (:background ,monokai-green-hc
-                                   :foreground ,monokai-green-lc
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-green-hc
-                                        :foreground ,monokai-256-green-lc
-                                        :box 1))))
+     ((,class (:background ,green-hc
+                           :foreground ,green-lc
+                           :box 1))
+      (,terminal-class (:background ,terminal-green-hc
+                                    :foreground ,terminal-green-lc
+                                    :box 1))))
 
    `(magit-log-head-label-default
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :box 1))))
+     ((,class (:background ,monokai-hl
+                           :box 1))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :box 1))))
 
    `(magit-log-head-label-local
-     ((,monokai-class (:background ,monokai-blue-lc
-                                   :foreground ,monokai-blue-hc
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-blue-lc
-                                        :foreground ,monokai-256-blue-hc
-                                        :box 1))))
+     ((,class (:background ,blue-lc
+                           :foreground ,blue-hc
+                           :box 1))
+      (,terminal-class (:background ,terminal-blue-lc
+                                    :foreground ,terminal-blue-hc
+                                    :box 1))))
 
    `(magit-log-head-label-patches
-     ((,monokai-class (:background ,monokai-red-lc
-                                   :foreground ,monokai-red-hc
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-red-lc
-                                        :foreground ,monokai-256-red-hc
-                                        :box 1))))
+     ((,class (:background ,red-lc
+                           :foreground ,red-hc
+                           :box 1))
+      (,terminal-class (:background ,terminal-red-lc
+                                    :foreground ,terminal-red-hc
+                                    :box 1))))
 
    `(magit-log-head-label-remote
-     ((,monokai-class (:background ,monokai-green-lc
-                                   :foreground ,monokai-green-hc
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-green-lc
-                                        :foreground ,monokai-256-green-hc
-                                        :box 1))))
+     ((,class (:background ,green-lc
+                           :foreground ,green-hc
+                           :box 1))
+      (,terminal-class (:background ,terminal-green-lc
+                                    :foreground ,terminal-green-hc
+                                    :box 1))))
 
    `(magit-log-head-label-tags
-     ((,monokai-class (:background ,monokai-yellow-lc
-                                   :foreground ,monokai-yellow-hc
-                                   :box 1))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc
-                                        :foreground ,monokai-256-yellow-hc
-                                        :box 1))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,yellow-hc
+                           :box 1))
+      (,terminal-class (:background ,terminal-yellow-lc
+                                    :foreground ,terminal-yellow-hc
+                                    :box 1))))
 
    `(magit-log-sha1
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
-
-   ;; man
-   `(Man-overstrike
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight bold))))
-
-   `(Man-reverse
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
-
-   `(Man-underline
-     ((,monokai-class (:foreground ,monokai-green :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-green :underline t))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    ;; monky
    `(monky-section-title
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(monky-diff-add
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(monky-diff-del
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    ;; markdown-mode
    `(markdown-header-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(markdown-header-face-1
-     ((,monokai-class (:inherit markdown-header-face
-                                :height ,monokai-height-plus-4))
-      (,monokai-256-class  (:inherit markdown-header-face
-                                     :height ,monokai-height-plus-4))))
+     ((,class (:inherit markdown-header-face
+                        :height ,monokai-height-plus-4))
+      (,terminal-class (:inherit markdown-header-face
+                                 :height ,monokai-height-plus-4))))
 
    `(markdown-header-face-2
-     ((,monokai-class (:inherit markdown-header-face
-                                :height ,monokai-height-plus-3))
-      (,monokai-256-class  (:inherit markdown-header-face
-                                     :height ,monokai-height-plus-3))))
+     ((,class (:inherit markdown-header-face
+                        :height ,monokai-height-plus-3))
+      (,terminal-class (:inherit markdown-header-face
+                                 :height ,monokai-height-plus-3))))
 
    `(markdown-header-face-3
-     ((,monokai-class (:inherit markdown-header-face
-                                :height ,monokai-height-plus-2))
-      (,monokai-256-class  (:inherit markdown-header-face
-                                     :height ,monokai-height-plus-2))))
+     ((,class (:inherit markdown-header-face
+                        :height ,monokai-height-plus-2))
+      (,terminal-class (:inherit markdown-header-face
+                                 :height ,monokai-height-plus-2))))
 
    `(markdown-header-face-4
-     ((,monokai-class (:inherit markdown-header-face
-                                :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:inherit markdown-header-face
-                                     :height ,monokai-height-plus-1))))
+     ((,class (:inherit markdown-header-face
+                        :height ,monokai-height-plus-1))
+      (,terminal-class (:inherit markdown-header-face
+                                 :height ,monokai-height-plus-1))))
 
    `(markdown-header-face-5
-     ((,monokai-class (:inherit markdown-header-face))
-      (,monokai-256-class  (:inherit markdown-header-face))))
+     ((,class (:inherit markdown-header-face))
+      (,terminal-class (:inherit markdown-header-face))))
 
    `(markdown-header-face-6
-     ((,monokai-class (:inherit markdown-header-face))
-      (,monokai-256-class  (:inherit markdown-header-face))))
+     ((,class (:inherit markdown-header-face))
+      (,terminal-class (:inherit markdown-header-face))))
 
    ;; message-mode
    `(message-cited-text
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(message-header-name
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(message-header-other
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :weight normal))))
+     ((,class (:foreground ,monokai-fg
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :weight normal))))
 
    `(message-header-to
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :weight normal))))
+     ((,class (:foreground ,monokai-fg
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :weight normal))))
 
    `(message-header-cc
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :weight normal))))
+     ((,class (:foreground ,monokai-fg
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :weight normal))))
 
    `(message-header-newsgroups
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(message-header-subject
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :weight normal))))
+     ((,class (:foreground ,cyan
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :weight normal))))
 
    `(message-header-xheader
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(message-mml
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(message-separator
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :slant italic))))
+     ((,class (:foreground ,monokai-comments
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :slant italic))))
 
    ;; mew
    `(mew-face-header-subject
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(mew-face-header-from
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(mew-face-header-date
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-header-to
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(mew-face-header-key
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-header-private
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-header-important
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(mew-face-header-marginal
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-fg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :weight bold))))
 
    `(mew-face-header-warning
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(mew-face-header-xmew
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-header-xmew-bad
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(mew-face-body-url
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(mew-face-body-comment
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :slant italic))))
+     ((,class (:foreground ,monokai-fg
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :slant italic))))
 
    `(mew-face-body-cite1
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-body-cite2
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(mew-face-body-cite3
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(mew-face-body-cite4
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(mew-face-body-cite5
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(mew-face-mark-review
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(mew-face-mark-escape
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-mark-delete
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(mew-face-mark-unlink
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(mew-face-mark-refile
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-mark-unread
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(mew-face-eof-message
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(mew-face-eof-part
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    ;; mingus
    `(mingus-directory-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(mingus-pausing-face
-     ((,monokai-class (:foreground ,monokai-magenta))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta))))
+     ((,class (:foreground ,magenta))
+      (,terminal-class (:foreground ,terminal-magenta))))
 
    `(mingus-playing-face
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(mingus-playlist-face
-     ((,monokai-class (:foreground ,monokai-cyan ))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan ))))
+     ((,class (:foreground ,cyan ))
+      (,terminal-class (:foreground ,terminal-cyan ))))
 
    `(mingus-song-file-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(mingus-stopped-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-
-   ;; mmm
-   `(mmm-init-submode-face
-     ((,monokai-class (:background ,monokai-violet-d))
-      (,monokai-256-class  (:background ,monokai-256-violet-d))))
-
-   `(mmm-cleanup-submode-face
-     ((,monokai-class (:background ,monokai-orange-d))
-      (,monokai-256-class  (:background ,monokai-256-orange-d))))
-
-   `(mmm-declaration-submode-face
-     ((,monokai-class (:background ,monokai-cyan-d))
-      (,monokai-256-class  (:background ,monokai-256-cyan-d))))
-
-   `(mmm-comment-submode-face
-     ((,monokai-class (:background ,monokai-blue-d))
-      (,monokai-256-class  (:background ,monokai-256-blue-d))))
-
-   `(mmm-output-submode-face
-     ((,monokai-class (:background ,monokai-red-d))
-      (,monokai-256-class  (:background ,monokai-256-red-d))))
-
-   `(mmm-special-submode-face
-     ((,monokai-class (:background ,monokai-green-d))
-      (,monokai-256-class  (:background ,monokai-256-green-d))))
-
-   `(mmm-code-submode-face
-     ((,monokai-class (:background ,monokai-gray))
-      (,monokai-256-class  (:background ,monokai-256-gray))))
-
-   `(mmm-default-submode-face
-     ((,monokai-class (:background ,monokai-gray-d))
-      (,monokai-256-class  (:background ,monokai-256-gray-d))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    ;; moccur
    `(moccur-current-line-face
-     ((,monokai-class (:underline t))
-      (,monokai-256-class  (:underline t))))
+     ((,class (:underline t))
+      (,terminal-class (:underline t))))
 
    `(moccur-edit-done-face
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-background
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-background
-                                        :slant italic))))
+     ((,class (:foreground ,monokai-comments
+                           :background ,monokai-bg
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-monokai-bg
+                                    :slant italic))))
 
    `(moccur-edit-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-monokai-bg))))
 
    `(moccur-edit-file-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(moccur-edit-reject-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(moccur-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis
-                                        :weight bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :weight bold))))
 
    `(search-buffers-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis
-                                        :weight bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :weight bold))))
 
    `(search-buffers-header-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-yellow
+                                    :weight bold))))
 
    ;; mu4e
    `(mu4e-cited-1-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,green
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-green
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-cited-2-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,blue
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-cited-3-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,orange
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-cited-4-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,yellow
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-cited-5-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,cyan
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-cited-6-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,green
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-green
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-cited-7-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :slant italic
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :slant italic
-                                        :weight normal))))
+     ((,class (:foreground ,blue
+                           :slant italic
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :slant italic
+                                    :weight normal))))
 
    `(mu4e-flagged-face
-     ((,monokai-class (:foreground ,monokai-magenta
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta
-                                        :weight bold))))
+     ((,class (:foreground ,magenta
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :weight bold))))
 
    `(mu4e-view-url-number-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight normal))))
+     ((,class (:foreground ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal))))
 
    `(mu4e-warning-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :slant normal
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :slant normal
-                                        :weight bold))))
+     ((,class (:foreground ,red
+                           :slant normal
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-red
+                                    :slant normal
+                                    :weight bold))))
 
    `(mu4e-header-highlight-face
-     ((,monokai-class (:inherit unspecified
-                                :foreground unspecified
-                                :background ,monokai-highlight-line
-                                :underline ,monokai-emphasis
-                                :weight normal))
-      (,monokai-256-class  (:inherit unspecified
-                                     :foreground unspecified
-                                     :background ,monokai-256-highlight-line
-                                     :underline ,monokai-256-emphasis
-                                     :weight normal))))
+     ((,class (:inherit unspecified
+                        :foreground unspecified
+                        :background ,monokai-hl
+                        :underline ,monokai-emph
+                        :weight normal))
+      (,terminal-class (:inherit unspecified
+                                 :foreground unspecified
+                                 :background ,terminal-monokai-hl
+                                 :underline ,terminal-monokai-emph
+                                 :weight normal))))
 
 
    `(mu4e-draft-face
-     ((,monokai-class (:inherit font-lock-string-face))
-      (,monokai-256-class  (:inherit font-lock-string-face))))
+     ((,class (:inherit font-lock-string-face))
+      (,terminal-class (:inherit font-lock-string-face))))
 
    `(mu4e-footer-face
-     ((,monokai-class (:inherit font-lock-comment-face))
-      (,monokai-256-class  (:inherit font-lock-comment-face))))
+     ((,class (:inherit font-lock-comment-face))
+      (,terminal-class (:inherit font-lock-comment-face))))
 
    `(mu4e-forwarded-face
-     ((,monokai-class (:inherit font-lock-builtin-face
-                                :weight normal))
-      (,monokai-256-class  (:inherit font-lock-builtin-face
-                                     :weight normal))))
+     ((,class (:inherit font-lock-builtin-face
+                        :weight normal))
+      (,terminal-class (:inherit font-lock-builtin-face
+                                 :weight normal))))
 
    `(mu4e-header-face
-     ((,monokai-class (:inherit default))
-      (,monokai-256-class  (:inherit default))))
+     ((,class (:inherit default))
+      (,terminal-class (:inherit default))))
 
    `(mu4e-header-marks-face
-     ((,monokai-class (:inherit font-lock-preprocessor-face))
-      (,monokai-256-class  (:inherit font-lock-preprocessor-face))))
+     ((,class (:inherit font-lock-preprocessor-face))
+      (,terminal-class (:inherit font-lock-preprocessor-face))))
 
    `(mu4e-header-title-face
-     ((,monokai-class (:inherit font-lock-type-face))
-      (,monokai-256-class  (:inherit font-lock-type-face))))
+     ((,class (:inherit font-lock-type-face))
+      (,terminal-class (:inherit font-lock-type-face))))
 
    `(mu4e-highlight-face
-     ((,monokai-class (:inherit font-lock-pseudo-keyword-face
-                                :weight bold))
-      (,monokai-256-class  (:inherit font-lock-pseudo-keyword-face
-                                     :weight bold))))
+     ((,class (:inherit font-lock-pseudo-keyword-face
+                        :weight bold))
+      (,terminal-class (:inherit font-lock-pseudo-keyword-face
+                                 :weight bold))))
 
    `(mu4e-moved-face
-     ((,monokai-class (:inherit font-lock-comment-face
-                                :slant italic))
-      (,monokai-256-class  (:inherit font-lock-comment-face
-                                     :slant italic))))
+     ((,class (:inherit font-lock-comment-face
+                        :slant italic))
+      (,terminal-class (:inherit font-lock-comment-face
+                                 :slant italic))))
 
    `(mu4e-ok-face
-     ((,monokai-class (:inherit font-lock-comment-face
-                                :slant normal
-                                :weight bold))
-      (,monokai-256-class  (:inherit font-lock-comment-face
-                                     :slant normal
-                                     :weight bold))))
+     ((,class (:inherit font-lock-comment-face
+                        :slant normal
+                        :weight bold))
+      (,terminal-class (:inherit font-lock-comment-face
+                                 :slant normal
+                                 :weight bold))))
 
    `(mu4e-replied-face
-     ((,monokai-class (:inherit font-lock-builtin-face
-                                :weight normal))
-      (,monokai-256-class  (:inherit font-lock-builtin-face
-                                     :weight normal))))
+     ((,class (:inherit font-lock-builtin-face
+                        :weight normal))
+      (,terminal-class (:inherit font-lock-builtin-face
+                                 :weight normal))))
 
    `(mu4e-system-face
-     ((,monokai-class (:inherit font-lock-comment-face
-                                :slant italic))
-      (,monokai-256-class  (:inherit font-lock-comment-face
-                                     :slant italic))))
+     ((,class (:inherit font-lock-comment-face
+                        :slant italic))
+      (,terminal-class (:inherit font-lock-comment-face
+                                 :slant italic))))
 
    `(mu4e-title-face
-     ((,monokai-class (:inherit font-lock-type-face
-                                :weight bold))
-      (,monokai-256-class  (:inherit font-lock-type-face
-                                     :weight bold))))
+     ((,class (:inherit font-lock-type-face
+                        :weight bold))
+      (,terminal-class (:inherit font-lock-type-face
+                                 :weight bold))))
 
    `(mu4e-trashed-face
-     ((,monokai-class (:inherit font-lock-comment-face
-                                :strike-through t))
-      (,monokai-256-class  (:inherit font-lock-comment-face
-                                     :strike-through t))))
+     ((,class (:inherit font-lock-comment-face
+                        :strike-through t))
+      (,terminal-class (:inherit font-lock-comment-face
+                                 :strike-through t))))
 
    `(mu4e-unread-face
-     ((,monokai-class (:inherit font-lock-keyword-face
-                                :weight bold))
-      (,monokai-256-class  (:inherit font-lock-keyword-face
-                                     :weight bold))))
+     ((,class (:inherit font-lock-keyword-face
+                        :weight bold))
+      (,terminal-class (:inherit font-lock-keyword-face
+                                 :weight bold))))
 
    `(mu4e-view-attach-number-face
-     ((,monokai-class (:inherit font-lock-variable-name-face
-                                :weight bold))
-      (,monokai-256-class  (:inherit font-lock-variable-name-face
-                                     :weight bold))))
+     ((,class (:inherit font-lock-variable-name-face
+                        :weight bold))
+      (,terminal-class (:inherit font-lock-variable-name-face
+                                 :weight bold))))
 
    `(mu4e-view-contact-face
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :weight normal))))
+     ((,class (:foreground ,monokai-fg
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :weight normal))))
 
    `(mu4e-view-header-key-face
-     ((,monokai-class (:inherit message-header-name
-                                :weight normal))
-      (,monokai-256-class  (:inherit message-header-name
-                                     :weight normal))))
+     ((,class (:inherit message-header-name
+                        :weight normal))
+      (,terminal-class (:inherit message-header-name
+                                 :weight normal))))
 
    `(mu4e-view-header-value-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :weight normal
-                                   :slant normal))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :weight normal
-                                        :slant normal))))
+     ((,class (:foreground ,cyan
+                           :weight normal
+                           :slant normal))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :weight normal
+                                    :slant normal))))
 
    `(mu4e-view-link-face
-     ((,monokai-class (:inherit link))
-      (,monokai-256-class  (:inherit link))))
+     ((,class (:inherit link))
+      (,terminal-class (:inherit link))))
 
    `(mu4e-view-special-header-value-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight normal
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight normal
-                                        :underline nil))))
+     ((,class (:foreground ,blue
+                           :weight normal
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight normal
+                                    :underline nil))))
 
    ;; mumamo
    `(mumamo-background-chunk-submode1
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    ;; nav
    `(nav-face-heading
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(nav-face-button-num
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(nav-face-dir
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(nav-face-hdir
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(nav-face-file
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(nav-face-hfile
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    ;; nav-flash
    `(nav-flash-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
-
-   ;; neo-tree
-   `(neo-banner-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-background
-                                        :weight bold))))
-
-
-   `(neo-header-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background))))
-
-   `(neo-root-dir-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-background))))
-
-   `(neo-dir-link-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-background))))
-
-   `(neo-file-link-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
-
-   `(neo-button-face
-     ((,monokai-class (:underline nil))
-      (,monokai-256-class  (:underline nil))))
-
-   `(neo-expand-btn-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
-   `(neo-vc-default-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
-
-   `(neo-vc-user-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :slant italic))))
-
-   `(neo-vc-up-to-date-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
-   `(neo-vc-edited-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
-
-   `(neo-vc-needs-update-face
-     ((,monokai-class (:underline t))
-      (,monokai-256-class  (:underline t))))
-
-   `(neo-vc-needs-merge-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-
-   `(neo-vc-unlocked-changes-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-comments))))
-
-   `(neo-vc-added-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
-
-   `(neo-vc-removed-face
-     ((,monokai-class (:strike-through t))
-      (,monokai-256-class  (:strike-through t))))
-
-   `(neo-vc-conflict-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-
-   `(neo-vc-missing-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-
-   `(neo-vc-ignored-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    ;; org-mode
    `(org-agenda-structure
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-highlight-line
-                                   :weight bold
-                                   :slant normal
-                                   :inverse-video nil
-                                   :height ,monokai-height-plus-1
-                                   :underline nil
-                                   :box (:line-width 2 :color ,monokai-background)))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-highlight-line
-                                        :weight bold
-                                        :slant normal
-                                        :inverse-video nil
-                                        :height ,monokai-height-plus-1
-                                        :underline nil
-                                        :box (:line-width 2 :color ,monokai-256-background)))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-hl
+                           :weight bold
+                           :slant normal
+                           :inverse-video nil
+                           :height ,monokai-height-plus-1
+                           :underline nil
+                           :box (:line-width 2 :color ,monokai-bg)))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-hl
+                                    :weight bold
+                                    :slant normal
+                                    :inverse-video nil
+                                    :height ,monokai-height-plus-1
+                                    :underline nil
+                                    :box (:line-width 2 :color ,terminal-monokai-bg)))))
 
    `(org-agenda-calendar-event
-     ((,monokai-class (:foreground ,monokai-emphasis))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis))))
+     ((,class (:foreground ,monokai-emph))
+      (,terminal-class (:foreground ,terminal-monokai-emph))))
 
    `(org-agenda-calendar-sexp
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :slant italic))))
+     ((,class (:foreground ,monokai-fg
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :slant italic))))
 
    `(org-agenda-date
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video nil
-                                   :overline nil
-                                   :slant normal
-                                   :height 1.0
-                                   :box (:line-width 2 :color ,monokai-background)))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video nil
-                                        :overline nil
-                                        :slant normal
-                                        :height 1.0
-                                        :box (:line-width 2 :color ,monokai-256-background)))) t)
+     ((,class (:foreground ,monokai-comments
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video nil
+                           :overline nil
+                           :slant normal
+                           :height 1.0
+                           :box (:line-width 2 :color ,monokai-bg)))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video nil
+                                    :overline nil
+                                    :slant normal
+                                    :height 1.0
+                                    :box (:line-width 2 :color ,terminal-monokai-bg)))) t)
 
    `(org-agenda-date-weekend
-     ((,monokai-class (:inherit org-agenda-date
-                                :inverse-video nil
-                                :background unspecified
-                                :foreground ,monokai-comments
-                                :weight unspecified
-                                :underline t
-                                :overline nil
-                                :box unspecified))
-      (,monokai-256-class  (:inherit org-agenda-date
-                                     :inverse-video nil
-                                     :background unspecified
-                                     :foreground ,monokai-256-comments
-                                     :weight unspecified
-                                     :underline t
-                                     :overline nil
-                                     :box unspecified))) t)
+     ((,class (:inherit org-agenda-date
+                        :inverse-video nil
+                        :background unspecified
+                        :foreground ,monokai-comments
+                        :weight unspecified
+                        :underline t
+                        :overline nil
+                        :box unspecified))
+      (,terminal-class (:inherit org-agenda-date
+                                 :inverse-video nil
+                                 :background unspecified
+                                 :foreground ,terminal-monokai-comments
+                                 :weight unspecified
+                                 :underline t
+                                 :overline nil
+                                 :box unspecified))) t)
 
    `(org-agenda-date-today
-     ((,monokai-class (:inherit org-agenda-date
-                                :inverse-video t
-                                :weight bold
-                                :underline unspecified
-                                :overline nil
-                                :box unspecified
-                                :foreground ,monokai-blue
-                                :background ,monokai-background))
-      (,monokai-256-class  (:inherit org-agenda-date
-                                     :inverse-video t
-                                     :weight bold
-                                     :underline unspecified
-                                     :overline nil
-                                     :box unspecified
-                                     :foreground ,monokai-256-blue
-                                     :background ,monokai-256-background))) t)
+     ((,class (:inherit org-agenda-date
+                        :inverse-video t
+                        :weight bold
+                        :underline unspecified
+                        :overline nil
+                        :box unspecified
+                        :foreground ,blue
+                        :background ,monokai-bg))
+      (,terminal-class (:inherit org-agenda-date
+                                 :inverse-video t
+                                 :weight bold
+                                 :underline unspecified
+                                 :overline nil
+                                 :box unspecified
+                                 :foreground ,terminal-blue
+                                 :background ,terminal-monokai-bg))) t)
 
    `(org-agenda-done
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :slant italic))) t)
+     ((,class (:foreground ,monokai-comments
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :slant italic))) t)
 
    `(org-archived
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :weight normal))))
+     ((,class (:foreground ,monokai-comments
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :weight normal))))
 
    `(org-block
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-gray))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-gray))))
-
-   `(org-block-background
-     ((,monokai-class (:background ,monokai-gray))
-      (,monokai-256-class  (:background ,monokai-256-gray))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(org-block-begin-line
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-gray-d
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-gray-d
-                                        :slant italic))))
-
-   `(org-block-end-line
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-gray-d
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-gray-d
-                                        :slant italic))))
+     ((,class (:foreground ,monokai-comments
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :slant italic))))
 
    `(org-checkbox
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-foreground
-                                   :box (:line-width 1 :style released-button)))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-foreground
-                                        :box (:line-width 1 :style released-button)))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,monokai-fg
+                           :box (:line-width 1 :style released-button)))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-monokai-fg
+                                    :box (:line-width 1 :style released-button)))))
 
    `(org-code
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(org-date
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :underline t))))
+     ((,class (:foreground ,blue
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :underline t))))
 
    `(org-done
-     ((,monokai-class (:weight bold
-                               :foreground ,monokai-green))
-      (,monokai-256-class  (:weight bold
-                                    :foreground ,monokai-256-green))))
+     ((,class (:weight bold
+                       :foreground ,green))
+      (,terminal-class (:weight bold
+                                :foreground ,terminal-green))))
 
    `(org-ellipsis
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(org-formula
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(org-headline-done
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(org-hide
-     ((,monokai-class (:foreground ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-background))))
+     ((,class (:foreground ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-bg))))
 
    `(org-level-1
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-4
-                                :foreground ,monokai-orange))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-4
-                                     :foreground ,monokai-256-orange))))
+     ((,class (:inherit ,s-variable-pitch
+                        :height ,monokai-height-plus-4
+                        :foreground ,orange))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :height ,monokai-height-plus-4
+                                 :foreground ,terminal-orange))))
 
    `(org-level-2
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-3
-                                :foreground ,monokai-green))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-3
-                                     :foreground ,monokai-256-green))))
+     ((,class (:inherit ,s-variable-pitch
+                        :height ,monokai-height-plus-3
+                        :foreground ,green))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :height ,monokai-height-plus-3
+                                 :foreground ,terminal-green))))
 
    `(org-level-3
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-2
-                                :foreground ,monokai-blue))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-2
-                                     :foreground ,monokai-256-blue))))
+     ((,class (:inherit ,s-variable-pitch
+                        :height ,monokai-height-plus-2
+                        :foreground ,blue))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :height ,monokai-height-plus-2
+                                 :foreground ,terminal-blue))))
 
    `(org-level-4
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-1
-                                :foreground ,monokai-yellow))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-1
-                                     :foreground ,monokai-256-yellow))))
+     ((,class (:inherit ,s-variable-pitch
+                        :height ,monokai-height-plus-1
+                        :foreground ,yellow))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :height ,monokai-height-plus-1
+                                 :foreground ,terminal-yellow))))
 
    `(org-level-5
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-cyan))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-cyan))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,cyan))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-cyan))))
 
    `(org-level-6
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-green))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-green))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,green))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-green))))
 
    `(org-level-7
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-red))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-red))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,red))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-red))))
 
    `(org-level-8
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-blue))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-blue))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,blue))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-blue))))
 
    `(org-link
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :underline t))))
+     ((,class (:foreground ,yellow
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :underline t))))
 
    `(org-sexp-date
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
    `(org-scheduled
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(org-scheduled-previously
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(org-scheduled-today
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :weight normal))))
+     ((,class (:foreground ,blue
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight normal))))
 
    `(org-special-keyword
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-comments
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :weight bold))))
 
    `(org-table
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(org-tag
-     ((,monokai-class (:weight bold))
-      (,monokai-256-class  (:weight bold))))
+     ((,class (:weight bold))
+      (,terminal-class (:weight bold))))
 
    `(org-time-grid
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(org-todo
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold)))
-     ((,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:foreground ,red
+                           :weight bold)))
+     ((,terminal-class (:foreground ,terminal-red
+                                    :weight bold))))
 
    `(org-upcoming-deadline
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight normal
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight normal
-                                        :underline nil))))
+     ((,class (:foreground ,yellow
+                           :weight normal
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal
+                                    :underline nil))))
 
    `(org-warning
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight normal
-                                   :underline nil))
-      (,monokai-256-class  (:foreground ,monokai-256-orange
-                                        :weight normal
-                                        :underline nil))))
+     ((,class (:foreground ,orange
+                           :weight normal
+                           :underline nil))
+      (,terminal-class (:foreground ,terminal-orange
+                                    :weight normal
+                                    :underline nil))))
 
    ;; org-habit (clear=blue, ready=green, alert=yellow, overdue=red. future=lower contrast)
    `(org-habit-clear-face
-     ((,monokai-class (:background ,monokai-blue-lc
-                                   :foreground ,monokai-blue-hc))
-      (,monokai-256-class  (:background ,monokai-256-blue-lc
-                                        :foreground ,monokai-256-blue-hc))))
+     ((,class (:background ,blue-lc
+                           :foreground ,blue-hc))
+      (,terminal-class (:background ,terminal-blue-lc
+                                    :foreground ,terminal-blue-hc))))
 
    `(org-habit-clear-future-face
-     ((,monokai-class (:background ,monokai-blue-lc))
-      (,monokai-256-class  (:background ,monokai-256-blue-lc))))
+     ((,class (:background ,blue-lc))
+      (,terminal-class (:background ,terminal-blue-lc))))
 
    `(org-habit-ready-face
-     ((,monokai-class (:background ,monokai-green-lc
-                                   :foreground ,monokai-green))
-      (,monokai-256-class  (:background ,monokai-256-green-lc
-                                        :foreground ,monokai-256-green))))
+     ((,class (:background ,green-lc
+                           :foreground ,green))
+      (,terminal-class (:background ,terminal-green-lc
+                                    :foreground ,terminal-green))))
 
    `(org-habit-ready-future-face
-     ((,monokai-class (:background ,monokai-green-lc))
-      (,monokai-256-class  (:background ,monokai-256-green-lc))))
+     ((,class (:background ,green-lc))
+      (,terminal-class (:background ,terminal-green-lc))))
 
    `(org-habit-alert-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-yellow-lc))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground ,monokai-256-yellow-lc))))
+     ((,class (:background ,yellow
+                           :foreground ,yellow-lc))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-yellow-lc))))
 
    `(org-habit-alert-future-face
-     ((,monokai-class (:background ,monokai-yellow-lc))
-      (,monokai-256-class  (:background ,monokai-256-yellow-lc))))
+     ((,class (:background ,yellow-lc))
+      (,terminal-class (:background ,terminal-yellow-lc))))
 
    `(org-habit-overdue-face
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-red-lc))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground ,monokai-256-red-lc))))
+     ((,class (:background ,red
+                           :foreground ,red-lc))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground ,terminal-red-lc))))
 
    `(org-habit-overdue-future-face
-     ((,monokai-class (:background ,monokai-red-lc))
-      (,monokai-256-class  (:background ,monokai-256-red-lc))))
+     ((,class (:background ,red-lc))
+      (,terminal-class (:background ,terminal-red-lc))))
 
    ;; latest additions
    `(org-agenda-dimmed-todo-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(org-agenda-restriction-lock
-     ((,monokai-class (:background ,monokai-yellow))
-      (,monokai-256-class  (:background ,monokai-256-yellow))))
+     ((,class (:background ,yellow))
+      (,terminal-class (:background ,terminal-yellow))))
 
    `(org-clock-overlay
-     ((,monokai-class (:background ,monokai-yellow))
-      (,monokai-256-class  (:background ,monokai-256-yellow))))
+     ((,class (:background ,yellow))
+      (,terminal-class (:background ,terminal-yellow))))
 
    `(org-column
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :strike-through nil
-                                   :underline nil
-                                   :slant normal
-                                   :weight normal
-                                   :inherit default))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :strike-through nil
-                                        :underline nil
-                                        :slant normal
-                                        :weight normal
-                                        :inherit default))))
+     ((,class (:background ,monokai-hl
+                           :strike-through nil
+                           :underline nil
+                           :slant normal
+                           :weight normal
+                           :inherit default))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :strike-through nil
+                                    :underline nil
+                                    :slant normal
+                                    :weight normal
+                                    :inherit default))))
 
    `(org-column-title
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :underline t
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :underline t
-                                        :weight bold))))
+     ((,class (:background ,monokai-hl
+                           :underline t
+                           :weight bold))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :underline t
+                                    :weight bold))))
 
    `(org-date-selected
-     ((,monokai-class (:foreground ,monokai-red
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :inverse-video t))))
+     ((,class (:foreground ,red
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :inverse-video t))))
 
    `(org-document-info
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(org-document-title
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :weight bold
-                                   :height ,monokai-height-plus-4))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :weight bold
-                                        :height ,monokai-height-plus-4))))
+     ((,class (:foreground ,monokai-emph
+                           :weight bold
+                           :height ,monokai-height-plus-4))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :weight bold
+                                    :height ,monokai-height-plus-4))))
 
    `(org-drawer
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(org-footnote
-     ((,monokai-class (:foreground ,monokai-magenta
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta
-                                        :underline t))))
+     ((,class (:foreground ,magenta
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :underline t))))
 
    `(org-latex-and-export-specials
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(org-mode-line-clock-overrun
-     ((,monokai-class (:inherit mode-line))
-      (,monokai-256-class  (:inherit mode-line))))
+     ((,class (:inherit mode-line
+                        :background ,red))
+      (,terminal-class (:inherit mode-line
+                                 :background ,terminal-red))))
 
    ;; outline
    `(outline-1
-     ((,monokai-class (:inherit org-level-1))
-      (,monokai-256-class  (:inherit org-level-1))))
+     ((,class (:inherit org-level-1))
+      (,terminal-class (:inherit org-level-1))))
 
    `(outline-2
-     ((,monokai-class (:inherit org-level-2))
-      (,monokai-256-class  (:inherit org-level-2))))
+     ((,class (:inherit org-level-2))
+      (,terminal-class (:inherit org-level-2))))
 
    `(outline-3
-     ((,monokai-class (:inherit org-level-3))
-      (,monokai-256-class  (:inherit org-level-3))))
+     ((,class (:inherit org-level-3))
+      (,terminal-class (:inherit org-level-3))))
 
    `(outline-4
-     ((,monokai-class (:inherit org-level-4))
-      (,monokai-256-class  (:inherit org-level-4))))
+     ((,class (:inherit org-level-4))
+      (,terminal-class (:inherit org-level-4))))
 
    `(outline-5
-     ((,monokai-class (:inherit org-level-5))
-      (,monokai-256-class  (:inherit org-level-5))))
+     ((,class (:inherit org-level-5))
+      (,terminal-class (:inherit org-level-5))))
 
    `(outline-6
-     ((,monokai-class (:inherit org-level-6))
-      (,monokai-256-class  (:inherit org-level-6))))
+     ((,class (:inherit org-level-6))
+      (,terminal-class (:inherit org-level-6))))
 
    `(outline-7
-     ((,monokai-class (:inherit org-level-7))
-      (,monokai-256-class  (:inherit org-level-7))))
+     ((,class (:inherit org-level-7))
+      (,terminal-class (:inherit org-level-7))))
 
    `(outline-8
-     ((,monokai-class (:inherit org-level-8))
-      (,monokai-256-class  (:inherit org-level-8))))
+     ((,class (:inherit org-level-8))
+      (,terminal-class (:inherit org-level-8))))
 
    ;; parenface
    `(paren-face
-     ((,monokai-256-class  (:foreground ,monokai-comments))))
+     ((,terminal-class (:foreground ,monokai-comments))))
 
    ;; perspective
    `(persp-selected-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :weight bold))))
+     ((,class (:foreground ,blue
+                           :weight bold))))
 
    ;; pretty-mode
    `(pretty-mode-symbol-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight normal))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight normal))))
+     ((,class (:foreground ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal))))
 
    ;; popup
    `(popup-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg))))
 
    `(popup-isearch-match
-     ((,monokai-class (:background ,monokai-green))
-      (,monokai-256-class  (:background ,monokai-256-green))))
+     ((,class (:background ,yellow
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-monokai-bg))))
 
    `(popup-menu-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg))))
 
    `(popup-menu-mouse-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-fg))))
 
    `(popup-menu-selection-face
-     ((,monokai-class (:background ,monokai-magenta
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-magenta
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,magenta
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-magenta
+                                    :foreground ,terminal-monokai-bg))))
 
    `(popup-scroll-bar-background-face
-     ((,monokai-class (:background ,monokai-comments))
-      (,monokai-256-class  (:background ,monokai-256-comments))))
+     ((,class (:background ,monokai-comments))
+      (,terminal-class (:background ,terminal-monokai-comments))))
 
    `(popup-scroll-bar-foreground-face
-     ((,monokai-class (:background ,monokai-emphasis))
-      (,monokai-256-class  (:background ,monokai-256-emphasis))))
+     ((,class (:background ,monokai-emph))
+      (,terminal-class (:background ,terminal-monokai-emph))))
 
    `(popup-tip-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg))))
+
+   ;; powerline
+   `(powerline-active1
+     ((,class (:background ,gray))
+      (,terminal-class (:background ,terminal-gray))))
+
+   `(powerline-active2
+     ((,class (:background ,gray-l))
+      (,terminal-class (:background ,terminal-gray-l))))
+
+   `(powerline-inactive1
+     ((,class (:background ,gray-d))
+      (,terminal-class (:background ,terminal-gray-d))))
+
+   `(powerline-inactive2
+     ((,class (:background ,gray))
+      (,terminal-class (:background ,terminal-gray))))
 
    ;; rainbow-delimiters
    `(rainbow-delimiters-depth-1-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(rainbow-delimiters-depth-2-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(rainbow-delimiters-depth-3-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(rainbow-delimiters-depth-4-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(rainbow-delimiters-depth-5-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(rainbow-delimiters-depth-6-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(rainbow-delimiters-depth-7-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(rainbow-delimiters-depth-8-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(rainbow-delimiters-depth-9-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(rainbow-delimiters-depth-10-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(rainbow-delimiters-depth-11-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(rainbow-delimiters-depth-12-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(rainbow-delimiters-unmatched-face
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :background ,monokai-background
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :background ,monokai-256-background
-                                        :inverse-video t))))
+     ((,class (:foreground ,monokai-fg
+                           :background ,monokai-bg
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :background ,terminal-monokai-bg
+                                    :inverse-video t))))
 
    ;; rhtm-mode
    `(erb-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-exec-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-exec-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-out-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-out-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-comment-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg))))
 
    `(erb-comment-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg))))
 
    ;; rst-mode
    `(rst-level-1-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,yellow
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-monokai-bg))))
 
    `(rst-level-2-face
-     ((,monokai-class (:background ,monokai-cyan
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-cyan
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,cyan
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-cyan
+                                    :foreground ,terminal-monokai-bg))))
 
    `(rst-level-3-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-bg))))
 
    `(rst-level-4-face
-     ((,monokai-class (:background ,monokai-violet
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-violet
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,violet
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-violet
+                                    :foreground ,terminal-monokai-bg))))
 
    `(rst-level-5-face
-     ((,monokai-class (:background ,monokai-magenta
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-magenta
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,magenta
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-magenta
+                                    :foreground ,terminal-monokai-bg))))
 
    `(rst-level-6-face
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-background))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground ,monokai-256-background))))
+     ((,class (:background ,red
+                           :foreground ,monokai-bg))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground ,terminal-monokai-bg))))
 
    ;; rpm-mode
    `(rpm-spec-dir-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(rpm-spec-doc-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(rpm-spec-ghost-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(rpm-spec-macro-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(rpm-spec-obsolete-tag-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(rpm-spec-package-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(rpm-spec-section-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(rpm-spec-tag-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(rpm-spec-var-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    ;; sh-mode
    `(sh-quoted-exec
-     ((,monokai-class (:foreground ,monokai-violet
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-violet
-                                        :weight bold))))
+     ((,class (:foreground ,violet
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-violet
+                                    :weight bold))))
 
    `(sh-escaped-newline
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    `(sh-heredoc
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight bold))))
 
    ;; smartparens
    `(sp-pair-overlay-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(sp-wrap-overlay-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(sp-wrap-tag-overlay-face
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(sp-show-pair-enclosing
-     ((,monokai-class (:inherit highlight))
-      (,monokai-256-class  (:inherit highlight))))
+     ((,class (:inherit highlight))
+      (,terminal-class (:inherit highlight))))
 
    `(sp-show-pair-match-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    `(sp-show-pair-mismatch-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    ;; show-paren
    `(show-paren-match
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    `(show-paren-mismatch
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    ;; mic-paren
    `(paren-face-match
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,cyan
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    `(paren-face-mismatch
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    `(paren-face-no-match
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background
-                                   :weight normal
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-background
-                                        :weight normal
-                                        :inverse-video t))))
+     ((,class (:foreground ,red
+                           :background ,monokai-bg
+                           :weight normal
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-monokai-bg
+                                    :weight normal
+                                    :inverse-video t))))
 
    ;; SLIME
    `(slime-repl-inputed-output-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    ;; speedbar
    `(speedbar-button-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-comments))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-comments))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,monokai-comments))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-monokai-comments))))
 
    `(speedbar-directory-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-blue))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-blue))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,blue))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-blue))))
 
    `(speedbar-file-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-foreground))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-foreground))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,monokai-fg))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-monokai-fg))))
 
    `(speedbar-highlight-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :background ,monokai-highlight-line))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :background ,monokai-256-highlight-line))))
+     ((,class (:inherit ,s-variable-pitch
+                        :background ,monokai-hl))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :background ,terminal-monokai-hl))))
 
    `(speedbar-selected-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-yellow
-                                :underline t))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-yellow
-                                     :underline t))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,yellow
+                        :underline t))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-yellow
+                                 :underline t))))
 
    `(speedbar-separator-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :background ,monokai-blue
-                                :foreground ,monokai-background
-                                :overline ,monokai-cyan-lc))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :background ,monokai-256-blue
-                                     :foreground ,monokai-256-background
-                                     :overline ,monokai-256-cyan-lc))))
+     ((,class (:inherit ,s-variable-pitch
+                        :background ,blue
+                        :foreground ,monokai-bg
+                        :overline ,cyan-lc))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :background ,terminal-blue
+                                 :foreground ,terminal-monokai-bg
+                                 :overline ,terminal-cyan-lc))))
 
    `(speedbar-tag-face
-     ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-green))
-      (,monokai-256-class  (:inherit ,monokai-pitch
-                                     :foreground ,monokai-256-green))))
+     ((,class (:inherit ,s-variable-pitch
+                        :foreground ,green))
+      (,terminal-class (:inherit ,terminal-s-variable-pitch
+                                 :foreground ,terminal-green))))
 
    ;; sunrise commander headings
    `(sr-active-path-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background
-                                   :height ,monokai-height-plus-1
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-blue
-                                        :foreground ,monokai-256-background
-                                        :height ,monokai-height-plus-1
-                                        :weight bold))))
+     ((,class (:background ,blue
+                           :foreground ,monokai-bg
+                           :height ,monokai-height-plus-1
+                           :weight bold))
+      (,terminal-class (:background ,terminal-blue
+                                    :foreground ,terminal-monokai-bg
+                                    :height ,monokai-height-plus-1
+                                    :weight bold))))
 
    `(sr-editing-path-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background
-                                   :weight bold
-                                   :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:background ,monokai-256-yellow
-                                        :foreground ,monokai-256-background
-                                        :weight bold
-                                        :height ,monokai-height-plus-1))))
+     ((,class (:background ,yellow
+                           :foreground ,monokai-bg
+                           :weight bold
+                           :height ,monokai-height-plus-1))
+      (,terminal-class (:background ,terminal-yellow
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold
+                                    :height ,monokai-height-plus-1))))
 
    `(sr-highlight-path-face
-     ((,monokai-class (:background ,monokai-green
-                                   :foreground ,monokai-background
-                                   :weight bold
-                                   :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:background ,monokai-256-green
-                                        :foreground ,monokai-256-background
-                                        :weight bold
-                                        :height ,monokai-height-plus-1))))
+     ((,class (:background ,green
+                           :foreground ,monokai-bg
+                           :weight bold
+                           :height ,monokai-height-plus-1))
+      (,terminal-class (:background ,terminal-green
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold
+                                    :height ,monokai-height-plus-1))))
 
    `(sr-passive-path-face
-     ((,monokai-class (:background ,monokai-comments
-                                   :foreground ,monokai-background
-                                   :weight bold
-                                   :height ,monokai-height-plus-1))
-      (,monokai-256-class  (:background ,monokai-256-comments
-                                        :foreground ,monokai-256-background
-                                        :weight bold
-                                        :height ,monokai-height-plus-1))))
+     ((,class (:background ,monokai-comments
+                           :foreground ,monokai-bg
+                           :weight bold
+                           :height ,monokai-height-plus-1))
+      (,terminal-class (:background ,terminal-monokai-comments
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold
+                                    :height ,monokai-height-plus-1))))
 
    ;; sunrise commander marked
    `(sr-marked-dir-face
-     ((,monokai-class (:inherit dimonokai-red-marked))
-      (,monokai-256-class  (:inherit dimonokai-red-marked))))
+     ((,class (:inherit dired-marked))
+      (,terminal-class (:inherit dired-marked))))
 
    `(sr-marked-file-face
-     ((,monokai-class (:inherit dimonokai-red-marked))
-      (,monokai-256-class  (:inherit dimonokai-red-marked))))
+     ((,class (:inherit dired-marked))
+      (,terminal-class (:inherit dired-marked))))
 
    `(sr-alt-marked-dir-face
-     ((,monokai-class (:background ,monokai-magenta
-                                   :foreground ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-magenta
-                                        :foreground ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:background ,magenta
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-magenta
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(sr-alt-marked-file-face
-     ((,monokai-class (:background ,monokai-magenta
-                                   :foreground ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-magenta
-                                        :foreground ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:background ,magenta
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-magenta
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    ;; sunrise commander fstat
    `(sr-directory-face
-     ((,monokai-class (:inherit dimonokai-red-directory
-                                :weight normal))
-      (,monokai-256-class  (:inherit dimonokai-red-directory
-                                     :weight normal))))
+     ((,class (:inherit dired-directory
+                        :weight normal))
+      (,terminal-class (:inherit dired-directory
+                                 :weight normal))))
 
    `(sr-symlink-directory-face
-     ((,monokai-class (:inherit dimonokai-red-directory
-                                :slant italic
-                                :weight normal))
-      (,monokai-256-class  (:inherit dimonokai-red-directory
-                                     :slant italic
-                                     :weight normal))))
+     ((,class (:inherit dired-directory
+                        :slant italic
+                        :weight normal))
+      (,terminal-class (:inherit dired-directory
+                                 :slant italic
+                                 :weight normal))))
 
    `(sr-symlink-face
-     ((,monokai-class (:inherit dimonokai-red-symlink
-                                :slant italic
-                                :weight normal))
-      (,monokai-256-class  (:inherit dimonokai-red-symlink
-                                     :slant italic
-                                     :weight normal))))
+     ((,class (:inherit dired-symlink
+                        :slant italic
+                        :weight normal))
+      (,terminal-class (:inherit dired-symlink
+                                 :slant italic
+                                 :weight normal))))
 
    `(sr-broken-link-face
-     ((,monokai-class (:inherit dimonokai-red-warning
-                                :slant italic
-                                :weight normal))
-      (,monokai-256-class  (:inherit dimonokai-red-warning
-                                     :slant italic
-                                     :weight normal))))
+     ((,class (:inherit dired-warning
+                        :slant italic
+                        :weight normal))
+      (,terminal-class (:inherit dired-warning
+                                 :slant italic
+                                 :weight normal))))
 
    ;; sunrise commander file types
    `(sr-compressed-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(sr-encrypted-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(sr-log-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(sr-packaged-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(sr-html-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(sr-xml-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    ;; sunrise commander misc
    `(sr-clex-hotchar-face
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:background ,monokai-256-red
-                                        :foreground ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:background ,red
+                           :foreground ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:background ,terminal-red
+                                    :foreground ,terminal-monokai-bg
+                                    :weight bold))))
 
    ;; syslog-mode
    `(syslog-ip-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-yellow))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-yellow))))
+     ((,class (:background unspecified
+                           :foreground ,yellow))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-yellow))))
 
    `(syslog-hour-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-green))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-green))))
+     ((,class (:background unspecified
+                           :foreground ,green))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-green))))
 
    `(syslog-error-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,red
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-red
+                                    :weight bold))))
 
    `(syslog-warn-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-orange
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-orange
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,orange
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-orange
+                                    :weight bold))))
 
    `(syslog-info-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-blue
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-blue
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,blue
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-blue
+                                    :weight bold))))
 
    `(syslog-debug-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-cyan
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-cyan
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,cyan
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-cyan
+                                    :weight bold))))
 
    `(syslog-su-face
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-magenta))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-magenta))))
+     ((,class (:background unspecified
+                           :foreground ,magenta))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-magenta))))
 
    ;; table
    `(table-cell
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :background ,monokai-highlight-line))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :background ,monokai-256-highlight-line))))
+     ((,class (:foreground ,monokai-fg
+                           :background ,monokai-hl))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :background ,terminal-monokai-hl))))
 
    ;; term
    `(term-color-black
-     ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-highlight-line))
-      (,monokai-256-class  (:foreground ,monokai-256-background
-                                        :background ,monokai-256-highlight-line))))
+     ((,class (:foreground ,monokai-bg
+                           :background ,monokai-hl))
+      (,terminal-class (:foreground ,terminal-monokai-bg
+                                    :background ,terminal-monokai-hl))))
 
    `(term-color-red
-     ((,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-red-d))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :background ,monokai-256-red-d))))
+     ((,class (:foreground ,red
+                           :background ,red-d))
+      (,terminal-class (:foreground ,terminal-red
+                                    :background ,terminal-red-d))))
 
    `(term-color-green
-     ((,monokai-class (:foreground ,monokai-green
-                                   :background ,monokai-green-d))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :background ,monokai-256-green-d))))
+     ((,class (:foreground ,green
+                           :background ,green-d))
+      (,terminal-class (:foreground ,terminal-green
+                                    :background ,terminal-green-d))))
 
    `(term-color-yellow
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :background ,monokai-yellow-d))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :background ,monokai-256-yellow-d))))
+     ((,class (:foreground ,yellow
+                           :background ,yellow-d))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :background ,terminal-yellow-d))))
 
    `(term-color-blue
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-blue-d))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-blue-d))))
+     ((,class (:foreground ,blue
+                           :background ,blue-d))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :background ,terminal-blue-d))))
 
    `(term-color-magenta
-     ((,monokai-class (:foreground ,monokai-magenta
-                                   :background ,monokai-magenta-d))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta
-                                        :background ,monokai-256-magenta-d))))
+     ((,class (:foreground ,magenta
+                           :background ,magenta-d))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :background ,terminal-magenta-d))))
 
    `(term-color-cyan
-     ((,monokai-class (:foreground ,monokai-cyan
-                                   :background ,monokai-cyan-d))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan
-                                        :background ,monokai-256-cyan-d))))
+     ((,class (:foreground ,cyan
+                           :background ,cyan-d))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :background ,terminal-cyan-d))))
 
    `(term-color-white
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-fg))))
 
    `(term-default-fg-color
-     ((,monokai-class (:inherit term-color-white))
-      (,monokai-256-class  (:inherit term-color-white))))
+     ((,class (:inherit term-color-white))
+      (,terminal-class (:inherit term-color-white))))
 
    `(term-default-bg-color
-     ((,monokai-class (:inherit term-color-black))
-      (,monokai-256-class  (:inherit term-color-black))))
+     ((,class (:inherit term-color-black))
+      (,terminal-class (:inherit term-color-black))))
 
    ;; tooltip. (NOTE: This setting has no effect on the os widgets for me
    ;; zencoding uses this)
    `(tooltip
-     ((,monokai-class (:background ,monokai-green-l
-                                   :foreground ,monokai-background
-                                   :inherit ,monokai-pitch))))
+     ((,class (:background ,yellow-lc
+                           :foreground ,yellow-hc
+                           :inherit ,s-variable-pitch))))
 
    ;; tuareg
    `(tuareg-font-lock-governing-face
-     ((,monokai-class (:foreground ,monokai-magenta
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta
-                                        :weight bold))))
+     ((,class (:foreground ,magenta
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-magenta
+                                    :weight bold))))
 
    `(tuareg-font-lock-multistage-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-highlight-line
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :background ,monokai-256-highlight-line
-                                        :weight bold))))
+     ((,class (:foreground ,blue
+                           :background ,monokai-hl
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :background ,terminal-monokai-hl
+                                    :weight bold))))
 
    `(tuareg-font-lock-operator-face
-     ((,monokai-class (:foreground ,monokai-emphasis))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis))))
+     ((,class (:foreground ,monokai-emph))
+      (,terminal-class (:foreground ,terminal-monokai-emph))))
 
    `(tuareg-font-lock-error-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :background ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :background ,monokai-256-red
-                                        :weight bold))))
+     ((,class (:foreground ,yellow
+                           :background ,red
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :background ,terminal-red
+                                    :weight bold))))
 
    `(tuareg-font-lock-interactive-output-face
-     ((,monokai-class (:foreground ,monokai-cyan))
-      (,monokai-256-class  (:foreground ,monokai-256-cyan))))
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
 
    `(tuareg-font-lock-interactive-error-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    ;; undo-tree
    `(undo-tree-visualizer-default-face
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-background))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-background))))
+     ((,class (:foreground ,monokai-comments
+                           :background ,monokai-bg))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-monokai-bg))))
 
    `(undo-tree-visualizer-unmodified-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(undo-tree-visualizer-current-face
-     ((,monokai-class (:foreground ,monokai-blue
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-blue
-                                        :inverse-video t))))
+     ((,class (:foreground ,blue
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :inverse-video t))))
 
    `(undo-tree-visualizer-active-branch-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :background ,monokai-256-background
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-emph
+                           :background ,monokai-bg
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :background ,terminal-monokai-bg
+                                    :weight bold))))
 
    `(undo-tree-visualizer-register-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    ;; volatile highlights
    `(vhl/default-face
-     ((,monokai-class (:background ,monokai-green-lc
-                                   :foreground ,monokai-green-hc))
-      (,monokai-256-class  (:background ,monokai-256-green-lc
-                                        :foreground ,monokai-256-green-hc))))
+     ((,class (:background ,green-lc
+                           :foreground ,green-hc))
+      (,terminal-class (:background ,terminal-green-lc
+                                    :foreground ,terminal-green-hc))))
 
    ;; w3m
    `(w3m-anchor
-     ((,monokai-class (:inherit link))
-      (,monokai-256-class  (:inherit link))))
+     ((,class (:inherit link))
+      (,terminal-class (:inherit link))))
 
    `(w3m-arrived-anchor
-     ((,monokai-class (:inherit link-visited))
-      (,monokai-256-class  (:inherit link-visited))))
+     ((,class (:inherit link-visited))
+      (,terminal-class (:inherit link-visited))))
 
    `(w3m-form
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-monokai-fg))))
 
    `(w3m-header-line-location-title
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-yellow))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-yellow))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,yellow))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-yellow))))
 
    `(w3m-header-line-location-content
 
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg))))
 
    `(w3m-bold
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-emph
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :weight bold))))
 
    `(w3m-image-anchor
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-cyan
-                                   :inherit link))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-cyan
-                                        :inherit link))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,cyan
+                           :inherit link))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-cyan
+                                    :inherit link))))
 
    `(w3m-image
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-cyan))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-cyan))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,cyan))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-cyan))))
 
    `(w3m-lnum-minibuffer-prompt
-     ((,monokai-class (:foreground ,monokai-emphasis))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis))))
+     ((,class (:foreground ,monokai-emph))
+      (,terminal-class (:foreground ,terminal-monokai-emph))))
 
    `(w3m-lnum-match
-     ((,monokai-class (:background ,monokai-highlight-line))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line))))
+     ((,class (:background ,monokai-hl))
+      (,terminal-class (:background ,terminal-monokai-hl))))
 
    `(w3m-lnum
-     ((,monokai-class (:underline nil
-                                  :bold nil
-                                  :foreground ,monokai-red))
-      (,monokai-256-class  (:underline nil
-                                       :bold nil
-                                       :foreground ,monokai-256-red))))
+     ((,class (:underline nil
+                          :bold nil
+                          :foreground ,red))
+      (,terminal-class (:underline nil
+                                   :bold nil
+                                   :foreground ,terminal-red))))
 
    `(w3m-session-select
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(w3m-session-selected
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :bold t
-                                   :underline t))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :bold t
-                                        :underline t))))
+     ((,class (:foreground ,monokai-emph
+                           :bold t
+                           :underline t))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :bold t
+                                    :underline t))))
 
    `(w3m-tab-background
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-monokai-fg))))
 
    `(w3m-tab-selected-background
-     ((,monokai-class (:background ,monokai-background
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-background
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-bg
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-bg
+                                    :foreground ,terminal-monokai-fg))))
 
    `(w3m-tab-mouse
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-yellow))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-yellow))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,yellow))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-yellow))))
 
    `(w3m-tab-selected
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-emphasis
-                                   :bold t))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-emphasis
-                                        :bold t))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-emph
+                           :bold t))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-emph
+                                    :bold t))))
 
    `(w3m-tab-unselected
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-foreground))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-foreground))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,monokai-fg))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-monokai-fg))))
 
    `(w3m-tab-selected-retrieving
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-red))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-red))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,red))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-red))))
 
    `(w3m-tab-unselected-retrieving
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-orange))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-orange))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,orange))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-orange))))
 
    `(w3m-tab-unselected-unseen
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-violet))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :foreground ,monokai-256-violet))))
+     ((,class (:background ,monokai-hl
+                           :foreground ,violet))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :foreground ,terminal-violet))))
 
    ;; web-mode
    `(web-mode-builtin-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(web-mode-comment-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    `(web-mode-constant-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,blue
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :weight bold))))
 
    `(web-mode-current-element-highlight-face
-     ((,monokai-class (:underline unspecified
-                                  :weight unspecified
-                                  :background ,monokai-highlight-line))
-      (,monokai-256-class  (:underline unspecified
-                                       :weight unspecified
-                                       :background ,monokai-256-highlight-line))))
-
-   `(web-mode-doctype-face
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :slant italic
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :slant italic
-                                        :weight bold))))
-
-   `(web-mode-folded-face
-     ((,monokai-class (:underline t))
-      (,monokai-256-class  (:underline t))))
-
-   `(web-mode-function-name-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
-
-   `(web-mode-html-attr-name-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
-
-   `(web-mode-html-attr-custom-face
-     ((,monokai-class (:inherit web-mode-html-attr-name-face))
-      (,monokai-256-class  (:inherit web-mode-html-attr-name-face))))
-
-   `(web-mode-html-attr-engine-face
-     ((,monokai-class (:inherit web-mode-block-delimiter-face))
-      (,monokai-256-class  (:inherit web-mode-block-delimiter-face))))
-
-   `(web-mode-html-attr-equal-face
-     ((,monokai-class (:inherit web-mode-html-attr-name-face))
-      (,monokai-256-class  (:inherit web-mode-html-attr-name-face))))
-
-   `(web-mode-html-attr-value-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
-
-   `(web-mode-html-tag-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
-
-   `(web-mode-keyword-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
-
-   `(web-mode-preprocessor-face
-     ((,monokai-class (:foreground ,monokai-yellow
-                                   :slant normal
-                                   :weight unspecified))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow
-                                        :slant normal
-                                        :weight unspecified))))
-
-   `(web-mode-string-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
-
-   `(web-mode-type-face
-     ((,monokai-class (:inherit font-lock-type-face))
-      (,monokai-256-class  (:inherit font-lock-type-face))))
-
-   `(web-mode-variable-name-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
-
-   `(web-mode-warning-face
-     ((,monokai-class (:inherit font-lock-warning-face))
-      (,monokai-256-class  (:inherit font-lock-warning-face))))
-
-   `(web-mode-block-face
-     ((,monokai-class (:background unspecified))
-      (,monokai-256-class  (:background unspecified))))
-
-   `(web-mode-block-delimiter-face
-     ((,monokai-class (:inherit font-lock-preprocessor-face))
-      (,monokai-256-class  (:inherit font-lock-preprocessor-face))))
-
-   `(web-mode-block-comment-face
-     ((,monokai-class (:inherit web-mode-comment-face))
-      (,monokai-256-class  (:inherit web-mode-comment-face))))
-
-   `(web-mode-block-control-face
-     ((,monokai-class (:inherit font-lock-preprocessor-face))
-      (,monokai-256-class  (:inherit font-lock-preprocessor-face))))
-
-   `(web-mode-block-string-face
-     ((,monokai-class (:inherit web-mode-string-face))
-      (,monokai-256-class  (:inherit web-mode-string-face))))
-
-   `(web-mode-comment-keyword-face
-     ((,monokai-class (:box 1 :weight bold))
-      (,monokai-256-class  (:box 1 :weight bold))))
+     ((,class (:underline unspecified
+                          :weight unspecified
+                          :background ,monokai-hl))
+      (,terminal-class (:underline unspecified
+                                   :weight unspecified
+                                   :background ,terminal-monokai-hl))))
 
    `(web-mode-css-at-rule-face
-     ((,monokai-class (:inherit font-lock-constant-face))
-      (,monokai-256-class  (:inherit font-lock-constant-face))))
+     ((,class (:foreground ,violet
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-violet
+                                    :slant italic))))
 
    `(web-mode-css-pseudo-class-face
-     ((,monokai-class (:inherit font-lock-builtin-face))
-      (,monokai-256-class  (:inherit font-lock-builtin-face))))
+     ((,class (:foreground ,green
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-green
+                                    :slant italic))))
+
+   `(web-mode-doctype-face
+     ((,class (:foreground ,monokai-comments
+                           :slant italic
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :slant italic
+                                    :weight bold))))
+
+   `(web-mode-folded-face
+     ((,class (:underline t))
+      (,terminal-class (:underline t))))
+
+   `(web-mode-function-name-face
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
+
+   `(web-mode-html-attr-name-face
+     ((,class (:foreground ,blue
+                           :slant normal))
+      (,terminal-class (:foreground ,terminal-blue
+                                    :slant normal))))
+
+   `(web-mode-html-attr-value-face
+     ((,class (:foreground ,cyan
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-cyan
+                                    :slant italic))))
+
+   `(web-mode-html-tag-face
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
+
+   `(web-mode-keyword-face
+     ((,class (:foreground ,yellow
+                           :weight normal))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :weight normal))))
+
+   `(web-mode-preprocessor-face
+     ((,class (:foreground ,yellow
+                           :slant normal
+                           :weight unspecified))
+      (,terminal-class (:foreground ,terminal-yellow
+                                    :slant normal
+                                    :weight unspecified))))
+
+   `(web-mode-string-face
+     ((,class (:foreground ,cyan))
+      (,terminal-class (:foreground ,terminal-cyan))))
+
+   `(web-mode-type-face
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
+
+   `(web-mode-variable-name-face
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
+
+   `(web-mode-warning-face
+     ((,class (:inherit font-lock-warning-face))
+      (,terminal-class (:inherit font-lock-warning-face))))
+
+   `(web-mode-block-attr-name-face
+     ((,class (:inherit web-mode-html-attr-name-face))
+      (,terminal-class (:inherit web-mode-html-attr-name-face))))
+
+   `(web-mode-block-attr-value-face
+     ((,class (:inherit web-mode-html-attr-value-face))
+      (,terminal-class (:inherit web-mode-html-attr-value-face))))
+
+   `(web-mode-block-comment-face
+     ((,class (:inherit web-mode-comment-face))
+      (,terminal-class (:inherit web-mode-comment-face))))
+
+   `(web-mode-block-control-face
+     ((,class (:inherit font-lock-preprocessor-face))
+      (,terminal-class (:inherit font-lock-preprocessor-face))))
+
+   `(web-mode-block-face
+     ((,class (:background unspecified))
+      (,terminal-class (:background unspecified))))
+
+   `(web-mode-block-string-face
+     ((,class (:inherit web-mode-string-face))
+      (,terminal-class (:inherit web-mode-string-face))))
+
+   `(web-mode-comment-keyword-face
+     ((,class (:box 1
+                    :weight bold))
+      (,terminal-class (:box 1
+                             :weight bold))))
 
    `(web-mode-css-color-face
-     ((,monokai-class (:inherit font-lock-builtin-face))
-      (,monokai-256-class  (:inherit font-lock-builtin-face))))
-
-   `(web-mode-css-filter-face
-     ((,monokai-class (:inherit font-lock-function-name-face))
-      (,monokai-256-class  (:inherit font-lock-function-name-face))))
+     ((,class (:inherit font-lock-builtin-face))
+      (,terminal-class (:inherit font-lock-builtin-face))))
 
    `(web-mode-css-function-face
-     ((,monokai-class (:inherit font-lock-builtin-face))
-      (,monokai-256-class  (:inherit font-lock-builtin-face))))
-
-   `(web-mode-css-function-call-face
-     ((,monokai-class (:inherit font-lock-function-name-face))
-      (,monokai-256-class  (:inherit font-lock-function-name-face))))
+     ((,class (:inherit font-lock-builtin-face))
+      (,terminal-class (:inherit font-lock-builtin-face))))
 
    `(web-mode-css-priority-face
-     ((,monokai-class (:inherit font-lock-builtin-face))
-      (,monokai-256-class  (:inherit font-lock-builtin-face))))
+     ((,class (:inherit font-lock-builtin-face))
+      (,terminal-class (:inherit font-lock-builtin-face))))
 
    `(web-mode-css-property-name-face
-     ((,monokai-class (:inherit font-lock-variable-name-face))
-      (,monokai-256-class  (:inherit font-lock-variable-name-face))))
+     ((,class (:inherit font-lock-variable-name-face))
+      (,terminal-class (:inherit font-lock-variable-name-face))))
 
    `(web-mode-css-selector-face
-     ((,monokai-class (:inherit font-lock-keyword-face))
-      (,monokai-256-class  (:inherit font-lock-keyword-face))))
+     ((,class (:inherit font-lock-keyword-face))
+      (,terminal-class (:inherit font-lock-keyword-face))))
 
    `(web-mode-css-string-face
-     ((,monokai-class (:inherit web-mode-string-face))
-      (,monokai-256-class  (:inherit web-mode-string-face))))
+     ((,class (:inherit web-mode-string-face))
+      (,terminal-class (:inherit web-mode-string-face))))
 
    `(web-mode-javascript-string-face
-     ((,monokai-class (:inherit web-mode-string-face))
-      (,monokai-256-class  (:inherit web-mode-string-face))))
-
-   `(web-mode-json-comment-face
-     ((,monokai-class (:inherit web-mode-comment-face))
-      (,monokai-256-class  (:inherit web-mode-comment-face))))
+     ((,class (:inherit web-mode-string-face))
+      (,terminal-class (:inherit web-mode-string-face))))
 
    `(web-mode-json-context-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
    `(web-mode-json-key-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,violet))
+      (,terminal-class (:foreground ,terminal-violet))))
 
    `(web-mode-json-string-face
-     ((,monokai-class (:inherit web-mode-string-face))
-      (,monokai-256-class  (:inherit web-mode-string-face))))
+     ((,class (:inherit web-mode-string-face))
+      (,terminal-class (:inherit web-mode-string-face))))
 
    `(web-mode-param-name-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(web-mode-part-comment-face
-     ((,monokai-class (:inherit web-mode-comment-face))
-      (,monokai-256-class  (:inherit web-mode-comment-face))))
+     ((,class (:inherit web-mode-comment-face))
+      (,terminal-class (:inherit web-mode-comment-face))))
 
    `(web-mode-part-face
-     ((,monokai-class (:inherit web-mode-block-face))
-      (,monokai-256-class  (:inherit web-mode-block-face))))
+     ((,class (:inherit web-mode-block-face))
+      (,terminal-class (:inherit web-mode-block-face))))
 
    `(web-mode-part-string-face
-     ((,monokai-class (:inherit web-mode-string-face))
-      (,monokai-256-class  (:inherit web-mode-string-face))))
+     ((,class (:inherit web-mode-string-face))
+      (,terminal-class (:inherit web-mode-string-face))))
 
    `(web-mode-symbol-face
-     ((,monokai-class (:foreground ,monokai-violet))
-      (,monokai-256-class  (:foreground ,monokai-256-violet))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(web-mode-whitespace-face
-     ((,monokai-class (:background ,monokai-red))
-      (,monokai-256-class  (:background ,monokai-256-red))))
+     ((,class (:background ,red))
+      (,terminal-class (:background ,terminal-red))))
 
    ;; whitespace-mode
    `(whitespace-space
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-comments
-                                   :inverse-video unspecified
-                                   :slant italic))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-comments
-                                        :inverse-video unspecified
-                                        :slant italic))))
+     ((,class (:background unspecified
+                           :foreground ,monokai-comments
+                           :inverse-video unspecified
+                           :slant italic))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-monokai-comments
+                                    :inverse-video unspecified
+                                    :slant italic))))
 
    `(whitespace-hspace
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-emphasis
-                                   :inverse-video unspecified))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-emphasis
-                                        :inverse-video unspecified))))
+     ((,class (:background unspecified
+                           :foreground ,monokai-emph
+                           :inverse-video unspecified))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-monokai-emph
+                                    :inverse-video unspecified))))
 
    `(whitespace-tab
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-red
-                                   :inverse-video unspecified
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-red
-                                        :inverse-video unspecified
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,red
+                           :inverse-video unspecified
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-red
+                                    :inverse-video unspecified
+                                    :weight bold))))
 
    `(whitespace-newline
-     ((,monokai-class(:background unspecified
-                                  :foreground ,monokai-comments
-                                  :inverse-video unspecified))
-      (,monokai-256-class (:background unspecified
-                                       :foreground ,monokai-256-comments
-                                       :inverse-video unspecified))))
+     ((,class(:background unspecified
+                          :foreground ,monokai-comments
+                          :inverse-video unspecified))
+      (,terminal-class(:background unspecified
+                                   :foreground ,terminal-monokai-comments
+                                   :inverse-video unspecified))))
 
    `(whitespace-trailing
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-orange-lc
-                                   :inverse-video t))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-orange-lc
-                                        :inverse-video t))))
+     ((,class (:background unspecified
+                           :foreground ,orange-lc
+                           :inverse-video t))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-orange-lc
+                                    :inverse-video t))))
 
    `(whitespace-line
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-magenta
-                                   :inverse-video unspecified))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-magenta
-                                        :inverse-video unspecified))))
+     ((,class (:background unspecified
+                           :foreground ,magenta
+                           :inverse-video unspecified))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-magenta
+                                    :inverse-video unspecified))))
 
    `(whitespace-space-before-tab
-     ((,monokai-class (:background ,monokai-red-lc
-                                   :foreground unspecified
-                                   :inverse-video unspecified))
-      (,monokai-256-class  (:background ,monokai-256-red-lc
-                                        :foreground unspecified
-                                        :inverse-video unspecified))))
+     ((,class (:background ,red-lc
+                           :foreground unspecified
+                           :inverse-video unspecified))
+      (,terminal-class (:background ,terminal-red-lc
+                                    :foreground unspecified
+                                    :inverse-video unspecified))))
 
    `(whitespace-indentation
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-yellow
-                                   :inverse-video unspecified
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-yellow
-                                        :inverse-video unspecified
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,yellow
+                           :inverse-video unspecified
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-yellow
+                                    :inverse-video unspecified
+                                    :weight bold))))
 
    `(whitespace-empty
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-red-lc
-                                   :inverse-video t))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-red-lc
-                                        :inverse-video t))))
+     ((,class (:background unspecified
+                           :foreground ,red-lc
+                           :inverse-video t))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-red-lc
+                                    :inverse-video t))))
 
    `(whitespace-space-after-tab
-     ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-orange
-                                   :inverse-video t
-                                   :weight bold))
-      (,monokai-256-class  (:background unspecified
-                                        :foreground ,monokai-256-orange
-                                        :inverse-video t
-                                        :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,orange
+                           :inverse-video t
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-orange
+                                    :inverse-video t
+                                    :weight bold))))
 
    ;; wanderlust
    `(wl-highlight-folder-few-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(wl-highlight-folder-many-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(wl-highlight-folder-path-face
-     ((,monokai-class (:foreground ,monokai-orange))
-      (,monokai-256-class  (:foreground ,monokai-256-orange))))
+     ((,class (:foreground ,orange))
+      (,terminal-class (:foreground ,terminal-orange))))
 
    `(wl-highlight-folder-unread-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(wl-highlight-folder-zero-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(wl-highlight-folder-unknown-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(wl-highlight-message-citation-header
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(wl-highlight-message-cited-text-1
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(wl-highlight-message-cited-text-2
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(wl-highlight-message-cited-text-3
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(wl-highlight-message-cited-text-4
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(wl-highlight-message-header-contents-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(wl-highlight-message-headers-face
-     ((,monokai-class (:foreground ,monokai-red))
-      (,monokai-256-class  (:foreground ,monokai-256-red))))
+     ((,class (:foreground ,red))
+      (,terminal-class (:foreground ,terminal-red))))
 
    `(wl-highlight-message-important-header-contents
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(wl-highlight-message-header-contents
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(wl-highlight-message-important-header-contents2
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(wl-highlight-message-signature
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    `(wl-highlight-message-unimportant-header-contents
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
-   `(wl-highlight-summary-answemonokai-red-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+   `(wl-highlight-summary-answered-face
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(wl-highlight-summary-disposed-face
-     ((,monokai-class (:foreground ,monokai-foreground
-                                   :slant italic))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground
-                                        :slant italic))))
+     ((,class (:foreground ,monokai-fg
+                           :slant italic))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :slant italic))))
 
    `(wl-highlight-summary-new-face
-     ((,monokai-class (:foreground ,monokai-blue))
-      (,monokai-256-class  (:foreground ,monokai-256-blue))))
+     ((,class (:foreground ,blue))
+      (,terminal-class (:foreground ,terminal-blue))))
 
    `(wl-highlight-summary-normal-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(wl-highlight-summary-thread-top-face
-     ((,monokai-class (:foreground ,monokai-yellow))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow))))
+     ((,class (:foreground ,yellow))
+      (,terminal-class (:foreground ,terminal-yellow))))
 
    `(wl-highlight-thread-indent-face
-     ((,monokai-class (:foreground ,monokai-magenta))
-      (,monokai-256-class  (:foreground ,monokai-256-magenta))))
+     ((,class (:foreground ,magenta))
+      (,terminal-class (:foreground ,terminal-magenta))))
 
    `(wl-highlight-summary-refiled-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
+     ((,class (:foreground ,monokai-fg))
+      (,terminal-class (:foreground ,terminal-monokai-fg))))
 
    `(wl-highlight-summary-displaying-face
-     ((,monokai-class (:underline t
-                                  :weight bold))
-      (,monokai-256-class  (:underline t
-                                       :weight bold))))
+     ((,class (:underline t
+                          :weight bold))
+      (,terminal-class (:underline t
+                                   :weight bold))))
 
    ;; weechat
    `(weechat-error-face
-     ((,monokai-class (:inherit error))
-      (,monokai-256-class  (:inherit error))))
+     ((,class (:inherit error))
+      (,terminal-class (:inherit error))))
 
    `(weechat-highlight-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-emphasis
-                                        :weight bold))))
+     ((,class (:foreground ,monokai-emph
+                           :weight bold))
+      (,terminal-class (:foreground ,terminal-monokai-emph
+                                    :weight bold))))
 
    `(weechat-nick-self-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight unspecified
-                                   :inverse-video t))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight unspecified
-                                        :inverse-video t))))
+     ((,class (:foreground ,green
+                           :weight unspecified
+                           :inverse-video t))
+      (,terminal-class (:foreground ,terminal-green
+                                    :weight unspecified
+                                    :inverse-video t))))
 
    `(weechat-prompt-face
-     ((,monokai-class (:inherit minibuffer-prompt))
-      (,monokai-256-class  (:inherit minibuffer-prompt))))
+     ((,class (:inherit minibuffer-prompt))
+      (,terminal-class (:inherit minibuffer-prompt))))
 
    `(weechat-time-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments))))
 
    ;; which-func-mode
    `(which-func
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
-   ;; which-key
-   `(which-key-key-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-green
-                                        :weight bold))))
-
-   `(which-key-separator-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
-   `(which-key-note-face
-     ((,monokai-class (:foreground ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments))))
-
-   `(which-key-command-description-face
-     ((,monokai-class (:foreground ,monokai-foreground))
-      (,monokai-256-class  (:foreground ,monokai-256-foreground))))
-
-   `(which-key-local-map-description-face
-     ((,monokai-class (:foreground ,monokai-yellow-hc))
-      (,monokai-256-class  (:foreground ,monokai-256-yellow-hc))))
-
-   `(which-key-group-description-face
-     ((,monokai-class (:foreground ,monokai-red
-                                   :weight bold))
-      (,monokai-256-class  (:foreground ,monokai-256-red
-                                        :weight bold))))
    ;; window-number-mode
    `(window-number-face
-     ((,monokai-class (:foreground ,monokai-green))
-      (,monokai-256-class  (:foreground ,monokai-256-green))))
+     ((,class (:foreground ,green))
+      (,terminal-class (:foreground ,terminal-green))))
 
    ;; yascroll
    `(yascroll:thumb-text-area
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments
+                           :background ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-monokai-comments))))
 
    `(yascroll:thumb-fringe
-     ((,monokai-class (:foreground ,monokai-comments
-                                   :background ,monokai-comments))
-      (,monokai-256-class  (:foreground ,monokai-256-comments
-                                        :background ,monokai-256-comments))))
+     ((,class (:foreground ,monokai-comments
+                           :background ,monokai-comments))
+      (,terminal-class (:foreground ,terminal-monokai-comments
+                                    :background ,terminal-monokai-comments))))
 
    ;; zencoding
    `(zencoding-preview-input
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :box ,monokai-emphasis))
-      (,monokai-256-class  (:background ,monokai-256-highlight-line
-                                        :box ,monokai-256-emphasis)))))
+     ((,class (:background ,monokai-hl
+                           :box ,monokai-emph))
+      (,terminal-class (:background ,terminal-monokai-hl
+                                    :box ,terminal-monokai-emph)))))
 
   (custom-theme-set-variables
    'monokai
-   `(ansi-color-names-vector [,monokai-background ,monokai-red ,monokai-green ,monokai-yellow
-                                                  ,monokai-blue ,monokai-magenta ,monokai-cyan ,monokai-foreground])
+   `(ansi-color-names-vector [,monokai-bg ,red ,green ,yellow
+                                          ,blue ,magenta ,cyan ,monokai-fg])
 
    ;; compilation
    `(compilation-message-face 'default)
 
    ;; fill-column-indicator
-   `(fci-rule-color ,monokai-highlight-line)
+   `(fci-rule-color ,monokai-hl)
 
    ;; magit
    `(magit-diff-use-overlays nil)
 
    ;; highlight-changes
-   `(highlight-changes-colors '(,monokai-magenta ,monokai-violet))
+   `(highlight-changes-colors (,magenta ,violet))
 
    ;; highlight-tail
    `(highlight-tail-colors
-     '((,monokai-highlight-line . 0)
-       (,monokai-green-lc . 20)
-       (,monokai-cyan-lc . 30)
-       (,monokai-blue-lc . 50)
-       (,monokai-yellow-lc . 60)
-       (,monokai-orange-lc . 70)
-       (,monokai-magenta-lc . 85)
-       (,monokai-highlight-line . 100)))
+     ((,monokai-hl . 0)(,green-lc . 20)(,cyan-lc . 30)(,blue-lc . 50)
+      (,yellow-lc . 60)(,orange-lc . 70)(,magenta-lc . 85)(,monokai-hl . 100)))
 
-   ;; pos-tip
-   `(pos-tip-foreground-color ,monokai-background)
-   `(pos-tip-background-color ,monokai-green)
 
    ;; vc
    `(vc-annotate-color-map
-     '((20 . ,monokai-red)
+     '((20 . ,red)
        (40 . "#CF4F1F")
        (60 . "#C26C0F")
-       (80 . ,monokai-yellow)
+       (80 . ,yellow)
        (100 . "#AB8C00")
        (120 . "#A18F00")
        (140 . "#989200")
        (160 . "#8E9500")
-       (180 . ,monokai-green)
+       (180 . ,green)
        (200 . "#729A1E")
        (220 . "#609C3C")
        (240 . "#4E9D5B")
        (260 . "#3C9F79")
-       (280 . ,monokai-cyan)
+       (280 . ,cyan)
        (300 . "#299BA6")
        (320 . "#2896B5")
        (340 . "#2790C3")
-       (360 . ,monokai-blue)))
+       (360 . ,blue)))
    `(vc-annotate-very-old-color nil)
    `(vc-annotate-background nil)
 
    ;; weechat
    `(weechat-color-list
-     (unspecified ,monokai-background ,monokai-highlight-line
-                  ,monokai-red-d ,monokai-red
-                  ,monokai-green-d ,monokai-green
-                  ,monokai-yellow-d ,monokai-yellow
-                  ,monokai-blue-d ,monokai-blue
-                  ,monokai-magenta-d ,monokai-magenta
-                  ,monokai-cyan-d ,monokai-cyan
-                  ,monokai-foreground ,monokai-emphasis))))
+     (unspecified ,monokai-bg ,monokai-hl
+                  ,red-d ,red
+                  ,green-d ,green
+                  ,yellow-d ,yellow
+                  ,blue-d ,blue
+                  ,magenta-d ,magenta
+                  ,cyan-d ,cyan
+                  ,monokai-fg ,monokai-emph))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
@@ -5866,6 +5385,8 @@ Also affects 'linum-mode' background."
 
 ;; Local Variables:
 ;; no-byte-compile: t
+;; eval: (when (fboundp 'rainbow-mode) (rainbow-mode 1))
+;; eval: (when (fboundp 'aggressive-indent-mode) (aggressive-indent-mode -1))
 ;; fill-column: 95
 ;; End:
 

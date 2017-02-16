@@ -17,15 +17,25 @@
                                 :type "String")
                                 (reparse-symbol formal_parameters) [55 68]))                          
                         :type "void")
-                        (reparse-symbol class_member_declaration) [31 140]))                  
+                        (reparse-symbol class_member_declaration) [31 119]))                  
                 :type "class")
-                nil [1 142]))          
+                nil [1 121]))          
       :file "HelloWorld.java"
-      :pointmax 143
-      :fsize 142
-      :lastmodtime '(22657 46139 35995 71000)
-      :unmatched-syntax nil)
-)
+      :pointmax 122
+      :fsize 121
+      :lastmodtime '(22658 2203 503785 278000)
+      :unmatched-syntax '((DIV 1 . 2)))
+    (semanticdb-table "Hellow.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("print" code nil nil [1 16])
+            ("a" code nil nil [17 26])
+            ("print" code nil nil [27 35]))          
+      :file "Hellow.py"
+      :pointmax 36
+      :fsize 35
+      :lastmodtime '(22657 59730 423995 219000)
+      :unmatched-syntax '(($EOI 17 . 17) ($EOI 11 . 11) ($EOI 9 . 9))))
   :file "!home!zhangtao!Dropbox!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** \nUse TRAMP. C")
- (rear-context-string . "-01-15 日 14:01]\n")
- (position . 2466))
+ (filename . "~/Dropbox/Txt/contacts.txt")
+ (front-context-string . "** \n:PROPERTIES:")
+ (rear-context-string . ": \n:NOTE:\n:END:\n")
+ (position . 165))
 )

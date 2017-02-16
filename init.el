@@ -50,7 +50,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(add-to-list 'default-frame-alist '(height . 22))
+(add-to-list 'default-frame-alist '(height . 20))
 (add-to-list 'default-frame-alist '(width . 56))
 
 ;;(setq default-directory "C:/Users/zhangtao/Dropbox/")
@@ -58,7 +58,6 @@
 (setq default-directory "~/Dropbox/")
 
 (setq-default fill-column 80)
-
 
 ;;eshell
 ;;(setq shell-file-name "cmdproxy")
@@ -162,13 +161,20 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
-;;(set-default-font "Consolas-11")
-;;(set-default-font "Source Code Pro:style=Regular-11")
+;;(set-default-font "Consolas-10")
+;;(set-default-font "Source Code Pro 10")
+;;(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 ;;(set-default-font "Inconsolata-12")
-(set-default-font "Monaco-9")
-;;(set-default-font "Menlo-10")
-;;(set-default-font "Courier New:style=Bold-12")
+;;(set-default-font "Monaco-10")
+(set-default-font "Menlo-10")
+;;(set-default-font "Courier New-10")
 ;;(set-default-font "Roboto Mono-11")
+;; Set default font
+;; (set-face-attribute 'default nil
+;;                     :family "Source Code Pro"
+;;                     :height 90
+;;                     :weight 'normal
+;;                     :width 'normal)
 
 ;; (set-face-attribute
 ;;  'default nil :font "Consolas 11")
@@ -180,8 +186,8 @@ directory to make multiple eshell windows easier."
 
 ;;(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Microsoft Yahei")
-;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
-(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
+(set-fontset-font "fontset-default" 'han '("PingFang SC"))
+;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12"))
 
 ;;Fullscreen
@@ -277,7 +283,8 @@ directory to make multiple eshell windows easier."
 			 ("melpa" . "http://melpa.org/packages/")))
 ;;(package-refresh-contents)
 (package-initialize)
-
+;; (require 'cl-lib)
+;; (require 'cl)
 ;----------------------
 ;Themes
 ;----------------------
@@ -414,11 +421,11 @@ directory to make multiple eshell windows easier."
 
 ;;-----------------------
 ;;deft-mode
-(require 'deft)
-(setq deft-extensions '("txt" "tex" "org" "py"))
-(setq deft-directory "~/Dropbox/Txt/")
-(setq deft-recursive t)
-(global-set-key [f8] 'deft)
+;; (require 'deft)
+;; (setq deft-extensions '("txt" "tex" "org" "py"))
+;; (setq deft-directory "~/Dropbox/Txt/")
+;; (setq deft-recursive t)
+;; (global-set-key [f8] 'deft)
 
 ;;relative-number------------------------
 ;; (require 'linum-relative)
@@ -552,7 +559,7 @@ directory to make multiple eshell windows easier."
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
 ;;-----------------------
 ;;(setq tramp-mode nil)
-
+(setq ad-redefinition-action 'accept)
 (require 'helm-config)
 (require 'helm)
 (helm-mode t)
@@ -610,15 +617,20 @@ directory to make multiple eshell windows easier."
 ;evil-mode
 ;-------------------------------------------------------------------------------------------------------------------------
 
+;; (require 'evil-leader)
+;; (global-evil-leader-mode)
+
 ;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
 ;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
+
 
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20160608.229/")
 ;; (require 'evil) 
 ;; (evil-mode 1) 
 
+
 ;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;; (setcdr evil-insert-state-map nil)
+;; ;;(setcdr evil-insert-state-map nil)
  
 ;; ;; ESC to switch back normal-state
 ;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
@@ -711,8 +723,6 @@ directory to make multiple eshell windows easier."
 ;; (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 ;; ;; ;;evil-leader
-;; (require 'evil-leader)
-;; (global-evil-leader-mode)
 ;; ;;(evil-leader/set-leader ";")
 ;; (evil-leader/set-leader ",")
 ;; ;;(evil-leader/set-leader "<SPC>")
@@ -746,6 +756,7 @@ directory to make multiple eshell windows easier."
 ;;expand-region
 
 (require 'expand-region)
+;;(global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-c =") 'er/expand-region)
 
 ;--------------
@@ -778,9 +789,12 @@ directory to make multiple eshell windows easier."
 ;yasnippet
 ;----------------
 
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet/")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20161211.1918/")
 (require 'yasnippet)
 (yas-global-mode 1)
+;;(setq yas-snippet-dirs "~/.emacs.d/snippets/")
+;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
+;;(setq debug-on-error t)
 
 ;----------------
 ;auto-complete
@@ -794,12 +808,12 @@ directory to make multiple eshell windows easier."
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
 (ac-config-default)
 
-;; (defun my:ac-c-headers-init ()
-;;   (require 'auto-complete-c-headers)
-;;   (add-to-list 'ac-sources 'ac-source-c-headers))
+(defun my:ac-c-headers-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers))
 
-;; (add-hook 'c++-mode-hook 'my:ac-c-headers-init)
-;; (add-hook 'c-mode-hook 'my:ac-c-headers-init)
+(add-hook 'c++-mode-hook 'my:ac-c-headers-init)
+(add-hook 'c-mode-hook 'my:ac-c-headers-init)
 
 ;;(add-to-list 'ac-modes 'org-mode)
 (ac-set-trigger-key "TAB")
@@ -833,6 +847,7 @@ directory to make multiple eshell windows easier."
 
 (require 'tramp)
 (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
+
 ;-----------------
 ;Java + Jdee
 ;-----------------
@@ -1250,10 +1265,8 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(jde-jdk (quote ("1.6")))  
+ '(jde-jdk (quote ("1.6")))
  '(jde-jdk-registry (quote (("1.6" . "/usr/lib/jvm/java-8-oracle/"))))
  '(org-agenda-files
    (quote
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt"))))
-
-
