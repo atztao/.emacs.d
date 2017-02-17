@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ close-all-buffers
  magit-status
  load-theme
  package-delete
  package-menu-execute
  package-list-packages
- recover-this-file
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 490)
+ (eval-buffer . 493)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
@@ -314,7 +314,7 @@
  (hippie-expand . 1)
  (markdown . 1)
  (customize-variable . 3)
- (close-all-buffers . 2)
+ (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
  (package-autoremove . 4)

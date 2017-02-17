@@ -873,7 +873,6 @@ directory to make multiple eshell windows easier."
 ;org-mode
 ;-------------
 
-;;(require 'org-latex)
 ;; (require 'org-bullets)
 ;; (setq org-bullets-face-name (quote org-bullet-face))
 ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -1001,7 +1000,7 @@ directory to make multiple eshell windows easier."
 ;; (setq org-crypt-key nil)
 
 ;----------------------
-;auctex
+;auctex+XeCJK
 ;----------------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.89/")
@@ -1051,8 +1050,8 @@ directory to make multiple eshell windows easier."
 (setq TeX-view-program-list
  '(("PDF Viewer" "okular --unique %o#src:%n%b")))
 
-;; (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
-;; 			      "xelatex -interaction nonstopmode %f"))
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
+			      "xelatex -interaction nonstopmode %f"))
 
 ;;(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
@@ -1072,10 +1071,10 @@ directory to make multiple eshell windows easier."
 (advice-add 'org-latex-compile :after #'delete-file)
 
 ;;-------------------------------------------------------
-;;org-latex
+;;ox-latex
 ;;-------------------------------------------------------
 
-(require 'ox-latex) ;;sudo pip install pygmentize
+(require 'ox-latex) ;;sudo pip install pygmentize https://emacs-china.org/t/spacemacs-org-mode-pdf/1577/15
 
 (setq org-export-latex-listings t)
 
@@ -1219,7 +1218,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
   (add-to-list 'org-latex-classes
                '("org-beamer"
                  "\\documentclass{beamer}
-\\usepackage[slantfont, boldfont]{xeCJK}
+\\usepackage[SlantFont, BoldFont]{xeCJK}
 % beamer set
 \\usepackage[none]{hyphenat}
 \\usepackage[abs]{overpic}
@@ -1285,6 +1284,11 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;            '(("frame" "")
 ;;              ("fontsize" "\\scriptsize")
 ;;              ("linenos=false" "")))
+
+;; (setq org-latex-to-pdf-process 
+;;       '("xelatex -interaction nonstopmode %f"
+;; 	"xelatex -interaction nonstopmode %f"))
+
 
 ;; (setq org-latex-to-pdf-process 
 ;;       '("xelatex --shell-escape -interaction nonstopmode %f"
