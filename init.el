@@ -165,11 +165,11 @@ directory to make multiple eshell windows easier."
 ;;(set-default-font "Source Code Pro 10")
 ;;(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 ;;(set-default-font "Inconsolata-12")
-;;(set-default-font "Monaco-10")
-(set-default-font "Menlo-10")
-;;(set-default-font "Courier New-10")
-;;(set-default-font "Roboto Mono-11")
-;; Set default font
+(set-default-font "Monaco-9")
+;;(set-frame-font "Courier New-11")
+;;(set-default-font "Menlo-12")
+;; (set-default-font "Courier New-10")
+
 ;; (set-face-attribute 'default nil
 ;;                     :family "Source Code Pro"
 ;;                     :height 90
@@ -179,16 +179,16 @@ directory to make multiple eshell windows easier."
 ;; (set-face-attribute
 ;;  'default nil :font "Consolas 11")
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     charset
-;;                     (font-spec :family "PingFang SC" :size 10)))
+;; (set-fontset-font (frame-parameter nil 'font)
+;; 		  charset
+;; 		  (font-spec :family "PingFang SC" :size 10)))
 
 
-;;(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
+(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Microsoft Yahei")
-(set-fontset-font "fontset-default" 'han '("PingFang SC"))
+;;(set-fontset-font "fontset-default" 'han '("PingFang SC:style=Regular 10"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
-;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12"))
+;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12")
 
 ;;Fullscreen
 ;; (global-set-key [f11] 'my-fullscreen) 
@@ -285,6 +285,7 @@ directory to make multiple eshell windows easier."
 (package-initialize)
 ;; (require 'cl-lib)
 ;; (require 'cl)
+
 ;----------------------
 ;Themes
 ;----------------------
@@ -316,7 +317,7 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-(set-background-color "ivory")
+(set-background-color "white")
 (set-foreground-color "black")
 
 (set-face-foreground 'isearch "red")
@@ -324,18 +325,20 @@ directory to make multiple eshell windows easier."
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
+(set-face-attribute 'region nil :background "#FDF58A" :foreground "black")
+
 ;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
 
-;; (set-background-color "black")
-;; ;;(set-background-color "#fffff0")
-;; (set-foreground-color "#32cd32")
+;;(set-background-color "black")
+;;(set-background-color "#fffff0")
+;;(set-foreground-color "#32cd32")
 
 (set-cursor-color "red")
 (set-mouse-color "goldenrod")
 
 ;;zenburn
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
 ;; ;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 
@@ -344,56 +347,76 @@ directory to make multiple eshell windows easier."
 ;; (load-theme 'zenburn t)
 ;; (set-cursor-color "red")
 
-
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
+
 ;;(format-mode-line header-line-format "_")
 
 ;;(setq-default mode-line-format nil)
 
 ;;(set-face-attribute 'mode-line nil  :height 90)
-;;(set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-background 'vertical-border "gray") ;;default
-;;(set-face-background 'vertical-border "#284b54") ;;solarized
-;;(set-face-background 'vertical-border "gray37") ;;37-50 ;;zenburn
-;;(set-face-background 'vertical-border "gray15")
+;;---------------------------Vertical-border
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-background 'vertical-border "gray") ;;default
+;; ;;(set-face-background 'vertical-border "#284b54") ;;solarized
+;; ;;(set-face-background 'vertical-border "gray37") ;;37-50 ;;zenburn
+;; ;;(set-face-background 'vertical-border "gray15")
 
-(set-face-foreground 'vertical-border (face-background 'vertical-border))
+;; Reverse colors for the border to have nicer line  
+(set-face-inverse-video-p 'vertical-border nil)
+;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
+
 (set-display-table-slot standard-display-table
                         'vertical-border 
                         (make-glyph-code ?│))
 
+;;----------------------------------------------
+;; (defun my-change-window-divider ()
+;;   (let ((display-table (or buffer-display-table standard-display-table)))
+;;     (set-display-table-slot display-table 5 ?│)
+;;     (set-window-display-table (selected-window) display-table)))
+;; (add-hook 'window-configuration-change-hook 'my-change-window-divider)
+;;----------------------------------------------
+
 ;;(set-face-background 'fringe "#809088")
+
+
+;; (require 'spaceline-config)
+;; ;;(spaceline-spacemacs-theme)
+;; (spaceline-emacs-theme)
+;; (setq spaceline-separator-dir-left '(left . left))
+;; (setq spaceline-separator-dir-right '(right . right))
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-;; (require 'smart-mode-line)
-;; ;; (require 'powerline)
-;; (setq sml/no-confirm-load-theme t)
-;; ;; ;;(setq sml/theme 'dark)
-;; ;;(setq sml/theme 'light)
-;; ;; ;;(setq sml/theme 'respectful)
-;; ;;(setq sml/theme 'powerline)
-;; (setq sml/theme 'light-powerline)
-;; (setq sml/mode-width 0)
-;; (setq sml/name-width 20)
-;; ;;(setq sml/theme 'powerline)
-;; (sml/setup)
+(require 'smart-mode-line)
+;; (require 'powerline)
+(setq sml/no-confirm-load-theme t)
+;; ;;(setq sml/theme 'dark)
+;; (setq sml/theme 'light)
+;; (setq sml/theme 'respectful)
+;;(setq sml/theme 'powerline)
+;;(setq sml/theme 'light-powerline)
+(setq sml/mode-width 0)
+(setq sml/name-width 20)
+;;(setq sml/theme 'powerline)
+(sml/setup)
 
 ;;(rich-minority-mode 1)
 (setf rm-blacklist "")
 (setq rm-blacklist '(" GitGutter" " MRev" " company" " mate" " Projectile"))
 
 (set-face-attribute 'mode-line nil
-                    :foreground "black"
-                    :background "ivory"
+                    :foreground "#000000"
+                    :background "#FFFFFF"
                     :box nil)
 (set-face-attribute 'modeline-inactive nil
-                    :foreground "black"
-                    :background "ivory"
+                    :foreground "#000000"
+                    :background "#FFFFFF"
                     :box nil)
 
     
@@ -614,6 +637,9 @@ directory to make multiple eshell windows easier."
 (helm-autoresize-mode 1)
 
 ;-------------------------------------------------------------------------------------------------------------------------
+(setq save-place-file "~/.emacs.d/saveplace")
+(save-place-mode 1) 
+
 ;evil-mode
 ;-------------------------------------------------------------------------------------------------------------------------
 
@@ -623,14 +649,12 @@ directory to make multiple eshell windows easier."
 ;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
 ;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
 
-
-;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20160608.229/")
+;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20170208.1204/")
 ;; (require 'evil) 
 ;; (evil-mode 1) 
 
-
 ;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;; ;;(setcdr evil-insert-state-map nil)
+;; (setcdr evil-insert-state-map nil)
  
 ;; ;; ESC to switch back normal-state
 ;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
@@ -751,17 +775,20 @@ directory to make multiple eshell windows easier."
 ;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 ;; (key-chord-mode 1)
 
-;;-------------------------------------------------------------------------------------------------------------------------
+;; ;;-------------------------------------------------------------------------------------------------------------------------
 
-;;expand-region
+;; ;;expand-region
 
-(require 'expand-region)
-;;(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-c =") 'er/expand-region)
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
+;; ;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
 ;--------------
 ;ace-jump
 ;--------------
+;; (ace-isearch-mode +1)
+;; (global-ace-isearch-mode +1)
+
 (require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
 (ace-pinyin-global-mode +1)
@@ -880,13 +907,13 @@ directory to make multiple eshell windows easier."
 ;; ;; (set-face-attribute 'org-bullet-face 
 ;; ;;    t :foreground "burlywood" :weight 'normal :height 1.6)
 
-;; ;;(setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
-;; (setq org-bullets-bullet-list '("◉" "○" "◎" "●" "◯"))
-;; (setq org-ellipsis "↴");; ⤵ ▼, ↴, , ∞, ⬎, ⤷, ⤵ ≫
+;; ;; ;;(setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
+;; ;; (setq org-bullets-bullet-list '("◉" "○" "◎" "●" "◯"))
+;; ;; (setq org-ellipsis "↴");; ⤵ ▼, ↴, , ∞, ⬎, ⤷, ⤵ ≫
 
 (setq org-startup-indented t)
 
-(setq org-log-done 'time)
+;; (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
 
 ;;(setq org-image-actual-width 600)
@@ -906,8 +933,8 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-done ((t (:foreground "PaleGreen" :weight normal :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "LightSalmon" :strike-through t)))))
+ '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t)))))
 
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
@@ -950,12 +977,14 @@ directory to make multiple eshell windows easier."
 ;;(define-key global-map [f12] 'org-capture)
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-      `(("t" "Todo" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Todo")
-	 "* TODO %?\n%U\n%a\n")
-        ("n" "Note" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Notes")
-	 "* %? \n%U\n%a\n")
+      `(("t" "Todo" entry (file+headline "~/Dropbox/Txt/todo.txt" "Inbox")
+	 "* TODO %? \n%U\n")
+        ("n" "Note" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Note")
+	 "* %? \n%U\n")
+	("l" "Link" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Link")
+	 "* %? \n%U\n")
 	("c" "Contact" entry (file+headline "~/Dropbox/Txt/contacts.txt" "Contact")
-	 "* 
+	 "* %?
 :PROPERTIES:
 :EMAIL: 
 :URL:
@@ -967,6 +996,7 @@ directory to make multiple eshell windows easier."
 
 (global-set-key "\C-ca" 'org-agenda)
 (setq org-export-coding-system 'utf-8)
+(setq org-agenda-convert-date 'Chinese)
 (setq diary-file "~/Dropbox/Txt/diary")
 (setq org-agenda-include-diary t)
 ;;(setq org-agenda-files '("~/org"))
@@ -994,10 +1024,11 @@ directory to make multiple eshell windows easier."
 ;;                 )))
 
 
-;; (require 'org-crypt)
-;; (org-crypt-use-before-save-magic)
-;; (setq org-tags-exclude-from-inheritance (quote("crypt")))
-;; (setq org-crypt-key nil)
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-crypt-tag-matcher "Secret")
+(setq org-tags-exclude-from-inheritance (quote("Secret")))
+(setq org-crypt-key nil)
 
 ;----------------------
 ;auctex+XeCJK
@@ -1468,4 +1499,8 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
  '(jde-jdk-registry (quote (("1.6" . "/usr/lib/jvm/java-8-oracle/"))))
  '(org-agenda-files
    (quote
-    ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt"))))
+    ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
+ '(package-selected-packages
+   (quote
+    (markdown-mode ace-isearch solarized-theme dracula-theme zenburn-theme writeroom-mode websocket super-save smooth-scrolling smex smart-mode-line-powerline-theme semi request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese org-bullets minimap matlab-mode magit log4e linum-relative key-chord jdee htmlize ht highlight-tail helm-swoop helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader elpy deft cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin)))
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838"))))

@@ -2,21 +2,21 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- close-all-buffers
- magit-status
- load-theme
- package-delete
- package-menu-execute
+ indent-region
+ markdown-mode
  package-list-packages
+ save-place-mode
+ org-store-link
+ magit-push
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 110)
- (indent-region . 17)
+ (package-list-packages . 112)
+ (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 83)
+ (markdown-mode . 87)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -25,10 +25,10 @@
  (sml/setup . 2)
  (highlight-tail-mode . 4)
  (isearch-forward-regexp . 1)
- (org-store-link . 1)
+ (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 99)
+ (org-mode . 101)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 51)
- (load-theme . 108)
+ (load-theme . 118)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -105,7 +105,7 @@
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
- (org-beamer-export-to-pdf . 92)
+ (org-beamer-export-to-pdf . 93)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
  (describe-coding-system . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 51)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 493)
+ (eval-buffer . 553)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 68)
+ (disable-theme . 71)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -293,7 +293,7 @@
  (htmlize-file . 1)
  (er/mark-email . 1)
  (jde-mode . 3)
- (jdee-mode . 10)
+ (jdee-mode . 11)
  (cvs-status-mode . 1)
  (key-chord-mode . 2)
  (ein:notebooklist-open . 4)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 19)
- (magit-push . 16)
+ (magit-status . 21)
+ (magit-push . 18)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -319,4 +319,6 @@
  (jde-gen-section-comment . 2)
  (package-autoremove . 4)
  (package-delete . 1)
+ (org-agenda-convert-date . 2)
+ (save-place-mode . 2)
 )

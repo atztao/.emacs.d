@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/contacts.txt")
- (front-context-string . "** \n:PROPERTIES:")
- (rear-context-string . ": \n:NOTE:\n:END:\n")
- (position . 165))
+ (filename . "~/Dropbox/Txt/inbox.txt")
+ (front-context-string . "** 「有时候一件事情的真相，不")
+ (rear-context-string . "-02-25 六 19:08]\n")
+ (position . 2357))
 )
