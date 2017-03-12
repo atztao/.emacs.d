@@ -2,21 +2,21 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- indent-region
- markdown-mode
  package-list-packages
- save-place-mode
- org-store-link
- magit-push
+ load-theme
+ disable-theme
+ focus-mode
+ writeroom-mode
+ markdown-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 112)
+ (package-list-packages . 113)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 87)
+ (markdown-mode . 90)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 101)
+ (org-mode . 106)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -95,12 +95,12 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 51)
- (load-theme . 118)
+ (load-theme . 126)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
  (gfm-mode . 1)
- (focus-mode . 27)
+ (focus-mode . 37)
  (help . 3)
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
@@ -112,10 +112,10 @@
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 51)
+ (writeroom-mode . 62)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 553)
+ (eval-buffer . 573)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 71)
+ (disable-theme . 80)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -210,11 +210,11 @@
  (org-agenda-year-view . 1)
  (goto-line . 1)
  (linum-mode . 2)
- (writeroom-adjust-width . 2)
+ (writeroom-adjust-width . 6)
  (markdown-insert-link . 2)
  (write-room . 3)
  (darkroom-mode . 2)
- (writeroom-increase-width . 10)
+ (writeroom-increase-width . 11)
  (sml/apply-theme . 18)
  (set-border-color . 1)
  (ansi-color-for-comint-mode-on . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 21)
- (magit-push . 18)
+ (magit-status . 22)
+ (magit-push . 20)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -321,4 +321,6 @@
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
+ (iswitchb-mode . 1)
+ (writeroom-decrease-width . 17)
 )

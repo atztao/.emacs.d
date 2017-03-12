@@ -163,9 +163,10 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;(set-default-font "Consolas-10")
 ;;(set-default-font "Source Code Pro 10")
-;;(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
-;;(set-default-font "Inconsolata-12")
-(set-default-font "Monaco-9")
+;; (set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+;; (set-default-font "Inconsolata-10")
+(set-default-font "Inconsolata\-g for Powerline-9")
+;;(set-default-font "Monaco-9")
 ;;(set-frame-font "Courier New-11")
 ;;(set-default-font "Menlo-12")
 ;; (set-default-font "Courier New-10")
@@ -182,7 +183,6 @@ directory to make multiple eshell windows easier."
 ;; (set-fontset-font (frame-parameter nil 'font)
 ;; 		  charset
 ;; 		  (font-spec :family "PingFang SC" :size 10)))
-
 
 (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Microsoft Yahei")
@@ -353,7 +353,7 @@ directory to make multiple eshell windows easier."
 
 ;;(format-mode-line header-line-format "_")
 
-;;(setq-default mode-line-format nil)
+;; (setq-default mode-line-format nil)
 
 ;;(set-face-attribute 'mode-line nil  :height 90)
 
@@ -396,32 +396,22 @@ directory to make multiple eshell windows easier."
 (require 'smart-mode-line)
 ;; (require 'powerline)
 (setq sml/no-confirm-load-theme t)
-;; ;;(setq sml/theme 'dark)
+
+;; (setq sml/theme 'dark)
 ;; (setq sml/theme 'light)
 ;; (setq sml/theme 'respectful)
-;;(setq sml/theme 'powerline)
+
+(setq sml/theme 'powerline)
 ;;(setq sml/theme 'light-powerline)
+(setq powerline-arrow-shape 'curve)
+(setq powerline-default-separator-dir '(right . left))
 (setq sml/mode-width 0)
 (setq sml/name-width 20)
+;; (rich-minority-mode 1)
+;; (setf rm-blacklist "super-save")
 ;;(setq sml/theme 'powerline)
-(sml/setup)
-
-;;(rich-minority-mode 1)
-(setf rm-blacklist "")
-(setq rm-blacklist '(" GitGutter" " MRev" " company" " mate" " Projectile"))
-
-(set-face-attribute 'mode-line nil
-                    :foreground "#000000"
-                    :background "#FFFFFF"
-                    :box nil)
-(set-face-attribute 'modeline-inactive nil
-                    :foreground "#000000"
-                    :background "#FFFFFF"
-                    :box nil)
-
-    
 (setq rm-excluded-modes
-	  '(" Guide"			;; guide-key mode
+      '(" Guide"			;; guide-key mode
 	" hc"				;; hardcore mode
 	" AC"				;; auto-complete
 	" vl"				;; global visual line mode enabled
@@ -439,8 +429,21 @@ directory to make multiple eshell windows easier."
 	" GG"				;; ggtags
 	" ElDoc"			;; eldoc
 	" hl-highlight"			;; hl-anything
+	"AcePY"
+	"Helm"
 	))
 
+(sml/setup)
+
+
+(set-face-attribute 'mode-line nil
+                    :foreground "#000000"
+                    :background "#FFFFFF"
+                    :box nil)
+(set-face-attribute 'modeline-inactive nil
+                    :foreground "#000000"
+                    :background "#FFFFFF"
+                    :box nil)
 
 ;;-----------------------
 ;;deft-mode
