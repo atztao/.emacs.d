@@ -1,82 +1,3 @@
-python ex14.py clean
-python ex14.py clean
-python ex14.py clean
-python ex14.py clean
-gcc hellow.c -o hellow
-./hellow 
-mkdir ~/.emacs.d/snippets/c-mode/
-gcc hellow.c -o hellow
-./hellow 
-./hellow 
-gcc hellow.c -o hellow
-gcc hellow.c -o hellow
-gcc hellow.c -o hellow
-gcc hellow.c -o hellow
-gcc hellow.c -o hellow
-top
-htop
-python2 ex15.py txt.txt 
-python2 ex15.py txt.txt 1
-python2 ex15.py txt.txt 
-python2 ex15.py txt.txt 
-python2 ex16.py test.txt 
-line 1:make diffrent
-cat test.txt 
-python2 ex16.py test.txt 
-ls
-l
-ll
-ls
-cd
-zsh
-ls
-ls
-x
-x
-exit
-ls
-ls
-x
-exit
-ls
-ls
-x
-exit
-ls
-gcc sim.c -o sim
-./sim 
-update
-update
-zsh
-exit
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-gcc sim.c -o sim
-./sim 
-cd source/gcc sim.c -o sim
-gcc sim.c -o sim
-./sim 
-./sim 
-gcc sim.c -o sim
-./sim 
-gcc sim.c -o sim
-./sim 
-gcc sim.c -o sim
-./sim 
-gcc sim.c -o sim
-./sim 
-gcc sim.c -o sim
-./sim 
-gcc sim.c -o sim
-./sim 
-ls
-ls
-ls
 ls
 ls
 ls
@@ -126,3 +47,82 @@ ls
 cd
 unzip color-theme-ujelly-master.zip 
 source .zshrc
+g++ Hellow.cpp -o Hellow
+./Hellow 
+g++ Hellow.cpp -o Hellow
+g++ Hellow.cpp -o Hellow
+./Hellow 
+g++ Hellow.cpp -o Hellow
+./Hellow 
+g++ Hellow.cpp -o Hellow
+g++ Hellow.cpp -o Hellow
+./hellow 
+g++ Hellow.cpp -o Hellow
+./Hellow 
+./Hellow 
+g++ while.cpp -o while
+./while 
+cd
+cd Dropbox/Networks/Exercise/Net2_ex1/
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+g++ sandpile-model.cpp -o sanpile-model
+./sanpile-model 
+b
+g++ sandpile-model.cpp -o sanpile-model
+b
+./sanpile-model 

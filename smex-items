@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
+ magit-status
+ close-all-buffers
  package-list-packages
- load-theme
- disable-theme
- focus-mode
- writeroom-mode
- markdown-mode
+ eval-buffer
+ relative-line-numbers-mode
+ column-number-mode
+ line-number-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 113)
+ (package-list-packages . 117)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 90)
+ (markdown-mode . 92)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -83,7 +83,7 @@
  (color-theme-tomorrow-night . 2)
  (color-theme-tomorrow-night-bright . 1)
  (mode-line-widen . 7)
- (markdown-preview . 8)
+ (markdown-preview . 9)
  (list-colors-display . 4)
  (evil-mode . 11)
  (buffer-menu . 1)
@@ -94,7 +94,7 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 51)
+ (replace-string . 54)
  (load-theme . 126)
  (auto-complete . 6)
  (org-previous-block . 1)
@@ -112,10 +112,10 @@
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 62)
+ (writeroom-mode . 64)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 573)
+ (eval-buffer . 611)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
@@ -151,8 +151,8 @@
  (powerline-center-evil-theme . 4)
  (powerline-default-theme . 5)
  (highlight-tail-reload . 1)
- (column-number-mode . 1)
- (line-number-mode . 5)
+ (column-number-mode . 2)
+ (line-number-mode . 6)
  (html2text . 1)
  (html-mode . 4)
  (query-replace . 5)
@@ -236,7 +236,7 @@
  (shell-script-mode . 1)
  (delimit-columns-customize . 1)
  (describe-face . 2)
- (markdown-live-preview-mode . 2)
+ (markdown-live-preview-mode . 4)
  (eww . 1)
  (mu4e . 53)
  (smtpmail-send-queued-mail . 1)
@@ -287,7 +287,7 @@
  (list-packages . 5)
  (package-menu-mark-delete . 5)
  (package-menu-execute . 4)
- (relative-line-numbers-mode . 4)
+ (relative-line-numbers-mode . 6)
  (java-mode . 4)
  (org-babel-tangle . 1)
  (htmlize-file . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 22)
- (magit-push . 20)
+ (magit-status . 25)
+ (magit-push . 21)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -314,7 +314,7 @@
  (hippie-expand . 1)
  (markdown . 1)
  (customize-variable . 3)
- (close-all-buffers . 3)
+ (close-all-buffers . 4)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
  (package-autoremove . 4)
@@ -323,4 +323,7 @@
  (save-place-mode . 2)
  (iswitchb-mode . 1)
  (writeroom-decrease-width . 17)
+ (set-input-method . 1)
+ (set-cursor-color . 1)
+ (gdb . 1)
 )
