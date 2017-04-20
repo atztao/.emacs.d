@@ -69,7 +69,7 @@ KEY must be readable by `read-kbd-macro'."
   (let ((old-key (read-kbd-macro
                   (if (boundp 'evil-toggle-key)
                       evil-toggle-key
-                    "C-z")))
+                    "")))
         (key (read-kbd-macro key)))
     (with-no-warnings
       (dolist (pair '((evil-motion-state-map evil-emacs-state)

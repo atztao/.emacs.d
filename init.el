@@ -27,8 +27,8 @@
 
 (setq frame-title-format
       (list '(:eval (projectile-project-name)) 
-	    "(●—●) I'm Here @ "
-	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+            "(●—●) I'm Here @ "
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;;(set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
 
@@ -161,13 +161,13 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
-;;(set-default-font "Consolas-10")
+(set-default-font "Consolas-11")
 ;;(set-frame-font "Source Code Pro 10")
 ;;(set-frame-font "Source Code Pro-9")
 ;;(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-(set-default-font "Inconsolata-10")
+;;(set-default-font "Inconsolata-12")
 ;;(set-default-font "Inconsolata\-g for Powerline-9")
-;;(set-default-font "Monaco-9")
+;;(set-default-font "Monaco-12")
 ;;(set-frame-font "Courier New-11")
 ;;(set-default-font "Menlo-10")
 ;; (set-default-font "Courier New-10")
@@ -240,25 +240,25 @@ directory to make multiple eshell windows easier."
 (defun ttypaste-mode ()
   (interactive)
   (let ((buf (current-buffer))
-	(ttypaste-mode t))
-	(with-temp-buffer
-	  (let ((stay t)
-		(text (current-buffer)))
-	(redisplay)
-	(while stay
-	  (let ((char (let ((inhibit-redisplay t)) (read-event nil t 0.1))))
-		(unless char
-		  (with-current-buffer buf (insert-buffer-substring text))
-		  (erase-buffer)
-		  (redisplay)
-		  (setq char (read-event nil t)))
-		(cond
-		 ((not (characterp char)) (setq stay nil))
-		 ((eq char ?\r) (insert ?\n))
-		 ((eq char ?\e)
-		  (if (sit-for 0.1 'nodisp) (setq stay nil) (insert ?\e)))
-		 (t (insert char)))))
-	(insert-buffer-substring text)))))
+        (ttypaste-mode t))
+    (with-temp-buffer
+      (let ((stay t)
+            (text (current-buffer)))
+        (redisplay)
+        (while stay
+          (let ((char (let ((inhibit-redisplay t)) (read-event nil t 0.1))))
+            (unless char
+              (with-current-buffer buf (insert-buffer-substring text))
+              (erase-buffer)
+              (redisplay)
+              (setq char (read-event nil t)))
+            (cond
+             ((not (characterp char)) (setq stay nil))
+             ((eq char ?\r) (insert ?\n))
+             ((eq char ?\e)
+              (if (sit-for 0.1 'nodisp) (setq stay nil) (insert ?\e)))
+             (t (insert char)))))
+        (insert-buffer-substring text)))))
 
 ;; Automatically set screen title
 ;; ref http://vim.wikia.com/wiki/Automatically_set_screen_title
@@ -280,16 +280,16 @@ directory to make multiple eshell windows easier."
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			 ;; ("marmalade" . "https://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.org/packages/")))
+                         ;; ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
 ;;(package-refresh-contents)
 (package-initialize)
 ;; (require 'cl-lib)
 ;; (require 'cl)
 
-;----------------------
-;Themes
-;----------------------
+                                        ;----------------------
+                                        ;Themes
+                                        ;----------------------
 
 ;;color-themes
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-6.6.0/")
@@ -351,6 +351,79 @@ directory to make multiple eshell windows easier."
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
+;;(setq-default mode-line-format nil)
+
+(defun codefalling//simplify-major-mode-name ()
+  "Return simplifyed major mode name"
+  (let* ((major-name (format-mode-line "%m"))
+         (replace-table '(Emacs-Lisp "[𝝀]"
+                                     Python "[𝝅]"
+                                     Shell "[>]"
+                                     Makrdown "[𝓜]"
+                                     GFM "[𝓜]"
+                                     Org "[𝒪]"
+                                     Text "[𝓣]"
+                                     Fundamental "[ℱ]"
+                                     ))
+         (replace-name (plist-get replace-table (intern major-name))))
+    (if replace-name replace-name major-name
+        )))
+
+(setq-default mode-line-format
+	      (list
+
+	       ;; the buffer name; the file name as a tool tip
+	       '(:eval (propertize "%b " 'face 'bold
+				   'help-echo (buffer-file-name)))
+
+	       "                      "
+	       ;; "%-"
+	       ;; line and column
+	       ;;"(" ;; '%02' to set to 2 chars at least; prevents flickering
+	       (propertize "%02l,%02c" 'face 'bold) 
+
+	       ;; relative position, size of file
+
+	       "          "
+	       (propertize " %p/%I " 'face 'bold) ;; % above top
+
+	       "                 "
+	       '(:eval (propertize (codefalling//simplify-major-mode-name) 'face 'bold
+				   'help-echo buffer-file-coding-system))
+
+	       ;; '(:eval (propertize "=%m=" 'face 'bold
+	       ;; 			   'help-echo buffer-file-coding-system))
+	       
+
+	       ;; '(:eval (propertize (if overwrite-mode "[Ovr]" "[Ins]")
+	       ;; 			   'face 'bold
+	       ;; 			   'help-echo (concat "Buffer is in "
+	       ;; 					      (if overwrite-mode "overwrite" "insert") " mode")))
+
+	       ;; ;; was this buffer modified since the last save?
+	       ;; '(:eval (when (buffer-modified-p)
+	       ;; 		 (concat ","  (propertize "Mod"
+	       ;; 					  'face 'font-lock-warning-face
+	       ;; 					  'help-echo "Buffer has been modified"))))
+
+	       ;; ;; is this buffer read-only?
+	       ;; '(:eval (when buffer-read-only
+	       ;; 		 (concat ","  (propertize "RO"
+	       ;; 					  'face 'bold
+	       ;; 					  'help-echo "Buffer is read-only"))))  
+
+	       ;; add the time, with the date and the emacs uptime in the tooltip
+	       ;; '(:eval (propertize (format-time-string "%H:%M")
+	       ;; 			   'help-echo
+	       ;; 			   (concat (format-time-string "%c; ")
+	       ;; 				   (emacs-uptime "Uptime:%hh"))))
+
+	       ;; " --"
+	       ;; i don't want to see minor-modes; but if you want, uncomment this:
+	       ;; minor-mode-alist  ;; list of minor modes
+	       "% " ;; fill with '-'
+	       ))
+
 
 ;;(format-mode-line header-line-format "_")
 
@@ -397,63 +470,63 @@ directory to make multiple eshell windows easier."
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-(require 'smart-mode-line)
-;; (require 'powerline)
-(setq sml/no-confirm-load-theme t)
+;; (require 'smart-mode-line)
+;; ;; (require 'powerline)
+;; (setq sml/no-confirm-load-theme t)
 
-;;(setq sml/theme 'dark)
-;; (setq sml/theme 'light)
-;;
-(setq sml/theme 'respectful)
+;; ;;(setq sml/theme 'dark)
+;; ;; (setq sml/theme 'light)
+;; ;;
+;; (setq sml/theme 'respectful)
 
-;; (setq sml/theme 'powerline)
-;;(setq sml/theme 'light-powerline)
-;; (setq powerline-arrow-shape 'curve)
-;; (setq powerline-default-separator-dir '(right . left))
-(setq sml/mode-width 0)
-(setq sml/name-width 20)
-;; (rich-minority-mode 1)
-;; (setf rm-blacklist "super-save")
-;;(setq sml/theme 'powerline)
-(setq rm-excluded-modes
-      '(" Guide"			;; guide-key mode
-	" hc"				;; hardcore mode
-	" AC"				;; auto-complete
-	" vl"				;; global visual line mode enabled
-	" Wrap"				;; shows up if visual-line-mode is enabled for that buffer
-	" Omit"				;; omit mode in dired
-	" yas"				;; yasnippet
-	" drag"				;; drag-stuff-mode
-	" VHl"				;; volatile highlights
-	" ctagsU"			;; ctags update
-	" Undo-Tree"			;; undo tree
-	" wr"				;; Wrap Region
-	" SliNav"			;; elisp-slime-nav
-	" Fly"				;; Flycheck
-	" PgLn"				;; page-line-break
-	" GG"				;; ggtags
-	" ElDoc"			;; eldoc
-	" hl-highlight"			;; hl-anything
-	"AcePY"
-	"Helm"
-	))
+;; ;;(setq sml/theme 'powerline)
+;; ;;(setq sml/theme 'light-powerline)
+;; ;;(setq powerline-arrow-shape 'curves)
+;; ;;(setq powerline-default-separator-dir '(right . left))
+;; (setq sml/mode-width 0)
+;; (setq sml/name-width 20)
+;; ;; (rich-minority-mode 1)
+;; ;; (setf rm-blacklist "super-save")
+;; ;;(setq sml/theme 'powerline)
+;; (setq rm-excluded-modes
+;;       '(" Guide"			;; guide-key mode
+;;         " hc"				;; hardcore mode
+;;         " AC"				;; auto-complete
+;;         " vl"				;; global visual line mode enabled
+;;         " Wrap"				;; shows up if visual-line-mode is enabled for that buffer
+;;         " Omit"				;; omit mode in dired
+;;         " yas"				;; yasnippet
+;;         " drag"				;; drag-stuff-mode
+;;         " VHl"				;; volatile highlights
+;;         " ctagsU"			;; ctags update
+;;         " Undo-Tree"			;; undo tree
+;;         " wr"				;; Wrap Region
+;;         " SliNav"			;; elisp-slime-nav
+;;         " Fly"				;; Flycheck
+;;         " PgLn"				;; page-line-break
+;;         " GG"				;; ggtags
+;;         " ElDoc"			;; eldoc
+;;         " hl-highlight"			;; hl-anything
+;;         "AcePY"
+;;         "Helm"
+;;         ))
 
-(sml/setup)
+;; (sml/setup)
 
-
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "#000000"
-;;                     :background "#FFFFFF"
-;;                     :box nil)
-;; (set-face-attribute 'modeline-inactive nil
-;;                     :foreground "#000000"
-;;                     :background "#FFFFFF"
-;;                     :box nil)
 
 (set-face-attribute 'mode-line nil
+                    :foreground "#000000"
+                    :background "#FFFFFF"
                     :box nil)
 (set-face-attribute 'modeline-inactive nil
+                    :foreground "#000000"
+                    :background "#FFFFFF"
                     :box nil)
+
+;; (set-face-attribute 'mode-line nil
+;;                     :box nil)
+;; (set-face-attribute 'modeline-inactive nil
+;;                     :box nil)
 
 ;;-----------------------
 ;;deft-mode
@@ -481,8 +554,8 @@ directory to make multiple eshell windows easier."
 ;;                     :background nil
 ;;                     :inherit '(hl-line default)))
 
-;evil-mode
-;-------------------------------------------------------------------------------------------------------------------------
+;; ;evil-mode
+;;                                  ;-------------------------------------------------------------------------------------------------------------------------
 
 ;; (require 'evil-leader)
 ;; (global-evil-leader-mode)
@@ -490,19 +563,19 @@ directory to make multiple eshell windows easier."
 ;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
 ;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
 
-;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20170208.1204/")
+;; ;;(add-to-list 'load-path "~/.emacs.d/elpa/evil-20170208.1204/")
 ;; (require 'evil) 
 ;; (evil-mode 1) 
 
 ;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
 ;; (setcdr evil-insert-state-map nil)
- 
+
 ;; ;; ESC to switch back normal-state
 ;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
- 
+
 ;; ;; TAB to indent in normal-state
 ;; (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
- 
+
 ;; ;; Use j/k to move one visual line insted of gj/gk
 ;; (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
 ;; (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
@@ -511,7 +584,7 @@ directory to make multiple eshell windows easier."
 
 ;; ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
 ;; (add-to-list 'evil-emacs-state-modes 'magit-mode)
-;; ;;(add-to-list 'evil-emacs-state-modes 'org-mode)
+;; (add-to-list 'evil-emacs-state-modes 'org-mode)
 ;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
 ;; ;;(setq evil-default-state 'emacs)
@@ -616,7 +689,7 @@ directory to make multiple eshell windows easier."
 ;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 ;; (key-chord-mode 1)
 
-;; ;;-------------------------------------------------------------------------------------------------------------------------
+;; ;; ;;-------------------------------------------------------------------------------------------------------------------------
 
 ;;-----------------
 ;;Calendar
@@ -627,8 +700,8 @@ directory to make multiple eshell windows easier."
 (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
 (setq calendar-holidays cal-china-x-important-holidays)
 (setq my-holidays '((holiday-fixed 2 14 "情人节") (holiday-fixed 9 10 "教师节") (holiday-float 6 0 3 "父亲节")
-		    (holiday-lunar 1 1 "春节" 0) (holiday-lunar 1 15 "元宵节" 0) (holiday-solar-term "清明" "清明节") (holiday-lunar 5 5 "端午节" 0) (holiday-lunar 7 7 "七夕情人节" 0) (holiday-lunar 8 15 "中秋节" 0)
-		    (holiday-lunar 12 23 "妈妈生日" 0) (holiday-lunar 5 5 "爸爸生日" 0) (holiday-lunar 10 17 "姐姐生日" 0) (holiday-lunar 10 18 "姐夫生日" 0) (holiday-fixed 10 29 "宝宝生日") ))
+                    (holiday-lunar 1 1 "春节" 0) (holiday-lunar 1 15 "元宵节" 0) (holiday-solar-term "清明" "清明节") (holiday-lunar 5 5 "端午节" 0) (holiday-lunar 7 7 "七夕情人节" 0) (holiday-lunar 8 15 "中秋节" 0)
+                    (holiday-lunar 12 23 "妈妈生日" 0) (holiday-lunar 5 5 "爸爸生日" 0) (holiday-lunar 10 17 "姐姐生日" 0) (holiday-lunar 10 18 "姐夫生日" 0) (holiday-fixed 10 29 "宝宝生日") ))
 (setq calendar-holidays my-holidays)
 ;;(holiday-lunar 9 17 "宝宝生日" 0)
 
@@ -677,9 +750,9 @@ directory to make multiple eshell windows easier."
 ;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 ;; (setq recentf-max-saved-items 150)
 
-;---------------
-;smex
-;---------------
+					;---------------
+					;smex
+					;---------------
 (add-to-list 'load-path "~/.emacs.d/elpa/smex/")
 (require 'smex)
 (smex-initialize)
@@ -745,8 +818,8 @@ directory to make multiple eshell windows easier."
       helm-yank-symbol-first                 t
       helm-move-to-line-cycle-in-source      t
       helm-M-x-fuzzy-match                   t
-;;      helm-recentf-fuzzy-match               t
-;;      helm-ff-file-name-history-use-recentf  t
+      ;;      helm-recentf-fuzzy-match               t
+      ;;      helm-ff-file-name-history-use-recentf  t
       helm-buffers-fuzzy-matching            t
       helm-ff-auto-update-initial-value      t)
 
@@ -790,13 +863,13 @@ directory to make multiple eshell windows easier."
 (save-place-mode 1) 
 
 ;;expand-region
-;; (require 'expand-region)
-;; (global-set-key (kbd "C-=") 'er/expand-region)
-;; ;;(global-set-key (kbd "C-c =") 'er/expand-region)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
-;--------------
-;ace-jump
-;--------------
+                                        ;--------------
+                                        ;ace-jump
+                                        ;--------------
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
 
@@ -810,7 +883,7 @@ directory to make multiple eshell windows easier."
 ;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 (with-eval-after-load 'org
-    (define-key org-mode-map (kbd "C-c SPC") nil))
+  (define-key org-mode-map (kbd "C-c SPC") nil))
 ;; When org-mode starts it (org-mode-map) overrides the ace-jump-mode.
 
 ;; (add-hook 'org-mode-hook
@@ -823,9 +896,9 @@ directory to make multiple eshell windows easier."
 ;; (require 'window-number)
 ;; (window-number-mode)
 
-;----------------
-;yasnippet
-;----------------
+                                        ;----------------
+                                        ;yasnippet
+                                        ;----------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20161211.1918/")
 (require 'yasnippet)
@@ -834,9 +907,9 @@ directory to make multiple eshell windows easier."
 ;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
 ;;(setq debug-on-error t)
 
-;----------------
-;auto-complete
-;----------------
+                                        ;----------------
+                                        ;auto-complete
+                                        ;----------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-el/")
 (require 'popup)
@@ -898,9 +971,9 @@ directory to make multiple eshell windows easier."
 ;; ;; Create clang-format file using google style
 ;; ;; clang-format -style=google -dump-config > .clang-format
 
-;----------------
-;python+c languge
-;----------------
+                                        ;----------------
+                                        ;python+c languge
+                                        ;----------------
 ;;we should install ipython
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
 ;; (require 'python-mode)
@@ -928,17 +1001,17 @@ directory to make multiple eshell windows easier."
 (require 'tramp)
 (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 
-;-----------------
-;Java + Jdee
-;-----------------
+                                        ;-----------------
+                                        ;Java + Jdee
+                                        ;-----------------
 ;; (add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
 ;; (autoload 'jde-mode "jde" "JDE mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
-;-----------------
-;markdown-mode
-;-----------------
+                                        ;-----------------
+                                        ;markdown-mode
+                                        ;-----------------
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (autoload 'gfm-mode "gfm-mode"
@@ -949,9 +1022,9 @@ directory to make multiple eshell windows easier."
 
 (setq markdown-enable-math t)
 
-;-------------
-;org-mode
-;-------------
+                                        ;-------------
+                                        ;org-mode
+                                        ;-------------
 
 ;; (require 'org-bullets)
 ;; (setq org-bullets-face-name (quote org-bullet-face))
@@ -971,7 +1044,7 @@ directory to make multiple eshell windows easier."
 
 ;;(setq org-image-actual-width 600)
 (add-hook 'org-mode-hook   
-	  (lambda () (setq truncate-lines nil)))  
+          (lambda () (setq truncate-lines nil)))  
 ;; (add-hook 'org-mode-hook '(lambda () 
 ;; (setq visual-line-fringe-indicators t) 
 ;; (visual-line-mode) 
@@ -1026,18 +1099,18 @@ directory to make multiple eshell windows easier."
 ;; (load "~/.emacs.d/elpa/outline-presentation.el")
 ;; (require 'outline-presentation)
 
-;(setq org-default-notes-file (concat org-directory "~/Dropbox/inbox.txt"))
+                                        ;(setq org-default-notes-file (concat org-directory "~/Dropbox/inbox.txt"))
 ;;(define-key global-map [f12] 'org-capture)
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
       `(("t" "Todo" entry (file+headline "~/Dropbox/Txt/todo.txt" "Inbox")
-	 "* TODO %? \n%U\n")
+         "* TODO %? \n%U\n")
         ("n" "Note" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Note")
-	 "* %? \n%U\n")
-	("l" "Link" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Link")
-	 "* %? \n%U\n")
-	("c" "Contact" entry (file+headline "~/Dropbox/Txt/contacts.txt" "Contact")
-	 "* %?
+         "* %? \n%U\n")
+        ("l" "Link" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Link")
+         "* %? \n%U\n")
+        ("c" "Contact" entry (file+headline "~/Dropbox/Txt/contacts.txt" "Contact")
+         "* %?
 :PROPERTIES:
 :EMAIL: 
 :URL:
@@ -1083,9 +1156,9 @@ directory to make multiple eshell windows easier."
 (setq org-tags-exclude-from-inheritance (quote("Secret")))
 (setq org-crypt-key nil)
 
-;----------------------
-;auctex+XeCJK
-;----------------------
+                                        ;----------------------
+                                        ;auctex+XeCJK
+                                        ;----------------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.89/")
 (load "auctex.el" nil t t)
@@ -1111,7 +1184,7 @@ directory to make multiple eshell windows easier."
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
-; enable auto-fill mode, nice for text
+                                        ; enable auto-fill mode, nice for text
 (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
@@ -1130,12 +1203,12 @@ directory to make multiple eshell windows easier."
 ;; command, so that Okular jumps to the current line 
 ;; in the viewer.
 (setq TeX-view-program-selection
- '((output-pdf "PDF Viewer")))
+      '((output-pdf "PDF Viewer")))
 (setq TeX-view-program-list
- '(("PDF Viewer" "okular --unique %o#src:%n%b")))
+      '(("PDF Viewer" "okular --unique %o#src:%n%b")))
 
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
-			      "xelatex -interaction nonstopmode %f"))
+                              "xelatex -interaction nonstopmode %f"))
 
 ;;(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
@@ -1143,11 +1216,11 @@ directory to make multiple eshell windows easier."
 
 (setq org-latex-create-formula-image-program 'imagemagick)
 (add-hook 'LaTeX-mode-hook (lambda ()
-			     (push 
-			      '("Latex_outdir" "%`latex -auxt-directory=/tmp %(mode)%' %t" 
-				TeX-run-TeX nil (latex-mode doctex-mode) 
-				:help "Run pdflatex with output in /tmp")
-			      TeX-command-list)))
+                             (push 
+                              '("Latex_outdir" "%`latex -auxt-directory=/tmp %(mode)%' %t" 
+                                TeX-run-TeX nil (latex-mode doctex-mode) 
+                                :help "Run pdflatex with output in /tmp")
+                              TeX-command-list)))
 
 ;;(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
 (setq org-latex-logfiles-extensions (quote ("lof" "lot" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
@@ -1164,55 +1237,55 @@ directory to make multiple eshell windows easier."
 
 ;;org-mode source code setup in exporting to latex
 (add-to-list 'org-latex-listings
-	     '("" "listings"))
+             '("" "listings"))
 (add-to-list 'org-latex-listings
-	     '("" "color"))
+             '("" "color"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "xcolor" t))
+             '("" "xcolor" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "listings" t))
+             '("" "listings" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "fontspec" t))
+             '("" "fontspec" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "indentfirst" t))
+             '("" "indentfirst" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "xunicode" t))
+             '("" "xunicode" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "geometry"))
+             '("" "geometry"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "float"))
+             '("" "float"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "longtable"))
+             '("" "longtable"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "tikz"))
+             '("" "tikz"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "fancyhdr"))
+             '("" "fancyhdr"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "textcomp"))
+             '("" "textcomp"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "amsmath"))
+             '("" "amsmath"))
 (add-to-list 'org-latex-packages-alist
-	     '("" "tabularx" t))
+             '("" "tabularx" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "booktabs" t))
+             '("" "booktabs" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "grffile" t))
+             '("" "grffile" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "wrapfig" t))
+             '("" "wrapfig" t))
 (add-to-list 'org-latex-packages-alist
-	     '("normalem" "ulem" t))
+             '("normalem" "ulem" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "amssymb" t))
+             '("" "amssymb" t))
 (add-to-list 'org-latex-packages-alist
-	     '("" "capt-of" t))
+             '("" "capt-of" t))
 (add-to-list 'org-latex-packages-alist
-	     '("figuresright" "rotating" t))
+             '("figuresright" "rotating" t))
 (add-to-list 'org-latex-packages-alist
-	     '("Lenny" "fncychap" t))
+             '("Lenny" "fncychap" t))
 
 (add-to-list 'org-latex-classes
-	     '("org-book"
-	       "\\documentclass{book}
+             '("org-book"
+               "\\documentclass{book}
 \\usepackage[slantfont, boldfont]{xeCJK}
 % chapter set
 \\usepackage{titlesec}
@@ -1420,9 +1493,9 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
        '("\\.m$" . matlab-mode)
        auto-mode-alist))
 
-;------------------------------------------------------------
-;backup
-;------------------------------------------------------------
+                                        ;------------------------------------------------------------
+                                        ;backup
+                                        ;------------------------------------------------------------
 
 (setq backup-directory-alist '(("" . "~/.backup")))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
@@ -1536,12 +1609,12 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;(setq eww-search-prefix "http://www.bing.com/search?q=")
 
 
- ;; '(markdown-command
- ;;   "/usr/bin/pandoc -c ~/Dropbox/Linux/css/markdown/Clearness.css")
- ;; '(matlab-shell-command-switches (quote ("-nodesktop -nosplash")))
- ;; '(org-agenda-files
- ;;   (quote
- ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
+;; '(markdown-command
+;;   "/usr/bin/pandoc -c ~/Dropbox/Linux/css/markdown/Clearness.css")
+;; '(matlab-shell-command-switches (quote ("-nodesktop -nosplash")))
+;; '(org-agenda-files
+;;   (quote
+;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
