@@ -1,39 +1,3 @@
-ls
-ls
-ls
-ls
-x
-exit
-source .zshrc
-ls
-gcc ex12.c -o ex12
-./ex12 
-x
-exit
-cp ppt ~/Dropbox/Linux/
-x
-exit
-sudo /usr/local/MATLAB/R2015b/bin/matlab -nodesktop
-x
-exit
-top
-top
-pkill sslocal
-x
-exit
-ls
-cd
-ls
-gcc 121313.c -0 123
-gcc 121313.c -o 1213
-./1213 
-x
-exit
-ls
-ls
-x
-exit
-ls
 mv liangzilixue.txt Txt/
 ld
 zsh
@@ -126,3 +90,39 @@ b
 g++ sandpile-model.cpp -o sanpile-model
 b
 ./sanpile-model 
+ls
+cd 
+pwd
+what
+whatis
+python
+clear
+
+ll
+ll
+zsh
+ll
+ll
+clear
+
+ll
+ll
+ll
+"ll"
+clear
+
+ll
+s
+ls
+zsh
+ll
+ls
+l
+zsh
+exit
+history |grep infianlty
+history |grep infian
+history |grep infi
+term
+ls
+zsh

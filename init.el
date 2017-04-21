@@ -162,15 +162,9 @@ directory to make multiple eshell windows easier."
 ;;fonts
 ;;---------------------------
 (set-default-font "Consolas-11")
-;;(set-frame-font "Source Code Pro 10")
-;;(set-frame-font "Source Code Pro-9")
 ;;(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 ;;(set-default-font "Inconsolata-12")
-;;(set-default-font "Inconsolata\-g for Powerline-9")
 ;;(set-default-font "Monaco-12")
-;;(set-frame-font "Courier New-11")
-;;(set-default-font "Menlo-10")
-;; (set-default-font "Courier New-10")
 
 ;; (set-face-attribute 'default nil
 ;;                     :family "Source Code Pro"
@@ -318,15 +312,15 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-(set-background-color "ivory")
+(set-background-color "white")
 (set-foreground-color "black")
 
-(set-face-foreground 'isearch "red")
+(set-face-foreground 'isearch "orange red")
 (set-face-background 'isearch "#ffff00")
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :background "#FDF58A" :foreground "black")
+(set-face-attribute 'region nil :background "#0000cd" :foreground "white")
 
 ;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
@@ -354,7 +348,6 @@ directory to make multiple eshell windows easier."
 ;;(setq-default mode-line-format nil)
 
 (defun codefalling//simplify-major-mode-name ()
-  "Return simplifyed major mode name"
   (let* ((major-name (format-mode-line "%m"))
          (replace-table '(Emacs-Lisp "[𝝀]"
                                      Python "[𝝅]"
@@ -371,23 +364,16 @@ directory to make multiple eshell windows easier."
 
 (setq-default mode-line-format
 	      (list
-
 	       ;; the buffer name; the file name as a tool tip
 	       '(:eval (propertize "%b " 'face 'bold
 				   'help-echo (buffer-file-name)))
-
-	       "                      "
+	       "                    "
 	       ;; "%-"
-	       ;; line and column
-	       ;;"(" ;; '%02' to set to 2 chars at least; prevents flickering
 	       (propertize "%02l,%02c" 'face 'bold) 
 
-	       ;; relative position, size of file
-
-	       "          "
+	       "            "
 	       (propertize " %p/%I " 'face 'bold) ;; % above top
-
-	       "                 "
+	       "               "
 	       '(:eval (propertize (codefalling//simplify-major-mode-name) 'face 'bold
 				   'help-echo buffer-file-coding-system))
 
@@ -516,7 +502,7 @@ directory to make multiple eshell windows easier."
 
 (set-face-attribute 'mode-line nil
                     :foreground "#000000"
-                    :background "#FFFFFF"
+                    :background "#FFFFFF" ;;#FFFFFF
                     :box nil)
 (set-face-attribute 'modeline-inactive nil
                     :foreground "#000000"
@@ -554,147 +540,41 @@ directory to make multiple eshell windows easier."
 ;;                     :background nil
 ;;                     :inherit '(hl-line default)))
 
-;; ;evil-mode
-;;                                  ;-------------------------------------------------------------------------------------------------------------------------
+;;file explore-----------------
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq-default neo-smart-open t)
+(setq neo-theme (if (display-graphic-p) 'ascii))
 
-;; (require 'evil-leader)
-;; (global-evil-leader-mode)
+;;Terminal------------------
+(setq multi-term-program "/bin/zsh")
+(setq system-uses-terminfo nil)
 
-;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
-;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+;;             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
-;; ;;(add-to-list 'load-path "~/.emacs.d/elpa/evil-20170208.1204/")
-;; (require 'evil) 
-;; (evil-mode 1) 
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq term-buffer-maximum-size 0)))
 
-;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;; (setcdr evil-insert-state-map nil)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)
+            (autopair-mode -1)))
 
-;; ;; ESC to switch back normal-state
-;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
-;; ;; TAB to indent in normal-state
-;; (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
-
-;; ;; Use j/k to move one visual line insted of gj/gk
-;; (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-;; (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-;; (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-;; (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-
-;; ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
-;; (add-to-list 'evil-emacs-state-modes 'magit-mode)
-;; (add-to-list 'evil-emacs-state-modes 'org-mode)
-;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
-
-;; ;;(setq evil-default-state 'emacs)
-;; (define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
-;; ;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
-
-;; ;;(define-key evil-motion-state-map ";" 'smex)
-;; (define-key evil-motion-state-map ":" 'evil-ex)
-;; (define-key evil-ex-map "e" 'ido-find-file)
-;; ;;(define-key evil-ex-map "q" 'ido-kill-buffer)
-;; (global-set-key (kbd "C-s") 'evil-write)
-
-;; ;;magit
-;; ;;(evil-set-initial-state 'magit-mode 'normal)
-;; ;;(evil-set-initial-state 'magit-status-mode 'normal)
-;; ;;(evil-set-initial-state 'magit-diff-mode 'normal)
-;; ;;(evil-set-initial-state 'magit-log-mode 'normal)
-;; ;;(evil-define-key 'normal magit-mode-map
-;; ;;  "j" 'magit-goto-next-section
-;; ;;  "k" 'magit-goto-previous-section)
-;; ;;(evil-define-key 'normal magit-log-mode-map
-;; ;;  "j" 'magit-goto-next-section
-;; ;;  "k" 'magit-goto-previous-section)
-;; ;;(evil-define-key 'normal magit-diff-mode-map
-;; ;;  "j" 'magit-goto-next-section
-;; ;;  "k" 'magit-goto-previous-section)
-
-
-;; (evil-set-initial-state 'ibuffer-mode 'normal)
-;; (setq evil-insert-state-cursor 'box)
-
-;; ;; esc quits
-;; (defun minibuffer-keyboard-quit ()
-;;   (interactive)
-;;   (if (and delete-selection-mode transient-mark-mode mark-active)
-;;       (setq deactivate-mark  t)
-;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-;;     (abort-recursive-edit)))
-;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
-;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
-;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-;; (global-set-key [escape] 'evil-exit-emacs-state)
-
-;; ;; change mode-line color by evil state
-;; ;; (lexical-let ((default-color (cons (face-background 'mode-line)
-;; ;;                                    (face-foreground 'mode-line))))
-;; ;;   (add-hook 'post-command-hook
-;; ;;     (lambda ()
-;; ;;       (let ((color (cond ((minibufferp) default-color)
-;; ;;                          ((evil-insert-state-p) '("#e80000" . "#ffffff"))
-;; ;;                          ((evil-emacs-state-p)  '("#af00d7" . "#ffffff"))
-;; ;;                          ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
-;; ;;                          (t default-color))))
-;; ;;         (set-face-background 'mode-line (car color))
-;; ;;         (set-face-foreground 'mode-line (cdr color))))))
-
-;; ;; (setq evil-emacs-state-cursor '("red" box))
-;; ;; (setq evil-normal-state-cursor '("green" box))
-;; ;; (setq evil-visual-state-cursor '("orange" box))
-;; ;; (setq evil-insert-state-cursor '("red" bar))
-;; ;; (setq evil-replace-state-cursor '("red" bar))
-;; ;; (setq evil-operator-state-cursor '("red" hollow))
-
-;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-
-;; (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-;; (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-
-;; ;; ;;evil-leader
-;; ;;(evil-leader/set-leader ";")
-;; (evil-leader/set-leader ",")
-;; ;;(evil-leader/set-leader "<SPC>")
-;; (setq evil-leader/in-all-states 1)
-
-;; (evil-leader/set-key "e" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
-;; (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
-;; (evil-leader/set-key "x" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
-
-;; (evil-leader/set-key "h" 'dired-jump)
-;; (evil-leader/set-key "v" 'split-window-right)
-;; (evil-leader/set-key "," 'other-window)
-;; (evil-leader/set-key "b" 'ibuffer)
-;; (evil-leader/set-key "x" 'helm-M-x)
-
-;; (setq-default tab-width 4 indent-tabs-mode nil)
-;; (define-key global-map (kbd "RET") 'newline-and-indent)
-;; (setq evil-move-cursor-back nil)
-
-;; (require 'evil-surround)
-;; (global-evil-surround-mode 1)
-
-;; (require 'key-chord)
-;; ;;(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
-;; (setq key-chord-two-keys-delay 0.5)
-;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-;; (key-chord-mode 1)
-
-;; ;; ;;-------------------------------------------------------------------------------------------------------------------------
+;; (add-hook 'term-mode-hook
+;;               '(lambda ()
+;;                  (term-set-escape-char ?\C-x)))
 
 ;;-----------------
 ;;Calendar
 ;;-----------------
-
 (require 'cal-china-x)
 (setq mark-holidays-in-calendar t)
 (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
@@ -750,9 +630,9 @@ directory to make multiple eshell windows easier."
 ;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 ;; (setq recentf-max-saved-items 150)
 
-					;---------------
-					;smex
-					;---------------
+;---------------
+;smex
+;---------------
 (add-to-list 'load-path "~/.emacs.d/elpa/smex/")
 (require 'smex)
 (smex-initialize)
@@ -804,7 +684,7 @@ directory to make multiple eshell windows easier."
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
 ;;-----------------------
-;;(setq tramp-mode nil)
+(setq tramp-mode nil)
 (setq ad-redefinition-action 'accept)
 (require 'helm-config)
 (require 'helm)
@@ -868,7 +748,7 @@ directory to make multiple eshell windows easier."
 ;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
                                         ;--------------
-                                        ;ace-jump
+;ace-jump
                                         ;--------------
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
@@ -890,15 +770,17 @@ directory to make multiple eshell windows easier."
 ;;           (lambda ()
 ;;             (local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
 
+
+
 ;;--------------
 ;;window-number
 ;;--------------
 ;; (require 'window-number)
 ;; (window-number-mode)
 
-                                        ;----------------
-                                        ;yasnippet
-                                        ;----------------
+;----------------
+;yasnippet
+;----------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20161211.1918/")
 (require 'yasnippet)
@@ -937,7 +819,9 @@ directory to make multiple eshell windows easier."
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
 ;; Turn flycheck on everywhere
-(global-flycheck-mode)
+;;(global-flycheck-mode)
+
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 ;; Use flycheck-pyflakes for python. Seems to work a little better.
 ;;(require 'flycheck-pyflakes)
@@ -1002,16 +886,16 @@ directory to make multiple eshell windows easier."
 (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 
                                         ;-----------------
-                                        ;Java + Jdee
-                                        ;-----------------
+;Java + Jdee
+;-----------------
 ;; (add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
 ;; (autoload 'jde-mode "jde" "JDE mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
-                                        ;-----------------
-                                        ;markdown-mode
-                                        ;-----------------
+;-----------------
+;markdown-mode
+;-----------------
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (autoload 'gfm-mode "gfm-mode"
@@ -1019,11 +903,10 @@ directory to make multiple eshell windows easier."
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
 (setq markdown-enable-math t)
 
                                         ;-------------
-                                        ;org-mode
+;org-mode
                                         ;-------------
 
 ;; (require 'org-bullets)
@@ -1060,7 +943,8 @@ directory to make multiple eshell windows easier."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t)))))
+ '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t))))
+ '(term ((t (:background "white" :foreground "black")))))
 
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
@@ -1156,9 +1040,9 @@ directory to make multiple eshell windows easier."
 (setq org-tags-exclude-from-inheritance (quote("Secret")))
 (setq org-crypt-key nil)
 
-                                        ;----------------------
-                                        ;auctex+XeCJK
-                                        ;----------------------
+;----------------------
+;auctex+XeCJK
+;----------------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.89/")
 (load "auctex.el" nil t t)
@@ -1184,7 +1068,7 @@ directory to make multiple eshell windows easier."
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
-                                        ; enable auto-fill mode, nice for text
+; enable auto-fill mode, nice for text
 (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
@@ -1615,6 +1499,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;; '(org-agenda-files
 ;;   (quote
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -1627,5 +1512,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (clang-format rtags cmake-ide chinese-pyim markdown-mode ace-isearch solarized-theme dracula-theme zenburn-theme writeroom-mode websocket super-save smooth-scrolling smex smart-mode-line-powerline-theme semi request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese org-bullets minimap matlab-mode magit log4e linum-relative key-chord jdee htmlize ht highlight-tail helm-swoop helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader elpy deft cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin)))
+    (neotree multi-term clang-format rtags cmake-ide chinese-pyim markdown-mode ace-isearch solarized-theme dracula-theme zenburn-theme writeroom-mode websocket super-save smooth-scrolling smex smart-mode-line-powerline-theme semi request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese org-bullets minimap matlab-mode magit log4e linum-relative key-chord jdee htmlize ht highlight-tail helm-swoop helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader elpy deft cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838"))))

@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
+ package-autoremove
  package-list-packages
- shell
- compile
- relative-line-numbers-mode
- column-number-mode
- line-number-mode
+ counsel-M-x
+ term
+ help-mode
+ eval-buffer
+ eshell
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 119)
+ (package-list-packages . 122)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -37,7 +37,7 @@
  (w3m-search . 3)
  (w3m-browse-url . 1)
  (shell-mode . 7)
- (shell . 12)
+ (shell . 13)
  (org-insert-link . 3)
  (org-plot/gnuplot . 8)
  (emacs-lisp-mode . 5)
@@ -115,7 +115,7 @@
  (writeroom-mode . 64)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 631)
+ (eval-buffer . 641)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 8)
  (highlight-regexp . 1)
@@ -196,7 +196,7 @@
  (ido-goto-bookmark . 1)
  (ido-bookmark-jump . 3)
  (helm-occur-from-isearch . 1)
- (eshell . 3)
+ (eshell . 4)
  (undo-tree-undo . 1)
  (eshell-command . 1)
  (occur-edit-mode . 1)
@@ -232,7 +232,7 @@
  (show-paren-mode . 1)
  (cvs-status . 1)
  (pp-macroexpand-last-sexp . 1)
- (help-mode . 2)
+ (help-mode . 3)
  (shell-script-mode . 1)
  (delimit-columns-customize . 1)
  (describe-face . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 4)
+ (package-autoremove . 7)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
@@ -327,4 +327,8 @@
  (set-cursor-color . 1)
  (gdb . 1)
  (compile . 2)
+ (term . 5)
+ (ansi-term . 1)
+ (multi-term . 2)
+ (counsel-M-x . 1)
 )
