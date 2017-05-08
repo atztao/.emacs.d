@@ -1,11 +1,3 @@
-mv liangzilixue.txt Txt/
-ld
-zsh
-exit
-xelatex hellow.tex 
-xpdf hellow.pdf 
-q
-quit
 quit
 ls
 cd
@@ -126,3 +118,11 @@ history |grep infi
 term
 ls
 zsh
+ll
+ls
+sudo apt update
+exit
+cd
+cd .config/fontconfig/conf.d/
+ll
+ls

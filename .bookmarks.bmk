@@ -8,10 +8,10 @@
  (rear-context-string . " \n:NOTE:\n:END:\n\n")
  (position . 125))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/Txt/contacts.txt")
- (front-context-string . "** 张陶\n:PROPERTIE")
- (rear-context-string . " \n:NOTE:\n:END:\n\n")
- (position . 125))
+ (filename . "~/Dropbox/Txt/todo.txt")
+ (front-context-string . "** TODO [#A] Buy")
+ (rear-context-string . "8-04 四 10:18]\n\n\n")
+ (position . 1039))
 ("todo.txt"
  (filename . "~/Dropbox/Txt/todo.txt")
  (front-context-string . "#+TAGS: Wait Som")
@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** Complexity.cc")
- (rear-context-string . "-03-19 日 15:27]\n")
- (position . 2573))
+ (filename . "~/Dropbox/Txt/todo.txt")
+ (front-context-string . "** TODO 注册通道\n[20")
+ (rear-context-string)
+ (position . 9))
 )

@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- package-autoremove
- package-list-packages
- counsel-M-x
- term
- help-mode
  eval-buffer
- eshell
+ load-theme
+ replace-string
+ jedi:install-server
+ disable-theme
+ doc-view-mode
+ package-list-packages
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 122)
+ (package-list-packages . 125)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -37,7 +37,7 @@
  (w3m-search . 3)
  (w3m-browse-url . 1)
  (shell-mode . 7)
- (shell . 13)
+ (shell . 14)
  (org-insert-link . 3)
  (org-plot/gnuplot . 8)
  (emacs-lisp-mode . 5)
@@ -45,7 +45,7 @@
  (lisp-mode . 3)
  (color-theme-snow . 5)
  (color-theme-xemacs . 1)
- (flyspell-mode . 4)
+ (flyspell-mode . 6)
  (color-theme-billw . 17)
  (artist-mode . 1)
  (helm-help . 3)
@@ -68,7 +68,7 @@
  (color-theme-xp . 1)
  (color-theme-arjen . 1)
  (bookmark-load . 1)
- (rectangle-mark-mode . 8)
+ (rectangle-mark-mode . 10)
  (package-install . 1)
  (color-theme-lethe . 3)
  (global-linum-mode . 2)
@@ -94,14 +94,14 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 54)
- (load-theme . 126)
+ (replace-string . 59)
+ (load-theme . 170)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
  (gfm-mode . 1)
  (focus-mode . 37)
- (help . 3)
+ (help . 5)
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
@@ -112,12 +112,12 @@
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 64)
+ (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 641)
+ (eval-buffer . 758)
  (org-md-export-as-markdown . 1)
- (org-md-export-to-markdown . 8)
+ (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)
  (font-lock-mode . 3)
  (enriched-mode . 1)
@@ -154,7 +154,7 @@
  (column-number-mode . 2)
  (line-number-mode . 6)
  (html2text . 1)
- (html-mode . 4)
+ (html-mode . 5)
  (query-replace . 5)
  (replace-regexp . 46)
  (query-replace-regexp . 2)
@@ -165,7 +165,7 @@
  (global-emojify-mode . 1)
  (emojify-mode . 2)
  (toggle-truncate-lines . 2)
- (doc-view-mode . 1)
+ (doc-view-mode . 3)
  (minimap-mode . 9)
  (minimap-create . 2)
  (minimap-update . 2)
@@ -173,14 +173,14 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 80)
+ (disable-theme . 113)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
  (dired . 11)
  (desktop-save . 2)
  (toggle-read-only . 1)
- (read-only-mode . 6)
+ (read-only-mode . 7)
  (helm-swoop-from-isearch . 3)
  (find-name-dired . 3)
  (helm-grep-mode-jump . 4)
@@ -196,7 +196,7 @@
  (ido-goto-bookmark . 1)
  (ido-bookmark-jump . 3)
  (helm-occur-from-isearch . 1)
- (eshell . 4)
+ (eshell . 5)
  (undo-tree-undo . 1)
  (eshell-command . 1)
  (occur-edit-mode . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 13)
+ (python-mode . 15)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -327,8 +327,11 @@
  (set-cursor-color . 1)
  (gdb . 1)
  (compile . 2)
- (term . 5)
+ (term . 9)
  (ansi-term . 1)
- (multi-term . 2)
+ (multi-term . 11)
  (counsel-M-x . 1)
+ (flycheck-mode . 5)
+ (web-mode . 1)
+ (jedi:install-server . 2)
 )

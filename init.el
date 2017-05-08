@@ -13,7 +13,7 @@
 ;;   (set-background-color "ivory")
 ;;   (set-cursor-color "red")
 ;;   (set-mouse-color "goldenrod")
-;;   (set-foreground-color "black")
+ ;;   (set-foreground-color "black")
 ;;   )
 
 ;;(add-to-list 'default-frame-alist '(tty-color-mode  . -1))
@@ -55,7 +55,7 @@
 
 ;;(setq default-directory "C:/Users/zhangtao/Dropbox/")
 ;;(cd "~/emacs/home/")  
-(setq default-directory "~/Dropbox/")
+;;(setq default-directory "~/Dropbox/")
 
 (setq-default fill-column 80)
 
@@ -161,26 +161,15 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
-(set-default-font "Consolas-11")
-;;(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-;;(set-default-font "Inconsolata-12")
-;;(set-default-font "Monaco-12")
-
-;; (set-face-attribute 'default nil
-;;                     :family "Source Code Pro"
-;;                     :height 90
-;;                     :weight 'normal
-;;                     :width 'normal)
-
-;; (set-face-attribute
-;;  'default nil :font "Consolas 11")
-;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;; (set-fontset-font (frame-parameter nil 'font)
-;; 		  charset
-;; 		  (font-spec :family "PingFang SC" :size 10)))
+;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
+;; (set-frame-font "Consolas-10")
+;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+;;(set-frame-font "Source Code Pro 10")
+;;(set-frame-font "Inconsolata-g-10")
+(set-frame-font "Monaco-10")
 
 (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
-;;(set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
+;; (set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC:style=Regular 10"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12")
@@ -281,9 +270,9 @@ directory to make multiple eshell windows easier."
 ;; (require 'cl-lib)
 ;; (require 'cl)
 
-                                        ;----------------------
-                                        ;Themes
-                                        ;----------------------
+;----------------------
+;Themes
+;----------------------
 
 ;;color-themes
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-6.6.0/")
@@ -312,34 +301,35 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-(set-background-color "white")
-(set-foreground-color "black")
+;;(set-background-color "ivory")
+;; (set-background-color "#ffffff")
+;; (set-foreground-color "black")
+
+;; (set-background-color "black")
+;; (set-foreground-color "white")
 
 (set-face-foreground 'isearch "orange red")
 (set-face-background 'isearch "#ffff00")
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :background "#0000cd" :foreground "white")
+(set-face-attribute 'region nil :background "#F0E68C" :foreground "black")
 
 ;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
-
-;;(set-background-color "black")
-;;(set-background-color "#fffff0")
-;;(set-foreground-color "#32cd32")
 
 (set-cursor-color "red")
 (set-mouse-color "goldenrod")
 
 ;;zenburn
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;; ;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
-
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
+;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;; ;;(load "~/.emacs.d/themes/ujelly-theme.el")
 ;; ;;(load "~/.emacs.d/themes/monokai-theme.el")
+
 ;; (load-theme 'zenburn t)
+;; ;;(load-theme 'dracula t)
 ;; (set-cursor-color "red")
 
 ;;--------------------------
@@ -347,73 +337,59 @@ directory to make multiple eshell windows easier."
 ;;--------------------------
 ;;(setq-default mode-line-format nil)
 
-(defun codefalling//simplify-major-mode-name ()
-  (let* ((major-name (format-mode-line "%m"))
-         (replace-table '(Emacs-Lisp "[𝝀]"
-                                     Python "[𝝅]"
-                                     Shell "[>]"
-                                     Makrdown "[𝓜]"
-                                     GFM "[𝓜]"
-                                     Org "[𝒪]"
-                                     Text "[𝓣]"
-                                     Fundamental "[ℱ]"
-                                     ))
-         (replace-name (plist-get replace-table (intern major-name))))
-    (if replace-name replace-name major-name
-        )))
+;; (setq-default mode-line-format
+;; 	      (list
+;; 	       ;; (propertize "[" 'face 'bold) 
+;; 	       ;; '(:eval (propertize
+;; 	       ;; 		(window-numbering-get-number-string)
+;; 	       ;; 		'face
+;; 	       ;; 		'bold))
+;; 	       ;; (propertize "]" 'face 'bold) 
 
-(setq-default mode-line-format
-	      (list
-	       ;; the buffer name; the file name as a tool tip
-	       '(:eval (propertize "%b " 'face 'bold
-				   'help-echo (buffer-file-name)))
-	       "                    "
-	       ;; "%-"
-	       (propertize "%02l,%02c" 'face 'bold) 
+;; 	       '(:eval (propertize "%b " 'face 'bold
+;; 	       			   'help-echo (buffer-file-name)))
+;; 	       "                    "
+;; 	       ;; "%-"
+;; 	       (propertize "%02l,%02c" 'face 'bold) 
 
-	       "            "
-	       (propertize " %p/%I " 'face 'bold) ;; % above top
-	       "               "
-	       '(:eval (propertize (codefalling//simplify-major-mode-name) 'face 'bold
-				   'help-echo buffer-file-coding-system))
+;; 	       "            "
+;; 	       (propertize " %p/%I " 'face 'bold) ;; % above top
+;; 	       "               "
+;; 	       ;; '(:eval (propertize (codefalling//simplify-major-mode-name) 'face 'bold
+;; 	       ;; 			   'help-echo buffer-file-coding-system))
 
-	       ;; '(:eval (propertize "=%m=" 'face 'bold
-	       ;; 			   'help-echo buffer-file-coding-system))
-	       
+;; 	       '(:eval (propertize "[%m]" 'face 'bold
+;; 	       			   'help-echo buffer-file-coding-system))
 
-	       ;; '(:eval (propertize (if overwrite-mode "[Ovr]" "[Ins]")
-	       ;; 			   'face 'bold
-	       ;; 			   'help-echo (concat "Buffer is in "
-	       ;; 					      (if overwrite-mode "overwrite" "insert") " mode")))
+;; 	       ;; '(:eval (propertize (if overwrite-mode "[Ovr]" "[Ins]")
+;; 	       ;; 			   'face 'bold
+;; 	       ;; 			   'help-echo (concat "Buffer is in "
+;; 	       ;; 					      (if overwrite-mode "overwrite" "insert") " mode")))
 
-	       ;; ;; was this buffer modified since the last save?
-	       ;; '(:eval (when (buffer-modified-p)
-	       ;; 		 (concat ","  (propertize "Mod"
-	       ;; 					  'face 'font-lock-warning-face
-	       ;; 					  'help-echo "Buffer has been modified"))))
+;; 	       ;; ;; was this buffer modified since the last save?
+;; 	       ;; '(:eval (when (buffer-modified-p)
+;; 	       ;; 		 (concat ","  (propertize "Mod"
+;; 	       ;; 					  'face 'font-lock-warning-face
+;; 	       ;; 					  'help-echo "Buffer has been modified"))))
 
-	       ;; ;; is this buffer read-only?
-	       ;; '(:eval (when buffer-read-only
-	       ;; 		 (concat ","  (propertize "RO"
-	       ;; 					  'face 'bold
-	       ;; 					  'help-echo "Buffer is read-only"))))  
+;; 	       ;; ;; is this buffer read-only?
+;; 	       ;; '(:eval (when buffer-read-only
+;; 	       ;; 		 (concat ","  (propertize "RO"
+;; 	       ;; 					  'face 'bold
+;; 	       ;; 					  'help-echo "Buffer is read-only"))))  
 
-	       ;; add the time, with the date and the emacs uptime in the tooltip
-	       ;; '(:eval (propertize (format-time-string "%H:%M")
-	       ;; 			   'help-echo
-	       ;; 			   (concat (format-time-string "%c; ")
-	       ;; 				   (emacs-uptime "Uptime:%hh"))))
+;; 	       ;; add the time, with the date and the emacs uptime in the tooltip
+;; 	       ;; '(:eval (propertize (format-time-string "%H:%M")
+;; 	       ;; 			   'help-echo
+;; 	       ;; 			   (concat (format-time-string "%c; ")
+;; 	       ;; 				   (emacs-uptime "Uptime:%hh"))))
 
-	       ;; " --"
-	       ;; i don't want to see minor-modes; but if you want, uncomment this:
-	       ;; minor-mode-alist  ;; list of minor modes
-	       "% " ;; fill with '-'
-	       ))
+;; 	       ;; " --"
+;; 	       ;; i don't want to see minor-modes; but if you want, uncomment this:
+;; 	       ;; minor-mode-alist  ;; list of minor modes
+;; 	       "% " ;; fill with '-'
+;; 	       ))
 
-
-;;(format-mode-line header-line-format "_")
-
-;; (setq-default mode-line-format nil)
 
 ;;(set-face-attribute 'mode-line nil  :height 90)
 
@@ -427,100 +403,86 @@ directory to make multiple eshell windows easier."
 ;; Reverse colors for the border to have nicer line  
 (set-face-inverse-video-p 'vertical-border nil)
 ;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-foreground 'vertical-border "gray15")
-;; (set-face-background 'vertical-border "black")
+(set-face-foreground 'vertical-border "gray42")
+(set-face-background 'vertical-border "black")
 
 (set-display-table-slot standard-display-table
                         'vertical-border 
                         (make-glyph-code ?│))
 
-;;----------------------------------------------
-;; (defun my-change-window-divider ()
-;;   (let ((display-table (or buffer-display-table standard-display-table)))
-;;     (set-display-table-slot display-table 5 ?│)
-;;     (set-window-display-table (selected-window) display-table)))
-;; (add-hook 'window-configuration-change-hook 'my-change-window-divider)
-;;----------------------------------------------
-
 ;;(set-face-background 'fringe "#809088")
-
-
-;; (require 'spaceline-config)
-;; ;;(spaceline-spacemacs-theme)
-;; (spaceline-emacs-theme)
-;; (setq spaceline-separator-dir-left '(left . left))
-;; (setq spaceline-separator-dir-right '(right . right))
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-;; (require 'smart-mode-line)
-;; ;; (require 'powerline)
-;; (setq sml/no-confirm-load-theme t)
+(require 'smart-mode-line)
+;; (require 'powerline)
+(setq sml/no-confirm-load-theme t)
 
-;; ;;(setq sml/theme 'dark)
-;; ;; (setq sml/theme 'light)
-;; ;;
-;; (setq sml/theme 'respectful)
+;;(setq sml/theme 'dark)
+;;(setq sml/theme 'light)
+(setq sml/theme 'respectful)
 
-;; ;;(setq sml/theme 'powerline)
-;; ;;(setq sml/theme 'light-powerline)
-;; ;;(setq powerline-arrow-shape 'curves)
-;; ;;(setq powerline-default-separator-dir '(right . left))
-;; (setq sml/mode-width 0)
-;; (setq sml/name-width 20)
-;; ;; (rich-minority-mode 1)
-;; ;; (setf rm-blacklist "super-save")
-;; ;;(setq sml/theme 'powerline)
-;; (setq rm-excluded-modes
-;;       '(" Guide"			;; guide-key mode
-;;         " hc"				;; hardcore mode
-;;         " AC"				;; auto-complete
-;;         " vl"				;; global visual line mode enabled
-;;         " Wrap"				;; shows up if visual-line-mode is enabled for that buffer
-;;         " Omit"				;; omit mode in dired
-;;         " yas"				;; yasnippet
-;;         " drag"				;; drag-stuff-mode
-;;         " VHl"				;; volatile highlights
-;;         " ctagsU"			;; ctags update
-;;         " Undo-Tree"			;; undo tree
-;;         " wr"				;; Wrap Region
-;;         " SliNav"			;; elisp-slime-nav
-;;         " Fly"				;; Flycheck
-;;         " PgLn"				;; page-line-break
-;;         " GG"				;; ggtags
-;;         " ElDoc"			;; eldoc
-;;         " hl-highlight"			;; hl-anything
-;;         "AcePY"
-;;         "Helm"
-;;         ))
+;; (setq sml/theme 'powerline)
+;; (setq sml/theme 'light-powerline)
+(setq powerline-arrow-shape 'curves)
+(setq powerline-default-separator-dir '(right . left))
+(setq sml/mode-width 0)
+(setq sml/name-width 20)
+(rich-minority-mode 1)
+(setf rm-blacklist "super-save")
+;;(setq sml/theme 'powerline)
+(setq rm-excluded-modes
+      '(" Guide"			;; guide-key mode
+        " hc"				;; hardcore mode
+        " AC"				;; auto-complete
+        " vl"				;; global visual line mode enabled
+        " Wrap"				;; shows up if visual-line-mode is enabled for that buffer
+        " Omit"				;; omit mode in dired
+        " yas"				;; yasnippet
+        " drag"				;; drag-stuff-mode
+        " VHl"				;; volatile highlights
+        " ctagsU"			;; ctags update
+        " Undo-Tree"			;; undo tree
+        " wr"				;; Wrap Region
+        " SliNav"			;; elisp-slime-nav
+        " Fly"				;; Flycheck
+        " PgLn"				;; page-line-break
+        " GG"				;; ggtags
+        " ElDoc"			;; eldoc
+        " hl-highlight"			;; hl-anything
+        "AcePY"
+        "Helm"
+        ))
 
-;; (sml/setup)
+(sml/setup)
 
 
-(set-face-attribute 'mode-line nil
-                    :foreground "#000000"
-                    :background "#FFFFFF" ;;#FFFFFF
-                    :box nil)
-(set-face-attribute 'modeline-inactive nil
-                    :foreground "#000000"
-                    :background "#FFFFFF"
-                    :box nil)
+;; (set-face-attribute 'mode-line nil
+;;                     :foreground "#000000"
+;;                     :background "#FFFFFF" ;;#FFFFFF
+;;                     :box nil)
+;; (set-face-attribute 'modeline-inactive nil
+;;                     :foreground "#000000"
+;;                     :background "#FFFFFF"
+;;                     :box nil)
+
+;; (set-face-attribute 'mode-line nil
+;;                     :foreground "#32cd32"
+;;                     :background "#000000" ;;#FFFFFF
+;;                     :box nil)
+;; (set-face-attribute 'modeline-inactive nil
+;;                     :foreground "#32cd32"
+;;                     :background "#000000"
+;;                     :box nil)
 
 ;; (set-face-attribute 'mode-line nil
 ;;                     :box nil)
 ;; (set-face-attribute 'modeline-inactive nil
 ;;                     :box nil)
 
-;;-----------------------
-;;deft-mode
-;; (require 'deft)
-;; (setq deft-extensions '("txt" "tex" "org" "py"))
-;; (setq deft-directory "~/Dropbox/Txt/")
-;; (setq deft-recursive t)
-;; (global-set-key [f8] 'deft)
 
 ;;relative-number------------------------
 ;; (require 'linum-relative)
@@ -550,10 +512,10 @@ directory to make multiple eshell windows easier."
 (setq multi-term-program "/bin/zsh")
 (setq system-uses-terminfo nil)
 
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-;;             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+            (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
 (add-hook 'term-mode-hook
           (lambda ()
@@ -650,10 +612,7 @@ directory to make multiple eshell windows easier."
 ;;windows—switch
 ;;----------------
 
-;; (add-to-list 'load-path "~/.emacs.d/elpa/")
-;; (require 'unicad)
-
-(global-set-key (kbd "M-p") 'ace-window)
+;; (global-set-key (kbd "M-p") 'ace-window)
 
 ;;fringer
 ;;(set-window-fringes (selected-window) 0 0 nil)
@@ -742,14 +701,16 @@ directory to make multiple eshell windows easier."
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 
 
+
 ;;expand-region
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
 ;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
-                                        ;--------------
+;--------------
 ;ace-jump
-                                        ;--------------
+;--------------
+
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
 
@@ -778,6 +739,11 @@ directory to make multiple eshell windows easier."
 ;; (require 'window-number)
 ;; (window-number-mode)
 
+;; (require 'window-numbering)
+;; (window-numbering-mode 1)
+;; (setq window-numbering-assign-func
+;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
+
 ;----------------
 ;yasnippet
 ;----------------
@@ -789,9 +755,9 @@ directory to make multiple eshell windows easier."
 ;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
 ;;(setq debug-on-error t)
 
-                                        ;----------------
-                                        ;auto-complete
-                                        ;----------------
+;----------------
+;auto-complete
+;----------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-el/")
 (require 'popup)
@@ -824,7 +790,7 @@ directory to make multiple eshell windows easier."
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 ;; Use flycheck-pyflakes for python. Seems to work a little better.
-;;(require 'flycheck-pyflakes)
+;; (require 'flycheck-pyflakes)
 
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
@@ -855,15 +821,21 @@ directory to make multiple eshell windows easier."
 ;; ;; Create clang-format file using google style
 ;; ;; clang-format -style=google -dump-config > .clang-format
 
-                                        ;----------------
-                                        ;python+c languge
-                                        ;----------------
+;----------------
+;python+c languge
+;----------------
+
 ;;we should install ipython
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
 ;; (require 'python-mode)
 
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:setup-keys t)                      ; optional
+;; (setq jedi:complete-on-dot t)                 ; optional
+
 (elpy-enable)
 ;;(elpy-use-ipython)
+(setq elpy-rpc-backend "jedi")
 
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
@@ -885,13 +857,31 @@ directory to make multiple eshell windows easier."
 (require 'tramp)
 (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 
-                                        ;-----------------
+;-----------------
 ;Java + Jdee
 ;-----------------
+
 ;; (add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
 ;; (autoload 'jde-mode "jde" "JDE mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
+
+;------------------
+					;Html
+					;------------------
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
 
 ;-----------------
 ;markdown-mode
@@ -905,9 +895,9 @@ directory to make multiple eshell windows easier."
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-enable-math t)
 
-                                        ;-------------
+;-------------
 ;org-mode
-                                        ;-------------
+;-------------
 
 ;; (require 'org-bullets)
 ;; (setq org-bullets-face-name (quote org-bullet-face))
@@ -926,6 +916,8 @@ directory to make multiple eshell windows easier."
 ;;(setq org-log-done 'note)
 
 ;;(setq org-image-actual-width 600)
+;;Auto Fill
+(add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
           (lambda () (setq truncate-lines nil)))  
 ;; (add-hook 'org-mode-hook '(lambda () 
@@ -1378,8 +1370,8 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
        auto-mode-alist))
 
                                         ;------------------------------------------------------------
-                                        ;backup
-                                        ;------------------------------------------------------------
+;backup
+;------------------------------------------------------------
 
 (setq backup-directory-alist '(("" . "~/.backup")))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
@@ -1411,87 +1403,6 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;; 	(add-hook 'auto-save-hook 'full-auto-save)
 ;;-----------------------------------------------------------
 
-;;-----------------------------------------------------------
-;;Email
-;;-----------------------------------------------------------
-;; (require 'notmuch)
-;; (require 'gnus-art)
-
-;; the exact path may differ -- check it
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-;; (require 'org-mu4e)
-;; ;;store link to message if in header view, not to header query
-;; (setq org-mu4e-link-query-in-headers-mode nil)
-
-;; (require 'mu4e)
-
-;; ;; default
-;; (setq mu4e-maildir (expand-file-name "~/Mail"))
-
-;; (setq mu4e-drafts-folder "/[Gmail].Drafts")
-;; (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-;; (setq mu4e-trash-folder  "/[Gmail].Trash")
-
-;; ;; don't save message to Sent Messages, GMail/IMAP will take care of this
-;; (setq mu4e-sent-messages-behavior 'delete)
-
-;; ;; setup some handy shortcuts
-;; (setq mu4e-maildir-shortcuts
-;;       '(("/INBOX"             . ?i)
-;;         ("/[Gmail].Sent Mail" . ?s)
-;;         ("/[Gmail].Trash"     . ?t)))
-
-;; ;; allow for updating mail using 'U' in the main view:
-;; (setq mu4e-get-mail-command "offlineimap")
-;; (setq mu4e-html2text-command "/usr/local/bin/w3m -T text/html")
-
-;;(ido-completing-read "Complete contact: " (mu4e~compose-complete-contact))
-;; (defun select-and-insert-contact ()
-;;   (interactive)
-;;   (insert (ido-completing-read "Contact: " mu4e~contacts-for-completion)))
-
-;; something about ourselves
-;; I don't use a signature...
-;; (setq
-;;  user-mail-address "ztao1991@gmail.com"
-;;  user-full-name  "zhangtao"
-;;  ;; message-signature
-;;  ;;  (concat
-;;  ;;    "Foo X. Bar\n"
-;;  ;;    "http://www.example.com\n")
-;;  )
-
-;; (setq mu4e-view-show-images t)
-;; (setq mu4e-compose-signature "天行健，君子以自强不息。地势坤，君子以厚德载物。——《周易》")
-
-;; (setq mu4e-org-contacts-file "~/Dropbox/Txt/contacts.txt")
-;; (add-to-list 'mu4e-headers-actions
-;;   '("org-contact-add" . mu4e-action-add-org-contact) t)
-;; (add-to-list 'mu4e-view-actions
-;;   '("org-contact-add" . mu4e-action-add-org-contact) t)
-
-;; (require 'smtpmail)
-;; (require 'starttls)
-
-;; (setq
-;;  message-send-mail-function 'smtpmail-send-it
-;;  user-full-name "zhangtao"
-;;  user-mail-address "ztao1991@gmail.com"
-;;  smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil))
-;;  smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
-;;  smtpmail-default-smtp-server "smtp.gmail.com"
-;;  smtpmail-smtp-server "smtp.gmail.com"
-;;  smtpmail-smtp-service 587
-;;  smtpmail-debug-info t
-;;  starttls-extra-arguments nil
-;;  starttls-gnutls-program "/usr/bin/gnutls-cli"
-;;  smtpmail-stream-type 'starttls
-;;  starttls-extra-arguments nil
-;;  starttls-use-gnutls t
-;;  )
-
-;;(setq eww-search-prefix "http://www.bing.com/search?q=")
-
 
 ;; '(markdown-command
 ;;   "/usr/bin/pandoc -c ~/Dropbox/Linux/css/markdown/Clearness.css")
@@ -1505,12 +1416,8 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(jde-jdk (quote ("1.6")))
- '(jde-jdk-registry (quote (("1.6" . "/usr/lib/jvm/java-8-oracle/"))))
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
+'(truncate-partial-width-windows nil)
+ '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (neotree multi-term clang-format rtags cmake-ide chinese-pyim markdown-mode ace-isearch solarized-theme dracula-theme zenburn-theme writeroom-mode websocket super-save smooth-scrolling smex smart-mode-line-powerline-theme semi request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese org-bullets minimap matlab-mode magit log4e linum-relative key-chord jdee htmlize ht highlight-tail helm-swoop helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader elpy deft cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin)))
- '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838"))))
+    (evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch))))
