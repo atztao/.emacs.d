@@ -60,6 +60,9 @@
 (add-to-list 'default-frame-alist '(height . 20))
 (add-to-list 'default-frame-alist '(width . 56))
 
+sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
+sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空格。
+
 ;;(setq default-directory "C:/Users/zhangtao/Dropbox/")
 ;;(cd "~/emacs/home/")  
 ;;(setq default-directory "~/Dropbox/")
@@ -310,7 +313,7 @@ directory to make multiple eshell windows easier."
 (setq cursor-type 'box)
 
 ;;(set-background-color "ivory")
-(set-background-color "#202020")
+(set-background-color "#000000") ;;202020
 (set-foreground-color "#eeeeee")
 
 ;; (set-background-color "black")
@@ -398,6 +401,7 @@ directory to make multiple eshell windows easier."
 ;; 	       "% " ;; fill with '-'
 ;; 	       ))
 
+(column-number-mode 1)
 
 ;;(set-face-attribute 'mode-line nil  :height 90)
 
@@ -448,13 +452,16 @@ directory to make multiple eshell windows easier."
         (setq mode-name mode-str)))))
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
-(custom-set-faces
- '(mode-line ((t (:background "grey75" :foreground "black"))))
- '(mode-line-buffer-id ((t (:background "dark olive green" :foreground "beige"))))
- '(mode-line-highlight ((((class color) (min-colors 88)) nil)))
- '(mode-line-inactive ((t (:background "dark olive green" :foreground "dark khaki" :weight light))))
- )
 
+(set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black")
+(set-face-attribute 'mode-line-buffer-id nil :background "darkblue" :foreground "white")
+(defface mode-line-directory
+  '((t :background "blue" :foreground "gray"))
+  "Face used for buffer identification parts of the mode line."
+  :group 'mode-line-faces
+  :group 'basic-faces)
+(set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 ;;relative-number------------------------
 ;; (require 'linum-relative)
@@ -775,9 +782,9 @@ directory to make multiple eshell windows easier."
 (setq-default
  evil-default-cursor '(t "white")
  evil-emacs-state-cursor  '("gray" box)
- evil-normal-state-cursor '("green" box)
+ evil-normal-state-cursor '("red" box)
  evil-visual-state-cursor '("cyan" hbar)
- evil-insert-state-cursor '("orange" bar)
+ evil-insert-state-cursor '("red" bar)
  evil-motion-state-cursor '("gray" box))
 
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)

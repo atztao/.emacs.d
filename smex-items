@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ magit-push
  magit-status
  magit-branch
  replace-string
  global-evil-matchit-mode
  emacs-version
- load-theme
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 800)
+ (eval-buffer . 802)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 28)
- (magit-push . 22)
+ (magit-status . 30)
+ (magit-push . 25)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)

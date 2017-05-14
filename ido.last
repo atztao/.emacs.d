@@ -116,8 +116,8 @@
 
 ;; ----- ido-work-file-list -----
 (
- "init_smart_mode_line"
  "init.el"
+ "init_smart_mode_line"
  "sandpile-model.cpp"
  "sandpile.cpp"
  "sandpile-model-N.cpp"
@@ -130,7 +130,7 @@
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/zhangtao/.emacs.d/" (22807 49836 766586 395000) "init_email" "places" "url/" ".emacs.desktop" ".org-id-locations" "session.109c793430000147894798600000032920013" "init.el~" "bookmarks" "tramp/" "themes/" "helm-history.txt" "semanticdb/" "init_evil" "smex-items" "eshell/" ".bookmarks.bmk" "snippets/" "session.109c793430000147312841300000019770013" "init.el" "recentf" "session.109c793430000147780428400000020620018" "session.109c793430000147464061500000224380049" ".gitignore" "elpa/" "srecode-map.el" "session.109c793430000148086180400000021520180" ".emacs.desktop.lock" "auto-save-list/" "abbrev_defs" "image-dired/" "jdee-2.4.1/" ".directory" "session.101d5d03253c11551147221069415221300000125400034" "ac-comphist.dat" "../" "pyim/" "foucs-mode.el" "ido.last" "recentf~" "init" "thumbs/" "ido.last~" "./" "#ido.last#" ".#init_smart_mode_line" "session.1095783133000149408035300000109170034" "request/" "saveplace" "flycheck_init.el" ".git/" "Template/" "writer.el" "lisp/")
+ ("/home/zhangtao/.emacs.d/" (22807 54200 244211 464000) "init_email" "places" "url/" ".emacs.desktop" ".org-id-locations" "session.109c793430000147894798600000032920013" "init.el~" "bookmarks" "tramp/" "themes/" "helm-history.txt" "semanticdb/" "init_evil" "smex-items" "eshell/" ".bookmarks.bmk" "snippets/" "session.109c793430000147312841300000019770013" "init_smart_mode_line" "init.el" "recentf" "session.109c793430000147780428400000020620018" "session.109c793430000147464061500000224380049" ".gitignore" "elpa/" "srecode-map.el" "session.109c793430000148086180400000021520180" ".emacs.desktop.lock" "auto-save-list/" "abbrev_defs" "image-dired/" "jdee-2.4.1/" ".directory" "session.101d5d03253c11551147221069415221300000125400034" "ac-comphist.dat" "../" "pyim/" "foucs-mode.el" "ido.last" "recentf~" "init" "thumbs/" "ido.last~" "./" "#ido.last#" "session.1095783133000149408035300000109170034" "request/" "saveplace" "flycheck_init.el" ".git/" "Template/" "writer.el" "lisp/")
 
  ("/home/zhangtao/" (22807 49713 412173 492000) ".kingsoft/" ".vim/" ".jupyter/" "Untitled.ipynb" ".bash_logout" ".Xauthority" ".Xresources" ".zcompdump-dx131-5.3.1" "Dropbox/" "#launchy.ini#" ".backup/" "PBS.pdf" ".fbtermrc" ".config/" ".face" ".dropbox-dist/" "html/" ".gnome/" "Documents/" "Public/" "Templates/" "html-v2/" "Python/" "Music/" "Desktop/" "hellow.py" ".macromedia/" "Downloads/" ".viminfo" ".local/" ".zcompdump-localhost-5.3.1" ".ICEauthority" ".xsel.log" ".xinitrc" ".fehbg" ".gnupg/" "SPMCS2017/" ".wget-hsts" ".kde/" ".zsh_history" ".face.icon" "桌面/" ".ssh/" ".gimp-2.8/" "history.db" ".oh-my-zsh/" ".xsession-errors.old" "tmp/" "Pictures/" ".vimrc" ".directory" ".bash_history" ".putty/" ".adobe/" ".dropbox/" "#hellow.py#" ".xsession-errors" ".mozilla/" ".icons/" ".zshrc" ".profile" ".gtkrc-2.0" ".dmrc" "../" ".gconf/" ".bashrc" ".fonts.conf" ".presage/" "spmcs_preview/" "Untitled1.ipynb" ".gtkrc-2.0-kde4" "Videos/" ".zsh-update" "./" ".goldendict/" ".dbus/" ".pki/" "slim.conf" ".cache/" ".gitconfig" ".Xdefaults" ".emacs.d/" "spmcs_2017/" "launchy.ini" ".launchy/" ".xprofile" ".python_history" "launchy.db" "Untitled2.ipynb")
 
