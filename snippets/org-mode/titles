@@ -17,7 +17,6 @@
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+DESCRIPTION: A literate programming style exposition of my Emacs configuration beyond my spacemacs configuration
 #+KEYWORDS:
 #+LANGUAGE: en
 #+BABEL: :cache yes

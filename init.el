@@ -1,11 +1,18 @@
-;;-------------------------------------------------------
-;;startup
-;;-------------------------------------------------------
+;; /*-----------------------------------------
+;; Athor:Zhang Tao
+;; Email:ztao1991@gmail.com
+;; Gtihub:github.com/ztao1991
+;; Version:v2017.5.11
+;; ------------------------------------------*/
+
+;;-----------------------------------------------
+;;Emacs Server . Theme .Fonts 
+;;-----------------------------------------------
 
 ;; (define-key emacs-lisp-mode-map (kbd "C-x C-r") 'eval-region)
 ;; (define-key lisp-interaction-mode-map (kbd "C-x C-r") 'eval-region)
 ;; (define-key org-mode-map (kbd "<tab>") 'org-cycle)
-;;(server-start)
+;; (server-start)  
 ;;(desktop-save-mode) 
 ;; (defun frame-setting ()
 ;;   (set-default-font "Monaco-12")
@@ -61,6 +68,7 @@
 
 ;;eshell
 ;;(setq shell-file-name "cmdproxy")
+
 (setq shell-file-name "/bin/zsh")
 
 (defun eshell-here ()
@@ -164,9 +172,9 @@ directory to make multiple eshell windows easier."
 ;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
 ;; (set-frame-font "Consolas-10")
 ;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
-;;(set-frame-font "Source Code Pro 10")
+;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
-(set-frame-font "Monaco-10")
+(set-frame-font "Monaco-9")
 
 (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;; (set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
@@ -302,8 +310,8 @@ directory to make multiple eshell windows easier."
 (setq cursor-type 'box)
 
 ;;(set-background-color "ivory")
-;; (set-background-color "#ffffff")
-;; (set-foreground-color "black")
+(set-background-color "#202020")
+(set-foreground-color "#eeeeee")
 
 ;; (set-background-color "black")
 ;; (set-foreground-color "white")
@@ -322,15 +330,15 @@ directory to make multiple eshell windows easier."
 (set-mouse-color "goldenrod")
 
 ;;zenburn
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;;(load "~/.emacs.d/themes/color-theme-tomorrow.el")
+;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;; ;;(load "~/.emacs.d/themes/ujelly-theme.el")
 ;; ;;(load "~/.emacs.d/themes/monokai-theme.el")
 
-;; (load-theme 'zenburn t)
-;; ;;(load-theme 'dracula t)
-;; (set-cursor-color "red")
+;;(load-theme 'zenburn t)
+;;;;(load-theme 'dracula t)
+;;(set-cursor-color "red")
 
 ;;--------------------------
 ;;mode-line
@@ -394,12 +402,6 @@ directory to make multiple eshell windows easier."
 ;;(set-face-attribute 'mode-line nil  :height 90)
 
 ;;---------------------------Vertical-border
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-background 'vertical-border "gray") ;;default
-;; ;;(set-face-background 'vertical-border "#284b54") ;;solarized
-;; ;;(set-face-background 'vertical-border "gray37") ;;37-50 ;;zenburn
-;; ;;(set-face-background 'vertical-border "gray15")
-
 ;; Reverse colors for the border to have nicer line  
 (set-face-inverse-video-p 'vertical-border nil)
 ;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
@@ -415,73 +417,43 @@ directory to make multiple eshell windows easier."
 
 ;;(set-face-background 'fringe "#809088")
 
-;;smart-mode-line------------------------
-;;(display-time-mode)
-(require 'smart-mode-line)
-;; (require 'powerline)
-(setq sml/no-confirm-load-theme t)
+(setq-default undo-tree-mode-lighter " Ü") ;undo
+(setq-default helm-completion-mode-string " H")
 
-;;(setq sml/theme 'dark)
-;;(setq sml/theme 'light)
-(setq sml/theme 'respectful)
+(setq-default mode-line-cleaner-alist
+              `((auto-complete-mode . " á")
+                (company-mode . " CA")
+                (yas-minor-mode . " ý")
+                (undo-tree-mode . " Út")
+                (golden-ratio-mode . "")
+                (flymake-mode . " Fly")
+                ;; major mode
+                (fundamental-mode . "Fd")
+                (ibuffer-mode . "iBuf")
+                (python-mode . "Py")
+                (lisp-interaction-mode . "iEL")
+                (emacs-lisp-mode . "EL")
+                (super-save-mode . "XS")))
 
-;; (setq sml/theme 'powerline)
-;; (setq sml/theme 'light-powerline)
-(setq powerline-arrow-shape 'curves)
-(setq powerline-default-separator-dir '(right . left))
-(setq sml/mode-width 0)
-(setq sml/name-width 20)
-(rich-minority-mode 1)
-(setf rm-blacklist "super-save")
-;;(setq sml/theme 'powerline)
-(setq rm-excluded-modes
-      '(" Guide"			;; guide-key mode
-        " hc"				;; hardcore mode
-        " AC"				;; auto-complete
-        " vl"				;; global visual line mode enabled
-        " Wrap"				;; shows up if visual-line-mode is enabled for that buffer
-        " Omit"				;; omit mode in dired
-        " yas"				;; yasnippet
-        " drag"				;; drag-stuff-mode
-        " VHl"				;; volatile highlights
-        " ctagsU"			;; ctags update
-        " Undo-Tree"			;; undo tree
-        " wr"				;; Wrap Region
-        " SliNav"			;; elisp-slime-nav
-        " Fly"				;; Flycheck
-        " PgLn"				;; page-line-break
-        " GG"				;; ggtags
-        " ElDoc"			;; eldoc
-        " hl-highlight"			;; hl-anything
-        "AcePY"
-        "Helm"
-        ))
+(defun clean-mode-line ()
+  (interactive)
+  (dolist (cleaner mode-line-cleaner-alist)
+    (let* ((mode (car cleaner))
+           (mode-str (cdr cleaner))
+           (old-mode-str (cdr (assq mode minor-mode-alist))))
+      (when old-mode-str
+        (setcar old-mode-str mode-str))
+      ;; major mode
+      (when (eq mode major-mode)
+        (setq mode-name mode-str)))))
 
-(sml/setup)
-
-
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "#000000"
-;;                     :background "#FFFFFF" ;;#FFFFFF
-;;                     :box nil)
-;; (set-face-attribute 'modeline-inactive nil
-;;                     :foreground "#000000"
-;;                     :background "#FFFFFF"
-;;                     :box nil)
-
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "#32cd32"
-;;                     :background "#000000" ;;#FFFFFF
-;;                     :box nil)
-;; (set-face-attribute 'modeline-inactive nil
-;;                     :foreground "#32cd32"
-;;                     :background "#000000"
-;;                     :box nil)
-
-;; (set-face-attribute 'mode-line nil
-;;                     :box nil)
-;; (set-face-attribute 'modeline-inactive nil
-;;                     :box nil)
+(add-hook 'after-change-major-mode-hook 'clean-mode-line)
+(custom-set-faces
+ '(mode-line ((t (:background "grey75" :foreground "black"))))
+ '(mode-line-buffer-id ((t (:background "dark olive green" :foreground "beige"))))
+ '(mode-line-highlight ((((class color) (min-colors 88)) nil)))
+ '(mode-line-inactive ((t (:background "dark olive green" :foreground "dark khaki" :weight light))))
+ )
 
 
 ;;relative-number------------------------
@@ -625,9 +597,8 @@ directory to make multiple eshell windows easier."
 ;; (require 'smooth-scrolling)
 ;; (smooth-scrolling-mode 1)
 ;; (setq scroll-margin 5
-;;       scroll-conservatively 9999
+;;       scroll-conservatively 10
 ;;       scroll-step 1)
-
 
 ;;---------------------------------------------------------------------------------
 
@@ -701,11 +672,161 @@ directory to make multiple eshell windows easier."
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 
 
+;;----------------------------------------------
+;;Comment
+(defun qiang-comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command. If no region is selected and current line is not blank and we are not at the end of the line, then comment current line. Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+
+;;----------------------------------------------
+;evil-mode
+;-------------------------------------------------------------------------------------------------------------------------
+
+(require 'evil-leader)
+(global-evil-leader-mode)
+
+(require 'evil-matchit)
+(global-evil-matchit-mode)
+
+(setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
+(setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
+
+(require 'evil) 
+(evil-mode 1) 
+
+;; remove all keybindings from insert-state keymap, use emacs-state when editing
+;;(setcdr evil-insert-state-map nil)
+ 
+;; ESC to switch back normal-state
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+ 
+;; TAB to indent in normal-state
+(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
+ 
+;; Use j/k to move one visual line insted of gj/gk
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+
+;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
+;;(add-to-list 'evil-emacs-state-modes 'magit-mode)
+;;(add-to-list 'evil-emacs-state-modes 'org-mode)
+;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
+
+;;(setq evil-default-state 'emacs)
+(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
+
+;;(define-key evil-motion-state-map ";" 'smex)
+(define-key evil-motion-state-map ":" 'evil-ex)
+(define-key evil-ex-map "e" 'ido-find-file)
+;;(define-key evil-ex-map "q" 'ido-kill-buffer)
+(global-set-key (kbd "C-s") 'evil-write)
+
+;;magit
+;;(evil-set-initial-state 'magit-mode 'normal)
+;;(evil-set-initial-state 'magit-status-mode 'normal)
+;;(evil-set-initial-state 'magit-diff-mode 'normal)
+;;(evil-set-initial-state 'magit-log-mode 'normal)
+;;(evil-define-key 'normal magit-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section)
+;;(evil-define-key 'normal magit-log-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section)
+;;(evil-define-key 'normal magit-diff-mode-map
+;;  "j" 'magit-goto-next-section
+;;  "k" 'magit-goto-previous-section)
+
+
+(evil-set-initial-state 'ibuffer-mode 'normal)
+(setq evil-insert-state-cursor 'box)
+
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'evil-exit-emacs-state)
+
+(setq-default
+ evil-normal-state-tag (propertize "N" 'face '((:background "green" :foreground "black")))
+ evil-emacs-state-tag (propertize "E" 'face '((:background "orange" :foreground "black")))
+ evil-insert-state-tag (propertize "I" 'face '((:background "red")))
+ evil-motion-state-tag (propertize "M" 'face '((:background "blue")))
+ evil-visual-state-tag (propertize "V" 'face '((:background "grey80" :foreground "cyan")))
+ evil-operator-state-tag (propertize "O" 'face '((:background "purple"))))
+
+
+(setq-default
+ evil-default-cursor '(t "white")
+ evil-emacs-state-cursor  '("gray" box)
+ evil-normal-state-cursor '("green" box)
+ evil-visual-state-cursor '("cyan" hbar)
+ evil-insert-state-cursor '("orange" bar)
+ evil-motion-state-cursor '("gray" box))
+
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+;; ;;evil-leader
+;;(evil-leader/set-leader ";")
+(evil-leader/set-leader ",")
+;;(evil-leader/set-leader "<SPC>")
+(setq evil-leader/in-all-states 1)
+
+(evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
+(evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
+(evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+
+(evil-leader/set-key "h" 'dired-jump)
+(evil-leader/set-key "v" 'split-window-right)
+(evil-leader/set-key "," 'other-window)
+(evil-leader/set-key "b" 'ibuffer)
+(evil-leader/set-key "x" 'smex)
+
+(evil-leader/set-key "c" 'qiang-comment-dwim-line)
+(setq-default tab-width 4 indent-tabs-mode nil)
+(define-key global-map (kbd "RET") 'newline-and-indent)
+(setq evil-move-cursor-back nil)
+
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
+(require 'key-chord)
+(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
+(setq key-chord-two-keys-delay 0.2)
+(key-chord-mode 1)
+
+(setq evil-search-module 'evil-search)
 
 ;;expand-region
-;; (require 'expand-region)
-;; (global-set-key (kbd "C-=") 'er/expand-region)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 ;;(global-set-key (kbd "C-c =") 'er/expand-region)
+
+
+;;-------------------------------------------------------------------------------------------------------------------------
+
 
 ;--------------
 ;ace-jump
@@ -714,9 +835,9 @@ directory to make multiple eshell windows easier."
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
 
-(require 'ace-pinyin)
-(setq ace-pinyin-use-avy nil)
-(ace-pinyin-global-mode +1)
+;; (require 'ace-pinyin)
+;; (setq ace-pinyin-use-avy nil)
+;; (ace-pinyin-global-mode +1)
 
 (add-to-list 'load-path "which-folder-ace-jump-mode-file-in/")
 (require 'ace-jump-mode)
@@ -727,9 +848,9 @@ directory to make multiple eshell windows easier."
   (define-key org-mode-map (kbd "C-c SPC") nil))
 ;; When org-mode starts it (org-mode-map) overrides the ace-jump-mode.
 
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
 
 
 
@@ -748,7 +869,6 @@ directory to make multiple eshell windows easier."
 ;yasnippet
 ;----------------
 
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20161211.1918/")
 (require 'yasnippet)
 (yas-global-mode 1)
 ;;(setq yas-snippet-dirs "~/.emacs.d/snippets/")
@@ -759,10 +879,7 @@ directory to make multiple eshell windows easier."
 ;auto-complete
 ;----------------
 
-(add-to-list 'load-path "~/.emacs.d/elpa/popup-el/")
 (require 'popup)
-
-(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
 (ac-config-default)
@@ -787,7 +904,8 @@ directory to make multiple eshell windows easier."
 ;; Turn flycheck on everywhere
 ;;(global-flycheck-mode)
 
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+;;turn off SOME unwanted flycheck warnings(https://lists.gnu.org/archive/html/help-gnu-emacs/2015-02/msg00134.html)
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc emacs-lisp))
 
 ;; Use flycheck-pyflakes for python. Seems to work a little better.
 ;; (require 'flycheck-pyflakes)
@@ -825,6 +943,7 @@ directory to make multiple eshell windows easier."
 ;python+c languge
 ;----------------
 
+(setq py-python-command "/usr/bin/python3")
 ;;we should install ipython
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
 ;; (require 'python-mode)
@@ -833,8 +952,9 @@ directory to make multiple eshell windows easier."
 ;; (setq jedi:setup-keys t)                      ; optional
 ;; (setq jedi:complete-on-dot t)                 ; optional
 
+
 (elpy-enable)
-;;(elpy-use-ipython)
+;; (elpy-use-ipython)
 (setq elpy-rpc-backend "jedi")
 
 (when (require 'flycheck nil t)
@@ -845,6 +965,11 @@ directory to make multiple eshell windows easier."
 (setq elpy-rpc-python-command "python3")
 (setq python-shell-interpreter "python3")
 ;;(elpy-use-ipython "ipython3")
+
+(setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
+(setq ein:jupyter-server-args (list "--no-browser"))
+
+
 
 ;;apt-get install ipython then M-x edit-abbrevs
 ;;(require 'ipython)
@@ -867,8 +992,8 @@ directory to make multiple eshell windows easier."
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
 ;------------------
-					;Html
-					;------------------
+;Html
+;------------------
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -899,27 +1024,18 @@ directory to make multiple eshell windows easier."
 ;org-mode
 ;-------------
 
-;; (require 'org-bullets)
-;; (setq org-bullets-face-name (quote org-bullet-face))
-;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;; (setq org-bullets-face-name (quote org-bullet-face))
-;; ;; (set-face-attribute 'org-bullet-face 
-;; ;;    t :foreground "burlywood" :weight 'normal :height 1.6)
-
-;; ;; ;;(setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
-;; ;; (setq org-bullets-bullet-list '("◉" "○" "◎" "●" "◯"))
-;; ;; (setq org-ellipsis "↴");; ⤵ ▼, ↴, , ∞, ⬎, ⤷, ⤵ ≫
-
 (setq org-startup-indented t)
 
 ;; (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
 
 ;;(setq org-image-actual-width 600)
+
 ;;Auto Fill
 (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
           (lambda () (setq truncate-lines nil)))  
+
 ;; (add-hook 'org-mode-hook '(lambda () 
 ;; (setq visual-line-fringe-indicators t) 
 ;; (visual-line-mode) 
@@ -940,6 +1056,8 @@ directory to make multiple eshell windows easier."
 
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
+
+(setq org-confirm-babel-evaluate nil)
 
 ;;source code
 (org-babel-do-load-languages
@@ -1026,11 +1144,11 @@ directory to make multiple eshell windows easier."
 ;;                 )))
 
 
-(require 'org-crypt)
-(org-crypt-use-before-save-magic)
-(setq org-crypt-tag-matcher "Secret")
-(setq org-tags-exclude-from-inheritance (quote("Secret")))
-(setq org-crypt-key nil)
+;; (require 'org-crypt)
+;; (org-crypt-use-before-save-magic)
+;; (setq org-crypt-tag-matcher "Secret")
+;; (setq org-tags-exclude-from-inheritance (quote("Secret")))
+;; (setq org-crypt-key nil)
 
 ;----------------------
 ;auctex+XeCJK
@@ -1361,13 +1479,13 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 
 
 ;; Setting up matlab-mode
-;; (add-to-list 'load-path "~/.emacs.d/elpa/matlab-emacs")
-;; (load-library "matlab-load")
-(add-hook 'matlab-mode-hook 'auto-complete-mode)
-(setq auto-mode-alist
-      (cons
-       '("\\.m$" . matlab-mode)
-       auto-mode-alist))
+;; ;; (add-to-list 'load-path "~/.emacs.d/elpa/matlab-emacs")
+;; ;; (load-library "matlab-load")
+;; (add-hook 'matlab-mode-hook 'auto-complete-mode)
+;; (setq auto-mode-alist
+;;       (cons
+;;        '("\\.m$" . matlab-mode)
+;;        auto-mode-alist))
 
                                         ;------------------------------------------------------------
 ;backup
@@ -1416,8 +1534,10 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-'(truncate-partial-width-windows nil)
- '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt")))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch))))
+    (ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+ '(truncate-partial-width-windows nil))

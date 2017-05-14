@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- load-theme
+ magit-status
+ magit-branch
  replace-string
- jedi:install-server
- disable-theme
- doc-view-mode
- package-list-packages
+ global-evil-matchit-mode
+ emacs-version
+ load-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 125)
+ (package-list-packages . 129)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 59)
- (load-theme . 170)
+ (replace-string . 62)
+ (load-theme . 178)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 758)
+ (eval-buffer . 800)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)
@@ -165,7 +165,7 @@
  (global-emojify-mode . 1)
  (emojify-mode . 2)
  (toggle-truncate-lines . 2)
- (doc-view-mode . 3)
+ (doc-view-mode . 4)
  (minimap-mode . 9)
  (minimap-create . 2)
  (minimap-update . 2)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 113)
+ (disable-theme . 117)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -265,7 +265,7 @@
  (flymake-mode . 1)
  (outline-presentation-mode . 2)
  (xwidget-webkit-browse-url . 10)
- (emacs-version . 5)
+ (emacs-version . 6)
  (undo . 1)
  (view-emacs-news . 5)
  (midnight-mode . 1)
@@ -296,15 +296,15 @@
  (jdee-mode . 11)
  (cvs-status-mode . 1)
  (key-chord-mode . 2)
- (ein:notebooklist-open . 4)
+ (ein:notebooklist-open . 5)
  (ipython3 . 2)
  (pyhotn . 1)
  (search-forward . 1)
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 24)
- (magit-push . 21)
+ (magit-status . 28)
+ (magit-push . 22)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 7)
+ (package-autoremove . 10)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
@@ -334,4 +334,7 @@
  (flycheck-mode . 5)
  (web-mode . 1)
  (jedi:install-server . 2)
+ (global-evil-matchit-mode . 1)
+ (magit-branch . 1)
+ (magit-mode . 1)
 )
