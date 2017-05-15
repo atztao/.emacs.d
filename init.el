@@ -120,7 +120,7 @@ directory to make multiple eshell windows easier."
 
 ;;Browser
 (setq gnus-button-url 'browse-url-generic
-      browse-url-generic-program "chromium"
+      browse-url-generic-program "google-chrome"
       browse-url-browser-function gnus-button-url)
 
 ;;(setq line-spacing '0.20)
@@ -174,7 +174,7 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
 ;; (set-frame-font "Consolas-10")
-;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
 ;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
 (set-frame-font "Monaco-9")
@@ -312,19 +312,21 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-;;(set-background-color "ivory")
-(set-background-color "#000000") ;;202020
-(set-foreground-color "#eeeeee")
+(set-background-color "ivory")
+;; (set-background-color "white") ;;202020
+(set-foreground-color "black")
 
 ;; (set-background-color "black")
 ;; (set-foreground-color "white")
 
+(make-face-bold 'isearch)
+(make-face-bold 'lazy-highlight)
 (set-face-foreground 'isearch "orange red")
 (set-face-background 'isearch "#ffff00")
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :background "#F0E68C" :foreground "black")
+(set-face-attribute 'region nil :background "#EEE8D6" :foreground "black")
 
 ;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
@@ -334,72 +336,33 @@ directory to make multiple eshell windows easier."
 
 ;;zenburn
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;;(load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
-;; ;;(load "~/.emacs.d/themes/ujelly-theme.el")
+;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
+;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+;;(load "~/.emacs.d/themes/ujelly-theme.el")
 ;; ;;(load "~/.emacs.d/themes/monokai-theme.el")
 
+;; (defvar zenburn-override-colors-alist
+;;    '(("zenburn-bg" . "#111111")))
 ;;(load-theme 'zenburn t)
-;;;;(load-theme 'dracula t)
-;;(set-cursor-color "red")
+;;(load-theme 'dracula t)
+(set-cursor-color "red")
+
+(make-face-bold 'isearch)
+(make-face-bold 'lazy-highlight)
+(set-face-foreground 'isearch "orange red")
+(set-face-background 'isearch "#ffff00")
+(set-face-foreground 'lazy-highlight "black")
+(set-face-background 'lazy-highlight "#ffff00")
+
+(set-face-attribute 'region nil :background "#EEE8D6" :foreground "black")
+
+;; (set-background-color "black")
+;; (set-foreground-color "white")
 
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-;;(setq-default mode-line-format nil)
-
-;; (setq-default mode-line-format
-;; 	      (list
-;; 	       ;; (propertize "[" 'face 'bold) 
-;; 	       ;; '(:eval (propertize
-;; 	       ;; 		(window-numbering-get-number-string)
-;; 	       ;; 		'face
-;; 	       ;; 		'bold))
-;; 	       ;; (propertize "]" 'face 'bold) 
-
-;; 	       '(:eval (propertize "%b " 'face 'bold
-;; 	       			   'help-echo (buffer-file-name)))
-;; 	       "                    "
-;; 	       ;; "%-"
-;; 	       (propertize "%02l,%02c" 'face 'bold) 
-
-;; 	       "            "
-;; 	       (propertize " %p/%I " 'face 'bold) ;; % above top
-;; 	       "               "
-;; 	       ;; '(:eval (propertize (codefalling//simplify-major-mode-name) 'face 'bold
-;; 	       ;; 			   'help-echo buffer-file-coding-system))
-
-;; 	       '(:eval (propertize "[%m]" 'face 'bold
-;; 	       			   'help-echo buffer-file-coding-system))
-
-;; 	       ;; '(:eval (propertize (if overwrite-mode "[Ovr]" "[Ins]")
-;; 	       ;; 			   'face 'bold
-;; 	       ;; 			   'help-echo (concat "Buffer is in "
-;; 	       ;; 					      (if overwrite-mode "overwrite" "insert") " mode")))
-
-;; 	       ;; ;; was this buffer modified since the last save?
-;; 	       ;; '(:eval (when (buffer-modified-p)
-;; 	       ;; 		 (concat ","  (propertize "Mod"
-;; 	       ;; 					  'face 'font-lock-warning-face
-;; 	       ;; 					  'help-echo "Buffer has been modified"))))
-
-;; 	       ;; ;; is this buffer read-only?
-;; 	       ;; '(:eval (when buffer-read-only
-;; 	       ;; 		 (concat ","  (propertize "RO"
-;; 	       ;; 					  'face 'bold
-;; 	       ;; 					  'help-echo "Buffer is read-only"))))  
-
-;; 	       ;; add the time, with the date and the emacs uptime in the tooltip
-;; 	       ;; '(:eval (propertize (format-time-string "%H:%M")
-;; 	       ;; 			   'help-echo
-;; 	       ;; 			   (concat (format-time-string "%c; ")
-;; 	       ;; 				   (emacs-uptime "Uptime:%hh"))))
-
-;; 	       ;; " --"
-;; 	       ;; i don't want to see minor-modes; but if you want, uncomment this:
-;; 	       ;; minor-mode-alist  ;; list of minor modes
-;; 	       "% " ;; fill with '-'
-;; 	       ))
+(setq-default mode-line-format nil)
 
 (column-number-mode 1)
 
@@ -412,7 +375,7 @@ directory to make multiple eshell windows easier."
 ;; (set-face-foreground 'vertical-border "gray")
 ;; (set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-foreground 'vertical-border "gray42")
+(set-face-foreground 'vertical-border "gray45")
 (set-face-background 'vertical-border "black")
 
 (set-display-table-slot standard-display-table
@@ -421,12 +384,11 @@ directory to make multiple eshell windows easier."
 
 ;;(set-face-background 'fringe "#809088")
 
-(setq-default undo-tree-mode-lighter " Ü") ;undo
-(setq-default helm-completion-mode-string " H")
-
 (setq-default mode-line-cleaner-alist
               `((auto-complete-mode . " á")
                 (company-mode . " CA")
+                (undo-tree-mode-lighter " Ü")
+                (helm-completion-mode-string " H")
                 (yas-minor-mode . " ý")
                 (undo-tree-mode . " Út")
                 (golden-ratio-mode . "")
@@ -453,17 +415,21 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black")
-(set-face-attribute 'mode-line-buffer-id nil :background "darkblue" :foreground "white")
-(defface mode-line-directory
-  '((t :background "blue" :foreground "gray"))
-  "Face used for buffer identification parts of the mode line."
-  :group 'mode-line-faces
-  :group 'basic-faces)
-(set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
+;; (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black")
+;; (set-face-attribute 'mode-line-buffer-id nil :background "dark blue" :foreground "white")
+;; (defface mode-line-directory
+;;   '((t :background "dark blue" :foreground "gray"))
+;;   "Face used for buffer identification parts of the mode line."
+;;   :group 'mode-line-faces
+;;   :group 'basic-faces)
+;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
+;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
-;;relative-number------------------------
+(setq-default mode-line-buffer-identification
+  (propertized-buffer-identification "%b"))
+
+
+;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
 ;; (add-hook 'prog-mode-hook 'relative-line-numbers-mode t)
@@ -623,58 +589,58 @@ directory to make multiple eshell windows easier."
 ;;-----------------------
 (setq tramp-mode nil)
 (setq ad-redefinition-action 'accept)
-(require 'helm-config)
-(require 'helm)
-(helm-mode t)
+;; (require 'helm-config)
+;; (require 'helm)
+;; (helm-mode t)
 
-(defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
-(defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
+;; (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
+;; (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
-(setq helm-ff-transformer-show-only-basename nil
-      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-      helm-yank-symbol-first                 t
-      helm-move-to-line-cycle-in-source      t
-      helm-M-x-fuzzy-match                   t
-      ;;      helm-recentf-fuzzy-match               t
-      ;;      helm-ff-file-name-history-use-recentf  t
-      helm-buffers-fuzzy-matching            t
-      helm-ff-auto-update-initial-value      t)
+;; (setq helm-ff-transformer-show-only-basename nil
+;;       helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
+;;       helm-yank-symbol-first                 t
+;;       helm-move-to-line-cycle-in-source      t
+;;       ;;helm-M-x-fuzzy-match                   t
+;;       ;;      helm-recentf-fuzzy-match               t
+;;       ;;      helm-ff-file-name-history-use-recentf  t
+;;       helm-buffers-fuzzy-matching            t
+;;       helm-ff-auto-update-initial-value      t)
 
-;; (autoload 'helm-descbinds      "helm-descbinds" t)
-;; (autoload 'helm-eshell-history "helm-eshell"    t)
-;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
+;; ;; (autoload 'helm-descbinds      "helm-descbinds" t)
+;; ;; (autoload 'helm-eshell-history "helm-eshell"    t)
+;; ;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
 
-;; (global-set-key (kbd "C-h a")    #'helm-apropos)
-;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
-;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
+;; ;; (global-set-key (kbd "C-h a")    #'helm-apropos)
+;; ;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
+;; ;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
 
-;; (add-hook 'eshell-mode-hook
-;;           #'(lambda ()
-;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+;; ;; (add-hook 'eshell-mode-hook
+;; ;;           #'(lambda ()
+;; ;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+;; ;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
 
-;; (global-set-key (kbd "C-x b")   #'helm-mini)
-;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-;; (global-set-key (kbd "M-x") #'helm-M-x)
-;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
-;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
-;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
+;; ;; (global-set-key (kbd "C-x b")   #'helm-mini)
+;; ;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+;; ;; (global-set-key (kbd "M-x") #'helm-M-x)
+;; ;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
+;; ;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
+;; ;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
 
-;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+;; ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-;; (global-set-key (kbd "M-i") 'helm-swoop)
-;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+;; ;; (global-set-key (kbd "M-i") 'helm-swoop)
+;; ;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
-(global-set-key (kbd "M-s i")   #'helm-swoop)
-(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
-
-;;(global-set-key (kbd "C-s")   #'helm-swoop)
+;; (global-set-key (kbd "M-s i")   #'helm-swoop)
 ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+;; (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-(helm-autoresize-mode 1)
+;; ;;(global-set-key (kbd "C-s")   #'helm-swoop)
+;; ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+;; ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+
+;; (helm-autoresize-mode 1)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 
@@ -693,144 +659,158 @@ directory to make multiple eshell windows easier."
 ;evil-mode
 ;-------------------------------------------------------------------------------------------------------------------------
 
-(require 'evil-leader)
-(global-evil-leader-mode)
+;; (require 'evil-escape)
+;; (setq-default evil-escape-key-sequence "jk")
+;; (setq-default evil-escape-delay 0.2)
 
-(require 'evil-matchit)
-(global-evil-matchit-mode)
+;; (require 'evil-leader)
+;; (global-evil-leader-mode)
 
-(setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
-(setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
+;; (require 'evil-matchit)
+;; (global-evil-matchit-mode)
 
-(require 'evil) 
-(evil-mode 1) 
+;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
+;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
 
-;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;;(setcdr evil-insert-state-map nil)
+;; (require 'evil) 
+;; (evil-mode 1) 
+
+;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
+;; (setcdr evil-insert-state-map nil)
  
-;; ESC to switch back normal-state
-(define-key evil-insert-state-map [escape] 'evil-normal-state)
+;; ;; ESC to switch back normal-state
+;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
  
-;; TAB to indent in normal-state
-(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
+;; ;; TAB to indent in normal-state
+;; (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
  
-;; Use j/k to move one visual line insted of gj/gk
-(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;; ;; Use j/k to move one visual line insted of gj/gk
+;; (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+;; (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;; (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+;; (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
-;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
-;;(add-to-list 'evil-emacs-state-modes 'magit-mode)
-;;(add-to-list 'evil-emacs-state-modes 'org-mode)
-;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
+;; ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
+;; ;;(add-to-list 'evil-emacs-state-modes 'magit-mode)
+;; ;;(add-to-list 'evil-emacs-state-modes 'org-mode)
+;; ;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
-;;(setq evil-default-state 'emacs)
-(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
-;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
+;; ;;(setq evil-default-state 'emacs)
+;; (define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;; ;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
 
-;;(define-key evil-motion-state-map ";" 'smex)
-(define-key evil-motion-state-map ":" 'evil-ex)
-(define-key evil-ex-map "e" 'ido-find-file)
-;;(define-key evil-ex-map "q" 'ido-kill-buffer)
-(global-set-key (kbd "C-s") 'evil-write)
+;; ;;(define-key evil-motion-state-map ";" 'smex)
+;; (define-key evil-motion-state-map ":" 'evil-ex)
+;; (define-key evil-ex-map "e" 'ido-find-file)
+;; ;;(define-key evil-ex-map "q" 'ido-kill-buffer)
+;; (global-set-key (kbd "C-s") 'evil-write)
 
-;;magit
-;;(evil-set-initial-state 'magit-mode 'normal)
-;;(evil-set-initial-state 'magit-status-mode 'normal)
-;;(evil-set-initial-state 'magit-diff-mode 'normal)
-;;(evil-set-initial-state 'magit-log-mode 'normal)
-;;(evil-define-key 'normal magit-mode-map
+;; ;;magit
+;; (evil-set-initial-state 'magit-mode 'normal)
+;; (evil-set-initial-state 'magit-status-mode 'normal)
+;; (evil-set-initial-state 'magit-diff-mode 'normal)
+;; (evil-set-initial-state 'magit-log-mode 'normal)
+;; (evil-define-key 'normal magit-mode-map
 ;;  "j" 'magit-goto-next-section
 ;;  "k" 'magit-goto-previous-section)
-;;(evil-define-key 'normal magit-log-mode-map
+;; (evil-define-key 'normal magit-log-mode-map
 ;;  "j" 'magit-goto-next-section
 ;;  "k" 'magit-goto-previous-section)
-;;(evil-define-key 'normal magit-diff-mode-map
+;; (evil-define-key 'normal magit-diff-mode-map
 ;;  "j" 'magit-goto-next-section
 ;;  "k" 'magit-goto-previous-section)
 
 
-(evil-set-initial-state 'ibuffer-mode 'normal)
-(setq evil-insert-state-cursor 'box)
+;; (evil-set-initial-state 'ibuffer-mode 'normal)
+;; (setq evil-insert-state-cursor 'box)
 
-;; esc quits
-(defun minibuffer-keyboard-quit ()
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-      (setq deactivate-mark  t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-(global-set-key [escape] 'evil-exit-emacs-state)
+;; ;; esc quits
+;; (defun minibuffer-keyboard-quit ()
+;;   (interactive)
+;;   (if (and delete-selection-mode transient-mark-mode mark-active)
+;;       (setq deactivate-mark  t)
+;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+;;     (abort-recursive-edit)))
+;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
+;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
+;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; (global-set-key [escape] 'evil-exit-emacs-state)
 
-(setq-default
- evil-normal-state-tag (propertize "N" 'face '((:background "green" :foreground "black")))
- evil-emacs-state-tag (propertize "E" 'face '((:background "orange" :foreground "black")))
- evil-insert-state-tag (propertize "I" 'face '((:background "red")))
- evil-motion-state-tag (propertize "M" 'face '((:background "blue")))
- evil-visual-state-tag (propertize "V" 'face '((:background "grey80" :foreground "cyan")))
- evil-operator-state-tag (propertize "O" 'face '((:background "purple"))))
+;; (setq-default
+;;  evil-normal-state-tag (propertize "N" 'face '((:background "green" :foreground "black")))
+;;  evil-emacs-state-tag (propertize "E" 'face '((:background "orange" :foreground "black")))
+;;  evil-insert-state-tag (propertize "I" 'face '((:background "red")))
+;;  evil-motion-state-tag (propertize "M" 'face '((:background "blue")))
+;;  evil-visual-state-tag (propertize "V" 'face '((:background "grey80" :foreground "cyan")))
+;;  evil-operator-state-tag (propertize "O" 'face '((:background "purple"))))
 
+;; (setq evil-emacs-state-cursor '("red" box))
+;; (setq evil-normal-state-cursor '("red" box))
+;; (setq evil-visual-state-cursor '("orange" box))
+;; (setq evil-insert-state-cursor '("red" bar))
+;; (setq evil-replace-state-cursor '("red" bar))
+;; (setq evil-operator-state-cursor '("red" hollow))
 
-(setq-default
- evil-default-cursor '(t "white")
- evil-emacs-state-cursor  '("gray" box)
- evil-normal-state-cursor '("red" box)
- evil-visual-state-cursor '("cyan" hbar)
- evil-insert-state-cursor '("red" bar)
- evil-motion-state-cursor '("gray" box))
+;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+;; (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+;; (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
-(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+;; ;; ;;evil-leader
+;; (evil-leader/set-leader ",")
+;; (setq evil-leader/in-all-states 1)
 
-;; ;;evil-leader
-;;(evil-leader/set-leader ";")
-(evil-leader/set-leader ",")
-;;(evil-leader/set-leader "<SPC>")
-(setq evil-leader/in-all-states 1)
+;; (evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
+;; (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
+;; (evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
 
-(evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
-(evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
-(evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+;; (evil-leader/set-key "h" 'dired-jump)
+;; (evil-leader/set-key "v" 'split-window-right)
+;; (evil-leader/set-key "," 'other-window)
+;; (evil-leader/set-key "b" 'ibuffer)
+;; (evil-leader/set-key "x" 'smex)
 
-(evil-leader/set-key "h" 'dired-jump)
-(evil-leader/set-key "v" 'split-window-right)
-(evil-leader/set-key "," 'other-window)
-(evil-leader/set-key "b" 'ibuffer)
-(evil-leader/set-key "x" 'smex)
+;; (evil-leader/set-key "c" 'qiang-comment-dwim-line)
+;; (setq-default tab-width 4 indent-tabs-mode nil)
+;; (define-key global-map (kbd "RET") 'newline-and-indent)
+;; (setq evil-move-cursor-back nil)
 
-(evil-leader/set-key "c" 'qiang-comment-dwim-line)
-(setq-default tab-width 4 indent-tabs-mode nil)
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(setq evil-move-cursor-back nil)
+;; (require 'evil-surround)
+;; (global-evil-surround-mode 1)
 
-(require 'evil-surround)
-(global-evil-surround-mode 1)
+;; (require 'key-chord)
+;; (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
+;; (key-chord-define evil-normal-state-map "jk" 'evil-force-normal-state)
+;; (key-chord-define evil-visual-state-map "jk" 'evil-change-to-previous-state)
+;; (key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
+;; (setq key-chord-two-keys-delay 0.4)
+;; (key-chord-mode 1)
 
-(require 'key-chord)
-(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
-(setq key-chord-two-keys-delay 0.2)
-(key-chord-mode 1)
+;; (setq evil-search-module 'evil-search)
 
-(setq evil-search-module 'evil-search)
+;; ;;expand-region
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
+;; ;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
-;;expand-region
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-;;(global-set-key (kbd "C-c =") 'er/expand-region)
-
+;; ;; "after" macro definition
+;; (if (fboundp 'with-eval-after-load)
+;;     (defmacro after (feature &rest body)
+;;       "After FEATURE is loaded, evaluate BODY."
+;;       (declare (indent defun))
+;;       `(with-eval-after-load ,feature ,@body))
+;;   (defmacro after (feature &rest body)
+;;     "After FEATURE is loaded, evaluate BODY."
+;;     (declare (indent defun))
+;;     `(eval-after-load ,feature
+;;        '(progn ,@body))))
 
 ;;-------------------------------------------------------------------------------------------------------------------------
 
@@ -858,8 +838,6 @@ directory to make multiple eshell windows easier."
 (add-hook 'org-mode-hook
           (lambda ()
             (local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
-
-
 
 ;;--------------
 ;;window-number
@@ -1020,9 +998,9 @@ directory to make multiple eshell windows easier."
 ;-----------------
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
-(autoload 'gfm-mode "gfm-mode"
-  "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+;; (autoload 'gfm-mode "gfm-mode"
+;;   "Major mode for editing GitHub Flavored Markdown files" t)
+;; (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-enable-math t)
@@ -1494,9 +1472,108 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;        '("\\.m$" . matlab-mode)
 ;;        auto-mode-alist))
 
+
+
+;;-----------------------------------------------------------
+;;Email
+;;-----------------------------------------------------------
+(require 'notmuch)
+(require 'gnus-art)
+
+;;the exact path may differ -- check it
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(require 'org-mu4e)
+;;store link to message if in header view, not to header query
+(setq org-mu4e-link-query-in-headers-mode nil)
+
+(require 'mu4e)
+
+;; default
+(setq mu4e-maildir (expand-file-name "~/Maildir"))
+
+(setq mu4e-drafts-folder "/[Gmail].Drafts")
+(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
+(setq mu4e-trash-folder  "/[Gmail].Trash")
+
+;; don't save message to Sent Messages, GMail/IMAP will take care of this
+(setq mu4e-sent-messages-behavior 'delete)
+
+;; setup some handy shortcuts
+(setq mu4e-maildir-shortcuts
+      '(("/INBOX"             . ?i)
+        ("/[Gmail].Sent Mail" . ?s)
+        ("/[Gmail].Trash"     . ?t)))
+
+;; allow for updating mail using 'U' in the main view:
+(setq mu4e-get-mail-command "offlineimap")
+;; (setq mu4e-html2text-command "/usr/bin/google-chrome -T text/html")
+(defun mu4e-action-view-in-browser (msg)
+  (let* ((q mu4e-html2text-command)
+     )
+    (setq mu4e-html2text-command "mu4e-showinbrowser.sh")
+    (mu4e-message-body-text msg)
+    (setq mu4e-html2text-command q)
+    ))
+
+(add-to-list 'mu4e-headers-actions
+         '("in browser" . mu4e-action-view-in-browser) t)
+(add-to-list 'mu4e-view-actions
+	     '("in browser" . mu4e-action-view-in-browser) t)
+
+
+;; (ido-completing-read "Complete contact: " (mu4e~compose-complete-contact))
+;; (defun select-and-insert-contact ()
+;;   (interactive)
+;;   (insert (ido-completing-read "Contact: " mu4e~contacts-for-completion)))
+
+(setq
+ user-mail-address "ztao1991@gmail.com"
+ user-full-name  "zhangtao"
+ mu4e-compose-signature
+  (concat
+    "Tao Zhang\n"
+    "https://github.com/ztao1991\n"
+    "Edit By GNU Emacs")
+ )
+
+(setq mu4e-view-show-images t)
+;; (setq mu4e-compose-signature "天行健，君子以自强不息。地势坤，君子以厚德载物。——《周易》")
+
+;; (setq mu4e-compose-signature "")
+
+(setq mu4e-org-contacts-file "~/Dropbox/Txt/contacts.txt")
+(add-to-list 'mu4e-headers-actions
+  '("org-contact-add" . mu4e-action-add-org-contact) t)
+(add-to-list 'mu4e-view-actions
+  '("org-contact-add" . mu4e-action-add-org-contact) t)
+
+(require 'smtpmail)
+(require 'starttls)
+
+(setq
+ message-send-mail-function 'smtpmail-send-it
+ user-full-name "zhangtao"
+ user-mail-address "ztao1991@gmail.com"
+ smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil))
+ smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
+ smtpmail-default-smtp-server "smtp.gmail.com"
+ smtpmail-smtp-server "smtp.gmail.com"
+ smtpmail-smtp-service 587
+ smtpmail-debug-info t
+ starttls-extra-arguments nil
+ starttls-gnutls-program "/usr/bin/gnutls-cli"
+ smtpmail-stream-type 'starttls
+ starttls-extra-arguments nil
+ starttls-use-gnutls t
+ )
+
+(setq eww-search-prefix "http://www.bing.com/search?q=")
                                         ;------------------------------------------------------------
 ;backup
 ;------------------------------------------------------------
+
+(setq auto-save-default nil)
+(setq make-backup-files nil)
 
 (setq backup-directory-alist '(("" . "~/.backup")))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
