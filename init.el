@@ -312,7 +312,8 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-(set-background-color "ivory")
+(set-background-color "#FFFFFF")
+;; (set-background-color "ivory")
 ;; (set-background-color "white") ;;202020
 (set-foreground-color "black")
 
@@ -326,7 +327,7 @@ directory to make multiple eshell windows easier."
 (set-face-foreground 'lazy-highlight "black")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :background "#EEE8D6" :foreground "black")
+(set-face-attribute 'region nil :background "#EEE8D6" )
 
 ;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
@@ -347,14 +348,6 @@ directory to make multiple eshell windows easier."
 ;;(load-theme 'dracula t)
 (set-cursor-color "red")
 
-(make-face-bold 'isearch)
-(make-face-bold 'lazy-highlight)
-(set-face-foreground 'isearch "orange red")
-(set-face-background 'isearch "#ffff00")
-(set-face-foreground 'lazy-highlight "black")
-(set-face-background 'lazy-highlight "#ffff00")
-
-(set-face-attribute 'region nil :background "#EEE8D6" :foreground "black")
 
 ;; (set-background-color "black")
 ;; (set-foreground-color "white")
@@ -362,7 +355,7 @@ directory to make multiple eshell windows easier."
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-(setq-default mode-line-format nil)
+;;(setq-default mode-line-format nil)
 
 (column-number-mode 1)
 
@@ -371,12 +364,12 @@ directory to make multiple eshell windows easier."
 ;;---------------------------Vertical-border
 ;; Reverse colors for the border to have nicer line  
 (set-face-inverse-video-p 'vertical-border nil)
-;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-foreground 'vertical-border "gray45")
-(set-face-background 'vertical-border "black")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
+
+;; (set-face-foreground 'vertical-border "gray45")
+;; (set-face-background 'vertical-border "black")
 
 (set-display-table-slot standard-display-table
                         'vertical-border 
@@ -415,15 +408,10 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-;; (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black")
+(set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
 ;; (set-face-attribute 'mode-line-buffer-id nil :background "dark blue" :foreground "white")
-;; (defface mode-line-directory
-;;   '((t :background "dark blue" :foreground "gray"))
-;;   "Face used for buffer identification parts of the mode line."
-;;   :group 'mode-line-faces
-;;   :group 'basic-faces)
 ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
-;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 (setq-default mode-line-buffer-identification
   (propertized-buffer-identification "%b"))

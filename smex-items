@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- mu4e
  eval-buffer
  notmuch
+ mu4e
+ magit-push
+ magit-status
  epa-encrypt-file
  markdown-mode
- load-theme
- list-colors-display
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 843)
+ (eval-buffer . 845)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)
@@ -238,12 +238,12 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 63)
+ (mu4e . 65)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
  (rmail . 1)
- (notmuch . 13)
+ (notmuch . 14)
  (notmuch-tree . 1)
  (nnmail-split-history . 1)
  (gnus-agentize . 2)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 31)
- (magit-push . 26)
+ (magit-status . 32)
+ (magit-push . 28)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
