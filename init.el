@@ -440,6 +440,7 @@ directory to make multiple eshell windows easier."
 (global-set-key [f8] 'neotree-toggle)
 (setq-default neo-smart-open t)
 (setq neo-theme (if (display-graphic-p) 'ascii))
+(setq-default neo-mode-line-format nil)
 
 ;;Terminal------------------
 (setq multi-term-program "/bin/zsh")
@@ -653,6 +654,7 @@ directory to make multiple eshell windows easier."
 
 (require 'evil-leader)
 (global-evil-leader-mode)
+(setq evil-leader/in-all-states 1)
 
 (require 'evil-matchit)
 (global-evil-matchit-mode)
@@ -748,11 +750,27 @@ directory to make multiple eshell windows easier."
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
+;;Org-Mode In Evil-Mode
+(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+;; (define-key org-agenda-mode-map "j" 'evil-next-line)
+;; (define-key org-agenda-mode-map "k" 'evil-previous-line)
+
+;;在buffer list中使j/k键绑定为下/上移一行
+(evil-define-key 'normal tabulated-list-mode-map
+    (kbd "j") 'next-line
+    (kbd "k") 'previous-line) 
+;;在agenda view中使j/k键绑定为下/上移一行（与默认的n/p交换）
+(require 'org-agenda)
+(define-key org-agenda-mode-map "j" 'org-agenda-next-line)
+(define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
+(define-key org-agenda-mode-map "n" 'org-agenda-goto-date)
+(define-key org-agenda-mode-map "p" 'org-agenda-capture)
+
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 ;; ;;evil-leader
-(evil-leader/set-leader ",")
+(evil-leader/set-leader ", ,")
 (setq evil-leader/in-all-states 1)
 
 (evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
@@ -765,6 +783,7 @@ directory to make multiple eshell windows easier."
 (evil-leader/set-key "b" 'ibuffer)
 (evil-leader/set-key "x" 'smex)
 
+(evil-leader/set-key "n" 'neotree-toggle)
 (evil-leader/set-key "c" 'qiang-comment-dwim-line)
 (setq-default tab-width 4 indent-tabs-mode nil)
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -839,10 +858,10 @@ directory to make multiple eshell windows easier."
 ;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
 
 ;; (windmove-default-keybindings)
-(global-set-key [M-left] 'windmove-left)          ; move to left window
-(global-set-key [M-right] 'windmove-right)        ; move to right window
-(global-set-key [M-up] 'windmove-up)              ; move to upper window
-(global-set-key [M-down] 'windmove-down)          ; move to lower window
+;; (global-set-key [M-left] 'windmove-left)          ; move to left window
+;; (global-set-key [M-right] 'windmove-right)        ; move to right window
+;; (global-set-key [M-up] 'windmove-up)              ; move to upper window
+;; (global-set-key [M-down] 'windmove-down)          ; move to lower window
 
 ;----------------
 ;yasnippet
@@ -1473,97 +1492,97 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;-----------------------------------------------------------
 ;;Email
 ;;-----------------------------------------------------------
-(require 'notmuch)
-(require 'gnus-art)
+;; (require 'notmuch)
+;; (require 'gnus-art)
 
-;;the exact path may differ -- check it
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-(require 'org-mu4e)
-;;store link to message if in header view, not to header query
-(setq org-mu4e-link-query-in-headers-mode nil)
+;; ;;the exact path may differ -- check it
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+;; (require 'org-mu4e)
+;; ;;store link to message if in header view, not to header query
+;; (setq org-mu4e-link-query-in-headers-mode nil)
 
-(require 'mu4e)
+;; (require 'mu4e)
 
-;; default
-(setq mu4e-maildir (expand-file-name "~/Maildir"))
+;; ;; default
+;; (setq mu4e-maildir (expand-file-name "~/Maildir"))
 
-(setq mu4e-drafts-folder "/[Gmail].Drafts")
-(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-(setq mu4e-trash-folder  "/[Gmail].Trash")
+;; (setq mu4e-drafts-folder "/[Gmail].Drafts")
+;; (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
+;; (setq mu4e-trash-folder  "/[Gmail].Trash")
 
-;; don't save message to Sent Messages, GMail/IMAP will take care of this
-(setq mu4e-sent-messages-behavior 'delete)
+;; ;; don't save message to Sent Messages, GMail/IMAP will take care of this
+;; (setq mu4e-sent-messages-behavior 'delete)
 
-;; setup some handy shortcuts
-(setq mu4e-maildir-shortcuts
-      '(("/INBOX"             . ?i)
-        ("/[Gmail].Sent Mail" . ?s)
-        ("/[Gmail].Trash"     . ?t)))
+;; ;; setup some handy shortcuts
+;; (setq mu4e-maildir-shortcuts
+;;       '(("/INBOX"             . ?i)
+;;         ("/[Gmail].Sent Mail" . ?s)
+;;         ("/[Gmail].Trash"     . ?t)))
 
-;; allow for updating mail using 'U' in the main view:
-(setq mu4e-get-mail-command "offlineimap")
-;; (setq mu4e-html2text-command "/usr/bin/google-chrome -T text/html")
-(defun mu4e-action-view-in-browser (msg)
-  (let* ((q mu4e-html2text-command)
-     )
-    (setq mu4e-html2text-command "mu4e-showinbrowser.sh")
-    (mu4e-message-body-text msg)
-    (setq mu4e-html2text-command q)
-    ))
+;; ;; allow for updating mail using 'U' in the main view:
+;; (setq mu4e-get-mail-command "offlineimap")
+;; ;; (setq mu4e-html2text-command "/usr/bin/google-chrome -T text/html")
+;; (defun mu4e-action-view-in-browser (msg)
+;;   (let* ((q mu4e-html2text-command)
+;;      )
+;;     (setq mu4e-html2text-command "mu4e-showinbrowser.sh")
+;;     (mu4e-message-body-text msg)
+;;     (setq mu4e-html2text-command q)
+;;     ))
 
-(add-to-list 'mu4e-headers-actions
-         '("in browser" . mu4e-action-view-in-browser) t)
-(add-to-list 'mu4e-view-actions
-	     '("in browser" . mu4e-action-view-in-browser) t)
+;; (add-to-list 'mu4e-headers-actions
+;;          '("in browser" . mu4e-action-view-in-browser) t)
+;; (add-to-list 'mu4e-view-actions
+;; 	     '("in browser" . mu4e-action-view-in-browser) t)
 
 
-;; (ido-completing-read "Complete contact: " (mu4e~compose-complete-contact))
-;; (defun select-and-insert-contact ()
-;;   (interactive)
-;;   (insert (ido-completing-read "Contact: " mu4e~contacts-for-completion)))
+;; ;; (ido-completing-read "Complete contact: " (mu4e~compose-complete-contact))
+;; ;; (defun select-and-insert-contact ()
+;; ;;   (interactive)
+;; ;;   (insert (ido-completing-read "Contact: " mu4e~contacts-for-completion)))
 
-(setq
- user-mail-address "ztao1991@gmail.com"
- user-full-name  "zhangtao"
- mu4e-compose-signature
-  (concat
-    "Tao Zhang\n"
-    "https://github.com/ztao1991\n"
-    "Edit By GNU Emacs")
- )
+;; (setq
+;;  user-mail-address "ztao1991@gmail.com"
+;;  user-full-name  "zhangtao"
+;;  mu4e-compose-signature
+;;   (concat
+;;     "Tao Zhang\n"
+;;     "https://github.com/ztao1991\n"
+;;     "Edit By GNU Emacs")
+;;  )
 
-(setq mu4e-view-show-images t)
-;; (setq mu4e-compose-signature "天行健，君子以自强不息。地势坤，君子以厚德载物。——《周易》")
+;; (setq mu4e-view-show-images t)
+;; ;; (setq mu4e-compose-signature "天行健，君子以自强不息。地势坤，君子以厚德载物。——《周易》")
 
-;; (setq mu4e-compose-signature "")
+;; ;; (setq mu4e-compose-signature "")
 
-(setq mu4e-org-contacts-file "~/Dropbox/Txt/contacts.txt")
-(add-to-list 'mu4e-headers-actions
-  '("org-contact-add" . mu4e-action-add-org-contact) t)
-(add-to-list 'mu4e-view-actions
-  '("org-contact-add" . mu4e-action-add-org-contact) t)
+;; (setq mu4e-org-contacts-file "~/Dropbox/Txt/contacts.txt")
+;; (add-to-list 'mu4e-headers-actions
+;;   '("org-contact-add" . mu4e-action-add-org-contact) t)
+;; (add-to-list 'mu4e-view-actions
+;;   '("org-contact-add" . mu4e-action-add-org-contact) t)
 
-(require 'smtpmail)
-(require 'starttls)
+;; (require 'smtpmail)
+;; (require 'starttls)
 
-(setq
- message-send-mail-function 'smtpmail-send-it
- user-full-name "zhangtao"
- user-mail-address "ztao1991@gmail.com"
- smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil))
- smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
- smtpmail-default-smtp-server "smtp.gmail.com"
- smtpmail-smtp-server "smtp.gmail.com"
- smtpmail-smtp-service 587
- smtpmail-debug-info t
- starttls-extra-arguments nil
- starttls-gnutls-program "/usr/bin/gnutls-cli"
- smtpmail-stream-type 'starttls
- starttls-extra-arguments nil
- starttls-use-gnutls t
- )
+;; (setq
+;;  message-send-mail-function 'smtpmail-send-it
+;;  user-full-name "zhangtao"
+;;  user-mail-address "ztao1991@gmail.com"
+;;  smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil))
+;;  smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
+;;  smtpmail-default-smtp-server "smtp.gmail.com"
+;;  smtpmail-smtp-server "smtp.gmail.com"
+;;  smtpmail-smtp-service 587
+;;  smtpmail-debug-info t
+;;  starttls-extra-arguments nil
+;;  starttls-gnutls-program "/usr/bin/gnutls-cli"
+;;  smtpmail-stream-type 'starttls
+;;  starttls-extra-arguments nil
+;;  starttls-use-gnutls t
+;;  )
 
-(setq eww-search-prefix "http://www.bing.com/search?q=")
+;; (setq eww-search-prefix "http://www.bing.com/search?q=")
                                         ;------------------------------------------------------------
 ;backup
 ;------------------------------------------------------------
@@ -1619,5 +1638,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))

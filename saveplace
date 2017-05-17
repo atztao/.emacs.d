@@ -1,6 +1,8 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/zhangtao/.emacs.d/init.el" . 28107)
- ("/home/zhangtao/Dropbox/Txt/todo.txt" . 1896)
+(("/home/zhangtao/.emacs.d/init.el" . 23407)
+ ("/home/zhangtao/.emacs.d/elpa/esup-20170508.1536/esup-autoloads.el" . 567)
+ ("/home/zhangtao/Dropbox/Txt/todo.txt" . 4357)
+ ("/home/zhangtao/Dropbox/Txt/linux.txt" . 26560)
  ("/home/zhangtao/Dropbox/Txt/write.txt" . 27796)
  ("/home/zhangtao/.zshrc" . 1863)
  ("/home/zhangtao/Dropbox/Networks/Exercise/2016/Net_ex4/Global_Topology_of_Networks.org" . 395)
@@ -8,7 +10,6 @@
  ("/home/zhangtao/Dropbox/Txt/_physics/Evernote Snapshot 20160107 1559441.png" . 326687)
  ("/home/zhangtao/Dropbox/Txt/_physics/Evernote Snapshot 20160107 1559442.png" . 684)
  ("/home/zhangtao/Dropbox/Txt/log.txt" . 49)
- ("/home/zhangtao/Dropbox/Txt/linux.txt" . 26560)
  ("/home/zhangtao/Dropbox/Txt/list.txt" . 3257)
  ("/home/zhangtao/Dropbox/Txt/physics.txt" . 46394)
  ("/home/zhangtao/.emacs.d/elpa/window-number-20141106.1829/window-number-autoloads.el" . 269)

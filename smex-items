@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- mu4e
- notmuch
- recover-this-file
+ package-list-packages
+ esup
+ lisp-interaction-mode
+ org-mode
+ profiler-start
  eval-buffer
- windmove-left
- iimage-mode
- magit-push
+ load-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 129)
+ (package-list-packages . 132)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 106)
+ (org-mode . 107)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 852)
+ (eval-buffer . 855)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)
@@ -228,7 +228,7 @@
  (xterm-color-test . 2)
  (thumbs . 1)
  (customize-face . 1)
- (lisp-interaction-mode . 8)
+ (lisp-interaction-mode . 9)
  (show-paren-mode . 1)
  (cvs-status . 1)
  (pp-macroexpand-last-sexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 33)
- (magit-push . 29)
+ (magit-status . 34)
+ (magit-push . 30)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -341,4 +341,8 @@
  (epa-encrypt-file . 1)
  (iimage-mode . 1)
  (windmove-left . 1)
+ (profiler-start . 1)
+ (profiler-stop . 1)
+ (profiler-report . 1)
+ (esup . 2)
 )
