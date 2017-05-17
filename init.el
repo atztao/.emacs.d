@@ -312,8 +312,8 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-(set-background-color "#FFFFFF")
-;; (set-background-color "ivory")
+;;(set-background-color "#FFFFFF")
+;;(set-background-color "ivory")
 ;; (set-background-color "white") ;;202020
 (set-foreground-color "black")
 
@@ -355,7 +355,7 @@ directory to make multiple eshell windows easier."
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-;;(setq-default mode-line-format nil)
+(setq-default mode-line-format nil)
 
 (column-number-mode 1)
 
@@ -409,7 +409,7 @@ directory to make multiple eshell windows easier."
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
 (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-buffer-id nil :background "dark blue" :foreground "white")
+;; (set-face-attribute 'mode-line-buffer-id nil :background "dark olive green" :foreground "beige")
 ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
@@ -651,154 +651,154 @@ directory to make multiple eshell windows easier."
 ;; (setq-default evil-escape-key-sequence "jk")
 ;; (setq-default evil-escape-delay 0.2)
 
-;; (require 'evil-leader)
-;; (global-evil-leader-mode)
+(require 'evil-leader)
+(global-evil-leader-mode)
 
-;; (require 'evil-matchit)
-;; (global-evil-matchit-mode)
+(require 'evil-matchit)
+(global-evil-matchit-mode)
 
-;; (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
-;; (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
+(setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
+(setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
 
-;; (require 'evil) 
-;; (evil-mode 1) 
+(require 'evil) 
+(evil-mode 1) 
 
-;; ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-;; (setcdr evil-insert-state-map nil)
+;; remove all keybindings from insert-state keymap, use emacs-state when editing
+(setcdr evil-insert-state-map nil)
  
-;; ;; ESC to switch back normal-state
-;; (define-key evil-insert-state-map [escape] 'evil-normal-state)
+;; ESC to switch back normal-state
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
  
-;; ;; TAB to indent in normal-state
-;; (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
+;; TAB to indent in normal-state
+(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
  
-;; ;; Use j/k to move one visual line insted of gj/gk
-;; (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-;; (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-;; (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-;; (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;; Use j/k to move one visual line insted of gj/gk
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
-;; ;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
-;; ;;(add-to-list 'evil-emacs-state-modes 'magit-mode)
-;; ;;(add-to-list 'evil-emacs-state-modes 'org-mode)
-;; ;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
+;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
+;;(add-to-list 'evil-emacs-state-modes 'magit-mode)
+;;(add-to-list 'evil-emacs-state-modes 'org-mode)
+;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
-;; ;;(setq evil-default-state 'emacs)
-;; (define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
-;; ;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
+;;(setq evil-default-state 'emacs)
+(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
 
-;; ;;(define-key evil-motion-state-map ";" 'smex)
-;; (define-key evil-motion-state-map ":" 'evil-ex)
-;; (define-key evil-ex-map "e" 'ido-find-file)
-;; ;;(define-key evil-ex-map "q" 'ido-kill-buffer)
-;; (global-set-key (kbd "C-s") 'evil-write)
+;;(define-key evil-motion-state-map ";" 'smex)
+(define-key evil-motion-state-map ":" 'evil-ex)
+(define-key evil-ex-map "e" 'ido-find-file)
+;;(define-key evil-ex-map "q" 'ido-kill-buffer)
+(global-set-key (kbd "C-s") 'evil-write)
 
-;; ;;magit
-;; (evil-set-initial-state 'magit-mode 'normal)
-;; (evil-set-initial-state 'magit-status-mode 'normal)
-;; (evil-set-initial-state 'magit-diff-mode 'normal)
-;; (evil-set-initial-state 'magit-log-mode 'normal)
-;; (evil-define-key 'normal magit-mode-map
-;;  "j" 'magit-goto-next-section
-;;  "k" 'magit-goto-previous-section)
-;; (evil-define-key 'normal magit-log-mode-map
-;;  "j" 'magit-goto-next-section
-;;  "k" 'magit-goto-previous-section)
-;; (evil-define-key 'normal magit-diff-mode-map
-;;  "j" 'magit-goto-next-section
-;;  "k" 'magit-goto-previous-section)
+;;magit
+(evil-set-initial-state 'magit-mode 'normal)
+(evil-set-initial-state 'magit-status-mode 'normal)
+(evil-set-initial-state 'magit-diff-mode 'normal)
+(evil-set-initial-state 'magit-log-mode 'normal)
+(evil-define-key 'normal magit-mode-map
+ "j" 'magit-goto-next-section
+ "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-log-mode-map
+ "j" 'magit-goto-next-section
+ "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-diff-mode-map
+ "j" 'magit-goto-next-section
+ "k" 'magit-goto-previous-section)
 
 
-;; (evil-set-initial-state 'ibuffer-mode 'normal)
-;; (setq evil-insert-state-cursor 'box)
+(evil-set-initial-state 'ibuffer-mode 'normal)
+(setq evil-insert-state-cursor 'box)
 
-;; ;; esc quits
-;; (defun minibuffer-keyboard-quit ()
-;;   (interactive)
-;;   (if (and delete-selection-mode transient-mark-mode mark-active)
-;;       (setq deactivate-mark  t)
-;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-;;     (abort-recursive-edit)))
-;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
-;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
-;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-;; (global-set-key [escape] 'evil-exit-emacs-state)
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'evil-exit-emacs-state)
 
-;; (setq-default
-;;  evil-normal-state-tag (propertize "N" 'face '((:background "green" :foreground "black")))
-;;  evil-emacs-state-tag (propertize "E" 'face '((:background "orange" :foreground "black")))
-;;  evil-insert-state-tag (propertize "I" 'face '((:background "red")))
-;;  evil-motion-state-tag (propertize "M" 'face '((:background "blue")))
-;;  evil-visual-state-tag (propertize "V" 'face '((:background "grey80" :foreground "cyan")))
-;;  evil-operator-state-tag (propertize "O" 'face '((:background "purple"))))
+(setq-default
+ evil-normal-state-tag (propertize "N" 'face '((:background "green" :foreground "black")))
+ evil-emacs-state-tag (propertize "E" 'face '((:background "orange" :foreground "black")))
+ evil-insert-state-tag (propertize "I" 'face '((:background "red")))
+ evil-motion-state-tag (propertize "M" 'face '((:background "blue")))
+ evil-visual-state-tag (propertize "V" 'face '((:background "grey80" :foreground "cyan")))
+ evil-operator-state-tag (propertize "O" 'face '((:background "purple"))))
 
-;; (setq evil-emacs-state-cursor '("red" box))
-;; (setq evil-normal-state-cursor '("red" box))
-;; (setq evil-visual-state-cursor '("orange" box))
-;; (setq evil-insert-state-cursor '("red" bar))
-;; (setq evil-replace-state-cursor '("red" bar))
-;; (setq evil-operator-state-cursor '("red" hollow))
+(setq evil-emacs-state-cursor '("red" box))
+(setq evil-normal-state-cursor '("red" box))
+(setq evil-visual-state-cursor '("orange" box))
+(setq evil-insert-state-cursor '("red" bar))
+(setq evil-replace-state-cursor '("red" bar))
+(setq evil-operator-state-cursor '("red" hollow))
 
-;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
-;; (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-;; (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
-;; ;; ;;evil-leader
-;; (evil-leader/set-leader ",")
-;; (setq evil-leader/in-all-states 1)
+;; ;;evil-leader
+(evil-leader/set-leader ",")
+(setq evil-leader/in-all-states 1)
 
-;; (evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
-;; (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
-;; (evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+(evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
+(evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
+(evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
 
-;; (evil-leader/set-key "h" 'dired-jump)
-;; (evil-leader/set-key "v" 'split-window-right)
-;; (evil-leader/set-key "," 'other-window)
-;; (evil-leader/set-key "b" 'ibuffer)
-;; (evil-leader/set-key "x" 'smex)
+(evil-leader/set-key "h" 'dired-jump)
+(evil-leader/set-key "v" 'split-window-right)
+(evil-leader/set-key "," 'other-window)
+(evil-leader/set-key "b" 'ibuffer)
+(evil-leader/set-key "x" 'smex)
 
-;; (evil-leader/set-key "c" 'qiang-comment-dwim-line)
-;; (setq-default tab-width 4 indent-tabs-mode nil)
-;; (define-key global-map (kbd "RET") 'newline-and-indent)
-;; (setq evil-move-cursor-back nil)
+(evil-leader/set-key "c" 'qiang-comment-dwim-line)
+(setq-default tab-width 4 indent-tabs-mode nil)
+(define-key global-map (kbd "RET") 'newline-and-indent)
+(setq evil-move-cursor-back nil)
 
-;; (require 'evil-surround)
-;; (global-evil-surround-mode 1)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
-;; (require 'key-chord)
-;; (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
-;; (key-chord-define evil-normal-state-map "jk" 'evil-force-normal-state)
-;; (key-chord-define evil-visual-state-map "jk" 'evil-change-to-previous-state)
-;; (key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
-;; (setq key-chord-two-keys-delay 0.4)
-;; (key-chord-mode 1)
+(require 'key-chord)
+(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
+(key-chord-define evil-normal-state-map "jk" 'evil-force-normal-state)
+(key-chord-define evil-visual-state-map "jk" 'evil-change-to-previous-state)
+(key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
+(setq key-chord-two-keys-delay 0.4)
+(key-chord-mode 1)
 
-;; (setq evil-search-module 'evil-search)
+(setq evil-search-module 'evil-search)
 
-;; ;;expand-region
-;; (require 'expand-region)
-;; (global-set-key (kbd "C-=") 'er/expand-region)
-;; ;;(global-set-key (kbd "C-c =") 'er/expand-region)
+;;expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
-;; ;; "after" macro definition
-;; (if (fboundp 'with-eval-after-load)
-;;     (defmacro after (feature &rest body)
-;;       "After FEATURE is loaded, evaluate BODY."
-;;       (declare (indent defun))
-;;       `(with-eval-after-load ,feature ,@body))
-;;   (defmacro after (feature &rest body)
-;;     "After FEATURE is loaded, evaluate BODY."
-;;     (declare (indent defun))
-;;     `(eval-after-load ,feature
-;;        '(progn ,@body))))
+;; "after" macro definition
+(if (fboundp 'with-eval-after-load)
+    (defmacro after (feature &rest body)
+      "After FEATURE is loaded, evaluate BODY."
+      (declare (indent defun))
+      `(with-eval-after-load ,feature ,@body))
+  (defmacro after (feature &rest body)
+    "After FEATURE is loaded, evaluate BODY."
+    (declare (indent defun))
+    `(eval-after-load ,feature
+       '(progn ,@body))))
 
 ;;-------------------------------------------------------------------------------------------------------------------------
 
@@ -837,6 +837,12 @@ directory to make multiple eshell windows easier."
 ;; (window-numbering-mode 1)
 ;; (setq window-numbering-assign-func
 ;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
+
+;; (windmove-default-keybindings)
+(global-set-key [M-left] 'windmove-left)          ; move to left window
+(global-set-key [M-right] 'windmove-right)        ; move to right window
+(global-set-key [M-up] 'windmove-up)              ; move to upper window
+(global-set-key [M-down] 'windmove-down)          ; move to lower window
 
 ;----------------
 ;yasnippet
@@ -997,6 +1003,8 @@ directory to make multiple eshell windows easier."
 ;org-mode
 ;-------------
 
+
+(setq org-latex-images-centered t)
 (setq org-startup-indented t)
 
 ;; (setq org-log-done 'time)
@@ -1071,11 +1079,11 @@ directory to make multiple eshell windows easier."
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
       `(("t" "Todo" entry (file+headline "~/Dropbox/Txt/todo.txt" "Inbox")
-         "* TODO %? \n%U\n")
+         "* TODO %? ")
         ("n" "Note" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Note")
-         "* %? \n%U\n")
-        ("l" "Link" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Link")
-         "* %? \n%U\n")
+         "* %U\n%? ")
+        ;; ("l" "Link" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Link")
+        ;;  "* %? \n%U\n")
         ("c" "Contact" entry (file+headline "~/Dropbox/Txt/contacts.txt" "Contact")
          "* %?
 :PROPERTIES:
@@ -1611,5 +1619,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))
