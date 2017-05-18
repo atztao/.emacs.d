@@ -506,6 +506,7 @@ directory to make multiple eshell windows easier."
 
 ;;(setq ido-separator "\n")
 (setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 ;;(setq max-mini-window-height 0.5)
 
 ;;(setq ido-use-virtual-buffers t)
@@ -572,6 +573,7 @@ directory to make multiple eshell windows easier."
 (setq ag-highlight-search t)
 (setq ag-reuse-window 't)
 (setq ag-reuse-buffers 't)
+
 
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
@@ -644,180 +646,17 @@ directory to make multiple eshell windows easier."
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
 
+;;--------------------------multilple-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;;----------------------------------------------
 ;evil-mode
 ;-------------------------------------------------------------------------------------------------------------------------
 
-;; (require 'evil-escape)
-;; (setq-default evil-escape-key-sequence "jk")
-;; (setq-default evil-escape-delay 0.2)
-
-(require 'evil-leader)
-(global-evil-leader-mode)
-(setq evil-leader/in-all-states 1)
-
-(require 'evil-matchit)
-(global-evil-matchit-mode)
-
-(setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
-(setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
-
-(require 'evil) 
-(evil-mode 1) 
-
-;; remove all keybindings from insert-state keymap, use emacs-state when editing
-(setcdr evil-insert-state-map nil)
- 
-;; ESC to switch back normal-state
-(define-key evil-insert-state-map [escape] 'evil-normal-state)
- 
-;; TAB to indent in normal-state
-(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
- 
-;; Use j/k to move one visual line insted of gj/gk
-(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-
-;; (add-to-list 'evil-emacs-state-modes 'markdown-mode)
-;;(add-to-list 'evil-emacs-state-modes 'magit-mode)
-;;(add-to-list 'evil-emacs-state-modes 'org-mode)
-;; (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
-
-;;(setq evil-default-state 'emacs)
-(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
-;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
-
-;;(define-key evil-motion-state-map ";" 'smex)
-(define-key evil-motion-state-map ":" 'evil-ex)
-(define-key evil-ex-map "e" 'ido-find-file)
-;;(define-key evil-ex-map "q" 'ido-kill-buffer)
-(global-set-key (kbd "C-s") 'evil-write)
-
-;;magit
-(evil-set-initial-state 'magit-mode 'normal)
-(evil-set-initial-state 'magit-status-mode 'normal)
-(evil-set-initial-state 'magit-diff-mode 'normal)
-(evil-set-initial-state 'magit-log-mode 'normal)
-(evil-define-key 'normal magit-mode-map
- "j" 'magit-goto-next-section
- "k" 'magit-goto-previous-section)
-(evil-define-key 'normal magit-log-mode-map
- "j" 'magit-goto-next-section
- "k" 'magit-goto-previous-section)
-(evil-define-key 'normal magit-diff-mode-map
- "j" 'magit-goto-next-section
- "k" 'magit-goto-previous-section)
-
-
-(evil-set-initial-state 'ibuffer-mode 'normal)
-(setq evil-insert-state-cursor 'box)
-
-;; esc quits
-(defun minibuffer-keyboard-quit ()
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-      (setq deactivate-mark  t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-(global-set-key [escape] 'evil-exit-emacs-state)
-
-(setq-default
- evil-normal-state-tag (propertize "N" 'face '((:background "green" :foreground "black")))
- evil-emacs-state-tag (propertize "E" 'face '((:background "orange" :foreground "black")))
- evil-insert-state-tag (propertize "I" 'face '((:background "red")))
- evil-motion-state-tag (propertize "M" 'face '((:background "blue")))
- evil-visual-state-tag (propertize "V" 'face '((:background "grey80" :foreground "cyan")))
- evil-operator-state-tag (propertize "O" 'face '((:background "purple"))))
-
-(setq evil-emacs-state-cursor '("red" box))
-(setq evil-normal-state-cursor '("red" box))
-(setq evil-visual-state-cursor '("orange" box))
-(setq evil-insert-state-cursor '("red" bar))
-(setq evil-replace-state-cursor '("red" bar))
-(setq evil-operator-state-cursor '("red" hollow))
-
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-
-;;Org-Mode In Evil-Mode
-(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
-;; (define-key org-agenda-mode-map "j" 'evil-next-line)
-;; (define-key org-agenda-mode-map "k" 'evil-previous-line)
-
-;;在buffer list中使j/k键绑定为下/上移一行
-(evil-define-key 'normal tabulated-list-mode-map
-    (kbd "j") 'next-line
-    (kbd "k") 'previous-line) 
-;;在agenda view中使j/k键绑定为下/上移一行（与默认的n/p交换）
-(require 'org-agenda)
-(define-key org-agenda-mode-map "j" 'org-agenda-next-line)
-(define-key org-agenda-mode-map "k" 'org-agenda-previous-line)
-(define-key org-agenda-mode-map "n" 'org-agenda-goto-date)
-(define-key org-agenda-mode-map "p" 'org-agenda-capture)
-
-(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-
-;; ;;evil-leader
-(evil-leader/set-leader ", ,")
-(setq evil-leader/in-all-states 1)
-
-(evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
-(evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
-(evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
-
-(evil-leader/set-key "h" 'dired-jump)
-(evil-leader/set-key "v" 'split-window-right)
-(evil-leader/set-key "," 'other-window)
-(evil-leader/set-key "b" 'ibuffer)
-(evil-leader/set-key "x" 'smex)
-
-(evil-leader/set-key "n" 'neotree-toggle)
-(evil-leader/set-key "c" 'qiang-comment-dwim-line)
-(setq-default tab-width 4 indent-tabs-mode nil)
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(setq evil-move-cursor-back nil)
-
-(require 'evil-surround)
-(global-evil-surround-mode 1)
-
-(require 'key-chord)
-(key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
-(key-chord-define evil-normal-state-map "jk" 'evil-force-normal-state)
-(key-chord-define evil-visual-state-map "jk" 'evil-change-to-previous-state)
-(key-chord-define evil-replace-state-map "jk" 'evil-normal-state)
-(setq key-chord-two-keys-delay 0.4)
-(key-chord-mode 1)
-
-(setq evil-search-module 'evil-search)
-
-;;expand-region
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-;;(global-set-key (kbd "C-c =") 'er/expand-region)
-
-;; "after" macro definition
-(if (fboundp 'with-eval-after-load)
-    (defmacro after (feature &rest body)
-      "After FEATURE is loaded, evaluate BODY."
-      (declare (indent defun))
-      `(with-eval-after-load ,feature ,@body))
-  (defmacro after (feature &rest body)
-    "After FEATURE is loaded, evaluate BODY."
-    (declare (indent defun))
-    `(eval-after-load ,feature
-       '(progn ,@body))))
 
 ;;-------------------------------------------------------------------------------------------------------------------------
 
@@ -858,10 +697,10 @@ directory to make multiple eshell windows easier."
 ;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
 
 ;; (windmove-default-keybindings)
-;; (global-set-key [M-left] 'windmove-left)          ; move to left window
-;; (global-set-key [M-right] 'windmove-right)        ; move to right window
-;; (global-set-key [M-up] 'windmove-up)              ; move to upper window
-;; (global-set-key [M-down] 'windmove-down)          ; move to lower window
+(global-set-key [M-left] 'windmove-left)          ; move to left window
+(global-set-key [M-right] 'windmove-right)        ; move to right window
+(global-set-key [M-up] 'windmove-up)              ; move to upper window
+(global-set-key [M-down] 'windmove-down)          ; move to lower window
 
 ;----------------
 ;yasnippet
@@ -1022,6 +861,8 @@ directory to make multiple eshell windows easier."
 ;org-mode
 ;-------------
 
+(setq org-list-description-max-indent 5)
+(setq org-adapt-indentation nil)
 
 (setq org-latex-images-centered t)
 (setq org-startup-indented t)
@@ -1492,103 +1333,14 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;-----------------------------------------------------------
 ;;Email
 ;;-----------------------------------------------------------
-;; (require 'notmuch)
-;; (require 'gnus-art)
-
-;; ;;the exact path may differ -- check it
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-;; (require 'org-mu4e)
-;; ;;store link to message if in header view, not to header query
-;; (setq org-mu4e-link-query-in-headers-mode nil)
-
-;; (require 'mu4e)
-
-;; ;; default
-;; (setq mu4e-maildir (expand-file-name "~/Maildir"))
-
-;; (setq mu4e-drafts-folder "/[Gmail].Drafts")
-;; (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-;; (setq mu4e-trash-folder  "/[Gmail].Trash")
-
-;; ;; don't save message to Sent Messages, GMail/IMAP will take care of this
-;; (setq mu4e-sent-messages-behavior 'delete)
-
-;; ;; setup some handy shortcuts
-;; (setq mu4e-maildir-shortcuts
-;;       '(("/INBOX"             . ?i)
-;;         ("/[Gmail].Sent Mail" . ?s)
-;;         ("/[Gmail].Trash"     . ?t)))
-
-;; ;; allow for updating mail using 'U' in the main view:
-;; (setq mu4e-get-mail-command "offlineimap")
-;; ;; (setq mu4e-html2text-command "/usr/bin/google-chrome -T text/html")
-;; (defun mu4e-action-view-in-browser (msg)
-;;   (let* ((q mu4e-html2text-command)
-;;      )
-;;     (setq mu4e-html2text-command "mu4e-showinbrowser.sh")
-;;     (mu4e-message-body-text msg)
-;;     (setq mu4e-html2text-command q)
-;;     ))
-
-;; (add-to-list 'mu4e-headers-actions
-;;          '("in browser" . mu4e-action-view-in-browser) t)
-;; (add-to-list 'mu4e-view-actions
-;; 	     '("in browser" . mu4e-action-view-in-browser) t)
-
-
-;; ;; (ido-completing-read "Complete contact: " (mu4e~compose-complete-contact))
-;; ;; (defun select-and-insert-contact ()
-;; ;;   (interactive)
-;; ;;   (insert (ido-completing-read "Contact: " mu4e~contacts-for-completion)))
-
-;; (setq
-;;  user-mail-address "ztao1991@gmail.com"
-;;  user-full-name  "zhangtao"
-;;  mu4e-compose-signature
-;;   (concat
-;;     "Tao Zhang\n"
-;;     "https://github.com/ztao1991\n"
-;;     "Edit By GNU Emacs")
-;;  )
-
-;; (setq mu4e-view-show-images t)
-;; ;; (setq mu4e-compose-signature "天行健，君子以自强不息。地势坤，君子以厚德载物。——《周易》")
-
-;; ;; (setq mu4e-compose-signature "")
-
-;; (setq mu4e-org-contacts-file "~/Dropbox/Txt/contacts.txt")
-;; (add-to-list 'mu4e-headers-actions
-;;   '("org-contact-add" . mu4e-action-add-org-contact) t)
-;; (add-to-list 'mu4e-view-actions
-;;   '("org-contact-add" . mu4e-action-add-org-contact) t)
-
-;; (require 'smtpmail)
-;; (require 'starttls)
-
-;; (setq
-;;  message-send-mail-function 'smtpmail-send-it
-;;  user-full-name "zhangtao"
-;;  user-mail-address "ztao1991@gmail.com"
-;;  smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil))
-;;  smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
-;;  smtpmail-default-smtp-server "smtp.gmail.com"
-;;  smtpmail-smtp-server "smtp.gmail.com"
-;;  smtpmail-smtp-service 587
-;;  smtpmail-debug-info t
-;;  starttls-extra-arguments nil
-;;  starttls-gnutls-program "/usr/bin/gnutls-cli"
-;;  smtpmail-stream-type 'starttls
-;;  starttls-extra-arguments nil
-;;  starttls-use-gnutls t
-;;  )
-
-;; (setq eww-search-prefix "http://www.bing.com/search?q=")
                                         ;------------------------------------------------------------
 ;backup
 ;------------------------------------------------------------
+(setq auto-save-interval 20)
+(setq auto-save-visited-file-name t)
 
-(setq auto-save-default nil)
-(setq make-backup-files nil)
+;; (setq auto-save-default nil)
+;; (setq make-backup-files nil)
 
 (setq backup-directory-alist '(("" . "~/.backup")))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
@@ -1606,9 +1358,9 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;-----------------------------------------------------------
 ;;auto-save
 ;;-----------------------------------------------------------
-(super-save-mode +1)
-;; (setq auto-save-default nil)
-(setq super-save-auto-save-when-idle t)
+;; (super-save-mode +1)
+;; ;; (setq auto-save-default nil)
+;; (setq super-save-auto-save-when-idle t)
 
 ;; (defun full-auto-save ()
 ;; 	  (interactive)
@@ -1638,5 +1390,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))

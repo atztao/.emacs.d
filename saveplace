@@ -1,7 +1,8 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/zhangtao/.emacs.d/init.el" . 23407)
+(("/home/zhangtao/.emacs.d/init.el" . 30190)
+ ("/home/zhangtao/Dropbox/Txt/todo.txt" . 86)
+ ("/home/zhangtao/Dropbox/Txt/inbox.txt" . 3085)
  ("/home/zhangtao/.emacs.d/elpa/esup-20170508.1536/esup-autoloads.el" . 567)
- ("/home/zhangtao/Dropbox/Txt/todo.txt" . 4357)
  ("/home/zhangtao/Dropbox/Txt/linux.txt" . 26560)
  ("/home/zhangtao/Dropbox/Txt/write.txt" . 27796)
  ("/home/zhangtao/.zshrc" . 1863)

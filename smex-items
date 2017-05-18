@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ eval-buffer
+ magit-status
+ magit-push
  package-list-packages
  esup
  lisp-interaction-mode
  org-mode
- profiler-start
- eval-buffer
- load-theme
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 855)
+ (eval-buffer . 857)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 34)
- (magit-push . 30)
+ (magit-status . 37)
+ (magit-push . 31)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
