@@ -273,10 +273,14 @@ directory to make multiple eshell windows easier."
 ;;----------------------------------------------------------------------------------
 
 (require 'package)
-(setq package-archives '(;; ("gnu" . "http://elpa.gnu.org/packages/")
-                         ;; ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
-;; (package-refresh-contents)
+
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
+;;                          ("melpa" . "http://melpa.org/packages/")))
+
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;;(package-refresh-contents)
 (package-initialize)
 ;; (require 'cl-lib)
 ;; (require 'cl)
@@ -867,6 +871,8 @@ directory to make multiple eshell windows easier."
 ;org-mode
 ;-------------
 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-20170515" )
+(require 'org)
 (setq org-list-description-max-indent 5)
 (setq org-adapt-indentation nil)
 
@@ -998,16 +1004,17 @@ directory to make multiple eshell windows easier."
 ;; (setq org-crypt-key nil)
 
 
-;;------------------ox-reveal
-(add-to-list 'load-path "~/.emacs.d/org-reveal/")
+;;------------------ox-reveal (http://scottnesbitt.io/2017/01/24/org-reveal/)
+
+;; (add-to-list 'load-path "~/.emacs.d/org-reveal/")
 (require 'ox-reveal)
 ;; (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
 (setq org-reveal-root "file:///home/zhangtao/.emacs.d/reveal.js-master/")
 (setq org-reveal-control nil)
 (setq org-reveal-mathjax t)
+(setq org-reveal-title-slide 'auto) ;;C-u A-x org-reload Fix 
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(require 'blue-ruin)
+
 
 ;----------------------
 ;auctex+XeCJK
@@ -1408,5 +1415,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (org ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))
