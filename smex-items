@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ recover-this-file
+ package-list-packages
+ replace-string
  magit-status
  magit-push
- package-list-packages
  esup
- lisp-interaction-mode
- org-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 132)
+ (package-list-packages . 133)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -89,12 +89,12 @@
  (buffer-menu . 1)
  (org-agenda . 5)
  (shell-command . 4)
- (recover-this-file . 10)
+ (recover-this-file . 12)
  (message-mode . 2)
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 62)
+ (replace-string . 64)
  (load-theme . 187)
  (auto-complete . 6)
  (org-previous-block . 1)
@@ -115,7 +115,7 @@
  (writeroom-mode . 71)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 857)
+ (eval-buffer . 861)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 9)
  (highlight-regexp . 1)

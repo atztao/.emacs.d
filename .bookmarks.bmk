@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO Evil-Mod")
- (rear-context-string . " #Email\n* Inbox\n")
- (position . 94))
+ (filename . "~/Dropbox/Txt/inbox.txt")
+ (front-context-string . "* \nhttp://orgmod")
+ (rear-context-string . "-05-16 二 15:46]\n")
+ (position . 3083))
 )

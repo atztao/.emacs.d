@@ -273,10 +273,10 @@ directory to make multiple eshell windows easier."
 ;;----------------------------------------------------------------------------------
 
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(;; ("gnu" . "http://elpa.gnu.org/packages/")
                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
-;;(package-refresh-contents)
+;; (package-refresh-contents)
 (package-initialize)
 ;; (require 'cl-lib)
 ;; (require 'cl)
@@ -565,7 +565,6 @@ directory to make multiple eshell windows easier."
 
 ;;---------------------------------------------------------------------------------
 
-
 ;;-----------------------
 ;;Ag apt-get install silversearcher-ag
 ;;-----------------------
@@ -668,13 +667,17 @@ directory to make multiple eshell windows easier."
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
 
-;; (require 'ace-pinyin)
-;; (setq ace-pinyin-use-avy nil)
-;; (ace-pinyin-global-mode +1)
+(require 'ace-pinyin)
+(setq ace-pinyin-use-avy nil)
+(ace-pinyin-global-mode +1)
+(setq ace-pinyin-treat-word-as-char nil)
+(setq ace-pinyin-use-avy nil) ;; uncomment if you want to use `ace-jump-mode'
+
+(define-key global-map (kbd "C-c SPC") 'ace-pinyin-jump-char)
 
 (add-to-list 'load-path "which-folder-ace-jump-mode-file-in/")
 (require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 (with-eval-after-load 'org
@@ -683,7 +686,7 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'org-mode-hook
           (lambda ()
-            (local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
+            (local-set-key (kbd "\C-c SPC") 'ace-pinyin-jump-char)))
 
 ;;--------------
 ;;window-number
@@ -780,7 +783,8 @@ directory to make multiple eshell windows easier."
 ;python+c languge
 ;----------------
 
-(setq py-python-command "/usr/bin/python3")
+(setq py-python-command "/usr/bin/python2")
+;; (setq py-python-command "/usr/bin/python3")
 ;;we should install ipython
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
 ;; (require 'python-mode)
@@ -799,8 +803,10 @@ directory to make multiple eshell windows easier."
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(setq elpy-rpc-python-command "python3")
-(setq python-shell-interpreter "python3")
+;; (setq elpy-rpc-python-command "python3")
+;; (setq python-shell-interpreter "python3")
+(setq elpy-rpc-python-command "python2")
+(setq python-shell-interpreter "python2")
 ;;(elpy-use-ipython "ipython3")
 
 (setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
@@ -867,7 +873,7 @@ directory to make multiple eshell windows easier."
 (setq org-latex-images-centered t)
 (setq org-startup-indented t)
 
-;; (setq org-log-done 'time)
+(setq org-log-done 'time)
 ;;(setq org-log-done 'note)
 
 ;;(setq org-image-actual-width 600)
@@ -990,6 +996,18 @@ directory to make multiple eshell windows easier."
 ;; (setq org-crypt-tag-matcher "Secret")
 ;; (setq org-tags-exclude-from-inheritance (quote("Secret")))
 ;; (setq org-crypt-key nil)
+
+
+;;------------------ox-reveal
+(add-to-list 'load-path "~/.emacs.d/org-reveal/")
+(require 'ox-reveal)
+;; (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+(setq org-reveal-root "file:///home/zhangtao/.emacs.d/reveal.js-master/")
+(setq org-reveal-control nil)
+(setq org-reveal-mathjax t)
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'blue-ruin)
 
 ;----------------------
 ;auctex+XeCJK
@@ -1390,5 +1408,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))
