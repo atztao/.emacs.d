@@ -1,5 +1,3 @@
-quit
-ls
 cd
 unzip color-theme-ujelly-master.zip 
 source .zshrc
@@ -126,3 +124,5 @@ cd
 cd .config/fontconfig/conf.d/
 ll
 ls
+ls
+exit

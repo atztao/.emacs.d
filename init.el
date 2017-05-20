@@ -271,6 +271,7 @@ directory to make multiple eshell windows easier."
 ;;----------------------------------------------------------------------------------
 ;;Plugin
 ;;----------------------------------------------------------------------------------
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require 'package)
 
@@ -284,6 +285,13 @@ directory to make multiple eshell windows easier."
 (package-initialize)
 ;; (require 'cl-lib)
 ;; (require 'cl)
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
+
+;; (eval-when-compile
+;;   (require 'use-package))
+
 
 ;----------------------
 ;Themes
@@ -412,7 +420,7 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
+(set-face-attribute 'mode-line           nil :box nil :background "dark gray" :foreground "black") ;;#A7A5A7
 ;; (set-face-attribute 'mode-line-buffer-id nil :background "dark olive green" :foreground "beige")
 ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
@@ -639,15 +647,6 @@ directory to make multiple eshell windows easier."
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 
 
-;;----------------------------------------------
-;;Comment
-(defun qiang-comment-dwim-line (&optional arg)
-  "Replacement for the comment-dwim command. If no region is selected and current line is not blank and we are not at the end of the line, then comment current line. Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
-  (interactive "*P")
-  (comment-normalize-vars)
-  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
-      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
-    (comment-dwim arg)))
 
 ;;--------------------------multilple-cursors
 (require 'multiple-cursors)
@@ -655,14 +654,6 @@ directory to make multiple eshell windows easier."
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;;----------------------------------------------
-;evil-mode
-;-------------------------------------------------------------------------------------------------------------------------
-
-
-;;-------------------------------------------------------------------------------------------------------------------------
-
 
 ;--------------
 ;ace-jump
@@ -684,6 +675,7 @@ directory to make multiple eshell windows easier."
 ;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
+;;--------------The Key Disable In org-mode
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c SPC") nil))
 ;; When org-mode starts it (org-mode-map) overrides the ace-jump-mode.
@@ -704,10 +696,10 @@ directory to make multiple eshell windows easier."
 ;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
 
 ;; (windmove-default-keybindings)
-(global-set-key [M-left] 'windmove-left)          ; move to left window
-(global-set-key [M-right] 'windmove-right)        ; move to right window
-(global-set-key [M-up] 'windmove-up)              ; move to upper window
-(global-set-key [M-down] 'windmove-down)          ; move to lower window
+;; (global-set-key [M-left] 'windmove-left)          ; move to left window
+;; (global-set-key [M-right] 'windmove-right)        ; move to right window
+;; (global-set-key [M-up] 'windmove-up)              ; move to upper window
+;; (global-set-key [M-down] 'windmove-down)          ; move to lower window
 
 ;----------------
 ;yasnippet
@@ -755,6 +747,10 @@ directory to make multiple eshell windows easier."
 ;; (require 'flycheck-pyflakes)
 
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+
+;;--------------------evil-mode
+(require 'init_evil)
+
 
 ;;-------------------------
 ;;C++
@@ -1415,5 +1411,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (org ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (use-package org ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))
