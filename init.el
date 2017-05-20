@@ -175,9 +175,9 @@ directory to make multiple eshell windows easier."
 ;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
 ;; (set-frame-font "Consolas-10")
 ;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
-;;(set-frame-font "Source Code Pro 9")
+(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
-(set-frame-font "Monaco-9")
+;;(set-frame-font "Monaco-9")
 
 (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;; (set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
@@ -569,11 +569,11 @@ directory to make multiple eshell windows easier."
 ;;   '(fringe (( (:background "black")))))
 
 ;;smooth-scroll---------------------------------
-;; (require 'smooth-scrolling)
-;; (smooth-scrolling-mode 1)
-;; (setq scroll-margin 5
-;;       scroll-conservatively 10
-;;       scroll-step 1)
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+(setq scroll-margin 5
+      scroll-conservatively 10
+      scroll-step 1)
 
 ;;---------------------------------------------------------------------------------
 
@@ -695,11 +695,11 @@ directory to make multiple eshell windows easier."
 ;; (setq window-numbering-assign-func
 ;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
 
-;; (windmove-default-keybindings)
-;; (global-set-key [M-left] 'windmove-left)          ; move to left window
-;; (global-set-key [M-right] 'windmove-right)        ; move to right window
-;; (global-set-key [M-up] 'windmove-up)              ; move to upper window
-;; (global-set-key [M-down] 'windmove-down)          ; move to lower window
+(windmove-default-keybindings)
+(global-set-key [M-left] 'windmove-left)          ; move to left window
+(global-set-key [M-right] 'windmove-right)        ; move to right window
+(global-set-key [M-up] 'windmove-up)              ; move to upper window
+(global-set-key [M-down] 'windmove-down)          ; move to lower window
 
 ;----------------
 ;yasnippet
@@ -749,7 +749,7 @@ directory to make multiple eshell windows easier."
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;--------------------evil-mode
-(require 'init_evil)
+;;(require 'init_evil)
 
 
 ;;-------------------------
@@ -878,8 +878,8 @@ directory to make multiple eshell windows easier."
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
 
-;;(setq org-image-actual-width 600)
-
+;;export image width
+(setq org-image-actual-width 100)
 ;;Auto Fill
 (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
