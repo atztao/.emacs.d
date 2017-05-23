@@ -175,9 +175,9 @@ directory to make multiple eshell windows easier."
 ;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
 ;; (set-frame-font "Consolas-10")
 ;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
-(set-frame-font "Source Code Pro 9")
+;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
-;;(set-frame-font "Monaco-9")
+(set-frame-font "Monaco-9")
 
 (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;; (set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
@@ -420,7 +420,7 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "dark gray" :foreground "black") ;;#A7A5A7
+(set-face-attribute 'mode-line           nil :box nil :background "gray80" :foreground "black") ;;#A7A5A7
 ;; (set-face-attribute 'mode-line-buffer-id nil :background "dark olive green" :foreground "beige")
 ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
@@ -572,7 +572,7 @@ directory to make multiple eshell windows easier."
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 (setq scroll-margin 5
-      scroll-conservatively 10
+      scroll-conservatively 12
       scroll-step 1)
 
 ;;---------------------------------------------------------------------------------
@@ -591,58 +591,58 @@ directory to make multiple eshell windows easier."
 ;;-----------------------
 (setq tramp-mode nil)
 (setq ad-redefinition-action 'accept)
-;; (require 'helm-config)
-;; (require 'helm)
-;; (helm-mode t)
+(require 'helm-config)
+(require 'helm)
+(helm-mode t)
 
-;; (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
-;; (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
+(defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
+(defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
-;; (setq helm-ff-transformer-show-only-basename nil
-;;       helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-;;       helm-yank-symbol-first                 t
-;;       helm-move-to-line-cycle-in-source      t
-;;       ;;helm-M-x-fuzzy-match                   t
-;;       ;;      helm-recentf-fuzzy-match               t
-;;       ;;      helm-ff-file-name-history-use-recentf  t
-;;       helm-buffers-fuzzy-matching            t
-;;       helm-ff-auto-update-initial-value      t)
+(setq helm-ff-transformer-show-only-basename nil
+      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
+      helm-yank-symbol-first                 t
+      helm-move-to-line-cycle-in-source      t
+      ;;helm-M-x-fuzzy-match                   t
+      ;;      helm-recentf-fuzzy-match               t
+      ;;      helm-ff-file-name-history-use-recentf  t
+      helm-buffers-fuzzy-matching            t
+      helm-ff-auto-update-initial-value      t)
 
-;; ;; (autoload 'helm-descbinds      "helm-descbinds" t)
-;; ;; (autoload 'helm-eshell-history "helm-eshell"    t)
-;; ;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
+;; (autoload 'helm-descbinds      "helm-descbinds" t)
+;; (autoload 'helm-eshell-history "helm-eshell"    t)
+;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
 
-;; ;; (global-set-key (kbd "C-h a")    #'helm-apropos)
-;; ;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
-;; ;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
+;; (global-set-key (kbd "C-h a")    #'helm-apropos)
+;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
+;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
 
-;; ;; (add-hook 'eshell-mode-hook
-;; ;;           #'(lambda ()
-;; ;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-;; ;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+;; (add-hook 'eshell-mode-hook
+;;           #'(lambda ()
+;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
 
-;; ;; (global-set-key (kbd "C-x b")   #'helm-mini)
-;; ;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-;; ;; (global-set-key (kbd "M-x") #'helm-M-x)
-;; ;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
-;; ;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
-;; ;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
+;; (global-set-key (kbd "C-x b")   #'helm-mini)
+;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+;; (global-set-key (kbd "M-x") #'helm-M-x)
+;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
+;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
+;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
 
-;; ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-;; ;; (global-set-key (kbd "M-i") 'helm-swoop)
-;; ;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+;; (global-set-key (kbd "M-i") 'helm-swoop)
+;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
-;; (global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
+
+;;(global-set-key (kbd "C-s")   #'helm-swoop)
 ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-;; (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-;; ;;(global-set-key (kbd "C-s")   #'helm-swoop)
-;; ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-;; ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-
-;; (helm-autoresize-mode 1)
+(helm-autoresize-mode 1)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 
@@ -749,8 +749,7 @@ directory to make multiple eshell windows easier."
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;--------------------evil-mode
-;;(require 'init_evil)
-
+(require 'init_evil)
 
 ;;-------------------------
 ;;C++
@@ -877,13 +876,28 @@ directory to make multiple eshell windows easier."
 
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
-
+(setq org-agenda-skip-scheduled-if-done t)
 ;;export image width
 (setq org-image-actual-width 100)
 ;;Auto Fill
 (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
           (lambda () (setq truncate-lines nil)))  
+
+
+
+
+;;Archive All Done Tas
+(setq org-archive-location (concat "archive/archive-" (format-time-string "%Y%m" (current-time)) ".org_archive::"))
+
+(defun my-org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries 'org-archive-subtree "/DONE" '~/Dropbox/Txt/archive/done.txt))
+
+(defun channing/archive-when-done ()
+  "Archive current entry if it is marked as DONE (see `org-done-keywords')."
+  (when (org-entry-is-done-p)
+    (org-archive-subtree-default)))
 
 ;; (add-hook 'org-mode-hook '(lambda () 
 ;; (setq visual-line-fringe-indicators t) 
@@ -999,6 +1013,16 @@ directory to make multiple eshell windows easier."
 ;; (setq org-tags-exclude-from-inheritance (quote("Secret")))
 ;; (setq org-crypt-key nil)
 
+;; use org-bullets-mode for utf8 symbols as org bullets
+;; (require 'org-bullets)
+;; ;; (setq org-ellipsis "+")
+;; (setq org-bullets-bullet-list '("•"))
+
+
+;; ;; make available "org-bullet-face" such that I can control the font size individually
+;; (setq org-bullets-face-name (quote org-bullet-face))
+;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; (setq org-bullets-bullet-list '("•"))
 
 ;;------------------ox-reveal (http://scottnesbitt.io/2017/01/24/org-reveal/)
 
@@ -1411,5 +1435,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (use-package org ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (evil-magit org-bullets use-package org ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))

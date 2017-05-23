@@ -3,15 +3,15 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored-marker"
- (filename . "~/Dropbox/Txt/contacts.txt")
- (front-context-string . "** 张陶\n:PROPERTIE")
- (rear-context-string . " \n:NOTE:\n:END:\n\n")
- (position . 125))
+ (filename . "~/Dropbox/Txt/todo.txt")
+ (front-context-string . "** TODO Complete")
+ (rear-context-string . "O Complete Blog\n")
+ (position . 420))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO [#A] Buy")
- (rear-context-string . "8-04 四 10:18]\n\n\n")
- (position . 1039))
+ (front-context-string . "** TODO Complete")
+ (rear-context-string . "O Complete Blog\n")
+ (position . 420))
 ("todo.txt"
  (filename . "~/Dropbox/Txt/todo.txt")
  (front-context-string . "#+TAGS: Wait Som")
@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO use-pack")
- (rear-context-string . "macs Keybinding\n")
- (position . 186))
+ (front-context-string . "** TODO 牙膏和牙刷\n**")
+ (rear-context-string . "\n** TODO 刷鞋+洗袜子\n")
+ (position . 363))
 )

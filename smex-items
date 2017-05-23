@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- magit-push
- magit-status
- package-list-packages
- org-reload
- package-autoremove
- recover-this-file
+ ag
+ multi-term
+ term
+ mu4e
+ writeroom-mode
+ load-theme
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 64)
- (load-theme . 187)
+ (load-theme . 189)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -112,12 +112,12 @@
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 71)
+ (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 889)
+ (eval-buffer . 906)
  (org-md-export-as-markdown . 1)
- (org-md-export-to-markdown . 9)
+ (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
  (font-lock-mode . 3)
  (enriched-mode . 1)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 22)
+ (ag . 23)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 67)
+ (mu4e . 68)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 40)
- (magit-push . 33)
+ (magit-status . 45)
+ (magit-push . 40)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -327,9 +327,9 @@
  (set-cursor-color . 1)
  (gdb . 1)
  (compile . 2)
- (term . 9)
+ (term . 10)
  (ansi-term . 1)
- (multi-term . 11)
+ (multi-term . 13)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 1)
@@ -346,4 +346,5 @@
  (profiler-report . 1)
  (esup . 2)
  (org-reload . 1)
+ (magit-pull . 1)
 )
