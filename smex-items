@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- ag
  multi-term
- term
- mu4e
- writeroom-mode
- load-theme
+ help
+ package-autoremove
+ package-list-packages
+ ediff-buffers
+ diff-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 137)
+ (package-list-packages . 139)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -95,13 +95,13 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 64)
- (load-theme . 189)
+ (load-theme . 196)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
  (gfm-mode . 1)
  (focus-mode . 37)
- (help . 5)
+ (help . 8)
  (powerline-vim-theme . 10)
  (powerline-reset . 1)
  (number-to-register . 1)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 906)
+ (eval-buffer . 913)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 120)
+ (disable-theme . 123)
  (set-background-color . 3)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 23)
+ (ag . 22)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 45)
- (magit-push . 40)
+ (magit-status . 46)
+ (magit-push . 41)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 11)
+ (package-autoremove . 13)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 13)
+ (multi-term . 14)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 1)
@@ -347,4 +347,6 @@
  (esup . 2)
  (org-reload . 1)
  (magit-pull . 1)
+ (diff-mode . 2)
+ (ediff-buffers . 1)
 )
