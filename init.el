@@ -178,6 +178,7 @@ directory to make multiple eshell windows easier."
 ;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
 (set-frame-font "Monaco-9")
+(setq default-font-size-pt 12)
 
 (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
 ;; (set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
@@ -324,7 +325,7 @@ directory to make multiple eshell windows easier."
 ;;colors
 (setq cursor-type 'box)
 
-;;(set-background-color "#FFFFFF")
+(set-background-color "#FFFFFF")
 ;;(set-background-color "ivory")
 ;; (set-background-color "white") ;;202020
 (set-foreground-color "black")
@@ -359,6 +360,7 @@ directory to make multiple eshell windows easier."
 ;;(load-theme 'zenburn t)
 ;;(load-theme 'dracula t)
 (set-cursor-color "red")
+(set-face-attribute 'default nil :height 82)
 
 ;; (set-background-color "black")
 ;; (set-foreground-color "white")
@@ -419,10 +421,12 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "gray" :foreground "black") ;;#A7A5A7
-(set-face-attribute 'mode-line-buffer-id nil :background "gray" :foreground "dark black")
+(set-face-attribute 'mode-line           nil :box nil :background "white" :foreground "black") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "white" :foreground "black")
+
+;; (set-face-attribute 'mode-line-buffer-id nil :background "gray" :foreground "dark black")
 ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
+;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 (setq-default mode-line-buffer-identification
   (propertized-buffer-identification "%b"))
@@ -454,6 +458,7 @@ directory to make multiple eshell windows easier."
 (setq-default neo-mode-line-format nil)
 
 ;;Terminal------------------
+(require 'multi-term)
 (setq multi-term-program "/bin/zsh")
 (setq system-uses-terminfo nil)
 
@@ -461,6 +466,7 @@ directory to make multiple eshell windows easier."
           (lambda ()
             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+
 
 (add-hook 'term-mode-hook
           (lambda ()
@@ -474,10 +480,6 @@ directory to make multiple eshell windows easier."
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-y") 'term-paste)))
-
-;; (add-hook 'term-mode-hook
-;;               '(lambda ()
-;;                  (term-set-escape-char ?\C-x)))
 
 ;;-----------------
 ;;Calendar
@@ -748,7 +750,7 @@ directory to make multiple eshell windows easier."
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;--------------------evil-mode
-;; (require 'init_evil)
+;;(require 'init_evil)
 
 ;;--------------------email
 ;; (provide 'init-email)
@@ -784,8 +786,8 @@ directory to make multiple eshell windows easier."
 ;python+c languge
 ;----------------
 
-(setq py-python-command "/usr/bin/python2")
-;; (setq py-python-command "/usr/bin/python3")
+;;(setq py-python-command "/usr/bin/python2")
+(setq py-python-command "/usr/bin/python3")
 ;;we should install ipython
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
 ;; (require 'python-mode)
@@ -799,19 +801,38 @@ directory to make multiple eshell windows easier."
 ;; (elpy-use-ipython)
 (setq elpy-rpc-backend "jedi")
 
+(setq python-shell-completion-native-enable nil)
+
+(with-eval-after-load 'python
+  (defun python-shell-completion-native-try ()
+    "Return non-nil if can trigger native completion."
+    (let ((python-shell-completion-native-enable t)
+	        (python-shell-completion-native-output-timeout
+           python-shell-completion-native-try-output-timeout))
+      (python-shell-completion-native-get-completions
+       (get-buffer-process (current-buffer))
+       nil "_"))))
+
+
+(require 'cl-lib)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (cl-letf (((symbol-function #'process-list) (lambda ())))
+    ad-do-it))
+
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; (setq elpy-rpc-python-command "python3")
-;; (setq python-shell-interpreter "python3")
-(setq elpy-rpc-python-command "python2")
-(setq python-shell-interpreter "python2")
+(setq elpy-rpc-python-command "python3")
+(setq python-shell-interpreter "python3")
+;; (setq elpy-rpc-python-command "python2")
+;; (setq python-shell-interpreter "python2")
 ;;(elpy-use-ipython "ipython3")
 
-(setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
-(setq ein:jupyter-server-args (list "--no-browser"))
+;; (setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
+;; (setq ein:jupyter-server-args (list "--no-browser"))
 
 
 
@@ -823,8 +844,8 @@ directory to make multiple eshell windows easier."
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-(require 'tramp)
-(add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
+;; (require 'tramp)
+;; (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 
 ;-----------------
 ;Java + Jdee

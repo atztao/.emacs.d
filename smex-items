@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
  multi-term
+ eval-buffer
+ magit-push
+ magit-status
+ notmuch
+ mu4e
  help
- package-autoremove
- package-list-packages
- ediff-buffers
- diff-mode
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 913)
+ (eval-buffer . 919)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -238,12 +238,12 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 68)
+ (mu4e . 70)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
  (rmail . 1)
- (notmuch . 16)
+ (notmuch . 17)
  (notmuch-tree . 1)
  (nnmail-split-history . 1)
  (gnus-agentize . 2)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 46)
- (magit-push . 41)
+ (magit-status . 47)
+ (magit-push . 42)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 14)
+ (multi-term . 15)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 1)
