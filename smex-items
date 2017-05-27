@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- multi-term
  eval-buffer
+ ag
+ python-mode
+ multi-term
+ elpy-mode
+ load-theme
  magit-push
- magit-status
- notmuch
- mu4e
- help
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 64)
- (load-theme . 196)
+ (load-theme . 199)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 919)
+ (eval-buffer . 923)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 22)
+ (ag . 24)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 16)
+ (python-mode . 20)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 15)
+ (multi-term . 16)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 1)
@@ -349,4 +349,5 @@
  (magit-pull . 1)
  (diff-mode . 2)
  (ediff-buffers . 1)
+ (elpy-mode . 1)
 )

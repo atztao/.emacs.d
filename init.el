@@ -357,10 +357,12 @@ directory to make multiple eshell windows easier."
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#111111")))
-;;(load-theme 'zenburn t)
+;; (load-theme 'zenburn t)
 ;;(load-theme 'dracula t)
 (set-cursor-color "red")
 (set-face-attribute 'default nil :height 82)
+
+
 
 ;; (set-background-color "black")
 ;; (set-foreground-color "white")
@@ -432,6 +434,7 @@ directory to make multiple eshell windows easier."
   (propertized-buffer-identification "%b"))
 
 
+
 ;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
@@ -449,6 +452,20 @@ directory to make multiple eshell windows easier."
 ;;                     :foreground nil
 ;;                     :background nil
 ;;                     :inherit '(hl-line default)))
+
+
+(require 'rainbow-delimiters)
+
+;; Enables rainbow-delimiters-mode in Emacs Lisp buffers
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+
+(add-hook 'python-mode-hook 'rainbow-delimiters-mode)
+
+;; Enables rainbow-delimiters-mode in Clojure buffers.
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+;; enables rainbow-delimiters-mode in other Lisp mode buffers.
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
 ;;file explore-----------------
 (require 'neotree)
@@ -814,6 +831,7 @@ directory to make multiple eshell windows easier."
        nil "_"))))
 
 
+
 (require 'cl-lib)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
@@ -885,12 +903,18 @@ directory to make multiple eshell windows easier."
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-enable-math t)
 
+
+
+(google-this-mode 1)
+
 ;-------------
 ;org-mode
 ;-------------
 
-(add-to-list 'load-path "~/.emacs.d/elpa/org-20170515" )
-(require 'org)
+;;(org-entry-get nil "ITEM")
+
+;; (add-to-list 'load-path "~/.emacs.d/elpa/org-20170515" )
+;; (require 'org)
 (setq org-list-description-max-indent 5)
 (setq org-adapt-indentation nil)
 
@@ -900,6 +924,9 @@ directory to make multiple eshell windows easier."
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
 (setq org-agenda-skip-scheduled-if-done t)
+
+(setq org-todo-state-tags-triggers
+  '(("CANCELLED" ("ARCHIVE" . t)))) 
 ;;export image width
 (setq org-image-actual-width 100)
 ;;Auto Fill
@@ -1458,5 +1485,5 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (evil-magit org-bullets use-package org ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (rainbow-delimiters google-this evil-magit use-package ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(truncate-partial-width-windows nil))
