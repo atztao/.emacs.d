@@ -614,60 +614,60 @@ directory to make multiple eshell windows easier."
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
 ;;-----------------------
-;; (setq tramp-mode nil)
-;; (setq ad-redefinition-action 'accept)
-;; (require 'helm-config)
-;; (require 'helm)
-;; (helm-mode t)
+(setq tramp-mode nil)
+(setq ad-redefinition-action 'accept)
+(require 'helm-config)
+(require 'helm)
+(helm-mode t)
 
-;; (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
-;; (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
+(defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
+(defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
-;; (setq helm-ff-transformer-show-only-basename nil
-;;       helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-;;       helm-yank-symbol-first                 t
-;;       helm-move-to-line-cycle-in-source      t
-;;       ;;helm-M-x-fuzzy-match                   t
-;;       ;;      helm-recentf-fuzzy-match               t
-;;       ;;      helm-ff-file-name-history-use-recentf  t
-;;       helm-buffers-fuzzy-matching            t
-;;       helm-ff-auto-update-initial-value      t)
+(setq helm-ff-transformer-show-only-basename nil
+      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
+      helm-yank-symbol-first                 t
+      helm-move-to-line-cycle-in-source      t
+      helm-M-x-fuzzy-match                   t
+      ;;      helm-recentf-fuzzy-match               t
+      ;;      helm-ff-file-name-history-use-recentf  t
+      helm-buffers-fuzzy-matching            t
+      helm-ff-auto-update-initial-value      t)
 
-;; ;; (autoload 'helm-descbinds      "helm-descbinds" t)
-;; ;; (autoload 'helm-eshell-history "helm-eshell"    t)
-;; ;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
+;; (autoload 'helm-descbinds      "helm-descbinds" t)
+;; (autoload 'helm-eshell-history "helm-eshell"    t)
+;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
 
-;; ;; (global-set-key (kbd "C-h a")    #'helm-apropos)
-;; ;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
-;; ;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
+;; (global-set-key (kbd "C-h a")    #'helm-apropos)
+;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
+;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
 
-;; ;; (add-hook 'eshell-mode-hook
-;; ;;           #'(lambda ()
-;; ;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-;; ;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+;; (add-hook 'eshell-mode-hook
+;;           #'(lambda ()
+;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
 
-;; ;; (global-set-key (kbd "C-x b")   #'helm-mini)
-;; ;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-;; ;; (global-set-key (kbd "M-x") #'helm-M-x)
-;; ;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
-;; ;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
-;; ;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
+;; (global-set-key (kbd "C-x b")   #'helm-mini)
+;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+;; (global-set-key (kbd "M-x") #'helm-M-x)
+;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
+;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
+;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
 
-;; ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-;; ;; (global-set-key (kbd "M-i") 'helm-swoop)
-;; ;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+;; (global-set-key (kbd "M-i") 'helm-swoop)
+;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
-;; (global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
+
+;;(global-set-key (kbd "C-s")   #'helm-swoop)
 ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-;; (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-;; ;;(global-set-key (kbd "C-s")   #'helm-swoop)
-;; ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-;; ;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-
-;; (helm-autoresize-mode 1)
+(helm-autoresize-mode 1)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 
@@ -924,6 +924,16 @@ directory to make multiple eshell windows easier."
 ;-------------
 ;org-mode
 ;-------------
+(defun my/org-mode-hook ()
+  "Stop the org-level headers from increasing in height relative to the other text."
+  (dolist (face '(org-level-1
+                  org-level-2
+                  org-level-3
+                  org-level-4
+                  org-level-5))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.0)))
+
+(add-hook 'org-mode-hook 'my/org-mode-hook)
 
 ;;(org-entry-get nil "ITEM")
 
@@ -1468,9 +1478,9 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;-----------------------------------------------------------
 ;;auto-save
 ;;-----------------------------------------------------------
-;; (super-save-mode +1)
+(super-save-mode +1)
 ;; ;; (setq auto-save-default nil)
-;; (setq super-save-auto-save-when-idle t)
+(setq super-save-auto-save-when-idle t)
 
 ;; (defun full-auto-save ()
 ;; 	  (interactive)

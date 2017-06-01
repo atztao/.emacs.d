@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- menu-bar-mode
  eval-buffer
+ magit-push
+ magit-status
+ menu-bar-mode
  describe-char
  package-list-packages
  python-mode
- list-colors-display
- load-theme
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 953)
+ (eval-buffer . 955)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 48)
- (magit-push . 43)
+ (magit-status . 49)
+ (magit-push . 44)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
