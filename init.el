@@ -9,21 +9,19 @@
 ;;Emacs Server . Theme .Fonts 
 ;;-----------------------------------------------
 
-;; (define-key emacs-lisp-mode-map (kbd "C-x C-r") 'eval-region)
-;; (define-key lisp-interaction-mode-map (kbd "C-x C-r") 'eval-region)
-;; (define-key org-mode-map (kbd "<tab>") 'org-cycle)
 ;; (server-start)  
 ;;(desktop-save-mode) 
+
 ;; (defun frame-setting ()
 ;;   (set-default-font "Monaco-12")
 ;;   (set-fontset-font "fontset-default" 'han '("PingFang SC"))
-;;   (set-background-color "ivory")
+;;   (set-background-color "black")
 ;;   (set-cursor-color "red")
 ;;   (set-mouse-color "goldenrod")
- ;;   (set-foreground-color "black")
+;;   ;; (set-foreground-color "white")
 ;;   )
 
-;;(add-to-list 'default-frame-alist '(tty-color-mode  . -1))
+;; ;; (add-to-list 'default-frame-alist '(tty-color-mode  . -1))
 
 ;; (if (and (fboundp 'daemonp) (daemonp))
 ;;     (add-hook 'after-make-frame-functions
@@ -40,8 +38,10 @@
 ;;(set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
 
 (setq initial-scratch-message "")
+;; (defun display-startup-echo-area-message ()
+;;   (message "Just Type For Fun Or Hacking The Write."))
 (defun display-startup-echo-area-message ()
-  (message "Just Type For Fun Or Hacking The Write."))
+  (message ""))
 
 (setq x-select-enable-clipboard t)
 
@@ -172,18 +172,25 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
+(setq default-font-size-pt 12)
+
 ;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
 ;; (set-frame-font "Consolas-10")
 ;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
 ;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
-(set-frame-font "Monaco-9")
-(setq default-font-size-pt 12)
 
-(set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono")
-;; (set-fontset-font "fontset-default" 'han "Source Han Sans CN Regular")
-;;(set-fontset-font "fontset-default" 'han '("PingFang SC:style=Regular 10"))
-;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
+(set-frame-font "Menlo-9")
+
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "-apple-.萍方-简-normal-normal-normal-*-20-*-*-*-*-0-iso10646-1" :size 14)))
+
+;;(set-fontset-font "fontset-default" 'chinese-gbk "Helvetica Neue")
+;;(set-fontset-font "fontset-default" 'han "-apple-.萍方-简-normal-normal-normal-*-14-*-*-*-*-0-iso10646-1") 
+;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
+(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12")
 
 ;;Fullscreen
@@ -294,6 +301,7 @@ directory to make multiple eshell windows easier."
 ;;   (require 'use-package))
 
 
+
 ;----------------------
 ;Themes
 ;----------------------
@@ -335,12 +343,12 @@ directory to make multiple eshell windows easier."
 
 (make-face-bold 'isearch)
 (make-face-bold 'lazy-highlight)
-(set-face-foreground 'isearch "orange red")
+(set-face-foreground 'isearch "#000000")
 (set-face-background 'isearch "#ffff00")
-(set-face-foreground 'lazy-highlight "black")
+(set-face-foreground 'lazy-highlight "#000000")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :background "#EEE8D6" )
+(set-face-attribute 'region nil :background "#F0E68C" ) ;;#EEE8D6
 
 ;;(setq frame-background-mode 'light)
 ;;(setq frame-background-mode 'dark)
@@ -353,15 +361,14 @@ directory to make multiple eshell windows easier."
 ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
 ;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;;(load "~/.emacs.d/themes/ujelly-theme.el")
-;; ;;(load "~/.emacs.d/themes/monokai-theme.el")
+;;(load "~/.emacs.d/themes/monokai-theme.el")
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#111111")))
-;; (load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
 ;;(load-theme 'dracula t)
-(set-cursor-color "red")
+;; (set-cursor-color "red")
 (set-face-attribute 'default nil :height 82)
-
 
 
 ;; (set-background-color "black")
@@ -370,7 +377,7 @@ directory to make multiple eshell windows easier."
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-(setq-default mode-line-format nil)
+;;(setq-default mode-line-format nil)
 
 (column-number-mode 1)
 
@@ -423,12 +430,12 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "white" :foreground "black") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "white" :foreground "black")
+;; (set-face-attribute 'mode-line           nil :box nil :background "white" :foreground "black") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "white" :foreground "black")
 
-;; (set-face-attribute 'mode-line-buffer-id nil :background "gray" :foreground "dark black")
-;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
-;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
+;; ;; (set-face-attribute 'mode-line-buffer-id nil :background "gray" :foreground "dark black")
+;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
+;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 (setq-default mode-line-buffer-identification
   (propertized-buffer-identification "%b"))
@@ -602,7 +609,7 @@ directory to make multiple eshell windows easier."
 (setq ag-highlight-search t)
 (setq ag-reuse-window 't)
 (setq ag-reuse-buffers 't)
-
+(global-set-key (kbd "M-s a")   #'ag) ;;apt-get install silversearcher-ag
 
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
@@ -904,8 +911,15 @@ directory to make multiple eshell windows easier."
 (setq markdown-enable-math t)
 
 
+;;(require 'w3m-load)
 
-(google-this-mode 1)
+;;(google-this-mode 1)
+
+;;  (setq browse-url-browser-function 'w3m-browse-url)
+;;  (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;;  ;; optional keyboard short-cut
+;; (global-set-key "\C-xm" 'browse-url-at-point)
+;; (setq w3m-use-cookies t)
 
 ;-------------
 ;org-mode
@@ -963,6 +977,7 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ ;;'(default ((t (:family ".萍方-简" :foundry "apple" :slant normal :weight normal :height 82 :width normal))))
  '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t))))
  '(term ((t (:background "white" :foreground "black")))))
@@ -1480,10 +1495,15 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(org-agenda-files
    (quote
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters google-this evil-magit use-package ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
- '(truncate-partial-width-windows nil))
+    (rainbow-delimiters evil-magit use-package ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(truncate-partial-width-windows nil)
+ '(user-full-name "Tao Zhang")
+ '(user-mail-address "ztao1991@gmail.com"))

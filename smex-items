@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ menu-bar-mode
  eval-buffer
- ag
+ describe-char
+ package-list-packages
  python-mode
- multi-term
- elpy-mode
+ list-colors-display
  load-theme
- magit-push
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 139)
+ (package-list-packages . 140)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -52,7 +52,7 @@
  (auto-fill-mode . 6)
  (color-theme-word-perfect . 7)
  (pyim-dicts-manager . 1)
- (describe-char . 6)
+ (describe-char . 9)
  (describe-fontset . 2)
  (helm-bookmarks . 3)
  (color-theme-gnome . 1)
@@ -84,7 +84,7 @@
  (color-theme-tomorrow-night-bright . 1)
  (mode-line-widen . 7)
  (markdown-preview . 9)
- (list-colors-display . 5)
+ (list-colors-display . 6)
  (evil-mode . 11)
  (buffer-menu . 1)
  (org-agenda . 5)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 64)
- (load-theme . 199)
+ (load-theme . 202)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 923)
+ (eval-buffer . 953)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -135,7 +135,7 @@
  (find-grep . 1)
  (find-file . 1)
  (c-mode . 4)
- (menu-bar-mode . 1)
+ (menu-bar-mode . 3)
  (org-toggle-link-display . 6)
  (org-toggle-inline-images . 22)
  (org-display-inline-images . 3)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 20)
+ (python-mode . 21)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 47)
- (magit-push . 42)
+ (magit-status . 48)
+ (magit-push . 43)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -350,4 +350,5 @@
  (diff-mode . 2)
  (ediff-buffers . 1)
  (elpy-mode . 1)
+ (rainbow-delimiters-mode . 1)
 )

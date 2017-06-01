@@ -9,9 +9,9 @@
  (position . 420))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO Complete")
- (rear-context-string . "O Complete Blog\n")
- (position . 420))
+ (front-context-string . "** TODO I think ")
+ (rear-context-string . " with css ....\n\n")
+ (position . 477))
 ("todo.txt"
  (filename . "~/Dropbox/Txt/todo.txt")
  (front-context-string . "#+TAGS: Wait Som")
@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/contacts.txt")
- (front-context-string . "** \n:PROPERTIES:")
- (rear-context-string . ": \n:NOTE:\n:END:\n")
- (position . 165))
+ (filename . "~/Dropbox/Txt/todo.txt")
+ (front-context-string . "** TODO Emacs Pi")
+ (rear-context-string . "l with css ....\n")
+ (position . 510))
 )
