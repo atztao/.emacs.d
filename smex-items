@@ -4,10 +4,10 @@
  eval-buffer
  magit-push
  magit-status
+ ag
+ org-mode
+ super-save-mode
  menu-bar-mode
- describe-char
- package-list-packages
- python-mode
 )
 
 ;; ----- smex-data -----
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 107)
+ (org-mode . 108)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 955)
+ (eval-buffer . 963)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 24)
+ (ag . 27)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -273,7 +273,7 @@
  (matlab-shell . 4)
  (ispell . 1)
  (ruler-mode . 2)
- (super-save-mode . 2)
+ (super-save-mode . 4)
  (version . 2)
  (cua-rectangle-mark-mode . 5)
  (image-dired . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 49)
- (magit-push . 44)
+ (magit-status . 53)
+ (magit-push . 50)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)

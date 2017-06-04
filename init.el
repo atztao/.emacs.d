@@ -180,8 +180,8 @@ directory to make multiple eshell windows easier."
 ;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
 
-(set-frame-font "Menlo-9")
-
+;; (set-frame-font "Menlo-9")
+(set-frame-font "Monaco-9")
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
 ;;   (set-fontset-font (frame-parameter nil 'font)
 ;;                     charset
@@ -190,8 +190,8 @@ directory to make multiple eshell windows easier."
 ;;(set-fontset-font "fontset-default" 'chinese-gbk "Helvetica Neue")
 ;;(set-fontset-font "fontset-default" 'han "-apple-.萍方-简-normal-normal-normal-*-14-*-*-*-*-0-iso10646-1") 
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
-(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
-;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono 12")
+;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
+(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
 
 ;;Fullscreen
 ;; (global-set-key [f11] 'my-fullscreen) 
@@ -514,7 +514,7 @@ directory to make multiple eshell windows easier."
 (setq calendar-holidays cal-china-x-important-holidays)
 (setq my-holidays '((holiday-fixed 2 14 "情人节") (holiday-fixed 9 10 "教师节") (holiday-float 6 0 3 "父亲节")
                     (holiday-lunar 1 1 "春节" 0) (holiday-lunar 1 15 "元宵节" 0) (holiday-solar-term "清明" "清明节") (holiday-lunar 5 5 "端午节" 0) (holiday-lunar 7 7 "七夕情人节" 0) (holiday-lunar 8 15 "中秋节" 0)
-                    (holiday-lunar 12 23 "妈妈生日" 0) (holiday-lunar 5 5 "爸爸生日" 0) (holiday-lunar 10 17 "姐姐生日" 0) (holiday-lunar 10 18 "姐夫生日" 0) (holiday-fixed 10 29 "宝宝生日") ))
+                    (holiday-lunar 12 23 "妈妈生日" 0) (holiday-lunar 5 9 "爸爸生日" 0) (holiday-lunar 10 17 "姐姐生日" 0) (holiday-lunar 10 18 "姐夫生日" 0) (holiday-fixed 10 29 "宝宝生日") ))
 (setq calendar-holidays my-holidays)
 ;;(holiday-lunar 9 17 "宝宝生日" 0)
 
@@ -594,11 +594,11 @@ directory to make multiple eshell windows easier."
 ;;   '(fringe (( (:background "black")))))
 
 ;;smooth-scroll---------------------------------
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
-(setq scroll-margin 1
-      scroll-conservatively 1000
-      scroll-step 1)
+;; (require 'smooth-scrolling)
+;; (smooth-scrolling-mode 1)
+;; (setq scroll-margin 1
+;;       scroll-conservatively 1000
+;;       scroll-step 1)
 
 ;;---------------------------------------------------------------------------------
 
@@ -774,7 +774,7 @@ directory to make multiple eshell windows easier."
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;--------------------evil-mode
-;;(require 'init_evil)
+(require 'init_evil)
 
 ;;--------------------email
 ;; (provide 'init-email)
@@ -909,7 +909,12 @@ directory to make multiple eshell windows easier."
 ;;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-enable-math t)
+;; (setq markdown-css-paths "~/Dropbox/Linux/github-markdown.css")
+(setq markdown-command
+  "/usr/bin/pandoc -s -c ~/Dropbox/Markdown/css-org/markdown/Github.css --mathjax --highlight-style espresso")
+;; (setq markdown-command "pandoc --smart -f markdown -t html")
 
+;; (setq markdown-css-paths `(,(expand-file-name "~/Dropbox/Linux/github-markdown.css")))
 
 ;;(require 'w3m-load)
 
@@ -924,6 +929,11 @@ directory to make multiple eshell windows easier."
 ;-------------
 ;org-mode
 ;-------------
+
+
+(setq org-todo-keywords
+       '((sequence "TODO" "NEXT" "|" "DONE" "REVIEW")))
+
 (defun my/org-mode-hook ()
   "Stop the org-level headers from increasing in height relative to the other text."
   (dolist (face '(org-level-1
@@ -934,6 +944,13 @@ directory to make multiple eshell windows easier."
     (set-face-attribute face nil :weight 'semi-bold :height 1.0)))
 
 (add-hook 'org-mode-hook 'my/org-mode-hook)
+
+
+;; (set-face-attribute 'org-agenda-diary nil
+;;                     :foreground "red"
+;;                     :background nil
+;;                     :bold 'normal
+;;                     :box '(:color "green" :line-width 2 :style nil))
 
 ;;(org-entry-get nil "ITEM")
 
@@ -957,8 +974,6 @@ directory to make multiple eshell windows easier."
 (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
           (lambda () (setq truncate-lines nil)))  
-
-
 
 
 ;;Archive All Done Tas
@@ -1035,6 +1050,8 @@ directory to make multiple eshell windows easier."
 ;;(define-key global-map [f12] 'org-capture)
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
+      ;; `(("t" "Todo" entry (file+headline "~/Dropbox/Txt/todo.txt" "Inbox")
+      ;;    "* TODO %? ")
       `(("t" "Todo" entry (file+headline "~/Dropbox/Txt/todo.txt" "Inbox")
          "* TODO %? ")
         ("n" "Note" entry (file+headline "~/Dropbox/Txt/inbox.txt" "Note")
@@ -1501,6 +1518,8 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
 
 (custom-set-variables
+ ;; '(markdown-command
+ ;;  "/usr/bin/pandoc -c ~/Dropbox/Linux/css/markdown/Clearness.css")
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

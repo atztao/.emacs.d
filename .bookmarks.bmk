@@ -4,14 +4,14 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored-marker"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO Complete")
- (rear-context-string . "O Complete Blog\n")
- (position . 420))
+ (front-context-string . "** TODO Design T")
+ (rear-context-string . "he Tag And Note\n")
+ (position . 893))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO I think ")
- (rear-context-string . " with css ....\n\n")
- (position . 477))
+ (front-context-string . "** TODO Design T")
+ (rear-context-string . "he Tag And Note\n")
+ (position . 893))
 ("todo.txt"
  (filename . "~/Dropbox/Txt/todo.txt")
  (front-context-string . "#+TAGS: Wait Som")
@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO Emacs Pi")
- (rear-context-string . "l with css ....\n")
- (position . 510))
+ (filename . "~/Dropbox/Txt/inbox.txt")
+ (front-context-string . "** [2017-06-03 六")
+ (rear-context-string . "-06-03 六 09:45]\n")
+ (position . 6106))
 )
