@@ -124,7 +124,8 @@ directory to make multiple eshell windows easier."
       browse-url-browser-function gnus-button-url)
 
 ;;(setq line-spacing '0.20)
-(setq-default line-spacing 2)
+;; (setq-default line-spacing 2)
+(setq-default line-spacing 0)
 
 (global-visual-line-mode 1)
 (setq inhibit-startup-screen t)
@@ -180,8 +181,12 @@ directory to make multiple eshell windows easier."
 ;;(set-frame-font "Source Code Pro 9")
 ;;(set-frame-font "Inconsolata-g-10")
 
-;; (set-frame-font "Menlo-9")
-(set-frame-font "Monaco-9")
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8-unix)
+
+
+(set-frame-font "Menlo-9")
+;;(set-frame-font "Monaco-10")
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
 ;;   (set-fontset-font (frame-parameter nil 'font)
 ;;                     charset
@@ -191,7 +196,7 @@ directory to make multiple eshell windows easier."
 ;;(set-fontset-font "fontset-default" 'han "-apple-.萍方-简-normal-normal-normal-*-14-*-*-*-*-0-iso10646-1") 
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
-(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
+;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
 
 ;;Fullscreen
 ;; (global-set-key [f11] 'my-fullscreen) 
@@ -597,8 +602,12 @@ directory to make multiple eshell windows easier."
 ;; (require 'smooth-scrolling)
 ;; (smooth-scrolling-mode 1)
 ;; (setq scroll-margin 1
-;;       scroll-conservatively 1000
-;;       scroll-step 1)
+;;       scroll-conservatively 10000
+;;       scroll-step 1
+;;       scroll-up-aggressively 0.01
+;;       scroll-down-aggressively 0.01)
+;; (setq-default scroll-up-aggressively 0.01
+;;               scroll-down-aggressively 0.01)
 
 ;;---------------------------------------------------------------------------------
 
@@ -774,7 +783,7 @@ directory to make multiple eshell windows easier."
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;--------------------evil-mode
-(require 'init_evil)
+;; (require 'init_evil)
 
 ;;--------------------email
 ;; (provide 'init-email)
@@ -960,20 +969,23 @@ directory to make multiple eshell windows easier."
 (setq org-adapt-indentation nil)
 
 (setq org-latex-images-centered t)
-(setq org-startup-indented t)
+(setq org-startup-xindented t)
 
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
 (setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-deadline-if-done t)
+
+(setq org-use-speed-commands t)
 
 (setq org-todo-state-tags-triggers
   '(("CANCELLED" ("ARCHIVE" . t)))) 
 ;;export image width
 (setq org-image-actual-width 100)
 ;;Auto Fill
-(add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
+(add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines t)))
 (add-hook 'org-mode-hook   
-          (lambda () (setq truncate-lines nil)))  
+          (lambda () (setq truncate-lines t)))  
 
 
 ;;Archive All Done Tas
@@ -1002,7 +1014,6 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;;'(default ((t (:family ".萍方-简" :foundry "apple" :slant normal :weight normal :height 82 :width normal))))
  '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t))))
  '(term ((t (:background "white" :foreground "black")))))
@@ -1013,6 +1024,7 @@ directory to make multiple eshell windows easier."
 (setq org-confirm-babel-evaluate nil)
 
 ;;source code
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((lisp . t)))
@@ -1026,6 +1038,57 @@ directory to make multiple eshell windows easier."
  '((latex . t)))
 
 (setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+
+(setq org-export-babel-evaluate nil)
+
+(setq org-use-speed-commands t)
+
+(defun org-babel-tangle-block()
+  (interactive)
+  (let ((current-prefix-arg '(4)))
+    (call-interactively 'org-babel-tangle)
+    ))
+
+(setq org-ascii-links-to-notes nil)
+(setq org-ascii-headline-spacing (quote (1 . 1)))
+
+;;org-mode export html
+
+;; 防止org-mode在导出HTML时把行末的回车输出为空格
+(defadvice org-html-paragraph (before fsh-org-html-paragraph-advice
+                                      (paragraph contents info) activate)
+  "Join consecutive Chinese lines into a single long line without
+unwanted space when exporting org-mode to html."
+  (let ((fixed-contents)
+        (orig-contents (ad-get-arg 1))
+        (reg-han "[[:multibyte:]]"))
+    (setq fixed-contents (replace-regexp-in-string
+                          ;; 这一行是匹配上一行末和下一行头都是中文的情况, 但是这样的话遇上"中文\nenglish"就仍然有空格
+                          ;; (concat "\\(" reg-han "\\) *\n *\\(" reg-han "\\)")
+                          (concat "\\(" reg-han "\\) *\n *")
+                          "\\1" orig-contents))
+    (ad-set-arg 1 fixed-contents)))
+
+(setf org-html-mathjax-options
+      '((path "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
+        (scale "100") 
+        (align "center") 
+        (indent "2em")
+        (mathml nil))
+      )
+(setf org-html-mathjax-template
+      "<script type=\"text/javascript\" src=\"%PATH\"></script>")
+
+(setq org-html-table-default-attributes
+      '(:border "0" :cellspacing "0" :cellpadding "6" :rules "none" :frame "none"))
+
+(setq org-html-doctype "html5")
+(setq org-html-xml-declaration nil)
+(setq org-html-postamble nil)
+
+(setq org-html-head "<link rel='stylesheet' href='http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css'>\n<link rel='stylesheet' href='http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css'>\n<script src='http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js'>\n</script><script src='http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>")
+
 
 ;;Text
 ;; (add-to-list 'org-emphasis-alist
@@ -1177,10 +1240,10 @@ directory to make multiple eshell windows easier."
 (setq TeX-view-program-selection
       '((output-pdf "PDF Viewer")))
 (setq TeX-view-program-list
-      '(("PDF Viewer" "okular --unique %o#src:%n%b")))
+      '(("PDF Viewer" "okular %o")))
 
-(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
-                              "xelatex -interaction nonstopmode %f"))
+(setq org-latex-pdf-process '("xelatex -shell-escape -interaction nonstopmode %f"
+                              "xelatex -shell-escape -interaction nonstopmode %f"))
 
 ;;(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
@@ -1205,17 +1268,35 @@ directory to make multiple eshell windows easier."
 
 (require 'ox-latex) ;;sudo pip install pygmentize https://emacs-china.org/t/spacemacs-org-mode-pdf/1577/15
 
-(setq org-export-latex-listings t)
 
 ;;org-mode source code setup in exporting to latex
+;; (add-to-list 'org-latex-packages-alist '("" "minted"))
+;; (setq org-latex-listings 'minted)
+;;   (setq org-latex-pdf-process
+;;         '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+;; ;; (setq org-latex-minted-options
+;; ;;         '(("frame" "lines") ("linenos=true")))
+;; (setq org-latex-custom-lang-environments
+;;            '(
+;;             (emacs-lisp "common-lispcode")
+;;              ))
+;; (setq org-latex-minted-options
+;;            '(("frame" "")
+;;              ("fontsize" "\\scriptsize")
+;;              ("linenos=false" "")))
+
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted) ;;pip install Pygments
+(setq org-export-latex-listings t)
+
 (add-to-list 'org-latex-listings
              '("" "listings"))
+(add-to-list 'org-latex-packages-alist
+             '("" "listings" t))
 (add-to-list 'org-latex-listings
              '("" "color"))
 (add-to-list 'org-latex-packages-alist
              '("" "xcolor" t))
-(add-to-list 'org-latex-packages-alist
-             '("" "listings" t))
 (add-to-list 'org-latex-packages-alist
              '("" "fontspec" t))
 (add-to-list 'org-latex-packages-alist
@@ -1261,7 +1342,7 @@ directory to make multiple eshell windows easier."
 \\usepackage[slantfont, boldfont]{xeCJK}
 % chapter set
 \\usepackage{titlesec}
-\\usepackage{hyperref}
+            \\usepackage{hyperref}
 
 [NO-DEFAULT-PACKAGES]
 [PACKAGES]
@@ -1269,7 +1350,6 @@ directory to make multiple eshell windows easier."
 \\setmainfont{Times New Roman}
 \\setsansfont{Helvetica}
 \\setmonofont{Courier New}
-
 \\setCJKmainfont{SimSun} 
 \\setCJKsansfont{Microsoft YaHei} 
 \\setCJKmonofont{FZYTK.ttf} 
@@ -1397,22 +1477,6 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;                ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ;;                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
 
-
-;; (add-to-list 'org-latex-packages-alist '("" "minted"))
-;; (setq org-latex-listings 'minted)
-;;   (setq org-latex-pdf-process
-;;         '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-;; ;; (setq org-latex-minted-options
-;; ;;         '(("frame" "lines") ("linenos=true")))
-;; (setq org-latex-custom-lang-environments
-;;            '(
-;;             (emacs-lisp "common-lispcode")
-;;              ))
-;; (setq org-latex-minted-options
-;;            '(("frame" "")
-;;              ("fontsize" "\\scriptsize")
-;;              ("linenos=false" "")))
-
 ;; (setq org-latex-to-pdf-process 
 ;;       '("xelatex -interaction nonstopmode %f"
 ;; 	"xelatex -interaction nonstopmode %f"))
@@ -1421,10 +1485,6 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;; (setq org-latex-to-pdf-process 
 ;;       '("xelatex --shell-escape -interaction nonstopmode %f"
 ;; 	"xelatex --shell-escape -interaction nonstopmode %f"))
-
-
-;;(setq org-src-fontify-natively t)
-
 
 ;;-------------------------------------------------------
 
@@ -1518,8 +1578,6 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
 
 (custom-set-variables
- ;; '(markdown-command
- ;;  "/usr/bin/pandoc -c ~/Dropbox/Linux/css/markdown/Clearness.css")
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -1530,7 +1588,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters evil-magit use-package ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (evil-search-highlight-persist rainbow-delimiters evil-magit use-package ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)

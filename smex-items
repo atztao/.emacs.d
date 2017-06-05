@@ -2,21 +2,21 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- magit-push
+ kill-all-abbrevs
  magit-status
- ag
+ magit-push
+ org-reload
+ package-list-packages
  org-mode
- super-save-mode
- menu-bar-mode
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 140)
+ (package-list-packages . 142)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
- (markdown-mode . 93)
+ (markdown-mode . 95)
  (package-list-packages-no-fetch . 1)
  (imenu . 2)
  (highlight-indentation-mode . 1)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 108)
+ (org-mode . 109)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 963)
+ (eval-buffer . 975)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 27)
+ (ag . 28)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 53)
- (magit-push . 50)
+ (magit-status . 57)
+ (magit-push . 51)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -345,10 +345,11 @@
  (profiler-stop . 1)
  (profiler-report . 1)
  (esup . 2)
- (org-reload . 1)
+ (org-reload . 2)
  (magit-pull . 1)
  (diff-mode . 2)
  (ediff-buffers . 1)
  (elpy-mode . 1)
  (rainbow-delimiters-mode . 1)
+ (kill-all-abbrevs . 1)
 )
