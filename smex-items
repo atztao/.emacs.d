@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ server-force-delete
  kill-all-abbrevs
  magit-status
  magit-push
  org-reload
  package-list-packages
- org-mode
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 975)
+ (eval-buffer . 979)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -352,4 +352,5 @@
  (elpy-mode . 1)
  (rainbow-delimiters-mode . 1)
  (kill-all-abbrevs . 1)
+ (server-force-delete . 1)
 )

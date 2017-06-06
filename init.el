@@ -185,8 +185,8 @@ directory to make multiple eshell windows easier."
 (set-default-coding-systems 'utf-8-unix)
 
 
-(set-frame-font "Menlo-9")
-;;(set-frame-font "Monaco-10")
+;;(set-frame-font "Menlo-9")
+(set-frame-font "Monaco-10")
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
 ;;   (set-fontset-font (frame-parameter nil 'font)
 ;;                     charset
@@ -307,9 +307,9 @@ directory to make multiple eshell windows easier."
 
 
 
-;----------------------
-;Themes
-;----------------------
+					;----------------------
+					;Themes
+					;----------------------
 
 ;;color-themes
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-6.6.0/")
@@ -435,19 +435,19 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-;; (set-face-attribute 'mode-line           nil :box nil :background "white" :foreground "black") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "white" :foreground "black")
+;; (set-face-attribute 'mode-line           nil :box nil :background "grey60" :foreground "black") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey80" :foreground "black")
 
 ;; ;; (set-face-attribute 'mode-line-buffer-id nil :background "gray" :foreground "dark black")
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 (setq-default mode-line-buffer-identification
-  (propertized-buffer-identification "%b"))
+	      (propertized-buffer-identification "%b"))
 
 
 
-;relative-number------------------------
+					;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
 ;; (add-hook 'prog-mode-hook 'relative-line-numbers-mode t)
@@ -569,9 +569,9 @@ directory to make multiple eshell windows easier."
 ;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 ;; (setq recentf-max-saved-items 150)
 
-;---------------
-;smex
-;---------------
+					;---------------
+					;smex
+					;---------------
 (add-to-list 'load-path "~/.emacs.d/elpa/smex/")
 (require 'smex)
 (smex-initialize)
@@ -689,9 +689,9 @@ directory to make multiple eshell windows easier."
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;--------------
-;ace-jump
-;--------------
+					;--------------
+					;ace-jump
+					;--------------
 
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
@@ -735,9 +735,9 @@ directory to make multiple eshell windows easier."
 (global-set-key [M-up] 'windmove-up)              ; move to upper window
 (global-set-key [M-down] 'windmove-down)          ; move to lower window
 
-;----------------
-;yasnippet
-;----------------
+					;----------------
+					;yasnippet
+					;----------------
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -745,9 +745,9 @@ directory to make multiple eshell windows easier."
 ;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
 ;;(setq debug-on-error t)
 
-;----------------
-;auto-complete
-;----------------
+					;----------------
+					;auto-complete
+					;----------------
 
 (require 'popup)
 (require 'auto-complete-config)
@@ -815,9 +815,9 @@ directory to make multiple eshell windows easier."
 ;; ;; Create clang-format file using google style
 ;; ;; clang-format -style=google -dump-config > .clang-format
 
-;----------------
-;python+c languge
-;----------------
+					;----------------
+					;python+c languge
+					;----------------
 
 ;;(setq py-python-command "/usr/bin/python2")
 (setq py-python-command "/usr/bin/python3")
@@ -840,7 +840,7 @@ directory to make multiple eshell windows easier."
   (defun python-shell-completion-native-try ()
     "Return non-nil if can trigger native completion."
     (let ((python-shell-completion-native-enable t)
-	        (python-shell-completion-native-output-timeout
+	  (python-shell-completion-native-output-timeout
            python-shell-completion-native-try-output-timeout))
       (python-shell-completion-native-get-completions
        (get-buffer-process (current-buffer))
@@ -881,18 +881,18 @@ directory to make multiple eshell windows easier."
 ;; (require 'tramp)
 ;; (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 
-;-----------------
-;Java + Jdee
-;-----------------
+					;-----------------
+					;Java + Jdee
+					;-----------------
 
 ;; (add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
 ;; (autoload 'jde-mode "jde" "JDE mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
-;------------------
-;Html
-;------------------
+					;------------------
+					;Html
+					;------------------
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -907,9 +907,9 @@ directory to make multiple eshell windows easier."
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
 
-;-----------------
-;markdown-mode
-;-----------------
+					;-----------------
+					;markdown-mode
+					;-----------------
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 ;; (autoload 'gfm-mode "gfm-mode"
@@ -920,7 +920,7 @@ directory to make multiple eshell windows easier."
 (setq markdown-enable-math t)
 ;; (setq markdown-css-paths "~/Dropbox/Linux/github-markdown.css")
 (setq markdown-command
-  "/usr/bin/pandoc -s -c ~/Dropbox/Markdown/css-org/markdown/Github.css --mathjax --highlight-style espresso")
+      "/usr/bin/pandoc -s -c ~/Dropbox/Markdown/css-org/markdown/Github.css --mathjax --highlight-style espresso")
 ;; (setq markdown-command "pandoc --smart -f markdown -t html")
 
 ;; (setq markdown-css-paths `(,(expand-file-name "~/Dropbox/Linux/github-markdown.css")))
@@ -935,13 +935,13 @@ directory to make multiple eshell windows easier."
 ;; (global-set-key "\C-xm" 'browse-url-at-point)
 ;; (setq w3m-use-cookies t)
 
-;-------------
-;org-mode
-;-------------
+					;-------------
+					;org-mode
+					;-------------
 
 
 (setq org-todo-keywords
-       '((sequence "TODO" "NEXT" "|" "DONE" "REVIEW")))
+      '((sequence "TODO" "NEXT" "|" "DONE" "REVIEW")))
 
 (defun my/org-mode-hook ()
   "Stop the org-level headers from increasing in height relative to the other text."
@@ -979,13 +979,13 @@ directory to make multiple eshell windows easier."
 (setq org-use-speed-commands t)
 
 (setq org-todo-state-tags-triggers
-  '(("CANCELLED" ("ARCHIVE" . t)))) 
+      '(("CANCELLED" ("ARCHIVE" . t)))) 
 ;;export image width
 (setq org-image-actual-width 100)
 ;;Auto Fill
-(add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines t)))
+(add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
-          (lambda () (setq truncate-lines t)))  
+          (lambda () (setq truncate-lines nil)))  
 
 
 ;;Archive All Done Tas
@@ -1191,9 +1191,9 @@ unwanted space when exporting org-mode to html."
 
 
 
-;----------------------
-;auctex+XeCJK
-;----------------------
+					;----------------------
+					;auctex+XeCJK
+					;----------------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.89/")
 (load "auctex.el" nil t t)
@@ -1219,7 +1219,7 @@ unwanted space when exporting org-mode to html."
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
-; enable auto-fill mode, nice for text
+					; enable auto-fill mode, nice for text
 (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
@@ -1270,12 +1270,13 @@ unwanted space when exporting org-mode to html."
 
 
 ;;org-mode source code setup in exporting to latex
-;; (add-to-list 'org-latex-packages-alist '("" "minted"))
 ;; (setq org-latex-listings 'minted)
+;; ;;(add-to-list 'org-latex-packages-alist '("" "minted"))
 ;;   (setq org-latex-pdf-process
 ;;         '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-;; ;; (setq org-latex-minted-options
-;; ;;         '(("frame" "lines") ("linenos=true")))
+;; (setq org-latex-minted-options
+;;       '(("frame" "lines") ("linenos=true")))
+
 ;; (setq org-latex-custom-lang-environments
 ;;            '(
 ;;             (emacs-lisp "common-lispcode")
@@ -1285,8 +1286,9 @@ unwanted space when exporting org-mode to html."
 ;;              ("fontsize" "\\scriptsize")
 ;;              ("linenos=false" "")))
 
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted) ;;pip install Pygments
+;; (setq org-export-latex-listings 'minted)
+;; (add-to-list 'org-latex-packages-alist '("" "minted"))
+;; (setq org-latex-listings 'minted) ;;pip install Pygments
 (setq org-export-latex-listings t)
 
 (add-to-list 'org-latex-listings
@@ -1294,7 +1296,7 @@ unwanted space when exporting org-mode to html."
 (add-to-list 'org-latex-packages-alist
              '("" "listings" t))
 (add-to-list 'org-latex-listings
-             '("" "color"))
+	     '("" "color"))
 (add-to-list 'org-latex-packages-alist
              '("" "xcolor" t))
 (add-to-list 'org-latex-packages-alist
