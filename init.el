@@ -157,15 +157,16 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 (setq default-font-size-pt 12)
 
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8-unix)
+;;(set-language-environment "UTF-8")
+;;(set-default-coding-systems 'utf-8-unix)
 
 ;;(set-frame-font "Menlo-9")
-(set-frame-font "Monaco-10")
+(set-frame-font "Monaco-8")
 
-(set-fontset-font "fontset-default" 'han '("PingFang SC"))
+;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
+(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
 
 ;;Fullscreen
 ;; (global-set-key [f11] 'my-fullscreen) 
@@ -287,7 +288,7 @@ directory to make multiple eshell windows easier."
 ;;(load-theme 'zenburn t)
 ;;(load-theme 'dracula t)
 ;; (set-cursor-color "red")
-(set-face-attribute 'default nil :height 82)
+;;(set-face-attribute 'default nil :height 82)
 
 ;;--------------------------
 ;;mode-line
@@ -358,9 +359,9 @@ directory to make multiple eshell windows easier."
 ;; (set-face-attribute 'mode-line nil
 ;;                 :box '(:line-width 6 :color "gray20"))
 
-(set-face-attribute 'mode-line-inactive nil
-		    :foreground "black" :background "gray80"
-		    :box 'nil)
+;; (set-face-attribute 'mode-line-inactive nil
+;; 		    :foreground "black" :background "gray80"
+;; 		    :box 'nil)
 
 ;relative-number------------------------
 ;; (require 'linum-relative)
@@ -1100,7 +1101,7 @@ unwanted space when exporting org-mode to html."
 (TeX-global-PDF-mode t)
 (setq preview-image-type 'svg)
 ;; only start server for okular comms when in latex mode
-(add-hook 'LaTeX-mode-hook 'server-start)
+;;(add-hook 'LaTeX-mode-hook 'server-start)
 (setq TeX-PDF-mode t) ;; use pdflatex instead of latex
 (setq TeX-newline-function 'newline-and-indent)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1141,6 +1142,10 @@ unwanted space when exporting org-mode to html."
 (setq org-latex-pdf-process '("xelatex -shell-escape -interaction nonstopmode %f"
                               "xelatex -shell-escape -interaction nonstopmode %f"))
 
+
+;; (require 'server)
+;; (server-force-delete)  ;; WARNING: Kills any existing edit server
+
 ;;(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 ;;(setq org-latex-create-formula-image-program 'dvipng)
@@ -1154,6 +1159,8 @@ unwanted space when exporting org-mode to html."
                               TeX-command-list)))
 
 ;;(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
+(setq org-latex-remove-logfiles t)
+
 (setq org-latex-logfiles-extensions (quote ("lof" "lot" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
 
 (advice-add 'org-latex-compile :after #'delete-file)
@@ -1166,12 +1173,17 @@ unwanted space when exporting org-mode to html."
 
 
 ;;org-mode source code setup in exporting to latex
-;; (setq org-latex-listings 'minted)
-;; ;;(add-to-list 'org-latex-packages-alist '("" "minted"))
-;;   (setq org-latex-pdf-process
-;;         '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-;; (setq org-latex-minted-options
-;;       '(("frame" "lines") ("linenos=true")))
+(setq org-latex-listings 'minted)
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-minted-options
+      '(("frame" "lines")
+	("linenos=false")
+	;;("fontsize" "\\scriptsize")
+	("fontsize" "\\footnotesize")
+	("xleftmargin" "\\parindent")
+	("xrightmargin" "0.5cm")
+        ("xleftmargin"  "0.5cm")
+	))
 
 ;; (setq org-latex-custom-lang-environments
 ;;            '(
@@ -1182,17 +1194,14 @@ unwanted space when exporting org-mode to html."
 ;;              ("fontsize" "\\scriptsize")
 ;;              ("linenos=false" "")))
 
-;; (setq org-export-latex-listings 'minted)
-;; (add-to-list 'org-latex-packages-alist '("" "minted"))
-;; (setq org-latex-listings 'minted) ;;pip install Pygments
-(setq org-export-latex-listings t)
+;;(setq org-export-latex-listings t)
+;; (add-to-list 'org-latex-listings
+;;              '("" "listings"))
+;; (add-to-list 'org-latex-packages-alist
+;;              '("" "listings" t))
+;; (add-to-list 'org-latex-listings
+;;   	     '("" "color"))
 
-(add-to-list 'org-latex-listings
-             '("" "listings"))
-(add-to-list 'org-latex-packages-alist
-             '("" "listings" t))
-(add-to-list 'org-latex-listings
-	     '("" "color"))
 (add-to-list 'org-latex-packages-alist
              '("" "xcolor" t))
 (add-to-list 'org-latex-packages-alist
@@ -1305,13 +1314,13 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 \\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 
 % 代码设置
-\\lstset{numbers=left,
-numberstyle= \\tiny,
-keywordstyle= \\color{ blue!70},commentstyle=\\color{red!50!green!50!blue!50},
-frame=shadowbox,
-breaklines=true,
-rulesepcolor= \\color{ red!20!green!20!blue!20}
-}
+% \\lstset{numbers=left,
+% numberstyle= \\tiny,
+% keywordstyle= \\color{ blue!70},commentstyle=\\color{red!50!green!50!blue!50},
+% frame=shadowbox,
+% breaklines=true,
+% rulesepcolor= \\color{ red!20!green!20!blue!20}
+% }
 
 [EXTRA]
 "
@@ -1481,6 +1490,9 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
  '(org-agenda-files
    (quote
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ describe-char
+ eval-buffer
  package-autoremove
  package-list-packages
- eval-buffer
  server-force-delete
  kill-all-abbrevs
  magit-status
- magit-push
 )
 
 ;; ----- smex-data -----
@@ -52,7 +52,7 @@
  (auto-fill-mode . 6)
  (color-theme-word-perfect . 7)
  (pyim-dicts-manager . 1)
- (describe-char . 9)
+ (describe-char . 10)
  (describe-fontset . 2)
  (helm-bookmarks . 3)
  (color-theme-gnome . 1)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 979)
+ (eval-buffer . 987)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
