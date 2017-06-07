@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ package-autoremove
+ package-list-packages
  eval-buffer
  server-force-delete
  kill-all-abbrevs
  magit-status
  magit-push
- org-reload
- package-list-packages
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 142)
+ (package-list-packages . 143)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 13)
+ (package-autoremove . 15)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)

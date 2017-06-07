@@ -452,7 +452,6 @@ directory to make multiple eshell windows easier."
 		    :foreground "black" :background "gray80"
 		    :box 'nil)
 
-
 ;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
@@ -1596,7 +1595,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (evil-search-highlight-persist rainbow-delimiters evil-magit use-package ox-reveal multiple-cursors esup window-number ace-jump-mode evil-escape ein evil-matchit jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip ox-latex-chinese neotree multi-term minimap matlab-mode markdown-mode magit log4e linum-relative key-chord jdee htmlize ht helm-ag gntp focus flatui-theme expand-region evil-surround evil-leader emmet-mode elpy dracula-theme cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
