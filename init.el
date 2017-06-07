@@ -194,7 +194,7 @@ directory to make multiple eshell windows easier."
 
 ;;(set-fontset-font "fontset-default" 'chinese-gbk "Helvetica Neue")
 ;;(set-fontset-font "fontset-default" 'han "-apple-.萍方-简-normal-normal-normal-*-14-*-*-*-*-0-iso10646-1") 
-;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
+(set-fontset-font "fontset-default" 'han '("PingFang SC"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
 
@@ -445,9 +445,15 @@ directory to make multiple eshell windows easier."
 (setq-default mode-line-buffer-identification
 	      (propertized-buffer-identification "%b"))
 
+;; (set-face-attribute 'mode-line nil
+;;                 :box '(:line-width 6 :color "gray20"))
+
+(set-face-attribute 'mode-line-inactive nil
+		    :foreground "black" :background "gray80"
+		    :box 'nil)
 
 
-					;relative-number------------------------
+;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
 ;; (add-hook 'prog-mode-hook 'relative-line-numbers-mode t)
@@ -599,15 +605,15 @@ directory to make multiple eshell windows easier."
 ;;   '(fringe (( (:background "black")))))
 
 ;;smooth-scroll---------------------------------
-;; (require 'smooth-scrolling)
-;; (smooth-scrolling-mode 1)
-;; (setq scroll-margin 1
-;;       scroll-conservatively 10000
-;;       scroll-step 1
-;;       scroll-up-aggressively 0.01
-;;       scroll-down-aggressively 0.01)
-;; (setq-default scroll-up-aggressively 0.01
-;;               scroll-down-aggressively 0.01)
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+(setq scroll-margin 1
+      scroll-conservatively 10000
+      scroll-step 1
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
+(setq-default scroll-up-aggressively 0.01
+              scroll-down-aggressively 0.01)
 
 ;;---------------------------------------------------------------------------------
 

@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO \n* 学习\n**")
- (rear-context-string . "据库的制作\n*** NEXT \n")
- (position . 969))
+ (filename . "~/Dropbox/Txt/inbox.txt")
+ (front-context-string . "** [2017-06-07 三")
+ (rear-context-string . "索框...* 给老爸搞一个网页\n")
+ (position . 6247))
 )

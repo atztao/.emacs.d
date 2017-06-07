@@ -1,7 +1,8 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/zhangtao/Dropbox/Txt/todo.txt" . 3374)
+(("/home/zhangtao/.emacs.d/init.el" . 25929)
  ("/home/zhangtao/Dropbox/Txt/inbox.txt" . 6246)
- ("/home/zhangtao/.emacs.d/init.el" . 43422)
+ ("/home/zhangtao/Dropbox/Txt/todo.txt" . 126)
+ ("/home/zhangtao/.emacs.d/lisp/init_evil.el" . 5656)
  ("/home/zhangtao/tmp/minted.txt" . 796)
  ("/home/zhangtao/Dropbox/Networks/Exercise/Net2_ex1/Sandpile_Model_Source.txt" . 403)
  ("/home/zhangtao/.emacs.d/snippets/org-mode/titles" . 40)
@@ -13,7 +14,6 @@
  ("/home/zhangtao/Dropbox/title" . 35)
  ("/home/zhangtao/.emacs.d/lisp/blue-ruin.el" . 4112)
  ("/home/zhangtao/.emacs.d/lisp/init_evil" . 463)
- ("/home/zhangtao/.emacs.d/lisp/init_evil.el" . 8324)
  ("/home/zhangtao/Dropbox/Txt/write.txt" . 14062)
  ("/home/zhangtao/Dropbox/Txt/book.md" . 10)
  ("/home/zhangtao/Dropbox/Txt/todo.html" . 19239)
