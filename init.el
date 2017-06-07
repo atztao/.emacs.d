@@ -12,24 +12,6 @@
 ;; (server-start)  
 ;;(desktop-save-mode) 
 
-;; (defun frame-setting ()
-;;   (set-default-font "Monaco-12")
-;;   (set-fontset-font "fontset-default" 'han '("PingFang SC"))
-;;   (set-background-color "black")
-;;   (set-cursor-color "red")
-;;   (set-mouse-color "goldenrod")
-;;   ;; (set-foreground-color "white")
-;;   )
-
-;; ;; (add-to-list 'default-frame-alist '(tty-color-mode  . -1))
-
-;; (if (and (fboundp 'daemonp) (daemonp))
-;;     (add-hook 'after-make-frame-functions
-;; 	      (lambda (frame)
-;; 		(with-selected-frame frame
-;; 		  (frame-setting))))
-;;   (frame-setting))
-
 (setq frame-title-format
       (list '(:eval (projectile-project-name)) 
             "(●—●) I'm Here @ "
@@ -53,7 +35,11 @@
 (menu-bar-mode 0)  
 (scroll-bar-mode 0)  
 ;;(set-scroll-bar-mode 'right)
-(visual-line-mode 1)
+;;(visual-line-mode 1)
+(global-visual-line-mode 1)
+(setq inhibit-startup-screen t)
+(setq ring-bell-function 'ignore)
+(set-fringe-mode '(0 . 0))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -127,10 +113,6 @@ directory to make multiple eshell windows easier."
 ;; (setq-default line-spacing 2)
 (setq-default line-spacing 0)
 
-(global-visual-line-mode 1)
-(setq inhibit-startup-screen t)
-(setq ring-bell-function 'ignore)
-(set-fringe-mode '(0 . 0))
 
 ;;(setq-default major-mode 'org-mode)
 (eval-after-load "linum"
@@ -175,25 +157,12 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 (setq default-font-size-pt 12)
 
-;;(add-to-list 'default-frame-alist '(font . "Consolas-10:antialias=true:autohinting=true" ))
-;; (set-frame-font "Consolas-10")
-;;(set-frame-font "-adobe-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
-;;(set-frame-font "Source Code Pro 9")
-;;(set-frame-font "Inconsolata-g-10")
-
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8-unix)
 
-
 ;;(set-frame-font "Menlo-9")
 (set-frame-font "Monaco-10")
-;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     charset
-;;                     (font-spec :family "-apple-.萍方-简-normal-normal-normal-*-20-*-*-*-*-0-iso10646-1" :size 14)))
 
-;;(set-fontset-font "fontset-default" 'chinese-gbk "Helvetica Neue")
-;;(set-fontset-font "fontset-default" 'han "-apple-.萍方-简-normal-normal-normal-*-14-*-*-*-*-0-iso10646-1") 
 (set-fontset-font "fontset-default" 'han '("PingFang SC"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
@@ -240,32 +209,7 @@ directory to make multiple eshell windows easier."
     ;; Attach callbacks to hooks
     (setq interprogram-cut-function 'xsel-cut-function)
     (setq interprogram-paste-function 'xsel-paste-function)))
-;; Mimic Vim's set paste
-;; From http://stackoverflow.com/questions/18691973/is-there-a-set-paste-option-in-emacs-to-paste-paste-from-external-clipboard
-(defvar ttypaste-mode nil)
-(add-to-list 'minor-mode-alist '(ttypaste-mode " Paste"))
-(defun ttypaste-mode ()
-  (interactive)
-  (let ((buf (current-buffer))
-        (ttypaste-mode t))
-    (with-temp-buffer
-      (let ((stay t)
-            (text (current-buffer)))
-        (redisplay)
-        (while stay
-          (let ((char (let ((inhibit-redisplay t)) (read-event nil t 0.1))))
-            (unless char
-              (with-current-buffer buf (insert-buffer-substring text))
-              (erase-buffer)
-              (redisplay)
-              (setq char (read-event nil t)))
-            (cond
-             ((not (characterp char)) (setq stay nil))
-             ((eq char ?\r) (insert ?\n))
-             ((eq char ?\e)
-              (if (sit-for 0.1 'nodisp) (setq stay nil) (insert ?\e)))
-             (t (insert char)))))
-        (insert-buffer-substring text)))))
+
 
 ;; Automatically set screen title
 ;; ref http://vim.wikia.com/wiki/Automatically_set_screen_title
@@ -307,33 +251,9 @@ directory to make multiple eshell windows easier."
 
 
 
-					;----------------------
-					;Themes
-					;----------------------
-
-;;color-themes
-;; (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-6.6.0/")
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; ;; (color-theme-tangotango)
-;; (color-theme-matrix)
-
-;;solarized
-;; (setq solarized-termcolors 256)
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
-;; (load-theme 'solarized t)
-
-;; (add-hook 'after-make-frame-functions
-;;           (lambda (frame)
-;;             (let ((mode (if (display-graphic-p frame) 'light )))
-;;               (set-frame-parameter frame 'background-mode mode)
-;;               (set-terminal-parameter frame 'background-mode mode))
-;;              (enable-theme 'solarized)))
-
-
-;; (load-theme 'solarized t)
-;; (set-frame-parameter nil 'background-mode 'dark)    
-;; (enable-theme 'solarized)
+;----------------------
+;Themes
+;----------------------
 
 ;;colors
 (setq cursor-type 'box)
@@ -343,9 +263,6 @@ directory to make multiple eshell windows easier."
 ;; (set-background-color "white") ;;202020
 (set-foreground-color "black")
 
-;; (set-background-color "black")
-;; (set-foreground-color "white")
-
 (make-face-bold 'isearch)
 (make-face-bold 'lazy-highlight)
 (set-face-foreground 'isearch "#000000")
@@ -354,9 +271,6 @@ directory to make multiple eshell windows easier."
 (set-face-background 'lazy-highlight "#ffff00")
 
 (set-face-attribute 'region nil :background "#F0E68C" ) ;;#EEE8D6
-
-;;(setq frame-background-mode 'light)
-;;(setq frame-background-mode 'dark)
 
 (set-cursor-color "red")
 (set-mouse-color "goldenrod")
@@ -374,10 +288,6 @@ directory to make multiple eshell windows easier."
 ;;(load-theme 'dracula t)
 ;; (set-cursor-color "red")
 (set-face-attribute 'default nil :height 82)
-
-
-;; (set-background-color "black")
-;; (set-foreground-color "white")
 
 ;;--------------------------
 ;;mode-line
@@ -471,16 +381,13 @@ directory to make multiple eshell windows easier."
 ;;                     :inherit '(hl-line default)))
 
 
+;;rainbow-delimiters---------------------
 (require 'rainbow-delimiters)
-
 ;; Enables rainbow-delimiters-mode in Emacs Lisp buffers
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-
 (add-hook 'python-mode-hook 'rainbow-delimiters-mode)
-
 ;; Enables rainbow-delimiters-mode in Clojure buffers.
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
 ;; enables rainbow-delimiters-mode in other Lisp mode buffers.
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
@@ -574,9 +481,10 @@ directory to make multiple eshell windows easier."
 ;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 ;; (setq recentf-max-saved-items 150)
 
-					;---------------
-					;smex
-					;---------------
+;---------------
+;smex
+;---------------
+
 (add-to-list 'load-path "~/.emacs.d/elpa/smex/")
 (require 'smex)
 (smex-initialize)
@@ -593,7 +501,6 @@ directory to make multiple eshell windows easier."
 ;;----------------
 ;;windows—switch
 ;;----------------
-
 ;; (global-set-key (kbd "M-p") 'ace-window)
 
 ;;fringer
@@ -604,15 +511,15 @@ directory to make multiple eshell windows easier."
 ;;   '(fringe (( (:background "black")))))
 
 ;;smooth-scroll---------------------------------
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
-(setq scroll-margin 1
-      scroll-conservatively 10000
-      scroll-step 1
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01)
-(setq-default scroll-up-aggressively 0.01
-              scroll-down-aggressively 0.01)
+;; (require 'smooth-scrolling)
+;; (smooth-scrolling-mode 1)
+;; (setq scroll-margin 1
+;;       scroll-conservatively 10000
+;;       scroll-step 1
+;;       scroll-up-aggressively 0.01
+;;       scroll-down-aggressively 0.01)
+;; (setq-default scroll-up-aggressively 0.01
+;;               scroll-down-aggressively 0.01)
 
 ;;---------------------------------------------------------------------------------
 
@@ -646,19 +553,6 @@ directory to make multiple eshell windows easier."
       ;;      helm-ff-file-name-history-use-recentf  t
       helm-buffers-fuzzy-matching            t
       helm-ff-auto-update-initial-value      t)
-
-;; (autoload 'helm-descbinds      "helm-descbinds" t)
-;; (autoload 'helm-eshell-history "helm-eshell"    t)
-;; (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
-
-;; (global-set-key (kbd "C-h a")    #'helm-apropos)
-;; (global-set-key (kbd "C-h i")    #'helm-info-emacs)
-;; (global-set-key (kbd "C-h b")    #'helm-descbinds)
-
-;; (add-hook 'eshell-mode-hook
-;;           #'(lambda ()
-;;               (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-;;               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
 
 ;; (global-set-key (kbd "C-x b")   #'helm-mini)
 ;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
@@ -694,9 +588,9 @@ directory to make multiple eshell windows easier."
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-					;--------------
-					;ace-jump
-					;--------------
+;--------------
+;ace-jump
+;--------------
 
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
@@ -740,9 +634,9 @@ directory to make multiple eshell windows easier."
 (global-set-key [M-up] 'windmove-up)              ; move to upper window
 (global-set-key [M-down] 'windmove-down)          ; move to lower window
 
-					;----------------
-					;yasnippet
-					;----------------
+;----------------
+;yasnippet
+;----------------
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -750,10 +644,9 @@ directory to make multiple eshell windows easier."
 ;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
 ;;(setq debug-on-error t)
 
-					;----------------
-					;auto-complete
-					;----------------
-
+;----------------
+;auto-complete
+;----------------
 (require 'popup)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
@@ -820,9 +713,9 @@ directory to make multiple eshell windows easier."
 ;; ;; Create clang-format file using google style
 ;; ;; clang-format -style=google -dump-config > .clang-format
 
-					;----------------
-					;python+c languge
-					;----------------
+;----------------
+;python+c languge
+;----------------
 
 ;;(setq py-python-command "/usr/bin/python2")
 (setq py-python-command "/usr/bin/python3")
@@ -850,8 +743,6 @@ directory to make multiple eshell windows easier."
       (python-shell-completion-native-get-completions
        (get-buffer-process (current-buffer))
        nil "_"))))
-
-
 
 (require 'cl-lib)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
@@ -1595,7 +1486,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
