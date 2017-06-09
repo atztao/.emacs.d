@@ -43,8 +43,8 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(add-to-list 'default-frame-alist '(height . 26))
-(add-to-list 'default-frame-alist '(width . 64))
+(add-to-list 'default-frame-alist '(height . 20))
+(add-to-list 'default-frame-alist '(width . 52))
 
 sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
 sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空格。
@@ -155,13 +155,12 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
-(setq default-font-size-pt 12)
+(setq default-font-size-pt 10)
 
-;;(set-language-environment "UTF-8")
-;;(set-default-coding-systems 'utf-8-unix)
-
-;;(set-frame-font "Menlo-9")
-(set-frame-font "Monaco-8")
+(set-frame-font "Menlo-8")
+;;(set-frame-font "Monaco-8")
+;;(set-frame-font "Source Code Pro-8")
+;;(set-frame-font "DejaVu Sans Mono-8")
 
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
@@ -255,14 +254,18 @@ directory to make multiple eshell windows easier."
 ;----------------------
 ;Themes
 ;----------------------
+;;zenburn
+
+(defvar zenburn-override-colors-alist
+   '(("zenburn-bg" . "#1C1C1C"))) ;#1d1f21 #111111 #2d2d2d
+(load-theme 'zenburn t)
+
+;; (set-cursor-color "red")
+;;(set-face-attribute 'default nil :height 82)
+
 
 ;;colors
 (setq cursor-type 'box)
-
-(set-background-color "#FFFFFF")
-;;(set-background-color "ivory")
-;; (set-background-color "white") ;;202020
-(set-foreground-color "black")
 
 (make-face-bold 'isearch)
 (make-face-bold 'lazy-highlight)
@@ -276,19 +279,12 @@ directory to make multiple eshell windows easier."
 (set-cursor-color "red")
 (set-mouse-color "goldenrod")
 
-;;zenburn
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
-;;(load "~/.emacs.d/themes/ujelly-theme.el")
-;;(load "~/.emacs.d/themes/monokai-theme.el")
+;;(set-background-color "darkslategrey")
+;;(set-background-color "#FFFFFF")
+;;(set-background-color "ivory")
+;;(set-background-color "white") ;;202020
+;;(set-foreground-color "black")
 
-;; (defvar zenburn-override-colors-alist
-;;    '(("zenburn-bg" . "#111111")))
-;;(load-theme 'zenburn t)
-;;(load-theme 'dracula t)
-;; (set-cursor-color "red")
-;;(set-face-attribute 'default nil :height 82)
 
 ;;--------------------------
 ;;mode-line
@@ -303,11 +299,11 @@ directory to make multiple eshell windows easier."
 ;; Reverse colors for the border to have nicer line  
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-foreground 'vertical-border "gray45")
-;; (set-face-background 'vertical-border "black")
+(set-face-foreground 'vertical-border "gray25")
+(set-face-background 'vertical-border "black")
 
 (set-display-table-slot standard-display-table
                         'vertical-border 
@@ -330,7 +326,8 @@ directory to make multiple eshell windows easier."
                 (python-mode . "Py")
                 (lisp-interaction-mode . "iEL")
                 (emacs-lisp-mode . "EL")
-                (super-save-mode . "XS")))
+                (super-save-mode . "XS")
+		(helm-mode . " H")))
 
 (defun clean-mode-line ()
   (interactive)
@@ -346,10 +343,10 @@ directory to make multiple eshell windows easier."
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-;; (set-face-attribute 'mode-line           nil :box nil :background "grey60" :foreground "black") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey80" :foreground "black")
+;; (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "dark olive green" :foreground "grey")
 
-;; ;; (set-face-attribute 'mode-line-buffer-id nil :background "gray" :foreground "dark black")
+;; (set-face-attribute 'mode-line-buffer-id nil :background "#f0dfaf" :foreground "#acbc90")
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
@@ -451,6 +448,7 @@ directory to make multiple eshell windows easier."
 (setq ido-file-extensions-order '(".org" ".txt" ))
 (setq ido-use-filename-at-point 'guess)
 (setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
+(setq org-completion-use-ido t)
 
 (defun ido-bookmark-jump (bname)
   "*Switch to bookmark interactively using `ido'."
@@ -641,7 +639,7 @@ directory to make multiple eshell windows easier."
 
 (require 'yasnippet)
 (yas-global-mode 1)
-;;(setq yas-snippet-dirs "~/.emacs.d/snippets/")
+(setq yas-snippet-dirs "~/.emacs.d/snippets/")
 ;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
 ;;(setq debug-on-error t)
 
@@ -682,7 +680,7 @@ directory to make multiple eshell windows easier."
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;--------------------evil-mode
-;; (require 'init_evil)
+;;(require 'init_evil)
 
 ;;--------------------email
 ;; (provide 'init-email)
@@ -880,6 +878,8 @@ directory to make multiple eshell windows easier."
 ;;export image width
 (setq org-image-actual-width 100)
 ;;Auto Fill
+    (add-hook 'text-mode-hook 'turn-on-auto-fill)
+
 (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
           (lambda () (setq truncate-lines nil)))  
@@ -911,11 +911,10 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- 
- '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t))))
- '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
-'(term ((t (:background "white" :foreground "black")))))
+ '(org-agenda-done ((t (:foreground "#4f4f4f" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "#4f4f4f" :weight bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#5f5f5f" :strike-through t))))
+ '(term ((t (:background "white" :foreground "black")))))
 
 ;;the mouse cursor from highlighting lines in the agenda
 (add-hook 'org-agenda-finalize-hook
@@ -1075,7 +1074,7 @@ unwanted space when exporting org-mode to html."
 ;; use org-bullets-mode for utf8 symbols as org bullets
 ;; (require 'org-bullets)
 ;; ;; (setq org-ellipsis "+")
-;; (setq org-bullets-bullet-list '("•"))
+;; (setq org-bullets-bullet-LIST '("•"))
 
 
 ;; ;; make available "org-bullet-face" such that I can control the font size individually
@@ -1089,9 +1088,12 @@ unwanted space when exporting org-mode to html."
 (require 'ox-reveal)
 ;; (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
 (setq org-reveal-root "file:///home/zhangtao/.emacs.d/reveal.js-master/")
+(setq org-reveal-hlevel 2)
 (setq org-reveal-control nil)
 (setq org-reveal-mathjax t)
 (setq org-reveal-title-slide 'auto) ;;C-u A-x org-reload Fix 
+
+(setq org-footnote-auto-adjust t)
 
 
 
@@ -1505,7 +1507,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
