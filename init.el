@@ -27,10 +27,6 @@
 
 (setq x-select-enable-clipboard t)
 
-;;(setq visible-bell 1)
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-;;(setq inhibit-splash-screen t)
-
 (tool-bar-mode 0)  
 (menu-bar-mode 0)  
 (scroll-bar-mode 0)  
@@ -53,6 +49,7 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 ;;(cd "~/emacs/home/")  
 ;;(setq default-directory "~/Dropbox/")
 
+(add-hook 'text-mode-hook 'auto-fill-mode)
 (setq-default fill-column 80)
 
 ;;eshell
@@ -225,7 +222,7 @@ directory to make multiple eshell windows easier."
 (setq bookmark-save-flag 1)
 
 ;;----------------------------------------------------------------------------------
-;;Plugin
+;;Package. Plugin.
 ;;----------------------------------------------------------------------------------
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -259,8 +256,7 @@ directory to make multiple eshell windows easier."
 ;;    '(("zenburn-bg" . "#000000"))) ;#1d1f21 #111111 #2d2d2d
  (load-theme 'zenburn t)
 
-;; (set-cursor-color "red")
-;;(set-face-attribute 'default nil :height 82)
+(set-face-attribute 'default nil :height 82)
 
 
 ;;colors
@@ -278,7 +274,6 @@ directory to make multiple eshell windows easier."
 (set-cursor-color "red")
 (set-mouse-color "goldenrod")
 
-;;(set-background-color "darkslategrey")
 ;;(set-background-color "#FFFFFF")
 ;; (set-background-color "ivory")
 ;; (set-background-color "white") ;;202020
@@ -292,18 +287,18 @@ directory to make multiple eshell windows easier."
 
 (column-number-mode 1)
 
-;;(set-face-attribute 'mode-line nil  :height 90)
+;;(set-face-attribute 'mode-line nil  :height 80)
 
 ;;---------------------------Vertical-border
 ;; Reverse colors for the border to have nicer line  
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray37")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray32")
 ;; ;;(set-face-background 'vertical-border "#2d2d2d")
 
 (set-display-table-slot standard-display-table
@@ -346,7 +341,6 @@ directory to make multiple eshell windows easier."
 
 ;; (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
 ;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey" :foreground "grey20")
-
 ;;(set-face-attribute 'mode-line-buffer-id nil :background "grey75" :foreground "black")
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
@@ -361,7 +355,8 @@ directory to make multiple eshell windows easier."
 ;; 		    :foreground "black" :background "gray80"
 ;; 		    :box 'nil)
 
-;relative-number------------------------
+
+;;relative-number------------------------
 ;; (require 'linum-relative)
 ;;     (linum-on)
 ;; (add-hook 'prog-mode-hook 'relative-line-numbers-mode t)
@@ -406,17 +401,13 @@ directory to make multiple eshell windows easier."
           (lambda ()
             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
-
-
 (add-hook 'term-mode-hook
           (lambda ()
             (setq term-buffer-maximum-size 0)))
-
 (add-hook 'term-mode-hook
           (lambda ()
             (setq show-trailing-whitespace nil)
             (autopair-mode -1)))
-
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-y") 'term-paste)))
@@ -499,7 +490,7 @@ directory to make multiple eshell windows easier."
 (global-undo-tree-mode 1)
 
 ;;----------------
-;;windows—switch
+;;windows switch
 ;;----------------
 (global-set-key (kbd "M-p") 'ace-window)
 
@@ -568,17 +559,7 @@ directory to make multiple eshell windows easier."
       helm-buffers-fuzzy-matching            t
       helm-ff-auto-update-initial-value      t)
 
-;; (global-set-key (kbd "C-x b")   #'helm-mini)
-;; (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-;; (global-set-key (kbd "M-x") #'helm-M-x)
-;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
-;; (global-set-key (kbd "C-x C-r") #'helm-recentf)
-;; (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
-
 ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
-
-;; (global-set-key (kbd "M-i") 'helm-swoop)
-;; (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
 (global-set-key (kbd "M-s i")   #'helm-swoop)
 (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
@@ -586,8 +567,6 @@ directory to make multiple eshell windows easier."
 (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
 ;;(global-set-key (kbd "C-s")   #'helm-swoop)
-;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
 
 (helm-autoresize-mode 1)
 
@@ -606,8 +585,9 @@ directory to make multiple eshell windows easier."
 ;ace-jump
 ;--------------
 
-;; (ace-isearch-mode +1)
-;; (global-ace-isearch-mode +1)
+(require 'ace-jump-mode)
+(ace-isearch-mode +1)
+(global-ace-isearch-mode +1)
 
 (require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
@@ -618,7 +598,7 @@ directory to make multiple eshell windows easier."
 (define-key global-map (kbd "C-c SPC") 'ace-pinyin-jump-char)
 
 (add-to-list 'load-path "which-folder-ace-jump-mode-file-in/")
-(require 'ace-jump-mode)
+
 ;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
@@ -660,7 +640,10 @@ directory to make multiple eshell windows easier."
 (ac-set-trigger-key "TAB")
 
 
-;; Require flycheck to be present
+;;--------------------
+;;flycheck
+;;--------------------
+
 (require 'flycheck)
 ;; Force flycheck to always use c++11 support. We use
 ;; the clang language backend so this is set to clang
@@ -677,10 +660,15 @@ directory to make multiple eshell windows easier."
 
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
+;;-------------------Some Provide
+
 ;;(require 'init_evil)
 
 ;--------------------email
 ;; (provide 'init-email)
+
+;;--------------------------------
+
 
 ;;-------------------------
 ;;C++
@@ -773,18 +761,18 @@ directory to make multiple eshell windows easier."
 ;; (require 'tramp)
 ;; (add-to-list 'Info-default-directory-list "~/.emacs.d/tramp/info/")
 
-					;-----------------
-					;Java + Jdee
-					;-----------------
+;-----------------
+;Java + Jdee
+;-----------------
 
 ;; (add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
 ;; (autoload 'jde-mode "jde" "JDE mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
 
-					;------------------
-					;Html
-					;------------------
+;------------------
+;Html
+;------------------
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -799,9 +787,10 @@ directory to make multiple eshell windows easier."
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
 
-					;-----------------
-					;markdown-mode
-					;-----------------
+;-----------------
+;markdown-mode
+;-----------------
+
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 ;; (autoload 'gfm-mode "gfm-mode"
@@ -827,9 +816,9 @@ directory to make multiple eshell windows easier."
 ;; (global-set-key "\C-xm" 'browse-url-at-point)
 ;; (setq w3m-use-cookies t)
 
-					;-------------
-					;org-mode
-					;-------------
+;-------------
+;org-mode
+;-------------
 
 
 (setq org-todo-keywords
@@ -908,9 +897,9 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-done ((t (:foreground "#9f9f9f" :weight normal :strike-through t))))
- '(org-done ((t (:foreground "#9f9f9f" :weight bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#9f9f9f" :strike-through t)))) ;;Grey light
+ '(org-agenda-done ((t (:foreground "#5F5F5F" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "#5F5F5F" :weight bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#5F5F5F" :strike-through t)))) ;;Grey light
  '(term ((t (:background "white" :foreground "black")))))
 
 ;;the mouse cursor from highlighting lines in the agenda
@@ -1009,7 +998,8 @@ unwanted space when exporting org-mode to html."
 ;; (load "~/.emacs.d/elpa/outline-presentation.el")
 ;; (require 'outline-presentation)
 
-                                        ;(setq org-default-notes-file (concat org-directory "~/Dropbox/inbox.txt"))
+                                        
+;(setq org-default-notes-file (concat org-directory "~/Dropbox/inbox.txt"))
 ;;(define-key global-map [f12] 'org-capture)
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
@@ -1094,9 +1084,9 @@ unwanted space when exporting org-mode to html."
 
 
 
-					;----------------------
-					;auctex+XeCJK
-					;----------------------
+;----------------------
+;auctex+XeCJK
+;----------------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.89/")
 (load "auctex.el" nil t t)
@@ -1172,7 +1162,7 @@ unwanted space when exporting org-mode to html."
 (advice-add 'org-latex-compile :after #'delete-file)
 
 ;;-------------------------------------------------------
-;;ox-latex
+;;ox-latex export pdf
 ;;-------------------------------------------------------
 
 (require 'ox-latex) ;;sudo pip install pygmentize https://emacs-china.org/t/spacemacs-org-mode-pdf/1577/15
@@ -1417,16 +1407,6 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;; (image-type-available-p 'xbm)
 ;; (image-type-available-p 'xpm)
 
-;;flyspell
-;; (let ((langs '("american" "francais" "brasileiro")))
-;;   (    setq lang-ring (make-ring (length langs)))
-;;   (dolist (elem langs) (ring-insert lang-ring elem)))
-;; (defun cycle-ispell-languages ()
-;;   (interactive)
-;;   (let ((lang (ring-ref lang-ring -1)))
-;;     (ring-insert lang-ring lang)
-;;     (ispell-change-dictionary lang)))
-;; (global-set-key [f6] 'cycle-ispell-languages)
 
 
 ;; Setting up matlab-mode
@@ -1439,6 +1419,26 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 ;;        auto-mode-alist))
 
 
+
+
+;;flyspell-----------------------------------
+;;apt install aspell
+(setq-default ispell-program-name "aspell")
+(ispell-change-dictionary "american" t)  
+
+(custom-set-faces
+ '(flyspell-duplicate ((((class color)) (:foreground "red" :underline t :weight bold))))
+ )
+
+;; (let ((langs '("american" "francais" "brasileiro")))
+;;   (    setq lang-ring (make-ring (length langs)))
+;;   (dolist (elem langs) (ring-insert lang-ring elem)))
+;; (defun cycle-ispell-languages ()
+;;   (interactive)
+;;   (let ((lang (ring-ref lang-ring -1)))
+;;     (ring-insert lang-ring lang)
+;;     (ispell-change-dictionary lang)))
+;; (global-set-key [f6] 'cycle-ispell-languages)
 
 ;;-----------------------------------------------------------
 ;;Email
