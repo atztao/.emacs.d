@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- helm-swoop
- evil-escape-mode
- ispell-buffer
- set-background-color
+ disable-theme
+ multi-term
+ gomoku
  package-list-packages
- magit-status
+ epa-encrypt-file
+ load-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 149)
+ (package-list-packages . 150)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 64)
- (load-theme . 215)
+ (load-theme . 218)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1036)
+ (eval-buffer . 1051)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 130)
+ (disable-theme . 135)
  (set-background-color . 5)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -243,7 +243,7 @@
  (gnus . 5)
  (gnus-msg-mail . 1)
  (rmail . 1)
- (notmuch . 17)
+ (notmuch . 18)
  (notmuch-tree . 1)
  (nnmail-split-history . 1)
  (gnus-agentize . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 16)
+ (multi-term . 21)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 1)
@@ -338,7 +338,7 @@
  (magit-branch . 1)
  (magit-mode . 1)
  (display-time . 2)
- (epa-encrypt-file . 1)
+ (epa-encrypt-file . 2)
  (iimage-mode . 1)
  (windmove-left . 1)
  (profiler-start . 1)
@@ -355,4 +355,5 @@
  (server-force-delete . 1)
  (ispell-buffer . 1)
  (evil-escape-mode . 1)
+ (gomoku . 1)
 )

@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** [2017-06-09 五")
- (rear-context-string . "”的效果起记而破坏。——贝多芬\n")
- (position . 6373))
+ (front-context-string . "** [2017-06-10 六")
+ (rear-context-string . "6:56]\n崇尚绿色生活和食物\n")
+ (position . 6407))
 )

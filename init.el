@@ -154,7 +154,7 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 (setq default-font-size-pt 12)
 
-(set-frame-font "Menlo-8")
+(set-frame-font "Inconsolata-8")
 ;;(set-frame-font "Monaco-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -254,9 +254,9 @@ directory to make multiple eshell windows easier."
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#000000"))) ;#1d1f21 #111111 #2d2d2d
- (load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
 
-(set-face-attribute 'default nil :height 82)
+;;(set-face-attribute 'default nil :height 82)
 
 
 ;;colors
@@ -276,14 +276,14 @@ directory to make multiple eshell windows easier."
 
 ;;(set-background-color "#FFFFFF")
 ;; (set-background-color "ivory")
-;; (set-background-color "white") ;;202020
-;; (set-foreground-color "black")
+(set-background-color "white") ;;202020
+(set-foreground-color "black")
 
 
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-;;(setq-default mode-line-format nil)
+(setq-default mode-line-format nil)
 
 (column-number-mode 1)
 
@@ -294,11 +294,11 @@ directory to make multiple eshell windows easier."
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "gray32")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "gray32")
 ;; ;;(set-face-background 'vertical-border "#2d2d2d")
 
 (set-display-table-slot standard-display-table
@@ -585,9 +585,9 @@ directory to make multiple eshell windows easier."
 ;ace-jump
 ;--------------
 
-(require 'ace-jump-mode)
-(ace-isearch-mode +1)
-(global-ace-isearch-mode +1)
+;; (require 'ace-jump-mode)
+;; (ace-isearch-mode +1)
+;; (global-ace-isearch-mode +1)
 
 (require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
@@ -639,7 +639,6 @@ directory to make multiple eshell windows easier."
 ;;(add-to-list 'ac-modes 'org-mode)
 (ac-set-trigger-key "TAB")
 
-
 ;;--------------------
 ;;flycheck
 ;;--------------------
@@ -662,11 +661,8 @@ directory to make multiple eshell windows easier."
 
 ;;-------------------Some Provide
 
-;;(require 'init_evil)
-
 ;--------------------email
-;; (provide 'init-email)
-
+(provide 'init-email)
 ;;--------------------------------
 
 
@@ -897,9 +893,9 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-done ((t (:foreground "#5F5F5F" :weight normal :strike-through t))))
- '(org-done ((t (:foreground "#5F5F5F" :weight bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#5F5F5F" :strike-through t)))) ;;Grey light
+ '(org-agenda-done ((t (:foreground "Grey" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "Grey" :weight bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Grey" :strike-through t)))) ;;Grey light
  '(term ((t (:background "white" :foreground "black")))))
 
 ;;the mouse cursor from highlighting lines in the agenda
