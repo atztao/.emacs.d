@@ -155,14 +155,13 @@ directory to make multiple eshell windows easier."
 ;;---------------------------
 ;;fonts
 ;;---------------------------
-(setq default-font-size-pt 10)
+(setq default-font-size-pt 12)
 
 (set-frame-font "Menlo-8")
 ;;(set-frame-font "Monaco-8")
 ;;(set-frame-font "Source Code Pro-8")
-;;(set-frame-font "DejaVu Sans Mono-8")
 
-;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
+;; (set-fontset-font "fontset-default" 'han '("PingFang SC"))
 ;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
 ;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
 (set-fontset-font "fontset-default" 'han "Source Han Sans CN")
@@ -240,6 +239,7 @@ directory to make multiple eshell windows easier."
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 ;;(package-refresh-contents)
 (package-initialize)
+
 ;; (require 'cl-lib)
 ;; (require 'cl)
 ;; (unless (package-installed-p 'use-package)
@@ -250,15 +250,14 @@ directory to make multiple eshell windows easier."
 ;;   (require 'use-package))
 
 
-
 ;----------------------
 ;Themes
 ;----------------------
 ;;zenburn
 
-(defvar zenburn-override-colors-alist
-   '(("zenburn-bg" . "#1C1C1C"))) ;#1d1f21 #111111 #2d2d2d
-(load-theme 'zenburn t)
+;; (defvar zenburn-override-colors-alist
+;;    '(("zenburn-bg" . "#000000"))) ;#1d1f21 #111111 #2d2d2d
+ (load-theme 'zenburn t)
 
 ;; (set-cursor-color "red")
 ;;(set-face-attribute 'default nil :height 82)
@@ -281,9 +280,9 @@ directory to make multiple eshell windows easier."
 
 ;;(set-background-color "darkslategrey")
 ;;(set-background-color "#FFFFFF")
-;;(set-background-color "ivory")
-;;(set-background-color "white") ;;202020
-;;(set-foreground-color "black")
+;; (set-background-color "ivory")
+;; (set-background-color "white") ;;202020
+;; (set-foreground-color "black")
 
 
 ;;--------------------------
@@ -297,13 +296,15 @@ directory to make multiple eshell windows easier."
 
 ;;---------------------------Vertical-border
 ;; Reverse colors for the border to have nicer line  
+
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-foreground 'vertical-border "gray25")
-(set-face-background 'vertical-border "black")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "gray37")
+;; ;;(set-face-background 'vertical-border "#2d2d2d")
 
 (set-display-table-slot standard-display-table
                         'vertical-border 
@@ -344,9 +345,9 @@ directory to make multiple eshell windows easier."
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
 ;; (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "dark olive green" :foreground "grey")
+;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey" :foreground "grey20")
 
-;; (set-face-attribute 'mode-line-buffer-id nil :background "#f0dfaf" :foreground "#acbc90")
+;;(set-face-attribute 'mode-line-buffer-id nil :background "grey75" :foreground "black")
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
@@ -500,7 +501,21 @@ directory to make multiple eshell windows easier."
 ;;----------------
 ;;windows—switch
 ;;----------------
-;; (global-set-key (kbd "M-p") 'ace-window)
+(global-set-key (kbd "M-p") 'ace-window)
+
+;; (require 'window-number)
+;; (window-number-mode)
+
+;; (require 'window-numbering)
+;; (window-numbering-mode 1)
+;; (setq window-numbering-assign-func
+;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
+
+(windmove-default-keybindings)
+(global-set-key [M-left] 'windmove-left)          ; move to left window
+(global-set-key [M-right] 'windmove-right)        ; move to right window
+(global-set-key [M-up] 'windmove-up)              ; move to upper window
+(global-set-key [M-down] 'windmove-down)          ; move to lower window
 
 ;;fringer
 ;;(set-window-fringes (selected-window) 0 0 nil)
@@ -616,23 +631,6 @@ directory to make multiple eshell windows easier."
           (lambda ()
             (local-set-key (kbd "\C-c SPC") 'ace-pinyin-jump-char)))
 
-;;--------------
-;;window-number
-;;--------------
-;; (require 'window-number)
-;; (window-number-mode)
-
-;; (require 'window-numbering)
-;; (window-numbering-mode 1)
-;; (setq window-numbering-assign-func
-;;       (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
-
-(windmove-default-keybindings)
-(global-set-key [M-left] 'windmove-left)          ; move to left window
-(global-set-key [M-right] 'windmove-right)        ; move to right window
-(global-set-key [M-up] 'windmove-up)              ; move to upper window
-(global-set-key [M-down] 'windmove-down)          ; move to lower window
-
 ;----------------
 ;yasnippet
 ;----------------
@@ -679,10 +677,9 @@ directory to make multiple eshell windows easier."
 
 ;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
-;;--------------------evil-mode
 ;;(require 'init_evil)
 
-;;--------------------email
+;--------------------email
 ;; (provide 'init-email)
 
 ;;-------------------------
@@ -911,9 +908,9 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-done ((t (:foreground "#4f4f4f" :weight normal :strike-through t))))
- '(org-done ((t (:foreground "#4f4f4f" :weight bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#5f5f5f" :strike-through t))))
+ '(org-agenda-done ((t (:foreground "#9f9f9f" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "#9f9f9f" :weight bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#9f9f9f" :strike-through t)))) ;;Grey light
  '(term ((t (:background "white" :foreground "black")))))
 
 ;;the mouse cursor from highlighting lines in the agenda
@@ -1507,7 +1504,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)

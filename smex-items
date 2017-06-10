@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- load-theme
+ helm-swoop
+ evil-escape-mode
+ ispell-buffer
+ set-background-color
  package-list-packages
- disable-theme
- package-autoremove
- doc-view-mode
- org-mode
+ magit-status
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 148)
+ (package-list-packages . 149)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1019)
+ (eval-buffer . 1036)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -142,7 +142,7 @@
  (make-face-bold . 1)
  (helm-find . 1)
  (occur . 8)
- (helm-swoop . 50)
+ (helm-swoop . 52)
  (ido-find-file . 2)
  (ido-toggle-regexp . 1)
  (helm-occur . 7)
@@ -174,7 +174,7 @@
  (diff-buffer-with-file . 1)
  (diff . 1)
  (disable-theme . 130)
- (set-background-color . 3)
+ (set-background-color . 5)
  (ace-window . 1)
  (ace-jump-mode . 4)
  (dired . 11)
@@ -303,7 +303,7 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 57)
+ (magit-status . 58)
  (magit-push . 51)
  (magit-log-all . 2)
  (jdb . 2)
@@ -353,4 +353,6 @@
  (rainbow-delimiters-mode . 1)
  (kill-all-abbrevs . 1)
  (server-force-delete . 1)
+ (ispell-buffer . 1)
+ (evil-escape-mode . 1)
 )
