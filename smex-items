@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- disable-theme
- multi-term
- gomoku
+ eshell
  package-list-packages
- epa-encrypt-file
- load-theme
+ emacs-version
+ package-autoremove
+ line-number-mode
+ multi-term
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 150)
+ (package-list-packages . 154)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 109)
+ (org-mode . 110)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1051)
+ (eval-buffer . 1074)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -152,7 +152,7 @@
  (powerline-default-theme . 5)
  (highlight-tail-reload . 1)
  (column-number-mode . 2)
- (line-number-mode . 6)
+ (line-number-mode . 7)
  (html2text . 1)
  (html-mode . 5)
  (query-replace . 5)
@@ -196,7 +196,7 @@
  (ido-goto-bookmark . 1)
  (ido-bookmark-jump . 3)
  (helm-occur-from-isearch . 1)
- (eshell . 5)
+ (eshell . 6)
  (undo-tree-undo . 1)
  (eshell-command . 1)
  (occur-edit-mode . 1)
@@ -265,7 +265,7 @@
  (flymake-mode . 1)
  (outline-presentation-mode . 2)
  (xwidget-webkit-browse-url . 10)
- (emacs-version . 6)
+ (emacs-version . 7)
  (undo . 1)
  (view-emacs-news . 5)
  (midnight-mode . 1)
@@ -287,7 +287,7 @@
  (list-packages . 5)
  (package-menu-mark-delete . 5)
  (package-menu-execute . 4)
- (relative-line-numbers-mode . 6)
+ (relative-line-numbers-mode . 7)
  (java-mode . 4)
  (org-babel-tangle . 1)
  (htmlize-file . 1)
@@ -311,13 +311,13 @@
  (jdee-run . 1)
  (cua-selection-mode . 2)
  (deft . 2)
- (hippie-expand . 1)
+ (hippie-expand . 2)
  (markdown . 1)
  (customize-variable . 3)
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 17)
+ (package-autoremove . 25)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 21)
+ (multi-term . 23)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 1)
