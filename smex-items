@@ -2,9 +2,9 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ multi-term
  magit-push
  magit-status
- multi-term
  replace-string
  eshell
  org-agenda
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1135)
+ (eval-buffer . 1145)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 61)
- (magit-push . 53)
+ (magit-status . 62)
+ (magit-push . 54)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 31)
+ (multi-term . 34)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)

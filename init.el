@@ -50,7 +50,7 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 ;;(setq default-directory "~/Dropbox/")
 
 (add-hook 'text-mode-hook 'auto-fill-mode)
-(setq-default fill-column 80)
+;;(setq-default fill-column 80)
 
 ;;eshell
 ;;(setq shell-file-name "cmdproxy")
@@ -240,7 +240,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-(require 'init-evil)
+;;(require 'init-evil)
 
 ;--------------------email
 ;;(require 'init-email)
