@@ -1,5 +1,4 @@
 g++ Hellow.cpp -o Hellow
-g++ Hellow.cpp -o Hellow
 ./Hellow 
 g++ Hellow.cpp -o Hellow
 ./Hellow 
@@ -123,6 +122,7 @@ ls
 exit
 ls
 ll
+exit
 exit
 exit
 exit
