@@ -33,8 +33,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO remove t")
- (rear-context-string . "h ido conflict \n")
- (position . 720))
+ (filename . "~/Dropbox/Txt/inbox.txt")
+ (front-context-string . "** [2017-06-15 四")
+ (rear-context-string . "ail.ccnu.edu.cn\n")
+ (position . 5442))
 )

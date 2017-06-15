@@ -57,6 +57,27 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 
 (setq shell-file-name "/bin/zsh")
 
+(require 'tramp)
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+(setq tramp-default-method "ssh")
+(setq password-cache-expiry nil)
+(setq tramp-verbose 20)
+(setq process-connection-type nil)
+(setq tramp-terminal-type "dumb")
+(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+;;(setq tramp-ssh-controlmaster-options nil)
+
+(setq tramp-ssh-controlmaster-options
+      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+(setq projectile-mode-line " Projectile")
+;;(projectile-global-mode 1)
+;;(set projectile-mode-line " Projectile")
+;;(setq projectile-mode-line nil)
+;; (add-hook 'text-mode-hook 'projectile-mode)
+;; (add-hook 'prog-mode-hook 'projectile-mode)
+
+
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
 current buffer's file. The eshell is renamed to match that
@@ -240,10 +261,10 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-;;(require 'init-evil)
+(require 'init-evil)
 
 ;--------------------email
-;;(require 'init-email)
+(require 'init-email)
 
 ;;-------------------this include programming seetings
 (require 'init-python)
@@ -294,6 +315,8 @@ directory to make multiple eshell windows easier."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flyspell-duplicate ((((class color)) (:foreground "red" :underline t :weight bold))))
+ '(org-agenda-done ((t (:foreground "#5f5f5f" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "#5f5f5f" :weight normal :strike-through t))))
  '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#5f5f5f" :strike-through t))))
  '(term ((t (:background "Dark" :foreground "White")))))
 
@@ -354,7 +377,7 @@ directory to make multiple eshell windows easier."
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (dracula-theme evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (projectile dracula-theme evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
