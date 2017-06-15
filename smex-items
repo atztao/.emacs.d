@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ disable-theme
+ load-theme
+ package-list-packages
  eval-buffer
  multi-term
+ shell-command
  magit-push
- magit-status
- replace-string
- eshell
- org-agenda
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 154)
+ (package-list-packages . 155)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -88,14 +88,14 @@
  (evil-mode . 11)
  (buffer-menu . 1)
  (org-agenda . 6)
- (shell-command . 4)
+ (shell-command . 6)
  (recover-this-file . 12)
  (message-mode . 2)
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 69)
- (load-theme . 218)
+ (load-theme . 219)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1145)
+ (eval-buffer . 1151)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 135)
+ (disable-theme . 139)
  (set-background-color . 5)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -228,7 +228,7 @@
  (xterm-color-test . 2)
  (thumbs . 1)
  (customize-face . 1)
- (lisp-interaction-mode . 9)
+ (lisp-interaction-mode . 10)
  (show-paren-mode . 1)
  (cvs-status . 1)
  (pp-macroexpand-last-sexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 62)
- (magit-push . 54)
+ (magit-status . 66)
+ (magit-push . 59)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 34)
+ (multi-term . 36)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
