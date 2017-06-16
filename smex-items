@@ -3,11 +3,11 @@
 (
  eval-buffer
  mu4e
+ python-mode
  package-list-packages
  load-theme
  disable-theme
  customize-variable
- magit-push
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1203)
+ (eval-buffer . 1218)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 75)
+ (mu4e . 76)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 22)
+ (python-mode . 23)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
