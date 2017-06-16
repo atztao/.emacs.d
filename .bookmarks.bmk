@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** [2017-06-15 四")
- (rear-context-string . "ail.ccnu.edu.cn\n")
- (position . 5442))
+ (front-context-string . "** [2017-06-16 五")
+ (rear-context-string . "penwith package\n")
+ (position . 5929))
 )

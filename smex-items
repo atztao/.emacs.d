@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- replace-string
  mu4e
- notmuch
- toggle-truncate-lines
- epa-encrypt-file
- goto-line
+ package-list-packages
+ load-theme
+ disable-theme
+ customize-variable
+ magit-push
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 155)
+ (package-list-packages . 158)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 77)
- (load-theme . 220)
+ (load-theme . 221)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1188)
+ (eval-buffer . 1203)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 139)
+ (disable-theme . 140)
  (set-background-color . 5)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 73)
+ (mu4e . 75)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 67)
- (magit-push . 61)
+ (magit-status . 70)
+ (magit-push . 66)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -313,7 +313,7 @@
  (deft . 2)
  (hippie-expand . 2)
  (markdown . 1)
- (customize-variable . 3)
+ (customize-variable . 4)
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 10)
  (ansi-term . 1)
- (multi-term . 37)
+ (multi-term . 40)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
