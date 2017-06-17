@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ occur
+ replace-string
+ magit-push
+ magit-status
  mu4e
  python-mode
- package-list-packages
- load-theme
- disable-theme
- customize-variable
 )
 
 ;; ----- smex-data -----
@@ -94,7 +94,7 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 77)
+ (replace-string . 82)
  (load-theme . 221)
  (auto-complete . 6)
  (org-previous-block . 1)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1218)
+ (eval-buffer . 1231)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -141,7 +141,7 @@
  (org-display-inline-images . 3)
  (make-face-bold . 1)
  (helm-find . 1)
- (occur . 8)
+ (occur . 9)
  (helm-swoop . 52)
  (ido-find-file . 2)
  (ido-toggle-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 70)
- (magit-push . 66)
+ (magit-status . 71)
+ (magit-push . 68)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)

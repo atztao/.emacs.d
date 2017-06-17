@@ -2,6 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/zhangtao/.emacs.d/themes/" . "color-theme-solarized/")
  ("/home/zhangtao/Dropbox/Networks/Exercise/2016/" . "Net_ex4/")
  ("/home/zhangtao/.config/fontconfig/" . "conf.d/")
  ("/home/zhangtao/Downloads/css3-cool-in-out-tab-menu/" . "css/")
@@ -14,7 +15,7 @@
  ("/home/zhangtao/.local/" . "share/")
  ("/home/zhangtao/.emacs.d/elpa/yasnippet-20170203.626/snippets/" . "c++-mode/")
  ("/home/zhangtao/.emacs.d/elpa/yasnippet-20170203.626/" . "snippets/")
- ("/home/zhangtao/Dropbox/ztao1991.github.io/" . "css/")
+ ("/home/zhangtao/Dropbox/ztao1991.github.io/" . "web/")
  ("/home/zhangtao/Tmp/html/" . "css/")
  ("/home/zhangtao/Tmp/" . "C++/")
  ("/home/zhangtao/html/" . "js/")
@@ -54,20 +55,22 @@
  ("/home/zhangtao/.config/" . "fontconfig/")
  ("/home/zhangtao/.emacs.d/snippets/" . "org-mode/")
  ("/home/zhangtao/Desktop/" . "gaoneng/")
- ("/home/zhangtao/.emacs.d/" . "lisp/")
+ ("/home/zhangtao/.emacs.d/" . "themes/")
  ("/home/" . "zhangtao/")
  ("/" . "home/")
  ("/home/zhangtao/" . ".emacs.d/")
- ("/home/zhangtao/Dropbox/" . "Test/")
+ ("/home/zhangtao/Dropbox/" . "ztao1991.github.io/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/zhangtao/.emacs.d/lisp/"
  "/home/zhangtao/.emacs.d/"
- "/home/zhangtao/Downloads/"
- "/home/zhangtao/"
  "/home/zhangtao/Dropbox/Test/"
+ "/home/zhangtao/Dropbox/ztao1991.github.io/"
+ "/home/zhangtao/.emacs.d/lisp/"
+ "/home/zhangtao/.emacs.d/themes/color-theme-solarized/"
+ "/home/zhangtao/Dropbox/ztao1991.github.io/web/"
+ "/home/zhangtao/"
  "/home/zhangtao/Dropbox/Txt/"
  "/home/zhangtao/Dropbox/dotfile/"
  "/ssh:zhangtao@10.148.93.242:"
@@ -78,6 +81,7 @@
  "/ssh:spmcs2017@"
  "/ssh:"
  "/home/zhangtao/Dropbox/Networks/Exercise/Net2_ex1/"
+ "/home/zhangtao/Downloads/"
  "/home/zhangtao/Dropbox/"
  "/method:spmcs2017@"
  "/home/zhangtao/.emacs.d/elpa/helm-swoop-20160619.953/"
@@ -86,8 +90,6 @@
  "/home/zhangtao/.emacs.d/snippets/org-mode/"
  "/home/zhangtao/Dropbox/template/"
  "/home/zhangtao/Dropbox/tmp/"
- "/home/zhangtao/Dropbox/ztao1991.github.io/"
- "/home/zhangtao/Dropbox/ztao1991.github.io/web/"
  "/home/zhangtao/spmcs_2017/"
  "/home/zhangtao/Dropbox/Linux/"
  "/home/zhangtao/Dropbox/Learn_AI_DL/"
@@ -112,40 +114,45 @@
  "/home/zhangtao/jiaoben3854/css/"
  "/home/zhangtao/jiaoben3854/"
  "/home/zhangtao/jiaoben2806/css/"
- "/home/zhangtao/jiaoben315/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "init-themes.el"
- "init-email.el"
  "init.el"
- "InstructionForTaxiDrivers.log"
- ".node_repl_history"
- "init-python.el"
  "sandpile_model.py"
+ "index.html"
  "init-org.el"
- "write.txt"
- "README.md"
+ "init-themes.el"
+ "solarized-definitions.el"
+ "solarized-theme.el"
+ "color-theme-solarized.el"
+ "cool.html"
+ ".node_repl_history"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/zhangtao/.config/" (22851 60802 949771 333000) "baloofilerc" "kactivitymanagerdrc" "gtkrc" "systemsettingsrc" "knotifyrc" "kde.org/" "startupconfigkeys" "katevirc" "smplayer/" "Unknown Organization/" "gtk-3.0/" "SogouPY/" "gwenviewrc" "gnome-control-center/" "mpv/" "plasmarc" "autostart/" "autostart-scripts/" "krunnerrc" "startupconfig" "session/" "plasma-workspace/" "khotkeysrc" "goa-1.0/" "gpick/" "enchant/" "trashrc" "dconf/" "specialmailcollectionsrc" "kcmdisplayrc" "kwalletrc" "bluedevilreceiverrc" "fontconfig/" "filetypesrc" "kateschemarc" "ksysguardrc" "qtcurve/" "khelpcenterrc" "ksplashrc" "keditfiletyperc" "akregatorrc" "emailidentities" "device_automounter_kcmrc" "kiorc" "ibus/" "katemetainfos" "menus/" "baloorc" "plasma-localerc" "kwin_rules_dialogrc" "kdeconnect/" "nautilus/" "kfontinstuirc" "apper" "kxkbrc" "sogou-qimpanel/" "fcitx/" "evolution/" "plasmashellrc" "audacious/" "org.kde.gwenviewrc" "VirtualBoxrc" "kded5rc" "matplotlib/" "powerdevilrc" "startupconfigfiles" "configstore/" "Kingsoft/" "discoverrc" "QtProject.conf" "mimeapps.list" "kingsoft/" "kglobalshortcutsrc" "systemmonitorrc" "eog/" "drkonqirc" "kdebugrc" "zathura/" "kcmshell5rc" "pulse/" "kwinqtcurverc" "plasma-locale-settings.sh" "gtkrc-2.0" "user-dirs.dirs" "auroraerc" "spectaclerc" "kwinrulesrc" "akonadi_maildir_resource_0rc" "VirtualBox/" "arkrc" "korgacrc" "gnome-session/" "kmixrc" "kdeglobals" "plasma-org.kde.plasma.desktop-appletsrc" "gtk-2.0/" "dolphinrc" "../" "powermanagementprofilesrc" "akonadi/" "cairo-dock/" "kwriterc" "awesome/" "kcminputrc" "kgammarc" "touchpadrc" "kwinrc" "kfontviewrc" "kconf_updaterc" "./" "emaildefaults" "kmail2rc" "kded_device_automounterrc" "Trolltech.conf" "mu4e-showinbrowser.sh" "kde5-nm-connection-editorrc" "bluedevilglobalrc" "ktimezonedrc" "filezilla/" "plasma_calendar_holiday_regions" "ksmserverrc" "katerc" "SogouPY.users/" "kscreenlockerrc" "akonadi_akonotes_resource_0rc" "akonadi-firstrunrc" "konsolerc" "kmenueditrc" "katepartrc" "google-chrome/" "shadowsocks.json" "kcmfonts")
+ ("/home/zhangtao/.emacs.d/" (22852 39808 744598 699000) "init_email" "places" "url/" ".emacs.desktop" ".org-id-locations" ".Xresources" "init.el~" "##init.el##" "bookmarks" "tramp/" "themes/" "org-html-themes-master/" "init.el.bak" "markdown.css" "todo_init.txt" "#init.el#" "helm-history.txt" "semanticdb/" "init_evil" "smex-items" "misc/" "eshell/" ".bookmarks.bmk" "snippets/" "reveal.js-master/" "init_smart_mode_line" "init.el" "recentf" ".gitignore" "elpa/" "srecode-map.el" ".emacs.desktop.lock" "network-security.data" "auto-save-list/" "abbrev_defs" "image-dired/" "jdee-2.4.1/" ".vimrc" ".directory" "github-markdown.css" ".mc-lists.el" "ac-comphist.dat" "../" "pyim/" "history" "foucs-mode.el" ".#init.el" "ido.last" "recentf~" "session.1095783133000149759633100000051860013" "init" "thumbs/" "ido.last~" "./" "#ido.last#" "request/" "conf/" "saveplace" ".init.el.~undo-tree~" "flycheck_init.el" ".git/" "Template/" "writer.el" "lisp/")
 
- ("/home/zhangtao/.emacs.d/" (22851 60801 965766 541000) "init_email" "places" "url/" ".emacs.desktop" ".org-id-locations" ".Xresources" "init.el~" "##init.el##" "bookmarks" "tramp/" "themes/" "org-html-themes-master/" "init.el.bak" "markdown.css" "todo_init.txt" "#init.el#" "helm-history.txt" "semanticdb/" "init_evil" "smex-items" "misc/" "eshell/" ".bookmarks.bmk" "snippets/" "reveal.js-master/" "init_smart_mode_line" "init.el" "recentf" ".gitignore" "elpa/" "srecode-map.el" ".emacs.desktop.lock" "network-security.data" "auto-save-list/" "abbrev_defs" "image-dired/" "jdee-2.4.1/" ".vimrc" ".directory" "github-markdown.css" ".mc-lists.el" "ac-comphist.dat" "../" "pyim/" "history" "foucs-mode.el" "ido.last" "recentf~" "session.1095783133000149759633100000051860013" "init" "thumbs/" "ido.last~" "./" "#ido.last#" "request/" "conf/" "saveplace" ".init.el.~undo-tree~" "flycheck_init.el" ".git/" "Template/" "writer.el" "lisp/")
+ ("/home/zhangtao/Dropbox/Test/" (22852 39782 870672 18000) ".ipynb_checkpoints/" "sandpile_model_T.png" "Sandpile-Model.ipynb" "../" "./" "sandpile_model.py")
 
- ("/home/zhangtao/" (22851 60803 229772 696000) ".authinfo.gpg" ".kingsoft/" ".vim/" ".jupyter/" "Untitled.ipynb" ".bash_logout" ".Xauthority" ".Xresources" ".zcompdump-dx131-5.3.1" "Dropbox/" "#.offlineimappass#" "#launchy.ini#" "VirtualBox VMs/" ".backup/" "PBS.pdf" ".fbtermrc" ".config/" ".face" ".offlineimap.py" ".thumbnails/" "Maildir/" "Sandpile_Model.pdf" ".dropbox-dist/" "html/" ".gnome/" "Documents/" "Public/" "zsh-vimode-visual/" "Templates/" "exercise26.txt.1" "html-v2/" "Python/" "Music/" "Desktop/" ".muttrc" "hellow.py" ".macromedia/" ".offlineimap.pyc" ".ipynb_checkpoints/" ".offlineimappass.gpg" "Downloads/" "Mail/" ".viminfo" ".ipython/" ".local/" ".zcompdump-localhost-5.3.1" ".ICEauthority" ".xsel.log" ".gnome2/" ".npm/" ".zshrc~" ".xinitrc" ".fehbg" ".gnupg/" ".xinputrc" "SPMCS2017/" "sandpile_model_T.png" ".wget-hsts" "Untitled3.ipynb" ".kde/" ".zsh_history" ".face.icon" "桌面/" ".offlineimap/" ".ssh/" ".gimp-2.8/" "Untitled4.ipynb" "history.db" ".oh-my-zsh/" ".xsession-errors.old" "tmp/" "Pictures/" ".fonts.conf.bak" ".vimrc" ".directory" ".bash_history" ".sogouinput/" ".putty/" ".adobe/" ".w3m/" ".authinfo" ".dropbox/" "#hellow.py#" ".xsession-errors" ".mozilla/" ".icons/" ".zshrc" ".profile" ".gtkrc-2.0" ".dmrc" "../" ".gconf/" ".bashrc" ".fonts.conf" ".presage/" "spmcs_preview/" "Untitled5.ipynb" "Untitled1.ipynb" ".gtkrc-2.0-kde4" "Videos/" ".zsh-update" "./" ".notmuch-config" "exercise26.txt" ".goldendict/" ".dbus/" ".pki/" ".mu/" "slim.conf" ".cache/" ".gitconfig" ".shutter/" ".Xdefaults" ".gnome2_private/" ".emacs.d/" ".node_repl_history" ".keras/" ".offlineimaprc" ".FBReader/" "spmcs_2017/" "launchy.ini" ".launchy/" ".xprofile" ".vimperator/" ".python_history" "launchy.db" "zh_utf8.vim" "*Keys*" "Untitled2.ipynb" ".offlineimappass")
+ ("/home/zhangtao/.config/" (22852 39661 269809 236000) "baloofilerc" "kactivitymanagerdrc" "gtkrc" "systemsettingsrc" "knotifyrc" "kde.org/" "startupconfigkeys" "katevirc" "smplayer/" "Unknown Organization/" "gtk-3.0/" "SogouPY/" "gwenviewrc" "gnome-control-center/" "mpv/" "plasmarc" "autostart/" "autostart-scripts/" "krunnerrc" "startupconfig" "session/" "plasma-workspace/" "khotkeysrc" "goa-1.0/" "gpick/" "enchant/" "trashrc" "dconf/" "specialmailcollectionsrc" "kcmdisplayrc" "kwalletrc" "bluedevilreceiverrc" "fontconfig/" "filetypesrc" "kateschemarc" "ksysguardrc" "qtcurve/" "khelpcenterrc" "ksplashrc" "keditfiletyperc" "akregatorrc" "emailidentities" "device_automounter_kcmrc" "kiorc" "ibus/" "katemetainfos" "menus/" "baloorc" "plasma-localerc" "kwin_rules_dialogrc" "kdeconnect/" "nautilus/" "kfontinstuirc" "apper" "kxkbrc" "sogou-qimpanel/" "fcitx/" "evolution/" "plasmashellrc" "audacious/" "org.kde.gwenviewrc" "VirtualBoxrc" "kded5rc" "matplotlib/" "powerdevilrc" "startupconfigfiles" "configstore/" "Kingsoft/" "discoverrc" "QtProject.conf" "mimeapps.list" "kingsoft/" "kglobalshortcutsrc" "systemmonitorrc" "eog/" "drkonqirc" "kdebugrc" "zathura/" "kcmshell5rc" "pulse/" "kwinqtcurverc" "plasma-locale-settings.sh" "gtkrc-2.0" "user-dirs.dirs" "auroraerc" "spectaclerc" "kwinrulesrc" "akonadi_maildir_resource_0rc" "VirtualBox/" "arkrc" "korgacrc" "gnome-session/" "kmixrc" "kdeglobals" "plasma-org.kde.plasma.desktop-appletsrc" "gtk-2.0/" "dolphinrc" "../" "powermanagementprofilesrc" "akonadi/" "cairo-dock/" "kwriterc" "awesome/" "kcminputrc" "kgammarc" "touchpadrc" "kwinrc" "kfontviewrc" "kconf_updaterc" "./" "emaildefaults" "kmail2rc" "kded_device_automounterrc" "Trolltech.conf" "mu4e-showinbrowser.sh" "kde5-nm-connection-editorrc" "bluedevilglobalrc" "ktimezonedrc" "filezilla/" "plasma_calendar_holiday_regions" "ksmserverrc" "katerc" "SogouPY.users/" "kscreenlockerrc" "akonadi_akonotes_resource_0rc" "akonadi-firstrunrc" "konsolerc" "kmenueditrc" "katepartrc" "google-chrome/" "shadowsocks.json" "kcmfonts")
 
- ("/home/zhangtao/.emacs.d/lisp/" (22851 60755 821541 705000) "init-mode-line.el" "init-themes.el" ".#init-themes.el" "init-org-html.el" "init-email.el" "init-latex.el" "init-plugin.el~" "../" "init-python.el" "init-org.el" "init-plugin.el" ".#init-mode-line.el" "./" "init-evil.el" "init-org-pdf.el")
+ ("/home/zhangtao/.emacs.d/lisp/" (22852 39638 648197 366000) "init-mode-line.el" "init-themes.el" "init-org-html.el" "init-email.el" "init-latex.el" "init-plugin.el~" "../" "init-python.el" "init-org.el" "init-plugin.el" ".#init-mode-line.el" "./" "init-evil.el" "init-org-pdf.el")
 
- ("/home/zhangtao/Downloads/" (22851 60487 304227 778000) "InstructionForTaxiDrivers(2).pdf" "苹方黑体-准-简.ttf" "华中师范大学研究生安全承诺书.docx" "_minted-InstructionForTaxiDrivers/" "InstructionForTaxiDrivers.txt" "konsole-colors-solarized-master.zip" "苹方黑体-纤细-简.ttf" "22382238新.doc" "量子统计物理学 - 杨展如.pdf" "Sandpile_Model.pdf" ".emacs.d-master/" "InstructionForTaxiDrivers(6).pdf" "InstructionForTaxiDrivers(3).pdf" "量子统计力学  （第二版）.pdf" "9x15.dfont" "InstructionForTaxiDrivers(5).pdf" "InstructionForTaxiDrivers.tex" "苹方黑体-极细-繁.ttf" "苹方黑体-中粗-繁.ttf" "article_4.pdf" "（附件3）各专业实践课所需材料一览表.xls" "（附件1）学术活动考核表.doc" "InstructionForTaxiDrivers(1).pdf" "InstructionForTaxiDrivers.log" "复杂网络的自我构建.pdf" "苹方黑体-中粗-简.ttf" ".directory" "inbox.txt" "map.png" "InstructionForTaxiDrivers.pdf" "../" "InstructionForTaxiDrivers(4).pdf" "苹方黑体-中黑-简.ttf" "InstructionForTaxiDrivers(7).pdf" "苹方黑体-纤细-繁.ttf" "auto/" "./" "unspecified" "苹方黑体-极细-简.ttf" "苹果苹方字体.rar" "苹方黑体-准-繁.ttf" "Menlo-Regular.ttf" "sogoupinyin_2.1.0.0086_amd64.deb" "emacs.d-master.zip" "konsole-colors-solarized-master/" "book-of-abstracts.pdf" "苹方黑体-细-繁.ttf" "苹方黑体-中黑-繁.ttf" "苹方黑体-细-简.ttf" "关于物理公理化的实在性的试探性认识.doc" "elpa.zip")
+ ("/home/zhangtao/Dropbox/ztao1991.github.io/css/" (22852 38371 206364 532000) "style.css" "../" "./")
+
+ ("/home/zhangtao/Downloads/" (22852 38055 980777 40000) "InstructionForTaxiDrivers(2).pdf" "苹方黑体-准-简.ttf" "华中师范大学研究生安全承诺书.docx" "_minted-InstructionForTaxiDrivers/" "InstructionForTaxiDrivers.txt" "konsole-colors-solarized-master.zip" "苹方黑体-纤细-简.ttf" "22382238新.doc" "量子统计物理学 - 杨展如.pdf" "Sandpile_Model.pdf" ".emacs.d-master/" "InstructionForTaxiDrivers(6).pdf" "InstructionForTaxiDrivers(3).pdf" "量子统计力学  （第二版）.pdf" "9x15.dfont" "InstructionForTaxiDrivers(5).pdf" "InstructionForTaxiDrivers.tex" "苹方黑体-极细-繁.ttf" "苹方黑体-中粗-繁.ttf" "article_4.pdf" "（附件3）各专业实践课所需材料一览表.xls" "（附件1）学术活动考核表.doc" "GitHub-Logos/" "InstructionForTaxiDrivers(1).pdf" "InstructionForTaxiDrivers.log" "GitHub-Mark.zip" "复杂网络的自我构建.pdf" "苹方黑体-中粗-简.ttf" ".directory" "inbox.txt" "map.png" "InstructionForTaxiDrivers.pdf" "../" "InstructionForTaxiDrivers(4).pdf" "苹方黑体-中黑-简.ttf" "InstructionForTaxiDrivers(7).pdf" "苹方黑体-纤细-繁.ttf" "auto/" "./" "unspecified" "苹方黑体-极细-简.ttf" "苹果苹方字体.rar" "苹方黑体-准-繁.ttf" "Menlo-Regular.ttf" "sogoupinyin_2.1.0.0086_amd64.deb" "emacs.d-master.zip" "konsole-colors-solarized-master/" "book-of-abstracts.pdf" "苹方黑体-细-繁.ttf" "GitHub-Logos.zip" "苹方黑体-中黑-繁.ttf" "苹方黑体-细-简.ttf" "关于物理公理化的实在性的试探性认识.doc" "elpa.zip")
+
+ ("/home/zhangtao/" (22852 39180 433055 692000) ".authinfo.gpg" ".kingsoft/" ".vim/" ".jupyter/" "Untitled.ipynb" ".bash_logout" ".Xauthority" ".Xresources" ".zcompdump-dx131-5.3.1" "Dropbox/" "#.offlineimappass#" "#launchy.ini#" "VirtualBox VMs/" ".backup/" "PBS.pdf" ".fbtermrc" ".config/" ".face" ".offlineimap.py" ".thumbnails/" "Maildir/" "Sandpile_Model.pdf" ".dropbox-dist/" "html/" ".gnome/" "Documents/" "Public/" "zsh-vimode-visual/" "Templates/" "exercise26.txt.1" "html-v2/" "Python/" "Music/" "Desktop/" ".muttrc" "hellow.py" ".macromedia/" ".offlineimap.pyc" ".ipynb_checkpoints/" ".offlineimappass.gpg" "Downloads/" "Mail/" ".viminfo" ".ipython/" ".local/" ".zcompdump-localhost-5.3.1" ".ICEauthority" ".xsel.log" ".gnome2/" ".npm/" ".zshrc~" ".xinitrc" ".fehbg" ".gnupg/" ".xinputrc" "SPMCS2017/" "sandpile_model_T.png" ".wget-hsts" "Untitled3.ipynb" ".kde/" ".zsh_history" ".face.icon" "桌面/" ".offlineimap/" ".ssh/" ".gimp-2.8/" "Untitled4.ipynb" "history.db" ".oh-my-zsh/" ".xsession-errors.old" "tmp/" "Pictures/" ".fonts.conf.bak" ".vimrc" ".directory" ".bash_history" ".sogouinput/" ".putty/" ".adobe/" ".w3m/" ".authinfo" ".dropbox/" "#hellow.py#" ".xsession-errors" ".mozilla/" ".icons/" ".zshrc" ".profile" ".gtkrc-2.0" ".dmrc" "../" ".gconf/" ".bashrc" ".fonts.conf" ".presage/" "spmcs_preview/" "Untitled5.ipynb" "Untitled1.ipynb" ".gtkrc-2.0-kde4" "Videos/" ".zsh-update" "./" ".notmuch-config" "exercise26.txt" ".goldendict/" ".dbus/" ".pki/" ".mu/" "slim.conf" ".cache/" ".gitconfig" ".shutter/" ".Xdefaults" ".gnome2_private/" ".emacs.d/" ".node_repl_history" ".keras/" ".offlineimaprc" ".FBReader/" "spmcs_2017/" "launchy.ini" ".launchy/" ".xprofile" ".vimperator/" ".python_history" "launchy.db" "zh_utf8.vim" "*Keys*" "Untitled2.ipynb" ".offlineimappass")
+
+ ("/home/zhangtao/Dropbox/ztao1991.github.io/web/" (22852 38804 971248 262000) "share.html" "birthday.html" "cool.html" "note.html" "todo.html" "../" "./" "learn.html")
+
+ ("/home/zhangtao/Dropbox/ztao1991.github.io/" (22852 38477 493258 987000) "Sandpile_Model.pdf" "flash285.swf" "intro_pic.jpg" "GitHub_Logo.png" "index.html" "../" "css/" "web/" "swfobject.js" "main.css" "./" ".git/")
 
  ("/home/zhangtao/Dropbox/Txt/" (22851 60506 536322 269000) "todo.txt" "linux.md" "Html_Web.txt" "phy.org" "vim.txt" "physics_list.txt" "physics_list.md" "markdown.txt" "physics.org" "todo.txt_done" "linux.txt" "contacts.txt" "Theory_of_relativity.md" "physics.md" "Wunderlist/" "todo.md" "physics.txt" "#inbox.txt#" "email.txt" "Latex.html" "book.html" "internet.txt" "music.txt" "_physics/" "read.txt" "book.txt" "todo.html" "physics.html" "contents.txt" "list.txt" "write.txt~" "Index.txt" "inbox.txt" "_log/" "linux.txt~" "../" "Theory_of_relativity.html" "liangzilixue.txt" "Latex.md" "toshcool.txt" "ex1.md" "./" "#write.txt#" "log.txt" "#todo.txt_archive#" "todo.txt_archive" "#diary#" "write.txt" "_write/" "diary" "Theory_of_relativity.txt" "#linux.#" "#contacts.txt#" "tang.txt" "_book/" "book.md" "archive/" "linux.html")
 
  ("/home/zhangtao/.emacs.d/elpa/py-autopep8-20160925.352/" (22668 6944 0 0) "py-autopep8.el" "py-autopep8-pkg.elc" "py-autopep8.elc" "py-autopep8-autoloads.el" "py-autopep8-pkg.el" "../" "./")
-
- ("/home/zhangtao/Dropbox/Test/" (22851 17832 795737 470000) ".ipynb_checkpoints/" "sandpile_model_T.png" "Sandpile-Model.ipynb" "../" "./" "sandpile_model.py")
 
  ("/home/zhangtao/Desktop/" (22847 20358 427302 534000) "wuhan-metro-planning.jpg" "wuhan-subway.jpg" "trash.desktop" "IndicoUserGuide.pdf" "Home.desktop" "UserGuide.pdf" ".directory" "../" "./" "screen-shot-2015-02-23-at-11-03-00-am.png")
 
@@ -189,15 +196,9 @@
 
  ("/home/zhangtao/.emacs.d/snippets/" (22668 34562 0 0) "c-mode/" "../" "org-mode/" "./")
 
- ("/home/zhangtao/Dropbox/ztao1991.github.io/" (22837 11586 401390 599000) "Sandpile_Model.pdf" "flash285.swf" "intro_pic.jpg" "index.html" "../" "css/" "web/" "swfobject.js" "main.css" "./" ".git/")
-
  ("/home/zhangtao/Dropbox/Txt/archive/" (22836 63897 29994 819000) "../" "done.txt" "./" "archive-201706.org_archive")
 
  ("/home/zhangtao/Dropbox/Linux/" (22835 57064 18180 260000) "168983-yosemite.tar.gz" "Licensing/" ".Xresources" "YaHei Consolas Hybrid 1.12.ttf" "autostart/" "la-capitaine-icon-theme-0.4.0.tar.gz" "markdown.css" "Yosemite/" "Yosemitedsp.colors" "158583-Perso_kde.colors" "infinality/" "175749-OSX-ElCap.tar.bz2" "forge-installer.jar" "HMCL-2.1.7.jar" "169912-Mac OS X Yosemite.tar" "Mac-one.ssf" "ElCapitan_mod.qtcurve" "grub" ".xinitrc" "xorg.conf" "174684-ElCapitan_mod.zip" ".zsh_history" "字体/" "iOS iCon theme v0.2.tar.xz" "tHEMES/" "aurorae/" ".directory" ".bash_history" "fstab" "github-markdown.css" ".zshrc" "../" ".bashrc" ".fonts.conf" "awesome/" "OSX-ElCap-(KDE).tar.bz2" "Shadowsocks.png" "./" ".zsh_history_root" "ElCapitan_mod.colors" "macOS iCon theme v3.5.tar.xz" "Mac iOS Icon theme v2.tar.xz" "ppt" "[stretch] INFINALITY-20170219T081356Z.zip" "zenburn.css" ".bash_history_root" "jiaoben2826/" "158582-MacOSX.qtcurve" "[stretch] INFINALITY/" "shadowsocks.json")
-
- ("/home/zhangtao/Dropbox/ztao1991.github.io/css/" (22834 43660 604804 959000) "style.css" "../" "./")
-
- ("/home/zhangtao/Dropbox/ztao1991.github.io/web/" (22834 43243 459867 745000) "share.html" "birthday.html" "cool.html" "note.html" "todo.html" "../" "./" "learn.html")
 
  ("/home/zhangtao/Dropbox/tmp/" (22787 14042 418236 80000) "english/" "org.org" "te.exe" "ppt.pdf" "121313.c" "hellow.c" "ex13.py" "txt.txt" "K.py" "p.py" "NetworkX-2.txt" "test.c" "hellow" "#ex17.py#" "1.c" "1213" "../" "auto/" "./" "ex16.py" "ex1.py" "ex15.py" "#hello.tex#" "ppt" "ex14.py" "ex17.py" "test.txt")
 
