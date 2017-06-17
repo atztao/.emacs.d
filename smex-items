@@ -1,11 +1,11 @@
 
 ;; ----- smex-history -----
 (
- load-theme
- disable-theme
  eval-buffer
  replace-string
  org-mode
+ load-theme
+ disable-theme
  package-list-packages
  multi-term
 )
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 111)
+ (org-mode . 112)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -94,7 +94,7 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 83)
+ (replace-string . 84)
  (load-theme . 230)
  (auto-complete . 6)
  (org-previous-block . 1)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1268)
+ (eval-buffer . 1270)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
