@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ load-theme
+ disable-theme
  eval-buffer
- occur
  replace-string
- magit-push
- magit-status
- mu4e
- python-mode
+ org-mode
+ package-list-packages
+ multi-term
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 158)
+ (package-list-packages . 161)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 110)
+ (org-mode . 111)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 82)
- (load-theme . 221)
+ (replace-string . 83)
+ (load-theme . 230)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1231)
+ (eval-buffer . 1268)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -152,7 +152,7 @@
  (powerline-default-theme . 5)
  (highlight-tail-reload . 1)
  (column-number-mode . 2)
- (line-number-mode . 7)
+ (line-number-mode . 9)
  (html2text . 1)
  (html-mode . 5)
  (query-replace . 5)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 140)
+ (disable-theme . 152)
  (set-background-color . 5)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -287,7 +287,7 @@
  (list-packages . 5)
  (package-menu-mark-delete . 5)
  (package-menu-execute . 4)
- (relative-line-numbers-mode . 7)
+ (relative-line-numbers-mode . 9)
  (java-mode . 4)
  (org-babel-tangle . 1)
  (htmlize-file . 1)
@@ -327,9 +327,9 @@
  (set-cursor-color . 1)
  (gdb . 1)
  (compile . 2)
- (term . 10)
+ (term . 11)
  (ansi-term . 1)
- (multi-term . 40)
+ (multi-term . 43)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)

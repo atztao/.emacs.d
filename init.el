@@ -280,7 +280,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-(require 'init-evil)
+;;(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)
@@ -398,75 +398,7 @@ directory to make multiple eshell windows easier."
    (quote
     (blackboard-theme org projectile dracula-theme evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
- '(sml/mode-width
-   (if
-       (eq
-	(powerline-current-separator)
-	(quote arrow))
-       (quote right)
-     (quote full)))
- '(sml/pos-id-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active1)
-     (:eval
-      (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (car powerline-default-separator-dir)))
-		   (quote powerline-active1)
-		   (quote powerline-active2))))
-     (:propertize " " face powerline-active2))))
- '(sml/pos-minor-modes-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active1)
-     (:eval
-      (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (cdr powerline-default-separator-dir)))
-		   (quote powerline-active1)
-		   (quote sml/global))))
-     (:propertize " " face sml/global))))
- '(sml/pre-id-separator
-   (quote
-    (""
-     (:propertize " " face sml/global)
-     (:eval
-      (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (car powerline-default-separator-dir)))
-		   (quote sml/global)
-		   (quote powerline-active1))))
-     (:propertize " " face powerline-active1))))
- '(sml/pre-minor-modes-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active2)
-     (:eval
-      (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (cdr powerline-default-separator-dir)))
-		   (quote powerline-active2)
-		   (quote powerline-active1))))
-     (:propertize " " face powerline-active1))))
- '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
- '(tool-bar-mode nil)
+  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
  '(user-full-name "Tao Zhang")
  '(user-mail-address "ztao1991@gmail.com"))
