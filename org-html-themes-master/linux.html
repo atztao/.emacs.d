@@ -1,0 +1,4391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>The Manual Of System</title>
+<!-- 2017-05-19 五 13:30 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="zhangtao" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">The Manual Of System</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Gentoo</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Package Manage - emerge</a></li>
+<li><a href="#sec-1-2">1.2. The make.conf file</a></li>
+<li><a href="#sec-1-3">1.3. Parted and mount</a></li>
+<li><a href="#sec-1-4">1.4. install stage3</a></li>
+<li><a href="#sec-1-5">1.5. kernel</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1. sound</a></li>
+<li><a href="#sec-1-5-2">1.5.2. network</a></li>
+<li><a href="#sec-1-5-3">1.5.3. gpu</a></li>
+<li><a href="#sec-1-5-4">1.5.4. efi</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6. make and install</a></li>
+<li><a href="#sec-1-7">1.7. Desktop Enviorment</a>
+<ul>
+<li><a href="#sec-1-7-1">1.7.1. Xfce4</a></li>
+<li><a href="#sec-1-7-2">1.7.2. emacs</a></li>
+<li><a href="#sec-1-7-3">1.7.3. terminal</a></li>
+<li><a href="#sec-1-7-4">1.7.4. shadowsocks</a></li>
+<li><a href="#sec-1-7-5">1.7.5. dropbox</a></li>
+<li><a href="#sec-1-7-6">1.7.6. fictx</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-8">1.8. Network</a></li>
+<li><a href="#sec-1-9">1.9. Sync and Chroot</a></li>
+<li><a href="#sec-1-10">1.10. profile and locale and timezone</a></li>
+<li><a href="#sec-1-11">1.11. Power</a>
+<ul>
+<li><a href="#sec-1-11-1">1.11.1. laptop-mode-tool</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-12">1.12. passwd and add user</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. SSD</a>
+<ul>
+<li><a href="#sec-2-1">2.1. OPEN BIOS AHCI SUPPORT</a></li>
+<li><a href="#sec-2-2">2.2. Update to the newer kernel and the newer SSD Firmware</a></li>
+<li><a href="#sec-2-3">2.3. Ext4 Filesystem /etc/fstab for mount</a></li>
+<li><a href="#sec-2-4">2.4. TRIM SUPPORT</a></li>
+<li><a href="#sec-2-5">2.5. 4K对齐</a></li>
+<li><a href="#sec-2-6">2.6. SWAP</a></li>
+<li><a href="#sec-2-7">2.7. Reduction of SSD write frequency via RAMDISK</a></li>
+<li><a href="#sec-2-8">2.8. IO-Scheduler ——NOOP</a></li>
+<li><a href="#sec-2-9">2.9. The Cache</a></li>
+<li><a href="#sec-2-10">2.10. Tools</a></li>
+<li><a href="#sec-2-11">2.11. Windows</a></li>
+<li><a href="#sec-2-12">2.12. Health</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. KDE</a></li>
+<li><a href="#sec-4">4. Backup</a></li>
+<li><a href="#sec-5">5. Virtualbox</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Install Extension Pack At Global Setting Enable USB 2.0 To Camero</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Debian Nvidia</a></li>
+<li><a href="#sec-7">7. Grub</a></li>
+<li><a href="#sec-8">8. Awesome wm</a></li>
+<li><a href="#sec-9">9. LINUX COMMAND</a>
+<ul>
+<li><a href="#sec-9-1">9.1. github</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Emacs</a>
+<ul>
+<li><a href="#sec-10-1">10.1. Emacs With Windows</a></li>
+<li><a href="#sec-10-2">10.2. Strike-Through</a></li>
+<li><a href="#sec-10-3">10.3. Input C-\</a></li>
+<li><a href="#sec-10-4">10.4. org-mode</a>
+<ul>
+<li><a href="#sec-10-4-1">10.4.1. Lord of the Rings</a></li>
+<li><a href="#sec-10-4-2">10.4.2. 4.4.2 列表/标题快捷键</a></li>
+<li><a href="#sec-10-4-3">10.4.3. 元数据</a></li>
+<li><a href="#sec-10-4-4">10.4.4. 4.7.3 内部连接</a></li>
+<li><a href="#sec-10-4-5">10.4.5. 4.7.4 其他常用的连接命令</a></li>
+<li><a href="#sec-10-4-6">10.4.6. 4.8 注脚</a></li>
+<li><a href="#sec-10-4-7">10.4.7. 4.9 分割线</a></li>
+<li><a href="#sec-10-4-8">10.4.8. 书签</a></li>
+<li><a href="#sec-10-4-9">10.4.9. Help</a></li>
+<li><a href="#sec-10-4-10">10.4.10. 模板的使用</a></li>
+<li><a href="#sec-10-4-11">10.4.11. helm 搜索</a></li>
+<li><a href="#sec-10-4-12">10.4.12. ido</a></li>
+<li><a href="#sec-10-4-13">10.4.13. Something</a></li>
+<li><a href="#sec-10-4-14">10.4.14. 正则表达</a></li>
+<li><a href="#sec-10-4-15">10.4.15. 加密</a></li>
+<li><a href="#sec-10-4-16">10.4.16. 字体</a></li>
+<li><a href="#sec-10-4-17">10.4.17. 插入日期: C-c .</a></li>
+<li><a href="#sec-10-4-18">10.4.18. 窗口管理和缓存管理：frame + buffer</a></li>
+<li><a href="#sec-10-4-19">10.4.19. cua-mode</a></li>
+<li><a href="#sec-10-4-20">10.4.20. open with the file with oyher app in emacs</a></li>
+<li><a href="#sec-10-4-21">10.4.21. export</a></li>
+<li><a href="#sec-10-4-22">10.4.22. 1. C-c C-x C-i”开始计时，在需要结束计时时按”C-c C-x C-o</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-5">10.5. 大小写</a></li>
+<li><a href="#sec-10-6">10.6. MovingTheCtrlKey</a></li>
+<li><a href="#sec-10-7">10.7. emacsclient -c</a></li>
+<li><a href="#sec-10-8">10.8. Lisp</a></li>
+<li><a href="#sec-10-9">10.9. offlineimap+mu4e+emacs+gmail</a></li>
+<li><a href="#sec-10-10">10.10. gpg+gpg-agent</a></li>
+<li><a href="#sec-10-11">10.11. Emacs Tur</a></li>
+<li><a href="#sec-10-12">10.12. Emacs Plugin</a>
+<ul>
+<li><a href="#sec-10-12-1">10.12.1. ace-jump-mode</a></li>
+<li><a href="#sec-10-12-2">10.12.2. avy</a></li>
+<li><a href="#sec-10-12-3">10.12.3. emacs server</a></li>
+<li><a href="#sec-10-12-4">10.12.4. evil</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-13">10.13. Bug</a>
+<ul>
+<li><a href="#sec-10-13-1">10.13.1. Dependency Problems</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-14">10.14. magit-mode</a></li>
+<li><a href="#sec-10-15">10.15. Latex</a></li>
+<li><a href="#sec-10-16">10.16. Emacs Init</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. Debian</a>
+<ul>
+<li><a href="#sec-11-1">11.1. 磁盘分区</a></li>
+<li><a href="#sec-11-2">11.2. 硬件类型</a></li>
+<li><a href="#sec-11-3">11.3. 网络连接</a></li>
+<li><a href="#sec-11-4">11.4. 显卡驱动</a></li>
+<li><a href="#sec-11-5">11.5. 安装软件</a></li>
+<li><a href="#sec-11-6">11.6. Dekstop</a>
+<ul>
+<li><a href="#sec-11-6-1">11.6.1. Firewall Install gufw</a></li>
+</ul>
+</li>
+<li><a href="#sec-11-7">11.7. 软件配置</a>
+<ul>
+<li><a href="#sec-11-7-1">11.7.1. awesome wm</a></li>
+<li><a href="#sec-11-7-2">11.7.2. fonts</a></li>
+</ul>
+</li>
+<li><a href="#sec-11-8">11.8. Others</a></li>
+</ul>
+</li>
+<li><a href="#sec-12">12. Enconding</a></li>
+<li><a href="#sec-13">13. Vim</a></li>
+<li><a href="#sec-14">14. Windows 10</a>
+<ul>
+<li><a href="#sec-14-1">14.1. Windows下开发环境配置</a>
+<ul>
+<li><a href="#sec-14-1-1">14.1.1. Python Environment Install</a></li>
+<li><a href="#sec-14-1-2">14.1.2. C Environment Install</a></li>
+<li><a href="#sec-14-1-3">14.1.3. Latex</a></li>
+<li><a href="#sec-14-1-4">14.1.4. Vmware</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-15">15. Colors</a></li>
+<li><a href="#sec-16">16. Matlab</a></li>
+<li><a href="#sec-17">17. Build And Compile Emacs</a></li>
+<li><a href="#sec-18">18. Latex<sub>AucTex</sub></a>
+<ul>
+<li><a href="#sec-18-1">18.1. Latex</a></li>
+<li><a href="#sec-18-2">18.2. Keybinding</a></li>
+<li><a href="#sec-18-3">18.3. Ctex</a></li>
+</ul>
+</li>
+<li><a href="#sec-19">19. Didplay</a></li>
+<li><a href="#sec-20">20. Python</a>
+<ul>
+<li><a href="#sec-20-1">20.1. Cal With Gpu _ CUDA</a></li>
+</ul>
+</li>
+<li><a href="#sec-21">21. Flash</a>
+<ul>
+<li><a href="#sec-21-1">21.1. Chrome With Linux</a></li>
+</ul>
+</li>
+<li><a href="#sec-22">22. Windows U Under Linux</a></li>
+<li><a href="#sec-23">23. Debian 9 Bug</a>
+<ul>
+<li><a href="#sec-23-1">23.1. sddm blank screen cause by nvidia-driver so use debian sources nvidia driver to solve.</a></li>
+<li><a href="#sec-23-2">23.2. Texlive bug that tex-common can't setting:First Remove All Texlive-full and tex-common .Install texlive-base form unstable.</a></li>
+<li><a href="#sec-23-3">23.3. Nvidia Install:</a></li>
+<li><a href="#sec-23-4">23.4. Sometimes Some problem maybe should  remove and reinstall to solve</a></li>
+<li><a href="#sec-23-5">23.5. Sometimes Should Solve some Dependency(New Or Older Vesion) With dpkg install.</a></li>
+</ul>
+</li>
+<li><a href="#sec-24">24. Web And Internet</a></li>
+<li><a href="#sec-25">25. C Programming</a>
+<ul>
+<li><a href="#sec-25-1">25.1. Boost Lib</a></li>
+<li><a href="#sec-25-2">25.2. random</a></li>
+<li><a href="#sec-25-3">25.3. Config Gnuplot Lib</a></li>
+<li><a href="#sec-25-4">25.4. Segmentation fault ulimit for shell</a></li>
+</ul>
+</li>
+<li><a href="#sec-26">26. Markdown + Html + Css</a></li>
+<li><a href="#sec-27">27. Fonts Redering With Monaco</a></li>
+<li><a href="#sec-28">28. DPI</a>
+<ul>
+<li><a href="#sec-28-1">28.1. Dell XPS 13</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Gentoo</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+FORM WIKI OR BASH HISTORY!
+</p>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Package Manage - emerge</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+It will across all manager and the tourioul.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> The make.conf file</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+make.conf  <b>Backup important + /etc/portage +/var/lib/world</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Parted and mount</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+parted -a optimal /dev/sda
+</p>
+
+<p>
+Number  Start   End     Size    File system     Name    标志
+ 1      1049kB  3146kB  2097kB  ntfs            grub    bios<sub>grub</sub>
+ 2      3146kB  137MB   134MB   fat16           boot    启动, esp
+ 3      137MB   8000MB  7862MB  linux-swap(v1)  swap
+ 4      8000MB  62.0GB  54.0GB  ext4            rootfs
+ 5      62.0GB  1000GB  938GB   ext4            home
+</p>
+
+<p>
+mklabel gpt ; rm 2; unit mib ;mkpart name 1 3;print
+</p>
+
+<p>
+set 1 bios<sub>grub</sub> on
+set 2 boot on
+</p>
+
+<p>
+mkfs.vfat /dev/sda2;mkfs.ext4 /dev/sda3;mkswap /dev/sda3
+</p>
+
+<p>
+mount <i>dev/sda4 /mnt/gentoo</i>
+mkdir -p /mnt/gentoo/boot
+mount &#x2026; ../boot
+</p>
+
+<p>
+/etc/fstab]]
+</p>
+<p>
+/dev/sda2                /boot/efi        vfat                noauto,noatime        0 1
+/dev/sda4                /                ext4                noatime                0 1
+/dev/sda3                none                swap                sw                0 0
+/dev/sda5               /home                ext4                noatime                0 1
+/dev/cdrom                /mnt/cdrom        auto                noauto,ro        0 0
+/dev/fd0                /mnt/floppy        auto                noauto                0 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> install stage3</h3>
+<div class="outline-text-3" id="text-1-4">
+<ol class="org-ol">
+<li>date
+</li>
+<li>dowload stage3 and check
+</li>
+<li>tar xvjpf stage3-*.tar.bz2 &#x2013;xattrs
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> kernel</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> sound</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+Intel AL97 &#x2013;power-mode
+root #euse -E alsa
+root #emerge &#x2013;ask &#x2013;changed-use &#x2013;deep @world
+root #emerge &#x2013;ask alsa-utils
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> network</h4>
+</div>
+<div id="outline-container-sec-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> gpu</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+Device Drivers &#x2014;&gt;
+   Graphics support &#x2014;&gt;
+          Frame Buffer Devices &#x2014;&gt;
+                 &lt;*&gt; Support for frame buffer devices &#x2014;&gt;
+                 ## (Disable all drivers, including VGA, Intel, nVidia, and ATI, except EFI-based Framebuffer Support, only if you are using UEFI)
+</p>
+
+<p>
+## (Further down, enable basic console support. KMS uses this.)
+Console display driver support &#x2014;&gt;
+  &lt;*&gt;  Framebuffer Console Support
+</p>
+
+<p>
+Device Drivers &#x2014;&gt;
+        Graphics support &#x2014;&gt;
+                Frame buffer Devices &#x2014;&gt;
+                        &lt;*&gt; Support for frame buffer devices &#x2014;&gt;
+                        &lt; &gt;   nVidia Framebuffer Support
+                        &lt; &gt;   nVidia Riva support
+</p>
+
+<p>
+nvidia-xconfig
+eselect opengl set nvidia
+eselect opencl set nvidia
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> efi</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Enable GPT partition label support if that was used previously when partitioning the disk:
+</p>
+
+<p>
+KERNEL Enable support for GPT
+-*- Enable the block layer &#x2014;&gt;
+        &#x2026;
+        Partition Types &#x2014;&gt;
+        [*] Advanced partition selection
+          &#x2026;
+          [*] EFI GUID Partition support
+</p>
+
+<p>
+Enable EFI stub support and EFI variables in the Linux kernel if UEFI is used to boot the system:
+</p>
+
+<p>
+KERNEL Enable support for UEFI
+Processor type and features  &#x2014;&gt;
+        [*] EFI runtime service support 
+        [*]   EFI stub support
+</p>
+
+<p>
+Firmware Drivers  &#x2014;&gt;
+        &lt;*&gt; EFI Variable Support via sysfs
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> make and install</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+cd /usr/src/linux
+root #make menuconfig
+make &amp;&amp; make modules<sub>install</sub>
+root #make install
+</p>
+
+<p>
+With UEFI systems, create the <i>boot/efi/boot</i> location, and then copy the kernel into this location, calling it bootx64.efi:
+</p>
+
+<p>
+mount /dev/sda1 /boot*
+root #mkdir -p /boot/efi/boot
+root #cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi
+grub2-install &#x2013;target=x86<sub>64</sub>-efi &#x2013;efi-directory=/boot
+grub2-mkconfig -o /boot/grub/grub.cfg
+emerge @module-rebuild
+reboot
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Desktop Enviorment</h3>
+<div class="outline-text-3" id="text-1-7">
+</div><div id="outline-container-sec-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Xfce4</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<p>
+x11-base/xorg-server x11-misc/compton x11-misc/slim x11-terms/xfce4-terminal x11-themes/gtk-engines-murrine xfce-base/xfce4-meta xfce-extra/thunar-volman xfce-extra/tumbler xfce-extra/xfce4-battery-plugin xfce-extra/xfce4-mixer xfce-extra/xfce4-notifyd xfce-extra/xfce4-power-manager
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-7-1-1" name="sec-1-7-1-1"></a>slim with xdm<br  /><div class="outline-text-5" id="text-1-7-1-1">
+<p>
+FILE /etc/conf.d/xdm
+DISPLAYMANAGER="slim"
+</p>
+
+<p>
+root #rc-update add xdm default
+root #/etc/init.d/xdm start
+</p>
+
+<p>
+FILE /etc/env.d/90xsession
+XSESSION="XFCE4"
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> emacs</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<p>
+解决 emacs 下 fcitx 无法输入中文
+</p>
+
+<ol class="org-ol">
+<li>“LC<sub>CTYPE</sub>=zh<sub>CN</sub>.utf8 emacs” 
+</li>
+<li>media-fonts/font-misc-misc
+</li>
+<li>fcitx config in .bashrc .xprofile .xinitrc .xssetion
+
+<p>
+export GTK<sub>IM</sub><sub>MODULE</sub>=fcitx
+export QT<sub>IM</sub><sub>MODULE</sub>=fcitx
+export XMODIFIERS=@im=fcitx
+</p>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> terminal</h4>
+<div class="outline-text-4" id="text-1-7-3">
+<p>
+zsh+git
+sudo emerge &#x2013;ask dev-vcs/git
+sh -c "$(wget <a href="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh">https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh</a> -O -)"
+</p>
+
+<hr  />
+<p>
+alias en='emacs -nw'
+export TERM=xterm-256color
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> shadowsocks</h4>
+<div class="outline-text-4" id="text-1-7-4">
+<p>
+wget -O- <a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> | sudo python3
+apt install python-m2crypto 
+sudo pip install shadowsocks
+</p>
+
+<ul class="org-ul">
+<li>Bug:
+e .local/lib/python2.7/site-packages/shadowsocks/crypto/openssl.py
+
+<p>
+EVP<sub>CIPHER</sub><sub>CTX</sub><sub>cleanup</sub> replace "EVP<sub>CIPHER</sub><sub>CTX</sub><sub>reset</sub>"
+</p>
+</li>
+</ul>
+
+<pre class="example">
+{
+	"server"       : "my_server_ip",
+	"server_port"  : 8388,
+	"local_address": "127.0.0.1",
+	"local_port"   : 1080,
+	"password"     : "mypassword",
+	"timeout"      : 300,
+	"method"       : "aes-256-cfb",
+	"fast_open"    : false,
+	"workers"      : 1
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-5" class="outline-4">
+<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> dropbox</h4>
+<div class="outline-text-4" id="text-1-7-5">
+<p>
+32-bit:
+cd ~ &amp;&amp; wget -O - "<a href="https://www.dropbox.com/download?plat=lnx.x86">https://www.dropbox.com/download?plat=lnx.x86</a>" | tar xzf -
+</p>
+
+<p>
+64-bit:
+cd ~ &amp;&amp; wget -O - "<a href="https://www.dropbox.com/download?plat=lnx.x86_64">https://www.dropbox.com/download?plat=lnx.x86_64</a>" | tar xzf -
+</p>
+
+<p>
+~/.dropbox-dist/dropboxd
+</p>
+
+<p>
+sudo apt-get install libxslt1.1
+</p>
+
+<ol class="org-ol">
+<li>cd ~/Dropnox
+</li>
+<li>ln -s ~/.emacs.d
+</li>
+</ol>
+
+<p>
+~/Dropbox/Linux/xflux -l 30 -g 120 -k 4200
+~/.ssh/config
+Host host.does.not.exist
+ConnectTimeout=1
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-6" class="outline-4">
+<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> fictx</h4>
+<div class="outline-text-4" id="text-1-7-6">
+<div class="org-src-container">
+
+<pre class="src src-.xinitrc">!#/bin/bash
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+
+exec startxfce4
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome
+#exec fvwm-themes-start
+#exec fvwm
+export LC_CTYPE=zh_CN.UTF-8 
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+
+# export XMODIFIERS="@im=ibus"
+# export GTK_IM_MODULE="ibus"
+# export QT_IM_MODULE="ibus"
+# ibus-daemon -d -x
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Network</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+wpa-supplicant
+rp-pppoe
+ping
+</p>
+
+<p>
+nano -w /etc/conf.d/hostname
+emerge &#x2013;ask &#x2013;noreplace net-misc/netifrc
+nano -w /etc/conf.d/net
+nano -w /etc/resolv.conf ;;DNS
+</p>
+
+<p>
+FILE /etc/conf.d/netStatic IP definition
+config<sub>eth0</sub>="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
+routes<sub>eth0</sub>="default via 192.168.0.1"
+To use DHCP, define config<sub>eth0</sub>:
+</p>
+
+<p>
+FILE /etc/conf.d/netDHCP definition
+config<sub>eth0</sub>="dhcp"
+</p>
+
+<p>
+root #cd /etc/init.d
+root #ln -s net.lo net.eth0
+root #rc-update add net.eth0 default
+</p>
+
+<p>
+nano -w /etc/hosts
+</p>
+
+<p>
+nano -w /etc/hostname
+</p>
+
+<p>
+FILE /etc/dhcp/dhclient.conf
+</p>
+
+<p>
+FILE ~/.xinitrc
+dbus-launch nm-applet &amp;
+For gnome-base/gnome-keyring support, add the following lines before the previous line. This will ease password management for GnuPG, ssh and Wifi:
+</p>
+
+<p>
+eval $(gnome-keyring-daemon &#x2013;components=pkcs11,secrets,ssh,gpg)
+export GNOME<sub>KEYRING</sub><sub>PID</sub>
+export GNOME<sub>KEYRING</sub><sub>SOCKET</sub>
+export SSH<sub>AUTH</sub><sub>SOCK</sub>
+export GPG<sub>AGENT</sub><sub>INFO</sub>
+</p>
+
+<p>
+Dnsmasq
+</p>
+
+<p>
+NetworkManager can be set up to use Dnsmasq as a local DNS server that passes the DNS queries on to your provider's DNS server. /etc/resolv.conf will be set to point to 127.0.0.1, where dnsmasq runs and processes the queries. This can be useful for example if an application chroots for security reasons and before doing so copies /etc/resolv.conf. Then it would never be informed about changes to the DNS servers as your laptop moves from Wifi to Wifi.
+</p>
+
+<p>
+FILE /etc/NetworkManager/NetworkManager.conf
+[keyfile]
+hostname=your<sub>hostname</sub>
+</p>
+
+
+<p>
+root #gpasswd -a &lt;user<sub>name</sub>&gt; plugdev
+Service
+OpenRC
+</p>
+
+<p>
+Remove any existing network management services (if installed):
+</p>
+
+<p>
+root #for service in $(rc-update show default | grep 'net\.' | awk '{ print $1 }'); do rc-update del $service default; done
+root #rc-update del dhcpcd default
+Start NetworkManager:
+</p>
+
+<p>
+root #/etc/init.d/NetworkManager start
+To start NetworkManager at boot time add it the default runlevel:
+</p>
+
+<p>
+root #rc-update add NetworkManager default
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Sync and Chroot</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+mkdir /mnt/gentoo/etc/portage/repos.conf
+root #cp <i>mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp -L /etc/resolv.conf /mnt/gentoo/etc</i>
+</p>
+
+<p>
+root #chroot /mnt/gentoo /bin/bash
+root #source /etc/profile
+root #export PS1="(chroot) $PS1"
+</p>
+
+<hr  />
+<p>
+emerge-webrsync
+</p>
+
+<p>
+root #emerge &#x2013;sync
+root #emerge &#x2013;sync &#x2013;quiet
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> profile and locale and timezone</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+zh<sub>CN</sub>.UTF-8 Asia/Shanghai UTC 
+eselect profile set(list)
+etc-upate
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Power</h3>
+<div class="outline-text-3" id="text-1-11">
+</div><div id="outline-container-sec-1-11-1" class="outline-4">
+<h4 id="sec-1-11-1"><span class="section-number-4">1.11.1</span> laptop-mode-tool</h4>
+<div class="outline-text-4" id="text-1-11-1">
+<p>
+## Valid set
+BATT<sub>CPU</sub><sub>MAXFREQ</sub>=fastest
+LM<sub>AC</sub><sub>CPU</sub><sub>MAXFREQ</sub>=fastest
+NOLM<sub>AC</sub><sub>CPU</sub><sub>MAXFREQ</sub>=fastest
+</p>
+
+<p>
+AUTOSUSPEND<sub>RUNTIME</sub><sub>DEVTYPE</sub><sub>BLACKLIST</sub>=""
+1
+AUTOSUSPEND<sub>RUNTIME</sub><sub>DEVTYPE</sub><sub>BLACKLIST</sub>=""
+更改为：
+</p>
+
+<p>
+AUTOSUSPEND<sub>RUNTIME</sub><sub>DEVTYPE</sub><sub>BLACKLIST</sub>="usbhid usb-storage"
+1
+AUTOSUSPEND<sub>RUNTIME</sub><sub>DEVTYPE</sub><sub>BLACKLIST</sub>="usbhid usb-storage"
+</p>
+
+<p>
+/usr/portage/distfiles
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> passwd and add user</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+root #emerge &#x2013;ask app-admin/sysklogd
+root #rc-update add sysklogd default
+emerge &#x2013;ask net-misc/dhcpcd ppp
+</p>
+
+<p>
+root #exit
+cdimage ~#cd
+cdimage ~#umount -l /mnt/gentoo/dev{/shm,/pts,}
+cdimage ~#umount /mnt/gentoo{/boot,/sys,/proc,}
+cdimage ~#reboot
+</p>
+
+<p>
+root #useradd -m -G users,wheel,audio -s /bin/bash larry
+root #passwd larry
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> SSD</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> OPEN BIOS AHCI SUPPORT</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+closed hibernation
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Update to the newer kernel and the newer SSD Firmware</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+sudo smartctl -a /dev/sda
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Ext4 Filesystem /etc/fstab for mount</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+jornal and notime
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> TRIM SUPPORT</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+sudo hdparm -I /dev/sda | grep "TRIM supported"
+</p>
+
+<p>
+/etc/fstab Add noatime
+</p>
+
+<p>
+discard参数启动SSD的TRIM功能，可以提升性能和使用持久性。
+notime参数告诉文件系统不要记录文件的最后访问（读取）时间，只记录最后修改时间。可以有效减少对磁盘的读写次数，因为访问频率相对修改来说非常多。如果发现noatime参数影响了某些应用的使用，可以修改notime为relatime，将会让文件系统将最后修改时间作为文件的最后访问时间。
+</p>
+
+<p>
+/etc/cron.daily/trim
+</p>
+
+<p>
+#!/bin/sh
+LOG=/var/log/trim.log
+echo "<b>*</b> $(date -R) <b>*</b>" &gt;&gt; $LOG
+fstrim -v / &gt;&gt; $LOG
+fstrim -v /home &gt;&gt; $LOG
+fstrim -v /boot &gt;&gt; $LOG
+</p>
+
+<p>
+if you use the encrypt you should :dm-crypt
+Set "discard" option in /etc/crypttab for dm-crypt.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> 4K对齐</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+~$ sudo sfdisk -d /dev/sda 
+Warning: extended partition does not start at a cylinder boundary. 
+DOS and Linux will interpret the contents differently. 
+</p>
+<p>
+unit: sectors 
+</p>
+
+<p>
+/dev/sda1 : start=     2048, size=   497664, Id=83, bootable 
+/dev/sda2 : start=   501758, size=155799554, Id= 5 
+/dev/sda3 : start=        0, size=        0, Id= 0 
+/dev/sda4 : start=        0, size=        0, Id= 0 
+/dev/sda5 : start=   501760, size=155799552, Id=83
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> SWAP</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+$ sudo vim /etc/sysctl.d/99-sysctl.conf
+vm.swappiness = 1
+vm.vfs<sub>cache</sub><sub>pressure</sub> = 50
+vm.swappiness=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Reduction of SSD write frequency via RAMDISK</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+Use of RAMDISK can stop constantly changing files from hitting on the SSD (it may hit SSD via swap). RAMDISK configuration may be performed via 
+</p>
+
+<p>
+Set RAMTMP, RAMRUN and RAMLOCK to "yes" (in /etc/default/rcS or /etc/default/tmpfs since Wheezy). Of course, this will not improve writing to the SSD if your system (filesystem holding / or /tmp) is not located on it. 
+/!\ /etc/default/tmpfs is a sysvinit specific config file. If you are running systemd: 
+</p>
+
+<p>
+sudo cp <i>usr/share/systemd/tmp.mount /etc/systemd/system</i>
+sudo systemctl enable tmp.mount
+/etc/fstab: line such as "tmpfs /tmp tmpfs noatime,nosuid 0 0" 
+Optionally, make system only flush data to the disk every 10 minutes or more: 
+Kernel settings like the "dirty<sub>buffer</sub><sub>ratio</sub>" etc. may only be available as non-path/mount specific global settings. 
+Mount option "commit=600" in /etc/fstab. See mount(8). 
+Or better, use pm-utils (Debian BTS #659260), tlp, or laptop-mode-tools (also optimizes read buffers) to configure the laptop-mode even under AC operation. 
+/!\ Attention: Increasing the flushing interval from the default 5 seconds (maybe even until proper shutdown) leaves your data much more vulnerable in case of lock-ups or power failures, and seems to be a global setting. 
+Enabling RAMTMP may cause some (broken) applications to run out of temporary write disk space. In this case, setting TMPDIR environment variable for those programs pointing to a writable disk space should fix their situation. It might as well cause other unwanted side effects if the disk space occupied in your /tmp is high (e.g. unexpected swapping). 
+</p>
+
+<p>
+Please note files in /tmp are wiped out upon reboot unless /etc/default/rcS is set to something other than TMPTIME=0 (if not set, 0 is the default value). 
+</p>
+
+<p>
+Persistent RAMDISK
+</p>
+
+<p>
+As an advanced option, you may consider to use persistent RAMDISK (dedicated read/write RAM buffer that gets synced periodically and on startup/shutdown) with anything-sync-daemon or goanysync set up: 
+</p>
+
+<p>
+/home (synced to work-data-fs raid only once a day?), you only risk settings the true work in /home/*/work-data is on a dedicated raid 
+/home/*/work-data/volatile (synced more frequently, once per hour?) 
+/home/*/Downloads (synced to bulk-data-fs once a day?) 
+/var completely if supported (syncing once a day? avoids spin-ups and allows to save /var also to SSD), at least set this up for 
+/var/log if supported 
+/var/cache/apt/archives 
+Configure apt to delete package files after installing, to minimize the data to sync. 
+Options to having logs copied into RAM: 
+</p>
+
+<p>
+<a href="http://www.debian-administration.org/articles/661">http://www.debian-administration.org/articles/661</a>
+<a href="http://www.tremende.com/ramlog">http://www.tremende.com/ramlog</a>
+<a href="https://github.com/graysky2/anything-sync-daemon">https://github.com/graysky2/anything-sync-daemon</a> (if it supports this) 
+<a href="https://github.com/wor/goanysync">https://github.com/wor/goanysync</a>
+If /home is not on a persistent ramdisk, use profile-sync-daemon to have the browser database and cache copied into RAM during uptime (<a href="http://ubuntuforums.org/showthread.php?t=1921800">http://ubuntuforums.org/showthread.php?t=1921800</a> <a href="https://github.com/graysky2/profile-sync-daemon">https://github.com/graysky2/profile-sync-daemon</a>) 
+</p>
+
+<p>
+/home/*/&lt;browser-cache-and-profiles&gt; (synced to root-fs or home-fs) 
+Further improvement: Patch anything-sync-daemon or goanysync to use a (copy-on-write) union filesystem mount (e.g. <a href="http://aufs.sourceforge.net">http://aufs.sourceforge.net</a>) to keep changes in RAM and only save to SSD on unmount/shutdown (aubrsync), instead of copying all data to RAM and having to sync it all back. 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-8" class="outline-3">
+<h3 id="sec-2-8"><span class="section-number-3">2.8</span> IO-Scheduler ——NOOP</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+/etc/default/grub
+</p>
+
+<p>
+GRUB<sub>CMDLINE</sub><sub>LINUX</sub><sub>DEFAULT</sub>="elevator=noop quiet splash video-1024x768M@75m"
+</p>
+
+<p>
+grub-mkconfig -o /boot/grub/grub.cfg
+</p>
+
+<p>
+maurits@nuc:~$ sudo smartctl -data -A /dev/sda
+smartctl 5.41 2011-06-09 r3365 [x86<sub>64</sub>-linux-3.8.0-26-generic] (local build)
+Copyright (C) 2002-11 by Bruce Allen, <a href="http://smartmontools.sourceforge.net">http://smartmontools.sourceforge.net</a>
+</p>
+
+<p>
+<code>=</code> START OF READ SMART DATA SECTION <code>=</code>
+SMART Attributes Data Structure revision number: 18
+Vendor Specific SMART Attributes with Thresholds:
+ID# ATTRIBUTE<sub>NAME</sub>          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN<sub>FAILED</sub> RAW<sub>VALUE</sub>
+1   Raw<sub>Read</sub><sub>Error</sub><sub>Rate</sub>     0x0000   006   000   000    Old<sub>age</sub>   Offline      -       6
+3   Spin<sub>Up</sub><sub>Time</sub>            0x0000   100   100   000    Old<sub>age</sub>   Offline      -       0
+4   Start<sub>Stop</sub><sub>Count</sub>        0x0000   100   100   000    Old<sub>age</sub>   Offline      -       0
+5   Reallocated<sub>Sector</sub><sub>Ct</sub>   0x0000   100   100   000    Old<sub>age</sub>   Offline      -       0
+9   Power<sub>On</sub><sub>Hours</sub>          0x0000   100   100   000    Old<sub>age</sub>   Offline      -       2592
+12  Power<sub>Cycle</sub><sub>Count</sub>       0x0000   100   100   000    Old<sub>age</sub>   Offline      -       258
+232 Available<sub>Reservd</sub><sub>Space</sub> 0x0000   100   100   000    Old<sub>age</sub>   Offline      -       4914564640
+233 Media<sub>Wearout</sub><sub>Indicator</sub> 0x0000   100   000   000    Old<sub>age</sub>   Offline      -       100
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-9" class="outline-3">
+<h3 id="sec-2-9"><span class="section-number-3">2.9</span> The Cache</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+tmpfs <i>home/username</i>.cache/google-chrome/Default tmpfs noexec,defaults,noatime,nodiratime 0 0
+</p>
+
+<p>
+browser.cache.disk.parent<sub>directory</sub> /tmp
+</p>
+
+<p>
+operation        journal        w/o journal        percent change
+git clone        367.0        353.0        3.81 %
+make        207.6        199.4        3.95 %
+make clean        6.45        3.73        42.17 %
+</p>
+
+<p>
+Make Clean should be in the cache.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-10" class="outline-3">
+<h3 id="sec-2-10"><span class="section-number-3">2.10</span> Tools</h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+sys-apps/smartmontools
+sudo smartctl -a <i>dev/sda | less
+<a href="https://www.maketecheasier.com/monitor-hard-disk-health-linux">https://www.maketecheasier.com/monitor-hard-disk-health-linux</a></i>
+</p>
+
+
+<blockquote>
+<p>
+这些数据里，我们需要注意的首先是ID为AD的一项，即Wear Leveling Count（颗粒平均擦写次数），图中显示的数据为108，即这块128G的M4的全盘P/E数为108次，因为M4使用的闪存颗粒官方标称寿命为3000次，108约为3000的3%，所以此项的Current（当前）值为97，即剩余97%的寿命（亦即CA）。
+</p>
+
+<p>
+第2项要注意的就是ID为AA的Grown Failing Block Count（使用中新增坏块数），此项代表SSD的闪存颗粒在使用时出现的坏块（类似于HDD的坏道）数量，此处数据为0即尚未有出现坏块，若新购买回来的M4在正常使用（不包括疯狂跑测试）下，短期内此项数据产生较大变化，那代表盘可能有问题，用户可申请售后服务。
+</p>
+
+<p>
+B5即Non-4k Aligned Access（非4KB对齐访问数）此项，可能很多用户会产生疑问，为什么我明明对齐了，这里还有数据呢？这是因为虽然我们分区对齐了，但我们写入和读取的数据不一定都是4KB或它的整数倍，因此这里就会有数据，我们不需要在意，这一项是m4的开发人员留给他们自己看的；还有C7即Ultra DMA CRC Error Rate（主机到接口之间传输CRC错误率）此项，若此项出现数据，并不代表磁盘有问题，这是数据线有问题或接口接触不良而引起的，一般重新接好或更换数据线后，数值就不会再增加。
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-sec-2-11" class="outline-3">
+<h3 id="sec-2-11"><span class="section-number-3">2.11</span> Windows</h3>
+<div class="outline-text-3" id="text-2-11">
+<ol class="org-ol">
+<li>关闭休眠
+</li>
+<li>Superfech,WIndowsSearch
+</li>
+<li>25%的预留空间
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-12" class="outline-3">
+<h3 id="sec-2-12"><span class="section-number-3">2.12</span> Health</h3>
+<div class="outline-text-3" id="text-2-12">
+<p>
+For Samsung SSDs, check SMART attribute 177 (Wear Leveling Count).
+</p>
+
+<p>
+ID # 177 Wear Leveling Count
+</p>
+
+<p>
+This attribute represents the number of media program and erase operations (the number of times a block has been erased). This value is directly related to the lifetime of the SSD. The raw value of this attribute shows the total count of P/E Cycles.
+Source: <a href="http://www.samsung.com/global/business/semiconductor/minisite/SSD/M2M/download/07_Communicating_With_Your_SSD.pdf">http://www.samsung.com/global/business/semiconductor/minisite/SSD/M2M/download/07_Communicating_With_Your_SSD.pdf</a>
+</p>
+
+<p>
+The wear level indicator starts at 100 and decreases linearly down to 1 from what I can tell. At 1 the drive will have exceeded all of its rated p/e cycles, but in reality the drive's total endurance can significantly exceed that value.
+Source: <a href="http://www.anandtech.com/show/7173/samsung-ssd-840-evo-review-120gb-250gb-500gb-750gb-1tb-models-tested/3">http://www.anandtech.com/show/7173/samsung-ssd-840-evo-review-120gb-250gb-500gb-750gb-1tb-models-tested/3</a>
+</p>
+
+<p>
+I would suggest you take that last statement about exceeding that value with a grain of salt.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> KDE</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+root #/etc/init.d/xdm start
+emerge &#x2013;ask kde-base/kdeplasma-addons
+export KWIN<sub>TRIPLE</sub><sub>BUFFER</sub>=1
+</p>
+
+<p>
+If you get some bugs,can change the display manager to try!*
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Backup</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+~/.bash<sub>history]]</sub>
+~/.zsh<sub>history]]</sub>
+/etc/fstab]]
+<i>etc/default/grub]]
+~</i>.bashrc]]
+~/.zshrc]]
+~/.config/awesome/rc.lua]]
+~/.vim/ .vimrc]]
+~/.emacs.d]]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Virtualbox</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+gpasswd -a &lt;user&gt; vboxusers
+gpasswd -a &lt;user&gt; vboxguest
+FILE /etc/conf.d/modules
+merge &#x2013;ask app-emulation/virtualbox-guest-additions
+modules="vboxdrv vboxnetadp vboxnetflt
+</p>
+</div>
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Install Extension Pack At Global Setting Enable USB 2.0 To Camero</h3>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Debian Nvidia</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+deb <a href="http://httpredir.debian.org/debian/">http://httpredir.debian.org/debian/</a> jessie main contrib non-free
+</p>
+
+<p>
+## KernelModuleBlacklisting
+</p>
+
+
+<p>
+As mentioned in the comment headers in /etc/modprobe.d/blacklist.conf adding modules there &#x2026;does not affect autoloading of modules by the kernel.; this means that to blacklist a kernel driver such as ipv6 you must do a fake install.
+(Re)move /etc/modprobe.conf, if present, as it supersedes anything in /etc/modprobe.d/* (unless you add include /etc/modprobe.d).
+The modules listed in /etc/initramfs-tools/modules aren't subject to blacklists so comment it first.
+Howto:
+</p>
+
+<p>
+Create a file '/etc/modprobe.d/&lt;modulename&gt;.conf' containing 'blacklist &lt;modulename&gt;'.
+Run 'depmod -ae' as root
+Recreate your initrd with 'update-initramfs -u'
+</p>
+
+
+<ul class="org-ul">
+<li>Nvidia
+Option "NoLogo" "1"
+Option "RenderAccel" "1"
+Option "TripleBuffer" "true"
+Option "MigrationHeuristic" "greedy"
+
+<p>
+/etc/X11/xorg.conf.d/20-nvidia.conf
+</p>
+
+<p>
+Section "Device"
+Identifier "My GPU"
+Driver "nvidia"
+Option "NoLogo" "1"
+Option "RenderAccel" "1"
+Option "TripleBuffer" "true"
+Option "MigrationHeuristic" "greedy"
+EndSection
+</p>
+
+<p>
+nouveau rcutree.rcu<sub>idle</sub><sub>gp</sub><sub>delay</sub>=1
+</p>
+
+<p>
+cat /etc/profile.d/tearfree<sub>kde</sub>.sh
+</p>
+
+<p>
+Option "TripleBuffer" "On" 
+</p>
+
+<p>
+export KWIN<sub>TRIPLE</sub><sub>BUFFER</sub>=1
+export _<sub>GL</sub><sub>YIELD</sub>="USLEEP"
+export CLUTTER<sub>PAINT</sub>=disable-clipped-redraws:disable-culling
+export CLUTTER<sub>VBLANK</sub>=True
+export KWIN<sub>EXPLICIT</sub><sub>SYNC</sub>=0
+</p>
+
+<p>
+In /etc/X11/xorg.conf.d/20-nvidia.conf, add
+Option "TripleBuffer" "False"
+</p>
+
+<p>
+```sh
+</p>
+</li>
+</ul>
+<p>
+#1 Add these lines (if they don't exist, else make necessary changes in them) to ~/.kde/share/config/nepomukserverrc
+</p>
+
+<p>
+[Basic Settings]
+Start Nepomuk=false
+</p>
+
+<p>
+[Service-nepomukmigration1]
+autostart=false
+</p>
+
+<p>
+[Service-nepomukstrigiservice]
+autostart=false
+</p>
+
+<p>
+#2 Then add these lines (if they don't exist, else make necessary changes in them) to ~/.config/akonadi/akonadiserverrc
+</p>
+
+<p>
+[QMYSQL]
+Name=akonadi
+Host=
+User=
+Password=
+Options="UNIX<sub>SOCKET</sub>=/home/manmath/.local/share/akonadi/db<sub>misc</sub>/mysql.socket"
+ServerPath=/usr/sbin/mysqld-akonadi
+StartServer=false
+</p>
+
+<p>
+#3 Open ~/.kde/share/config/kdedrc and set "autoload" to false for nepomuksearchmodule
+</p>
+
+<p>
+[Module-nepomuksearchmodule]
+autoload=false
+</p>
+
+
+<p>
+#4 Finally, remove the file nepomukcontroller.desktop and akonaditray.desktop from <i>usr/share/autostart</i>, if they exist.
+</p>
+
+<p>
+Log out or restart your system to experience the lightness and speed of your sexy KDE workspace.
+</p>
+
+<p>
+```
+</p>
+<ul class="org-ul">
+<li>virtualbox
+</li>
+</ul>
+<p>
+/usr/lib/virtualbox/VirtualBox &#x2013;comment "win10" &#x2013;startvm "f7320602-1a86-4461-8af6-2bce9dbccdda"  
+</p>
+<ul class="org-ul">
+<li>compelete gnome or gnome 
+ aptitude purge `dpkg &#x2013;get-selections | grep gnome | cut -f 1`
+ apt-get &#x2013;purge remove &#x2026;
+ aptitude purge remove
+aptitude -f install
+aptitude purge `dpkg &#x2013;get-selections | grep deinstall | cut -f 1`
+aptitude -f install
+</li>
+
+<li>clean
+dpkg -l |grep "<sup>rc</sup>"|awk '{print $2}' |xargs aptitude -y purge
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>apt-get install
+zsh git awesome emacs audacious google-chrome thunar lxappearance fcitx textlive-full cjk shadowsocks slim xfce4-terminal compton nvidia xserver-xorg virtualbox
+</li>
+
+<li>desktop file
+</li>
+</ul>
+<p>
+xdg-open gtk-launch exo-open
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Grub</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+grub command- quiet+3 or 5 ,init 3
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Awesome wm</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>kde theme with awesome
+<blockquote>
+<p>
+export XDG<sub>CURRENT</sub><sub>DESKTOP</sub>="kde"
+</p>
+<p>
+export DESKTOP<sub>SESSION</sub>="kde"
+export DE="kde"
+</p>
+
+<p>
+export GTK2<sub>RC</sub><sub>FILES</sub>="$HOME/.gtkrc-2.0"
+</p>
+<p>
+export QT<sub>XFT</sub>="true"
+</p>
+<p>
+export QT<sub>SELECT</sub>="5"
+</p>
+<p>
+export QT<sub>QPA</sub><sub>PLATFORMTHEME</sub>="kde"
+</p>
+<p>
+#export QT<sub>QPA</sub><sub>PLATFORMTHEME</sub>="qt5ct"
+</p>
+<p>
+export QT<sub>PLUGIN</sub><sub>PATH</sub>=$HOME/.kde4/lib/kde4/plugins/:/usr/lib/kde4/plugins/
+</p>
+</blockquote>
+</li>
+<li>autostart write in xinitrc
+</li>
+<li>70-synapatics
+</li>
+<li>compton
+</li>
+<li>redshift
+</li>
+<li>synaptics
+vim /usr/share/X11/xorg.conf.d/70-syna&#x2026;
+</li>
+<li>/etc/X11/display-manager&#x2026;..
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Left</td>
+<td class="left">切换到上一个Tag</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Right</td>
+<td class="left">切换到下一个Tag</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">1~9</td>
+<td class="left">切换到指定Tag</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">t</td>
+<td class="left">标记当前窗口</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">1~9</td>
+<td class="left">把标记的窗口移动到指定桌面</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Esc</td>
+<td class="left">切换到最后使用过的Tag</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">r</td>
+<td class="left">重启awesome</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">q</td>
+<td class="left">退出awesome</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">m</td>
+<td class="left">最大化/还原当前窗口</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">f</td>
+<td class="left">全屏/恢复当前窗口</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+c</td>
+<td class="left">关闭当前窗口</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">j</td>
+<td class="left">切换到下一个窗口</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">k</td>
+<td class="left">切换到上一个窗口</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+</td>
+<td class="left">j</td>
+<td class="left">当前窗口和前一个窗口互换位置</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+</td>
+<td class="left">k</td>
+<td class="left">当前窗口和后一个窗口互换位置</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">j</td>
+<td class="left">切换到下一个屏幕</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">k</td>
+<td class="left">切换到前一个屏幕</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">Space</td>
+<td class="left">切换当前窗口是否为浮动的</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">Return</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Return</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Tab</td>
+<td class="left">切换到最后使用过的窗口</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">o</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">u</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+</td>
+<td class="left">r</td>
+<td class="left">重绘当前窗口</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">l</td>
+<td class="left">当前窗口的宽度减小5%</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">h</td>
+<td class="left">当前窗口的宽度增大5%</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shilt</td>
+<td class="left">+</td>
+<td class="left">h</td>
+<td class="left">增加主区域窗口的数量</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+</td>
+<td class="left">l</td>
+<td class="left">减少主区域窗口的数量</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">h</td>
+<td class="left">增加非主区域窗口的数量</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">l</td>
+<td class="left">减少非主区域窗口的数量</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Space</td>
+<td class="left">切换下一布局</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+</td>
+<td class="left">Space</td>
+<td class="left">切换上一个布局</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">r</td>
+<td class="left">运行程序</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">F4</td>
+<td class="left">运行Lua命令</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">i</td>
+<td class="left">显示当前窗口的class和instance</td>
+</tr>
+
+<tr>
+<td class="left">Ctrl</td>
+<td class="left">+</td>
+<td class="left">Alt</td>
+<td class="left">+</td>
+<td class="left">BackSpace</td>
+<td class="left">注销当前登录</td>
+</tr>
+
+<tr>
+<td class="left">Mod4</td>
+<td class="left">+</td>
+<td class="left">Shift</td>
+<td class="left">+</td>
+<td class="left">F1~F9</td>
+<td class="left">把当前桌面和1~9桌面同时显示</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> LINUX COMMAND</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+ln -s ls-mv-cp-rm -r -l -a -h grep find rm cp mv rename -r
+</p>
+</div>
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> github</h3>
+<div class="outline-text-3" id="text-9-1">
+<ol class="org-ol">
+<li>创建ssh密钥
+ssh-keygen -t rsa -C "your<sub>email</sub>@youremail.com"
+copy .ssh/id<sub>rsa</sub>.pub to github:<a href="https://github.com/settings/keys">https://github.com/settings/keys</a>
+</li>
+<li>链接到github
+ssh -T git@github.com
+git config &#x2013;global user.name "cnfeat"//用户名
+git config &#x2013;global user.email  "cnfeat@gmail.com"//填写自己的邮箱
+</li>
+<li>创建目录以及git克隆和推送——目录名字要一致
+$ mkdir tmp      //创建推送目录
+$ cd tmp         //进入推送目录    
+<b>$ git init       //设置该目录为推送</b>
+$ touch README   //生成readme
+git add .
+$ git add README //加入修改列表
+$ git commit -m 'first commit' //递交修改声明
+2790  git remote rm origin
+$ git remote add origin git@github.com:abcd/tmp.git //为远程Git更名为origin
+$ git push -u origin master //推送此次修改
+
+<p>
+git push -f
+git pull
+</p>
+
+<p>
+通过先add文件到更改再评论文件到项目中，然后就可以把项目中的文件，push到服务器上了。 这是通过commit文件来对比需要提交哪些？需要将文件链接添加到这个文件中管理！
+</p>
+</li>
+
+<li>安装hexo
+apt-get install curl
+curl -sL <a href="https://deb.nodesource.com/setup">https://deb.nodesource.com/setup</a> | bash -
+apt-get install -y nodejs npm nodejs-legacy
+npm install -g hexo-cli
+hexo init
+hexo g(generate)
+hexo s(server) <a href="http://localhost:4000">http://localhost:4000</a>
+hexo clean 
+vim _config.yml
+```
+deploy:                                                
+  type: git                                            
+    repo: <a href="https://github.com/ztao1991/ztao1991.github.io.git">https://github.com/ztao1991/ztao1991.github.io.git</a>                      
+      branch: master 
+
+<p>
+```
+npm install hexo-deployer-git &#x2013;save
+</p>
+
+<p>
+hexo d(deploy)
+</p>
+
+<p>
+hexo clean
+</p>
+
+<p>
+hexo generate
+</p>
+
+<p>
+hexo deploy
+</p>
+</li>
+</ol>
+
+
+<p>
+git clone <a href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a> themes/next
+</p>
+
+
+
+<ul class="org-ul">
+<li>config
+<p>
+## Docs: <a href="https://hexo.io/docs/deployment.html">https://hexo.io/docs/deployment.html</a>
+deploy: 
+type: git
+repo: git@github.com:ztao1991/ztao1991.github.io.git
+branch: master
+</p>
+</li>
+</ul>
+
+<p>
+hexo g
+hexo s
+npm install hexo-deployer-git &#x2013;save
+hexo d
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Emacs</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+<code>code</code> <code>code</code>
+</p>
+</div>
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Emacs With Windows</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+HKCU\SOFTWARE\WOW6432Node\GNU\Emacs\HOME
+</p>
+
+<ol class="org-ol">
+<li>Click Start -&gt; Run
+</li>
+
+<li>Type: regedit, and click OK
+</li>
+
+<li>Go to: HKEY<sub>LOCAL</sub><sub>MACHINE</sub> -&gt; System -&gt; CurrentControlSet -&gt; Control -&gt; KeyBoard Layout
+</li>
+</ol>
+<p>
+Note: KeyBoard Layout, and NOT KeyBoard Layouts
+</p>
+
+<ol class="org-ol">
+<li>Right-click: Keyboard Layout, and select New -&gt; Binary value
+</li>
+
+<li>Rename: New Value #1 -&gt; Scancode Map
+</li>
+
+<li>Right click: Scancode Map -&gt; Modify
+0000  00 00 00 00 00 00 00 00       
+0008  03 00 00 00 1d 00 3a 00
+0010  3a 00 1d 00 00 00 00 00
+0018
+</li>
+</ol>
+
+
+<ol class="org-ol">
+<li>Close regedit and restart your computer
+</li>
+</ol>
+
+
+<p>
+Procedure
+</p>
+
+<ul class="org-ul">
+<li>Go to Start &gt; Type in regedit and start it
+</li>
+<li>Navigate to HKEY<sub>CURRENT</sub><sub>USER</sub>/Control Panel/Input Method/Hot Keys
+</li>
+<li>Select the key named:
+<ul class="org-ul">
+<li>00000070 for the Chinese (Traditional) IME - Ime/NonIme Toggle hotkey
+</li>
+<li>00000010 for the Chinese (Simplified) IME - Ime/NonIme Toggle hotkey
+</li>
+</ul>
+</li>
+<li>In the right sub-window, there are three subkeys.
+<ul class="org-ul">
+<li>Key Modifiers designate Alt/Ctrl/Shift/etc and is set to Ctrl (02c00000).
+</li>
+<li>Virtual Key designates the finishing key and is set to Space (20000000).
+</li>
+</ul>
+</li>
+<li>Change the first byte in Key Modifiers from 02 to 00
+</li>
+<li>Change the first byte in Virtual Key from 20 to FF
+</li>
+<li>Log off and log back on. I don't think it's necessary to restart.
+</li>
+<li>Do not change the Hot keys for input languages in Control Panel, unless you want to do this all over again.
+</li>
+</ul>
+
+<p>
+Notes: Symptoms
+</p>
+
+<p>
+Each registry key (thing that looks like a folder) is for each specific hotkey setting that you would normally find in Control Panel &gt; Region and Language &gt; Keyboards and Languages &gt; Change keyboards&#x2026; &gt; Advanced Key Settings &gt; Hot keys for input languages. The recurring bug is the hotkey being automatically reset to Ctrl+space even if changed via the GUI.
+</p>
+
+<p>
+I can personally confirm this for Windows 7 64-bit and Windows 8.1, though from my research, it looks like it may work for XP and Vista as well.
+</p>
+
+<p>
+<a href="https://www.zhihu.com/question/22288432">https://www.zhihu.com/question/22288432</a>
+</p>
+
+<blockquote>
+<p>
+When i type Ctrl+Space, Windows switches me to other language input. What to do?
+You can disable the Windows shortcut that switches you among input methods of different languages.
+</p>
+
+<p>
+On Microsoft Windows 10:
+</p>
+
+<p>
+go to Control Panel
+Under icon “Clock, Language, and Region”, click link “change input methods”
+Click “Advanced settings” on the left panel.
+Change language bar hot keys.
+Here's the exact instruction for Windows Vista.
+</p>
+
+<p>
+Go to 〖Start ▸ Control Panel〗.
+Choose Classic View on the left.
+Double click on the “Regional and Language Options” icon, then go to “Keyboards and Languages” tab, click on “Change Keyboards…”.
+Then, go to “Advanced Key Settings” tab, then, it should list Key sequences on the right column.
+Select a input choice that has shortcut key, then click the button “Change Key Sequence”.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Strike-Through</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+C-c C-x C-f + / *
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> Input C-\</h3>
+</div>
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> org-mode</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>格式
+</li>
+</ul>
+<p>
+like_ <b>change</b> <code>change</code> <del>make</del> <i>like away</i>
+</p>
+
+<p>
+bold*
+italic/
+underlined_
+strike-through+
+code~
+</p>
+</div>
+
+<div id="outline-container-sec-10-4-1" class="outline-4">
+<h4 id="sec-10-4-1"><span class="section-number-4">10.4.1</span> Lord of the Rings</h4>
+<div class="outline-text-4" id="text-10-4-1">
+<p>
+My favorite scenes are (in this order)
+</p>
+<ol class="org-ol">
+<li>The attack of the Rohirrim
+</li>
+<li>Eowyn's fight with the witch king
+<ul class="org-ul">
+<li>this was already my favorite scene in the book
+</li>
+<li>I really like Miranda Otto.
+</li>
+</ul>
+</li>
+<li>Peter Jackson being shot by Legolas
+<ul class="org-ul">
+<li>on DVD only
+</li>
+</ul>
+<p>
+He makes a really funny face when it happens.
+</p>
+</li>
+</ol>
+<p>
+ORG-LIST-END-MARKER
+   But in the end, no individual scenes matter but the film as a whole.
+   Important actors in this film are:
+</p>
+<dl class="org-dl">
+<dt> Elijah Wood </dt><dd>He plays Frodo
+</dd>
+<dt> Sean Austin </dt><dd>He plays Sam, Frodo's friend.  I still remember
+him very well from his role as Mikey Walsh in The Goonies.
+</dd>
+</dl>
+<p>
+ORG-LIST-END-MARKER
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-10-4-1-1" name="sec-10-4-1-1"></a>This is a headline<br  /><div class="outline-text-5" id="text-10-4-1-1">
+<p>
+Still outside the drawer
+:DRAWERNAME: 
+This is inside the drawer.
+:END:
+After the drawer.
+c-c c-x d
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-10-4-2" class="outline-4">
+<h4 id="sec-10-4-2"><span class="section-number-4">10.4.2</span> 4.4.2 列表/标题快捷键</h4>
+<div class="outline-text-4" id="text-10-4-2">
+<p>
+折叠
+快捷键        说明
+S-TAB        循环切换整个文档的大纲状态（折叠、打开下一级、打开全部）
+TAB        循环切换光标所在的大纲状态
+</p>
+
+<p>
+快捷键        说明
+C-c C-n/p        移动到下上一个标题（不断标题是哪一级）
+C-c C-f/b        移动到同一级别的下/上标题
+C-c C-u        跳到上一级标题
+C-c C-j        切换到大纲预览状态
+基于大纲/标题的编辑
+快捷键        说明
+M-RET        插入一个同级别的标题
+M-S-RET        插入一个同级别的TODO标题
+M-LEFT/RIGHT        将当前标题升/降级
+M-S-LEFT/RIGHT        将子树升/降级
+M-S-UP/DOWN        将子树上/下移动
+C-c *        将本行设为标题或者正文
+C-c C-w        将子树或者区域移动到另一个标题处（跨缓冲区）
+C-c C-x b        在新缓冲区显示当前分支
+C-c /        只列出包含搜索结果的大纲，并高亮，支持多种搜索方式
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-3" class="outline-4">
+<h4 id="sec-10-4-3"><span class="section-number-4">10.4.3</span> 元数据</h4>
+<div class="outline-text-4" id="text-10-4-3">
+</div>
+</div>
+<div id="outline-container-sec-10-4-4" class="outline-4">
+<h4 id="sec-10-4-4"><span class="section-number-4">10.4.4</span> 4.7.3 内部连接</h4>
+<div class="outline-text-4" id="text-10-4-4">
+<p>
+内部链接就类似于HTML的锚点（实际上export成HTML文件后就变成了锚点），可以实现在一个文档内部的跳转。如下命令定义了一个名为target的跳转目标：
+<a id="change" name="change"></a> <a href="#change">10.4.4</a>
+#<a id="target" name="target"></a> (这里我把锚点设置到*连接*这一部分开始处，大家可以点击下面效果中两个连接试试效果)
+如下方式可以设置到target的链接：
+target]] 或 <a href="#target">猛击锚点</a>
+效果为： target 或 猛击锚点
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-5" class="outline-4">
+<h4 id="sec-10-4-5"><span class="section-number-4">10.4.5</span> 4.7.4 其他常用的连接命令</h4>
+<div class="outline-text-4" id="text-10-4-5">
+<p>
+C-c l 可以在光标所在处创建一个跳转目标点，在需要跳转至该目标的位置输入命令C-c C-l可以建立到目标的链接当输入C-c C-l命令，光标若处在已经存在的一个链接上的时候，可以编辑改链接。命令C-c %可以记录当前光标所在位置，当光标移到其他地方后，可以用C-c &amp;跳转回来。这里的位置记录类似一个 kill-ring，重复输入C-c %可以记录多个位置，重复输入C-c &amp;可以连续跳转到之前记录的对应位置上。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-6" class="outline-4">
+<h4 id="sec-10-4-6"><span class="section-number-4">10.4.6</span> 4.8 注脚</h4>
+<div class="outline-text-4" id="text-10-4-6">
+<p>
+在 org mode中，你可以为你的文章添加注脚（footnote）。注脚的格式有两种，一是方括号+数字，二是方括号+fn+名字。比如下面有两个例子：在 org mode 的正文中写下这两句话：
+The Org homepage1 now looks a lot better than it used to. The Org homepage2 now looks a lot better than it used to.
+插入脚注：C-c C-x f 接下俩你可以写一些其他东西，然后在文章的末尾写上下面两句话（注意：必须要顶格写）：
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-7" class="outline-4">
+<h4 id="sec-10-4-7"><span class="section-number-4">10.4.7</span> 4.9 分割线</h4>
+<div class="outline-text-4" id="text-10-4-7">
+<p>
+五条短线或以上显示为分隔线。
+</p>
+<hr  />
+</div>
+</div>
+<div id="outline-container-sec-10-4-8" class="outline-4">
+<h4 id="sec-10-4-8"><span class="section-number-4">10.4.8</span> 书签</h4>
+<div class="outline-text-4" id="text-10-4-8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x r m Bookmark</td>
+<td class="left">bookmark-set</td>
+<td class="left">设置一个名为 Bookmark 的书签。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r l</td>
+<td class="left">bookmarks-bmenu-list</td>
+<td class="left">列出所有已保存的书签。</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-delete</td>
+<td class="left">删除一个书签。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r b Bookmark</td>
+<td class="left">bookmark-jump</td>
+<td class="left">跳转至名为 Bookmark 的书签中所设置的位置。</td>
+</tr>
+
+<tr>
+<td class="left">未定义</td>
+<td class="left">bookmark-save</td>
+<td class="left">将所有的书签保存到书签文件 ~/.emac.bmk 中。</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+必須用「一個中文字＝ 兩個英文字」寬度的字體
+例如文泉驛正黒、微米黒
+</p>
+<pre class="example">
+(set-default-font "Consolas")
+(set-fontset-font "fontset-default" 'chinese-gbk "微软雅黑")
+(setq face-font-rescale-alist '(("宋体" . 1.2)
+				("微软雅黑" . 1.1)
+				))
+;;;中文与英文字体设置
+;; Setting English Font
+(set-face-attribute
+'default nil :font "Monaco 14")
+;; Chinese Font
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+(set-fontset-font (frame-parameter nil 'font)
+charset
+(font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))
+</pre>
+
+<p>
+Baidu <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+
+<p>
+\(E=mc^2\)和\[\]作为行内公式和行间公式标志
+</p>
+
+<p>
+Name | Phone | Age |
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Peter</td>
+<td class="right">1234</td>
+<td class="right">17</td>
+</tr>
+
+<tr>
+<td class="left">Anna</td>
+<td class="right">4321</td>
+<td class="right">25</td>
+</tr>
+</tbody>
+</table>
+<p>
+calc- mode
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-9" class="outline-4">
+<h4 id="sec-10-4-9"><span class="section-number-4">10.4.9</span> Help</h4>
+<div class="outline-text-4" id="text-10-4-9">
+<p>
+c-h t
+c-h k
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-10" class="outline-4">
+<h4 id="sec-10-4-10"><span class="section-number-4">10.4.10</span> 模板的使用</h4>
+<div class="outline-text-4" id="text-10-4-10">
+<p>
+YASSNIET
+yas/new-sss
+c-c c-c 
+c-c c-t
+.emacs.d\snieet\。。。&#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-11" class="outline-4">
+<h4 id="sec-10-4-11"><span class="section-number-4">10.4.11</span> helm 搜索</h4>
+</div>
+<div id="outline-container-sec-10-4-12" class="outline-4">
+<h4 id="sec-10-4-12"><span class="section-number-4">10.4.12</span> ido</h4>
+<div class="outline-text-4" id="text-10-4-12">
+<p>
+c-s c-r
+c-x c-d
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-13" class="outline-4">
+<h4 id="sec-10-4-13"><span class="section-number-4">10.4.13</span> Something</h4>
+</div>
+<div id="outline-container-sec-10-4-14" class="outline-4">
+<h4 id="sec-10-4-14"><span class="section-number-4">10.4.14</span> 正则表达</h4>
+</div>
+<div id="outline-container-sec-10-4-15" class="outline-4">
+<h4 id="sec-10-4-15"><span class="section-number-4">10.4.15</span> 加密</h4>
+</div>
+<div id="outline-container-sec-10-4-16" class="outline-4">
+<h4 id="sec-10-4-16"><span class="section-number-4">10.4.16</span> 字体</h4>
+<div class="outline-text-4" id="text-10-4-16">
+<p>
+　{"Dejavu Sans Mono 10" 与 "WenQuanyi Micro Hei Mono 12"}　{"Consolas
+11"  与 "Microsoft  Yahei  16"}　{"Liberation Mono  12" 与  "WenQuanYi
+Micro Hei Mono 15"}
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-4-17" class="outline-4">
+<h4 id="sec-10-4-17"><span class="section-number-4">10.4.17</span> 插入日期: C-c .</h4>
+</div>
+<div id="outline-container-sec-10-4-18" class="outline-4">
+<h4 id="sec-10-4-18"><span class="section-number-4">10.4.18</span> 窗口管理和缓存管理：frame + buffer</h4>
+</div>
+<div id="outline-container-sec-10-4-19" class="outline-4">
+<h4 id="sec-10-4-19"><span class="section-number-4">10.4.19</span> cua-mode</h4>
+<div class="outline-text-4" id="text-10-4-19">
+<p>
+lt+x string-insert-rectange 是块插入
+alt+s clear-rectange            是块删除
+M-x rectange-mark-mode
+</p>
+
+<p>
+emacs以C-x r开头的命令来进行矩形操作。先用C-space或者C-@设一个mark，移动光标到另一点，用以下命令进行列操作：
+</p>
+
+<p>
+C-x r k 剪切一个矩形块
+C-x r y 粘贴一个矩形块
+C-x r o 插入一个矩形块
+C-x r c 清除一个矩形块(使其变成空白)
+C-x r t 在选定区域的所有列前插入样的字符
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-4-20" class="outline-4">
+<h4 id="sec-10-4-20"><span class="section-number-4">10.4.20</span> open with the file with oyher app in emacs</h4>
+<div class="outline-text-4" id="text-10-4-20">
+<p>
+openwith.el
+<a href="http://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs">http://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-21" class="outline-4">
+<h4 id="sec-10-4-21"><span class="section-number-4">10.4.21</span> export</h4>
+<div class="outline-text-4" id="text-10-4-21">
+<pre class="example">
+;;; 下面一段是 Feng Shu 的
+(defun eh-org-clean-space (text backend info)
+  "在export为HTML时,删除中文之间不必要的空格"
+  (when (org-export-derived-backend-p backend 'html)
+	(let ((regexp "[[:multibyte:]]")
+		  (string text))
+	  ;; org默认将一个换行符转换为空格,但中文不需要这个空格,删除.
+	  (setq string
+			(replace-regexp-in-string
+			 (format "\\(%s\\) *\n *\\(%s\\)" regexp regexp)
+			 "\\1\\2" string))
+	  ;; 删除粗体之前的空格
+	  (setq string
+			(replace-regexp-in-string
+			 (format "\\(%s\\) +\\(&lt;\\)" regexp)
+			 "\\1\\2" string))
+	  ;; 删除粗体之后的空格
+	  (setq string
+			(replace-regexp-in-string
+			 (format "\\(&gt;\\) +\\(%s\\)" regexp)
+			 "\\1\\2" string))
+	  string)))
+(add-to-list 'org-export-filter-paragraph-functions
+			 'eh-org-clean-space)
+
+
+;;; 下面一段是 zwz 的, 作者声明只适应 org-mode 8.0 以及以上版本
+(defun clear-single-linebreak-in-cjk-string (string)
+  "clear single line-break between cjk characters that is usually soft line-breaks"
+  (let* ((regexp "\\([\u4E00-\u9FA5]\\)\n\\([\u4E00-\u9FA5]\\)")
+		 (start (string-match regexp string)))
+	(while start
+	  (setq string (replace-match "\\1\\2" nil nil string)
+			start (string-match regexp string start))))
+  string)
+
+(defun ox-html-clear-single-linebreak-for-cjk (string backend info)
+  (when (org-export-derived-backend-p backend 'html)
+	(clear-single-linebreak-in-cjk-string string)))
+
+(add-to-list 'org-export-filter-final-output-functions
+			 'ox-html-clear-single-linebreak-for-cjk)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-10-4-22" class="outline-4">
+<h4 id="sec-10-4-22"><span class="section-number-4">10.4.22</span> 1. C-c C-x C-i”开始计时，在需要结束计时时按”C-c C-x C-o</h4>
+<div class="outline-text-4" id="text-10-4-22">
+<ol class="org-ol">
+<li>C-c [ ]
+</li>
+<li>org-agneda C-c a
+</li>
+<li>C-c /
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5"><span class="section-number-3">10.5</span> 大小写</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+从光标位置开始，处理单词后半部分
+capitalize-word (M-c) ;; 单词首字母转为大写
+upcase-word (M-u)     ;; 整个单词转为大写
+downcase-word (M-l)   ;; 整个单词转为小写（注意，这里是 META － l(* 小写字母 L)）
+从光标位置开始，处理单词前半部分
+negtive-argument; capitalize-word (M&#x2013; M-c) ;; 单词首字母转为大写
+negtive-argument; upcase-word (M&#x2013; M-u)     ;; 整个单词转为大写
+negtive-argument; downcase-word (M&#x2013; M-l)   ;; 整个单词转为小写
+改变选定区域的大小写
+</p>
+
+<p>
+downcase-region (C-x C-l) ;; 选定区域全部改为小写
+upcase-region (C-x C-u)   ;; 选定区域全部改为大写
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-6" class="outline-3">
+<h3 id="sec-10-6"><span class="section-number-3">10.6</span> MovingTheCtrlKey</h3>
+<div class="outline-text-3" id="text-10-6">
+<p>
+On Debian and derivatives (Ubuntu, Mint etc.)
+To make Caps Lock another Ctrl key, edit the file /etc/default/keyboard and change the line which reads
+</p>
+
+<p>
+XKBOPTIONS="ctrl:nocaps"                # Some people prefer "ctrl:swapcaps"
+XKBOPTIONS="caps:swapescape"
+sudo dpkg-reconfigure -phigh console-setup
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-7" class="outline-3">
+<h3 id="sec-10-7"><span class="section-number-3">10.7</span> emacsclient -c</h3>
+<div class="outline-text-3" id="text-10-7">
+<p>
+emacs -damenon
+</p>
+<pre class="example">
+# alias emacs
+alias emacsd='emacs --daemon'
+alias e='emacsclient -t'
+alias ec='emacsclient -c'
+
+# run emacs daemon
+[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] &amp;&amp; emacsd
+
+# add kill emacs function
+function kill-emacs(){
+	emacsclient -e "(kill-emacs)"
+	emacs_pid=$( ps -C 'emacs --daemon' -o pid= )
+	if [[ -n "${emacs_pid}" ]];then
+		kill -9 "${emacs_pid}"
+	fi
+
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-8" class="outline-3">
+<h3 id="sec-10-8"><span class="section-number-3">10.8</span> Lisp</h3>
+<div class="outline-text-3" id="text-10-8">
+<ol class="org-ol">
+<li>lisp-interaction-mode
+</li>
+<li>C-j or C-x C-e the end!
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-10-9" class="outline-3">
+<h3 id="sec-10-9"><span class="section-number-3">10.9</span> offlineimap+mu4e+emacs+gmail</h3>
+<div class="outline-text-3" id="text-10-9">
+<p>
+<a href="http://www.djcbsoftware.nl/code/mu/mu4e/index.html">http://www.djcbsoftware.nl/code/mu/mu4e/index.html</a>
+</p>
+
+<ol class="org-ol">
+<li>install mu4e offilineimap
+</li>
+<li>mu index &#x2013;maildir=~/Mail
+</li>
+</ol>
+
+<p>
+[general]
+accounts = Gmail
+nmaxsyncaccounts = 1
+pythonfile = ~/.offlineimap.py
+</p>
+
+<p>
+[Account Gmail]
+localrepository = Local
+remoterepository = Remote
+</p>
+
+<p>
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir
+</p>
+
+<p>
+[Repository Remote]
+type = Gmail
+remoteuser = ztao1991@gmail.com
+remotepasseval = get<sub>password</sub><sub>emacs</sub>("imap.gmail.com", "ztao1991@gmail.com", "993")
+realdelete = yes
+</p>
+
+<p>
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+</p>
+
+<p>
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+</p>
+
+<p>
+#!/usr/bin/python
+import re, os
+</p>
+
+<p>
+def get<sub>password</sub><sub>emacs</sub>(machine, login, port):
+        s = "machine %s login %s port %s password ([^ ]*)\n" % (machine, login, port)
+        p = re.compile(s)
+        authinfo = os.popen("gpg2 -q &#x2013;no-tty -d ~/.authinfo.gpg").read()
+        return p.search(authinfo).group(1)
+</p>
+
+<p>
+machine imap.gmail.com login ztao1991@gmail.com port 993 password 
+machine smtp.gmail.com login ztao1991@gmail.com port 587 password 
+</p>
+
+<p>
+M-x epa-encrypt-file (generate ~/.authinfo.gpg and remove original).Set <del>ztao1991</del>
+</p>
+
+<p>
+apt install mu4e offlineimap gpgv12 
+</p>
+
+<p>
+Then offlinemap &amp; mu index &#x2013;maildir=~/mail
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #b22222;">#</span><span style="color: #b22222;">!/bin/</span><span style="color: #a020f0;">bash</span>
+<span style="color: #a0522d;">_fname</span>=$(mktemp)
+<span style="color: #483d8b;">echo</span> <span style="color: #8b2252;">"&lt;html&gt;"</span> &gt; ${<span style="color: #a0522d;">_fname</span>}
+cat - &gt;&gt; ${<span style="color: #a0522d;">_fname</span>}
+<span style="color: #483d8b;">echo</span> <span style="color: #8b2252;">"&lt;/html&gt;"</span> &gt;&gt; ${<span style="color: #a0522d;">_fname</span>}
+/usr/bin/firefox --new-window ${<span style="color: #a0522d;">_fname</span>}
+</pre>
+</div>
+
+<p>
+(require 'mu4e)
+</p>
+
+<p>
+;; default
+(setq mu4e-maildir (expand-file-name "~/Maildir"))
+</p>
+
+<p>
+(setq mu4e-drafts-folder "/[Gmail].Drafts")
+(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
+(setq mu4e-trash-folder  "/[Gmail].Trash")
+</p>
+
+<p>
+;; don't save message to Sent Messages, GMail/IMAP will take care of this
+(setq mu4e-sent-messages-behavior 'delete)
+</p>
+
+<p>
+;; setup some handy shortcuts
+(setq mu4e-maildir-shortcuts
+          '(("/INBOX"             . ?i)
+                ("/[Gmail].Sent Mail" . ?s)
+                ("/[Gmail].Trash"     . ?t)))
+</p>
+
+<p>
+;; allow for updating mail using 'U' in the main view:
+(setq mu4e-get-mail-command "offlineimap")
+</p>
+
+<p>
+;; something about ourselves
+;; I don't use a signature&#x2026;
+(setq
+ user-mail-address "ztao1991@gmail.com"
+ user-full-name  "张陶"
+ ;; message-signature
+ ;;  (concat
+ ;;    "Foo X. Bar\n"
+ ;;    "<a href="http://www.example.com\n">http://www.example.com\n</a>")
+)
+</p>
+
+<p>
+;; sending mail &#x2013; replace USERNAME with your gmail username
+;; also, make sure the gnutls command line utils are installed
+;; package 'gnutls-bin' in Debian/Ubuntu, 'gnutls' in Archlinux.
+</p>
+
+<p>
+(require 'smtpmail)
+</p>
+
+<p>
+(setq message-send-mail-function 'smtpmail-send-it
+          starttls-use-gnutls t
+          smtpmail-starttls-credentials
+          '(("smtp.gmail.com" 587 nil nil))
+          smtpmail-auth-credentials
+          (expand-file-name "~/.authinfo.gpg")
+          smtpmail-default-smtp-server "smtp.gmail.com"
+          smtpmail-smtp-server "smtp.gmail.com"
+          smtpmail-smtp-service 587
+          smtpmail-debug-info t)
+</p>
+
+<p>
+C-x m mail-mode
+C-c C-c   send the message and exit the message buffer
+C-c C-a   add an attachment
+C-c C-k   cancel the message
+C-c C-d  postpone the message
+C-c C-s  send the message but don't exit the message buffer
+C-c C-b  go to the start of the message
+C-c C-z  kill text from point until end of buffer
+key          description
+&#x2014;          &#x2013;&#x2014;&#x2014;&#x2014;
+C-c C-c      send message
+C-c C-d      save to drafts and leave
+C-c C-k      kill the message buffer (the message remains in the draft folder)
+C-c C-a      attach a file (pro-tip: drag &amp; drop works as well)
+</p>
+
+<p>
+(mu4e-specific)
+C-S-u        update mail &amp; reindex
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-10" class="outline-3">
+<h3 id="sec-10-10"><span class="section-number-3">10.10</span> gpg+gpg-agent</h3>
+<div class="outline-text-3" id="text-10-10">
+<p>
+<a href="file://~/.profile">file://~/.profile</a> 
+<a href="file://~/.gunpg/gpg-agent.conf">file://~/.gunpg/gpg-agent.conf</a>
+<a href="http://tech.memoryimprintstudio.com/the-ultimate-emailing-agent-with-mu4e-and-emacs/">http://tech.memoryimprintstudio.com/the-ultimate-emailing-agent-with-mu4e-and-emacs/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-11" class="outline-3">
+<h3 id="sec-10-11"><span class="section-number-3">10.11</span> Emacs Tur</h3>
+<div class="outline-text-3" id="text-10-11">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #0000ff;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">The Emacs Tip</span>&lt;/<span style="color: #0000ff;">title</span>&gt;
+&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">1.Move</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+M-/ &#34917;&#20840;
+C-x h &#20840;&#36873;
+C-j &#19979;&#19968;&#34892;
+&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">2.Setting</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">3.Plugin</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">4.Make yours emacs</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+1. Your habit
+2. Elisp
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10-12" class="outline-3">
+<h3 id="sec-10-12"><span class="section-number-3">10.12</span> Emacs Plugin</h3>
+<div class="outline-text-3" id="text-10-12">
+</div><div id="outline-container-sec-10-12-1" class="outline-4">
+<h4 id="sec-10-12-1"><span class="section-number-4">10.12.1</span> ace-jump-mode</h4>
+<div class="outline-text-4" id="text-10-12-1">
+<p>
+If you use the default configuration, which binds to “C-c SPC”.
+“C-c SPC” ⇒ ace-jump-word-mode
+enter first char of a word, select the highlight key to move to.
+“C-u C-c SPC” ⇒ ace-jump-char-mode
+enter a char for query, select the highlight key to move to.
+“C-u C-u C-c SPC” ⇒ ace-jump-line-mode
+each non-empty line will be marked, select the highlight key to move to.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-12-2" class="outline-4">
+<h4 id="sec-10-12-2"><span class="section-number-4">10.12.2</span> avy</h4>
+</div>
+<div id="outline-container-sec-10-12-3" class="outline-4">
+<h4 id="sec-10-12-3"><span class="section-number-4">10.12.3</span> emacs server</h4>
+<div class="outline-text-4" id="text-10-12-3">
+<pre class="example">
+(defun frame-setting ()
+	(set-frame-font "文泉驿等宽微米黑 8")
+	(set-fontset-font "fontset-default"
+			  'gb18030 '("文泉驿等宽微米黑" . "unicode-bmp")))
+ 
+(if (and (fboundp 'daemonp) (daemonp))
+	(add-hook 'after-make-frame-functions
+		  (lambda (frame)
+		(with-selected-frame frame
+		  (frame-setting))))
+  (frame-setting))
+
+
+
+----------------------------------------------------------------
+
+
+
+
+(setq window-system-default-frame-alist
+	  '(
+		;; if frame created on x display
+		(x
+	 (menu-bar-lines . 1)
+	 (tool-bar-lines . nil)
+	 ;; mouse
+	 (mouse-wheel-mode . 1)
+	 (mouse-wheel-follow-mouse . t)
+	 (mouse-avoidance-mode . 'exile)
+	 ;; face
+	 (font . "文泉驿等宽微米黑 8")
+	 )
+		;; if on term
+		(nil
+	 (menu-bar-lines . 0) (tool-bar-lines . 0)
+	 ;; (background-color . "black")
+	 ;; (foreground-color . "white")
+	 )
+	)
+	  )
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-10-12-4" class="outline-4">
+<h4 id="sec-10-12-4"><span class="section-number-4">10.12.4</span> evil</h4>
+<div class="outline-text-4" id="text-10-12-4">
+<p>
+basic: i x :wq dd p hjkl :help
+insert: a o O cw 
+move:0 ^ $ g_ / NG gg G w e
+copy:yy p
+Undo:u Redo:C-r
+Save:s w x bn bp :saves 
+</p>
+
+<pre class="example">
+;-------------------------------------------------------------------------------------------------------------------------
+;evil-mode
+;-------------------------------------------------------------------------------------------------------------------------
+;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20160608.229/")
+;; (require 'evil) 
+;; (evil-mode 1) 
+
+;;(setq evil-default-state 'emacs)
+;;(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
+;;(define-key evil-motion-state-map ";" 'smex)
+;;(define-key evil-motion-state-map ":" 'evil-ex)
+;;(global-set-key (kbd "C-s") 'evil-write)
+
+;;(evil-set-initial-state 'ibuffer-mode 'normal)
+
+;; esc quits
+;; (defun minibuffer-keyboard-quit ()
+;;   "Abort recursive edit.
+;; In Delete Selection mode, if the mark is active, just deactivate it;
+;; then it takes a second \\[keyboard-quit] to abort the minibuffer."
+;;   (interactive)
+;;   (if (and delete-selection-mode transient-mark-mode mark-active)
+;;       (setq deactivate-mark  t)
+;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+;;     (abort-recursive-edit)))
+;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
+;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
+;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; (global-set-key [escape] 'evil-exit-emacs-state)
+
+;; change mode-line color by evil state
+;; (lexical-let ((default-color (cons (face-background 'mode-line)
+;;                                    (face-foreground 'mode-line))))
+;;   (add-hook 'post-command-hook
+;;     (lambda ()
+;;       (let ((color (cond ((minibufferp) default-color)
+;;                          ((evil-insert-state-p) '("#e80000" . "#ffffff"))
+;;                          ((evil-emacs-state-p)  '("#af00d7" . "#ffffff"))
+;;                          ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+;;                          (t default-color))))
+;;         (set-face-background 'mode-line (car color))
+;;         (set-face-foreground 'mode-line (cdr color))))))
+
+;; (defun evil-toggle-input-method ()
+;;   "when toggle on input method, switch to evil-insert-state if possible.
+;;     when toggle off input method, switch to evil-normal-state if current state is evil-insert-state"
+;;       (interactive)
+;;       (if (not current-input-method)
+;;           (if (not (string= evil-state "insert"))
+;;               (evil-insert-state))
+;;         (if (string= evil-state "insert")
+;;             (evil-normal-state)
+;;           ))
+;;       (toggle-input-method))
+	
+;; (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
+
+;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+
+;; ;;evil-leader
+;; (require 'evil-leader)
+;; (global-evil-leader-mode)
+;; (evil-leader/set-leader ";")
+;; (setq evil-leader/in-all-states 1)
+
+
+
+;; (evil-leader/set-key "e" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
+;; (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
+;; (evil-leader/set-key "x" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+
+;; (setq-default tab-width 4 indent-tabs-mode nil)
+;; (define-key global-map (kbd "RET") 'newline-and-indent)
+;; (setq evil-move-cursor-back nil)
+
+
+;; (require 'evil-surround)
+;; (global-evil-surround-mode 1)
+
+
+;;-----------------------------------------------------------------------------------------------------------------------------------
+</pre>
+
+
+<ul class="org-ul">
+<li>cmatrix
+</li>
+<li>xeyes
+</li>
+<li>zenthura
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10-13" class="outline-3">
+<h3 id="sec-10-13"><span class="section-number-3">10.13</span> Bug</h3>
+<div class="outline-text-3" id="text-10-13">
+</div><div id="outline-container-sec-10-13-1" class="outline-4">
+<h4 id="sec-10-13-1"><span class="section-number-4">10.13.1</span> Dependency Problems</h4>
+<div class="outline-text-4" id="text-10-13-1">
+<p>
+sudo apt-get purge emacsen-common emacs24-common emacs24-bin-common emacs24 xemacs21-mule xemacs21 xemacs21-support gettext-el emacs xemacs21-bin
+</p>
+
+<p>
+sudo apt-get update
+sudo apt-get autoremove
+sudo apt-get autoclean
+Please post any errors.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-14" class="outline-3">
+<h3 id="sec-10-14"><span class="section-number-3">10.14</span> magit-mode</h3>
+<div class="outline-text-3" id="text-10-14">
+<p>
+M-x magit-status .c c. C-c C-c. M-x magit-push master orig.. s uncharge file $ staus
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-15" class="outline-3">
+<h3 id="sec-10-15"><span class="section-number-3">10.15</span> Latex</h3>
+<div class="outline-text-3" id="text-10-15">
+<p>
+sudo apt-get install okular texlive-full auctex
+Paragraphs are separated by at least one empty line. If you need to enforce a line break within a paragraph, use ‘\\’ at the end of a line.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #b22222;">;; </span><span style="color: #b22222;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">;;;;;;;;;;;;;;;;        LaTeX         ;;;;;;;;;;;;;;;;;</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### Run emacs in server mode in order to be able to use</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### emacsclient in Okular. Don't forget to configure</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### Okular to use emacs in</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### "Configuration/Configure Okular/Editor"</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### =&gt; Editor =&gt; Emacsclient. (you should see</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### emacsclient -a emacs --no-wait +%l %f</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### in the field "Command".</span>
+(server-start)
+
+(<span style="color: #a020f0;">setq</span> TeX-PDF-mode t) <span style="color: #b22222;">;; </span><span style="color: #b22222;">use pdflatex instead of latex</span>
+
+(<span style="color: #a020f0;">setq-default</span> TeX-master nil)
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### Enable synctex correlation. From Okular just press</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### Shift + Left click to go to the good line.</span>
+(<span style="color: #a020f0;">setq</span> TeX-source-correlate-method 'synctex)
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### Enable synctex generation. Even though the command shows</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### as "latex" pdflatex is actually called</span>
+(custom-set-variables '(LaTeX-command <span style="color: #8b2252;">"latex -synctex=1"</span>) )
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### Use Okular to open your document at the good</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">##### point. It can detect the master file.</span>
+(add-hook 'LaTeX-mode-hook '(lambda ()
+                  (add-to-list 'TeX-expand-list
+                       '(<span style="color: #8b2252;">"%u"</span> Okular-make-url))))
+
+(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">Okular-make-url</span> () (concat
+               <span style="color: #8b2252;">"file://"</span>
+               (expand-file-name (funcall file (TeX-output-extension) t)
+                         (file-name-directory (TeX-master-file)))
+               <span style="color: #8b2252;">"#src:"</span>
+               (TeX-current-line)
+               (expand-file-name (TeX-master-directory))
+               <span style="color: #8b2252;">"./"</span>
+               (TeX-current-file-name-master-relative)))
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">## Use these lines if you want a confirmation of the</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">## command line to run...</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">(setq TeX-view-program-selection '((output-pdf "Okular")))</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">(setq TeX-view-program-list '(("Okular" "okular --unique %u")))</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">## And theses if you don't want any confirmation.</span>
+(eval-after-load <span style="color: #8b2252;">"tex"</span>
+  '(add-to-list 'TeX-command-list 
+                '(<span style="color: #8b2252;">"View"</span> <span style="color: #8b2252;">"okular --unique %u"</span> TeX-run-discard-or-function nil t <span style="color: #483d8b;">:help</span> <span style="color: #8b2252;">"View file"</span>)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10-16" class="outline-3">
+<h3 id="sec-10-16"><span class="section-number-3">10.16</span> Emacs Init</h3>
+<div class="outline-text-3" id="text-10-16">
+<p>
+Some Time Color Should #&#x2026;. 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Debian</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> 磁盘分区</h3>
+<div class="outline-text-3" id="text-11-1">
+<pre class="example">
+Device         Start       End   Sectors   Size Type
+/dev/sda1       2048    491519    489472   239M EFI System
+/dev/sda2     491520 102053887 101562368  48.4G Linux filesystem
+/dev/sda3  102053888 336429055 234375168 111.8G Linux filesystem
+/dev/sda4  336429056 350490623  14061568   6.7G Linux swap
+</pre>
+
+<pre class="example">
+</pre>
+<p>
+lsblk -l:
+</p>
+<pre class="example">
+sda1   8:1    0   239M  0 part /boot/efi
+sda2   8:2    0  48.4G  0 part /
+sda3   8:3    0 111.8G  0 part /home
+sda4   8:4    0   6.7G  0 part [SWAP]
+</pre>
+
+<p>
+parted:
+</p>
+<pre class="example">
+1      1049kB  252MB   251MB   fat32                 boot, esp
+2      252MB   52.3GB  52.0GB  ext4
+3      52.3GB  172GB   120GB   ext4
+4      172GB   179GB   7200MB  linux-swap(v1)
+</pre>
+
+<p>
+edit /etc/fstab:
+</p>
+<pre class="example">
+# &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+# / was on /dev/sda2 during installation
+UUID=420c1b6e-2ffd-4ba8-951e-288d30f7e223 /               ext4    noatime 0       1
+# /boot/efi was on /dev/sda1 during installation
+UUID=58B3-610B  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/sda3 during installation
+UUID=b9bd3d3a-b287-4ca1-ae92-fb18e1b85873 /home           ext4    noatime         0       2
+# swap was on /dev/sda4 during installation
+UUID=47314620-42bc-4bb0-83a3-979b694b2bab none            swap    sw              0       0
+
+tmpfs     /home/zhangtao/.cache/google-chrome/Default      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+tmpfs     /tmp      tmpfs   noexec,defaults,noatime,nodiratime 0       0 
+
+
+--------------------------------------
+# &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;                                                                                                    
+# / was on /dev/sda2 during installation                                                                                                                                  
+UUID=67c98dc7-979a-4ce0-a417-a7de33449b42 /               ext4    noatime,errors=remount-ro 0       1
+# /boot/efi was on /dev/sda1 during installation                                                                                                                          
+UUID=43F2-1E96  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/sda3 during installation                                                                                                                              
+UUID=9a2e596f-7d64-4cf8-abb8-0ca18f9246bf /home           ext4    noatime         0       2
+# swap was on /dev/sda4 during installation                                                                                                                               
+UUID=a8467b42-b0b9-4a00-a677-f3181f5d8bea none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+
+
+tmpfs     /home/zhangtao/.cache/chromium//Default      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+
+tmpfs     /home/zhangtao/.cache/mozilla/firefox      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+#tmpfs     /home/zhangtao/.cache/google-chrome/Default      tmpfs   noexec,defaults,noatime,nodiratime 0       0                                                          
+tmpfs     /tmp      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> 硬件类型</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+lspci:
+</p>
+<pre class="example">
+00:00.0 Host bridge: Intel Corporation 3rd Gen Core processor DRAM Controller (rev 09)
+00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v2/3rd Gen Core processor PCI Express Root Port (rev 09)
+00:14.0 USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB xHCI Host Controller (rev 04)
+00:16.0 Communication controller: Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1 (rev 04)
+00:1a.0 USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2 (rev 04)
+00:1b.0 Audio device: Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller (rev 04)
+00:1c.0 PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1 (rev c4)
+00:1c.1 PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2 (rev c4)
+00:1c.3 PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 4 (rev c4)
+00:1d.0 USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1 (rev 04)
+00:1f.0 ISA bridge: Intel Corporation HM76 Express Chipset LPC Controller (rev 04)
+00:1f.2 SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04)
+00:1f.3 SMBus: Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller (rev 04)
+*01:00.0 VGA compatible controller: NVIDIA Corporation GK107M [GeForce GT 650M] (rev a1)*
+01:00.1 Audio device: NVIDIA Corporation GK107 HDMI Audio Controller (rev a1)
+*02:00.0 Ethernet controller: Qualcomm Atheros AR8161 Gigabit Ethernet (rev 10)*
+*03:00.0 Network controller: Broadcom Corporation BCM4313 802.11bgn Wireless Network Adapter (rev 01)*
+04:00.0 System peripheral: JMicron Technology Corp. SD/MMC Host Controller (rev 30)
+04:00.2 SD Host controller: JMicron Technology Corp. Standard SD Host Controller (rev 30)
+04:00.3 System peripheral: JMicron Technology Corp. MS Host Controller (rev 30)
+04:00.4 System peripheral: JMicron Technology Corp. xD Host Controller (rev 30)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-11-3" class="outline-3">
+<h3 id="sec-11-3"><span class="section-number-3">11.3</span> 网络连接</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+Use NetworkManager.
+</p>
+
+<ul class="org-ul">
+<li>有线
+apt-get install pppoe dhcp-client
+</li>
+
+<li>无线
+apt-get install linux-headers-$(uname -r|sed 's,[<sup>-]</sup>*-[<sup>-]</sup>*-,,') broadcom-sta-dkms
+
+<p>
+modprobe -r b44 b43 b43legacy ssb brcmsmac
+</p>
+
+<p>
+modprobe wl
+</p>
+
+<p>
+apt-get install wpasupplicant
+</p>
+
+<p>
+wpa<sub>passphrase</sub> myssid my<sub>very</sub><sub>secret</sub><sub>passphrase</sub>
+</p>
+
+<p>
+wpa-conf /etc/wpa<sub>supplicant</sub>/wpa<sub>supplicant</sub>.conf
+</p>
+</li>
+<li>配置网卡
+
+<p>
+ifconfig
+</p>
+
+<p>
+ifup/ifdown wlan0/eth0
+</p>
+
+<p>
+chmod 0600 /etc/network/interfaces
+</p>
+
+<p>
+edit /etc/network/interfaces
+</p>
+<pre class="example">
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# auto eth0
+# iface eth0 inet dhcp
+# iface eth0 inet static
+# address 192.168.1.156
+# netmask 255.
+# iface eth0 inet static
+# address 192.168.1.156
+# netmask 255.255.255.0
+# gateway 192.168.1.1
+wpa-ssid A-12	
+wpa-psk 463b73516245f5a6f96f8a109c90bf208f883b3524395adf973ea03973249829
+</pre>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-4" class="outline-3">
+<h3 id="sec-11-4"><span class="section-number-3">11.4</span> 显卡驱动</h3>
+<div class="outline-text-3" id="text-11-4">
+<p>
+aptitude -r install linux-headers-$(uname -r|sed 's,[<sup>-]</sup>*-[<sup>-]</sup>*-,,') nvidia-kernel-dkms
+nvdia-xconfig
+Option "NoLogo" "1"
+</p>
+
+<p>
+一些问题：
+eidt /etc/default/grub
+</p>
+
+<pre class="example">
+GRUB_CMDLINE_LINUX_DEFAULT="elevator=noop quiet nouveau rcutree.rcu_idle_gp_delay=1"
+</pre>
+
+<p>
+grub-mkconfig -o /boot/grub/grub.cfg
+</p>
+
+<p>
+Option "NoLogo" "1"
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-5" class="outline-3">
+<h3 id="sec-11-5"><span class="section-number-3">11.5</span> 安装软件</h3>
+<div class="outline-text-3" id="text-11-5">
+<p>
+aptitude install xserver-xorg-core awesome fcitx-rime xfce4-terminal google-chrome audacious smplayer vlc slim thunar emacs virtualbox lxappearance git zsh alsa-utils gimp pcmanfm networkmanager-gnome redshift
+</p>
+
+<p>
+sudo apt-get install thunar thunar-archive-plugin thunar-gtkhash thunar-volman thunar-media-tags-plugin thunar-vcs-plugin
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11-6" class="outline-3">
+<h3 id="sec-11-6"><span class="section-number-3">11.6</span> Dekstop</h3>
+<div class="outline-text-3" id="text-11-6">
+<p>
+kde-standar+awesome
+</p>
+</div>
+
+<div id="outline-container-sec-11-6-1" class="outline-4">
+<h4 id="sec-11-6-1"><span class="section-number-4">11.6.1</span> Firewall Install gufw</h4>
+<div class="outline-text-4" id="text-11-6-1">
+<blockquote>
+<p>
+安装方法
+ sudo apt-get install ufw
+当然，这是有图形界面的(比较简陋)，在新立得里搜索gufw试试……
+使用方法
+1 启用
+ sudo ufw enable
+ sudo ufw default deny 
+作用：开启了防火墙并随系统启动同时关闭所有外部对本机的访问（本机访问外部正常）。
+2 关闭
+ sudo ufw disable 
+2 查看防火墙状态
+ sudo ufw status 
+3 开启/禁用相应端口或服务举例
+ sudo ufw allow 80 允许外部访问80端口
+ sudo ufw delete allow 80 禁止外部访问80 端口
+ sudo ufw allow from 192.168.1.1 允许此IP访问所有的本机端口
+ sudo ufw deny smtp 禁止外部访问smtp服务
+ sudo ufw delete allow smtp 删除上面建立的某条规则
+ sudo ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 22 要拒绝所有的TCP流量从10.0.0.0/8 到192.168.0.1地址的22端口
+ 可以允许所有RFC1918网络（局域网/无线局域网的）访问这个主机（/8,/16,/12是一种网络分级）：
+sudo ufw allow from 10.0.0.0/8
+sudo ufw allow from 172.16.0.0/12
+sudo ufw allow from 192.168.0.0/16
+推荐设置
+ sudo apt-get install ufw
+ sudo ufw enable
+ sudo ufw default deny 
+这样设置已经很安全，如果有特殊需要，可以使用sudo ufw allow开启相应服务。
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11-7" class="outline-3">
+<h3 id="sec-11-7"><span class="section-number-3">11.7</span> 软件配置</h3>
+<div class="outline-text-3" id="text-11-7">
+</div><div id="outline-container-sec-11-7-1" class="outline-4">
+<h4 id="sec-11-7-1"><span class="section-number-4">11.7.1</span> awesome wm</h4>
+<div class="outline-text-4" id="text-11-7-1">
+<p>
+mkdir -p .config/awesome/
+</p>
+
+<p>
+cp <i>xdg/awesome/rc.lua ~</i>.config/awesome
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-7-2" class="outline-4">
+<h4 id="sec-11-7-2"><span class="section-number-4">11.7.2</span> fonts</h4>
+<div class="outline-text-4" id="text-11-7-2">
+<p>
+vi /etc/apt/sources.list
+</p>
+
+<p>
+deb <a href="http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu">http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu</a> trusty main
+deb-src <a href="http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu">http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu</a> trusty main
+</p>
+
+<p>
+Import the public PGP key of this PPA to verify package integrity during the installation process：
+apt-key adv &#x2013;keyserver keyserver.ubuntu.com &#x2013;recv-keys E985B27B
+</p>
+
+<p>
+apt-get update
+apt-get install fontconfig-infinality
+</p>
+
+<p>
+Configure Font Rendering:
+sudo bash /etc/fonts/infinality/infctl.sh setstyle
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11-8" class="outline-3">
+<h3 id="sec-11-8"><span class="section-number-3">11.8</span> Others</h3>
+<div class="outline-text-3" id="text-11-8">
+<p>
+deb extract: ar -vx @debian 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Enconding</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+enca filename
+enconv -L zh<sub>CN</sub> -x UTF-8 filename
+iconv -f encoding -t encoding inputfile
+iconv -f GBK -t UTF-8 file1 -o file2
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Vim</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+## Edit 
+</p>
+<ul class="org-ul">
+<li>Ctrl-p
+&lt;leader&gt;-f模糊搜索最近打开的文件(MRU)
+&lt;leader&gt;-p模糊搜索当前目录及其子目录下的所有文件
+
+<p>
+ctrl + j/k 进行上下选择
+</p>
+
+<p>
+ctrl + x 在当前窗口水平分屏打开文件
+</p>
+
+<p>
+ctrl + v 同上, 垂直分屏
+</p>
+
+<p>
+ctrl + t 在tab中打开
+</p>
+</li>
+</ul>
+<hr  />
+<p>
+Press &lt;F5&gt; to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
+Press &lt;c-f&gt; and &lt;c-b&gt; to cycle between modes.
+Press &lt;c-d&gt; to switch to filename only search instead of full path.
+Press &lt;c-r&gt; to switch to regexp mode.
+Use &lt;c-j&gt;, &lt;c-k&gt; or the arrow keys to navigate the result list.
+Use &lt;c-t&gt; or &lt;c-v&gt;, &lt;c-x&gt; to open the selected entry in a new tab or in a new split.
+Use &lt;c-n&gt;, &lt;c-p&gt; to select the next/previous string in the prompt's history.
+Use &lt;c-y&gt; to create a new file and its parent directories.
+Use &lt;c-z&gt; to mark/unmark multiple files and &lt;c-o&gt; to open them.
+</p>
+
+<ul class="org-ul">
+<li>Ag+grep
+<p>
+:vim[grep][!] /{pattern}/[g][j] {file} &#x2026;
+</p>
+<p>
+:Ag [options] {pattern} [{directory}]
+</p>
+</li>
+</ul>
+
+<p>
+## Writer
+</p>
+
+
+<p>
+## Splitline
+</p>
+
+<p>
+'''vim
+set fillchars=stl:―,stlnc:—,vert:│,fold:۰,diff:·
+</p>
+
+<p>
+highlight folded       cterm=bold ctermbg=none ctermfg=5
+highlight vertsplit    cterm=none ctermbg=none ctermfg=9
+highlight statusline   cterm=none ctermbg=none ctermfg=9
+highlight statuslinenc cterm=none ctermbg=none ctermfg=9
+highlight specialkey   cterm=none ctermbg=none ctermfg=1
+highlight matchparen   cterm=none ctermbg=none ctermfg=5
+highlight wildmenu     cterm=bold ctermbg=none ctermfg=3
+highlight visual       cterm=bold ctermbg=7    ctermfg=none
+highlight user1        cterm=none ctermbg=none ctermfg=3
+</p>
+
+<p>
+set statusline=
+set statusline+=%1*%f%*
+set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)
+set statusline+=%=
+set statusline+=[%(%l,%c%V%)]
+set statusline+=\ %1*%P%*
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Windows 10</h2>
+<div class="outline-text-2" id="text-14">
+</div><div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1"><span class="section-number-3">14.1</span> Windows下开发环境配置</h3>
+<div class="outline-text-3" id="text-14-1">
+</div><div id="outline-container-sec-14-1-1" class="outline-4">
+<h4 id="sec-14-1-1"><span class="section-number-4">14.1.1</span> Python Environment Install</h4>
+<div class="outline-text-4" id="text-14-1-1">
+<p>
+Python 3 version.
+</p>
+
+<p>
+把默认使用的Python版本路径加到 PATH 环境变量中，避免每次使用时都要冗余地写全Python 解释器路径。假设安装路径是 C:\Python27\, 将这段加入到 PATH 中:
+C:\Python27\;C:\Python27\Scripts\
+</p>
+
+<p>
+或在 powershell 中运行:
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+</p>
+
+<p>
+<b>The User Name Should Be English.And Install Pip install foo.whl or jupyter</b>
+</p>
+
+<p>
+<del>pip install foo.whl</del>
+</p>
+<ul class="org-ul">
+<li>Editor
+<ul class="org-ul">
+<li>Atom
+</li>
+<li>Sublime Text
+</li>
+<li>VSCode
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-14-1-2" class="outline-4">
+<h4 id="sec-14-1-2"><span class="section-number-4">14.1.2</span> C Environment Install</h4>
+<div class="outline-text-4" id="text-14-1-2">
+<p>
+MinGW gcc gcc++
+</p>
+
+<p>
+1、在PATH里加入C:\MinGW\bin，记得，如果里面还有其他的变量，记得要加个分号啊，分号得在英文输入模式下输入的。
+2、新建LIBRARY<sub>PATH变量，如果有的话，在值中加入C</sub>:\MinGW\lib，这是标准库的位置。
+3、新建C<sub>INCLUDEDE</sub><sub>PATH变量，值设为C</sub>:\MinGW\include。
+4、新建CPLUS<sub>INCLUDE</sub><sub>PATH变量，值为C</sub>:\MinGW\include\c++\3.4.5;C:\MinGW\include\c++\3.4.5;C:\MinGW\include\c++\3.4.5\backward;C:\MinGW\include
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14-1-3" class="outline-4">
+<h4 id="sec-14-1-3"><span class="section-number-4">14.1.3</span> Latex</h4>
+<div class="outline-text-4" id="text-14-1-3">
+<p>
+Texlive
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14-1-4" class="outline-4">
+<h4 id="sec-14-1-4"><span class="section-number-4">14.1.4</span> Vmware</h4>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Colors</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+#32cd32 Lime Green
+#fffff0 Color Hex Ivory
+</p>
+
+<p>
+<a href="http://www.color-hex.com/color/32cd32">http://www.color-hex.com/color/32cd32</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> Matlab</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+sudo mkdir /media/matlab  
+sudo mount -o loop [path]MATHWORKS<sub>R2014A</sub>.iso /media/matlab  
+cd /media/matlab  
+sudo ./install
+cp libmwservices.so /usr/local/MATLAB/R2014a/bin/glnxa64
+sudo apt-get install matlab-support
+sudo chown username -R ~/.matlab
+ln -s /usr/local/MATLAB/R2014b/bin/matlab /usr/bin
+</p>
+<ul class="org-ul">
+<li>Java Gui Displayp In Awesome Wm
+sudo apt-get install suckless-tools
+wmname LG3D
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> Build And Compile Emacs</h2>
+<div class="outline-text-2" id="text-17">
+<ol class="org-ol">
+<li>apt-get install build-enseential lib&#x2026;-dev
+</li>
+<li>apt-get build-deb emacs vim
+</li>
+</ol>
+<p>
+./configure &#x2013;with-features=huge \
+            &#x2013;enable-multibyte \
+            &#x2013;enable-rubyinterp=yes \
+            &#x2013;enable-pythoninterp=yes \
+            &#x2013;with-python-config-dir=/usr/lib/python2.7/config \
+            &#x2013;enable-python3interp=yes \
+            &#x2013;with-python3-config-dir=/usr/lib/python3.5/config \
+            &#x2013;enable-perlinterp=yes \
+            &#x2013;enable-luainterp=yes \
+            &#x2013;enable-gui=gtk2 &#x2013;enable-cscope &#x2013;prefix=/usr
+</p>
+<ol class="org-ol">
+<li>./configure
+</li>
+<li>make
+</li>
+<li>make install
+</li>
+<li>make uninstall
+</li>
+
+<li>xwidget 
+</li>
+</ol>
+<p>
+sudo apt-get remove libwxgtk3.0-dev
+./autogen.sh 
+./configure &#x2013;with-xwidgets &#x2013;with-cairo &#x2013;with-modules
+</p>
+
+<p>
+$ cd /where/you/unpacked/or/branched/emacs
+$ ./autogen.sh    # not needed when installing from tarball
+$ ./configure
+$ make
+$ make install
+</p>
+</div>
+</div>
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> Latex<sub>AucTex</sub></h2>
+<div class="outline-text-2" id="text-18">
+</div><div id="outline-container-sec-18-1" class="outline-3">
+<h3 id="sec-18-1"><span class="section-number-3">18.1</span> Latex</h3>
+<div class="outline-text-3" id="text-18-1">
+<blockquote>
+<p>
+From: Carsten Dominik &lt;carsten.dominik &lt;at&gt; gmail.com&gt;
+Subject: Re: Re: LaTeX export of images
+Newsgroups: gmane.emacs.orgmode
+Date: Tuesday 20th October 2009 10:18:21 UTC (over 7 years ago)
+On Oct 13, 2009, at 12:03 PM, Francesco Pizzolante wrote:
+</p>
+
+<p>
+&gt; Hi Carsten,
+&gt;
+&gt; Sorry for my late reply on this subject.
+&gt;
+&gt;&gt; OK, I have now modified image placement in LaTeX.
+&gt;&gt;
+&gt;&gt; 1. Image in text
+&gt;&gt;
+&gt;&gt;   <img src="./img/x.png" alt="x.png" />
+&gt;&gt;
+&gt;&gt; 2. Floating image with caption and modified size and placement
+&gt;&gt;
+&gt;&gt;   #+CAPTION: My caption
+&gt;&gt;   #+ATTR<sub>LATEX</sub>: placement=[H] width=0.6\textwidth
+&gt;&gt;   <img src="./img/x.png" alt="x.png" />
+&gt;&gt;
+&gt;&gt; 3. Wrapping text around the image
+&gt;&gt;
+&gt;&gt;   #+ATTR<sub>LaTeX</sub>: wrap
+&gt;&gt;   #+ATTR<sub>HTML</sub>: align="left"
+&gt;&gt;   <img src="./img/x.png" alt="x.png" />
+&gt;&gt;
+&gt;&gt; 4. Wrapping text around the image with modified size and wrapfigure  
+&gt;&gt; placement
+&gt;&gt;
+&gt;&gt;   #+ATTR<sub>LaTeX</sub>: wrap width=0.38\textwidth placement={r}{0.4\textwidth
+&gt;&gt;   #+ATTR<sub>HTML</sub>: align="right" width="250"
+&gt;&gt;   <img src="./img/x.png" alt="x.png" />
+&gt;&gt;
+&gt;&gt; Even if there is a caption, wrap will work and force the
+&gt;&gt; image to be non-floating with text wrapped around.
+&gt;&gt;
+&gt;&gt; Comments?
+&gt;
+&gt; I did not test the wrap option yet, but the rest is perfect (images  
+&gt; in text,
+&gt; placements, width, captions, labels).
+&gt;
+&gt; I still miss one single option: "float" in order to force the  
+&gt; centered figure
+&gt; environment if if no caption/label is present.
+&gt;
+&gt; I would add something like
+&gt;
+&gt; #+ATTR<sub>LATEX</sub>: float
+</p>
+
+
+<p>
+Have you actually tried?  The following works for me.
+</p>
+
+
+<p>
+<img src="./blue_1.png" alt="blue_1.png" />
+This is text
+</p>
+
+<ul class="org-ul">
+<li>Carsten
+</li>
+</ul>
+
+<p>
+&gt;
+&gt; or
+&gt;
+&gt; #+ATTR<sub>LATEX</sub>: float=t
+&gt;
+&gt; Is this feasible?
+&gt;
+&gt; Thanks a lot!
+&gt;
+&gt; Francesco
+</p>
+
+<ul class="org-ul">
+<li>Carsten
+</li>
+</ul>
+
+
+
+
+
+<p>
+<span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+Emacs-orgmode mailing list
+Remember: use `Reply All' to send replies to the list.
+Emacs-orgmode@gnu.org
+<a href="http://lists.gnu.org/mailman/listinfo/emacs-orgmode">http://lists.gnu.org/mailman/listinfo/emacs-orgmode</a>
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-sec-18-2" class="outline-3">
+<h3 id="sec-18-2"><span class="section-number-3">18.2</span> Keybinding</h3>
+<div class="outline-text-3" id="text-18-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C<sub>c</sub> C-e</td>
+<td class="left">Environment</td>
+</tr>
+
+<tr>
+<td class="left">C<sub>c</sub> C-m</td>
+<td class="left">Top matter</td>
+</tr>
+
+<tr>
+<td class="left">C<sub>c</sub> C-c v</td>
+<td class="left">Compile</td>
+</tr>
+
+<tr>
+<td class="left">C<sub>c</sub> C<sub>s</sub></td>
+<td class="left">Sectioning</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-18-3" class="outline-3">
+<h3 id="sec-18-3"><span class="section-number-3">18.3</span> Ctex</h3>
+<div class="outline-text-3" id="text-18-3">
+<div class="org-src-container">
+
+<pre class="src src-txt">#+LATEX_CLASS: ctexart
+#+LATEX_CLASS_OPTIONS: [nofonts]
+#+LATEX_HEADER: \usepackage{mylinuxfonts}
+
+#+LATEX_HEADER: \documentclass[nofonts]{ctexart}
+#+LATEX_HEADER: \setmainfont{Times New Roman}
+#+LATEX_HEADER: \setsansfont{Helvetica}
+#+LATEX_HEADER: \setmonofont{Courier New}
+
+#+LATEX_HEADER: \setCJKmainfont{SimSun} 
+#+LATEX_HEADER: \setCJKsansfont{Microsoft YaHei} 
+#+LATEX_HEADER: \setCJKmonofont{FZLanTingHei} 
+
+ctexart , ctexrep , ctexbook 分别对应于 article , report , book 三个类
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19"><span class="section-number-2">19</span> Didplay</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+关闭指定显示器：xrandr &#x2013;output VGA-0 &#x2013;off
+设置指定显示器的分辨率：xrandr &#x2013;output DVI-I-1 &#x2013;mode 1680x1050
+让指定显示器自动选择分辨率与屏幕位置：xrandr &#x2013;output DVI-I-1 &#x2013;auto
+使用扩展模式
+设置指定显示器为主屏幕：xrandr &#x2013;output DVI-I-1 &#x2013;primary
+设置多个显示器之间的相对位置：xrandr &#x2013;output DVI-I-1 &#x2013;left-of VGA-0
+使用同步显示模式：xrandr &#x2013;output DVI-I-1 &#x2013;same-as VGA-0
+以上不同选项是可以组合在一起一次完成设定的。例如：
+</p>
+
+<p>
+xrandr &#x2013;output VGA-0 &#x2013;mode 1280x1024 &#x2013;output DVI-I-1 &#x2013;mode 1920x1080 &#x2013;primary &#x2013;right-of VGA-0
+</p>
+</div>
+</div>
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20"><span class="section-number-2">20</span> Python</h2>
+<div class="outline-text-2" id="text-20">
+</div><div id="outline-container-sec-20-1" class="outline-3">
+<h3 id="sec-20-1"><span class="section-number-3">20.1</span> Cal With Gpu _ CUDA</h3>
+</div>
+</div>
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21"><span class="section-number-2">21</span> Flash</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+tar -zxvf flash<sub>player</sub><sub>ppapi</sub><sub>linux</sub>.x86<sub>64\</sub> .tar.gz 
+sudo cp libpepflashplayer.so /usr/lib/chromium/plugins
+</p>
+
+<p>
+sudo vim /etc/chromium.d/default： CHROMIUM<sub>FLAGS</sub>="&#x2013;ppapi-flash-path=/usr/lib/chromium/plugins/libpepflashplayer.so &#x2013;ppapi-flash-version=24.0.0.189" 
+</p>
+
+<p>
+sudo cp libflashplayer.so <i>usr/lib/mozilla/plugins</i>
+</p>
+</div>
+<div id="outline-container-sec-21-1" class="outline-3">
+<h3 id="sec-21-1"><span class="section-number-3">21.1</span> Chrome With Linux</h3>
+<div class="outline-text-3" id="text-21-1">
+<p>
+mkdir .config/google-chrome/PepperFlash
+sudo vim /usr/share/applications/google-chrome.desktop
+</p>
+
+<p>
+Exec=/usr/bin/google-chrome-stable %U &#x2013;ppapi-flash-path=/home/zhangtao/.config/google-chrome/PepperFlash/libpepflashplayer.so
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22"><span class="section-number-2">22</span> Windows U Under Linux</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+fdisk /dev/sdb n a p w
+sudo mkfs -t ntfs /dev/sdb1
+sudo dd  if=/home/peter/Downloads/WindowsTechnicalPreview-x64-ZH-CN.iso of=/dev/sdb1 bs=4M iflag=direct​
+sudo apt-get install lilo
+sudo lilo -M /dev/sdb mbr
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23"><span class="section-number-2">23</span> Debian 9 Bug</h2>
+<div class="outline-text-2" id="text-23">
+</div><div id="outline-container-sec-23-1" class="outline-3">
+<h3 id="sec-23-1"><span class="section-number-3">23.1</span> sddm blank screen cause by nvidia-driver so use debian sources nvidia driver to solve.</h3>
+</div>
+
+<div id="outline-container-sec-23-2" class="outline-3">
+<h3 id="sec-23-2"><span class="section-number-3">23.2</span> Texlive bug that tex-common can't setting:First Remove All Texlive-full and tex-common .Install texlive-base form unstable.</h3>
+</div>
+
+<div id="outline-container-sec-23-3" class="outline-3">
+<h3 id="sec-23-3"><span class="section-number-3">23.3</span> Nvidia Install:</h3>
+<div class="outline-text-3" id="text-23-3">
+<ul class="org-ul">
+<li>First Blacklist: blacklist nouveau in .modeprobe.d/
+</li>
+<li>sudo apt-get install linux-headers-$(uname -r|sed 's,[<sup>-]</sup>*-[<sup>-]</sup>*-,,')
+</li>
+<li>./Nv&#x2026;..
+</li>
+<li>add grub:
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-23-4" class="outline-3">
+<h3 id="sec-23-4"><span class="section-number-3">23.4</span> Sometimes Some problem maybe should  remove and reinstall to solve</h3>
+</div>
+
+<div id="outline-container-sec-23-5" class="outline-3">
+<h3 id="sec-23-5"><span class="section-number-3">23.5</span> Sometimes Should Solve some Dependency(New Or Older Vesion) With dpkg install.</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24"><span class="section-number-2">24</span> Web And Internet</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+更新和升级+网页设计+服务框架+硬件配置+代码托管+维护和管理+域名和地址
+<img src="file:///home/zhangtao/Dropbox/Picture/Web_Internet.png" alt="Web_Internet.png" />
+</p>
+
+<p>
+sudo apt-get install vim-youcompleteme
+vam install youcompleteme
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25"><span class="section-number-2">25</span> C Programming</h2>
+<div class="outline-text-2" id="text-25">
+</div><div id="outline-container-sec-25-1" class="outline-3">
+<h3 id="sec-25-1"><span class="section-number-3">25.1</span> Boost Lib</h3>
+<div class="outline-text-3" id="text-25-1">
+<p>
+sudo apt-get install libboost-all-dev
+sudo apt-get install libgnuplot-iostream-dev
+sudo apt-get install libmgl-dev mathgl
+</p>
+</div>
+</div>
+<div id="outline-container-sec-25-2" class="outline-3">
+<h3 id="sec-25-2"><span class="section-number-3">25.2</span> random</h3>
+</div>
+<div id="outline-container-sec-25-3" class="outline-3">
+<h3 id="sec-25-3"><span class="section-number-3">25.3</span> Config Gnuplot Lib</h3>
+<div class="outline-text-3" id="text-25-3">
+<p>
+<a href="http://gnuplot.sourceforge.net/demo/">http://gnuplot.sourceforge.net/demo/</a>
+</p>
+
+<blockquote>
+<p>
+
+</p>
+
+<pre class="example">
+#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;ctime&gt;
+#define random(a,b) (rand()%(b-a+1)+a)
+using namespace std;
+int main()
+{
+    srand((unsigned)time(NULL));
+    for(int i=0;i&lt;10;i++)
+    cout&lt;&lt;random(1,100)&lt;&lt;' ';
+    return 0;
+}
+</pre>
+<p>
+取得(0,x)的随机整数：rand()%x；
+取得(a,b)的随机整数：rand()%(b-a)；
+取得[a,b)的随机整数：rand()%(b-a)+a；
+取得[a,b]的随机整数：rand()%(b-a+1)+a；
+取得(a,b]的随机整数：rand()%(b-a)+a+1；
+取得0-1之间的浮点数：rand()/double(RAND<sub>MAX</sub>)。
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-sec-25-4" class="outline-3">
+<h3 id="sec-25-4"><span class="section-number-3">25.4</span> Segmentation fault ulimit for shell</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26"><span class="section-number-2">26</span> Markdown + Html + Css</h2>
+<div class="outline-text-2" id="text-26">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> TODO Wirte the css with html for pdf and ppt
+</li>
+<li>links
+</li>
+</ul>
+<p>
+&lt;div style="text-align:left"&gt;&lt;font size="2" face="Helvetica"&gt;&lt;a href="<a href="https://github.com/ztao1991/Networks/blob/master/Exercise/Net2_ex1/sandpile-model_version0.2.cpp">https://github.com/ztao1991/Networks/blob/master/Exercise/Net2_ex1/sandpile-model_version0.2.cpp</a>"&gt;sandpile-model.cpp&lt;b&gt;&lt;/b&gt;&lt;/a&gt;&lt;/font&gt;&lt;/div&gt;
+</p>
+
+<ul class="org-ul">
+<li>img
+</li>
+</ul>
+<p>
+&lt;div style="text-align:center"&gt;&lt;img src="figure<sub>1</sub>-2.png"/&gt;&lt;p&gt;&lt;font size="4" face="Helvetica"&gt;&lt;b&gt;Sandpile-Model&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;
+</p>
+
+<ul class="org-ul">
+<li>pdf and ppt tool with markdown and html
+</li>
+</ul>
+<p>
+markdown to chrome or pandoc to pdf or ppt
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27"><span class="section-number-2">27</span> Fonts Redering With Monaco</h2>
+<div class="outline-text-2" id="text-27">
+<blockquote>
+<p>
+Xft.antialias: 1
+</p>
+
+<p>
+Xft.autohint: 0
+</p>
+
+<p>
+Xft.dpi: 144
+</p>
+
+<p>
+Xft.hinting: 1
+</p>
+
+<p>
+Xft.hintstyle: hintmedium
+</p>
+
+<p>
+Xft.lcdfilter: lcddefault
+</p>
+
+<p>
+Xft.rgba: rgb
+</p>
+
+<p>
+emacs.FontBackend: xft
+Emacs.font: Monaco-10
+</p>
+
+<p>
+URxvt.font:xft:Monaco for Powerline:size=9:antialias=true,xft:文泉驿等宽微米黑:size=10
+Rxvt.scrollBar:False
+Rxvt.scrollBar<sub>right</sub>:True
+Rxvt.scrollBar<sub>floating</sub>: False
+Rxvt.scrollstyle:plain
+</p>
+
+
+<p>
+URxvt*cursorColor: red
+</p>
+
+<p>
+! Colors
+URxvt*background: black
+URxvt*foreground: white
+</p>
+
+<p>
+!!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!!URxvt.iso14755: False
+!!URxvt.perl-ext-common: default,clipboard
+!!
+!!
+!!!!Source <a href="http://github.com/altercation/solarized">http://github.com/altercation/solarized</a>
+!!
+!!*background: #002b36
+!!*foreground: #657b83
+!!!!*fading: 40
+!!*fadeColor: #002b36
+!!*cursorColor: #93a1a1
+!!*pointerColorBackground: #586e75
+!!*pointerColorForeground: #93a1a1
+!!
+!!!! black dark/light
+!!*color0: #073642
+!!*color8: #002b36
+!!
+!!!! red dark/light
+!!*color1: #dc322f
+!!*color9: #cb4b16
+!!
+!!!! green dark/light
+!!*color2: #859900
+!!*color10: #586e75
+!!
+!!!! yellow dark/light
+!!*color3: #b58900
+!!*color11: #657b83
+!!
+!!!! blue dark/light
+!!*color4: #268bd2
+!!*color12: #839496
+!!
+!!!! magenta dark/light
+!!*color5: #d33682
+!!*color13: #6c71c4
+!!
+!!!! cyan dark/light
+!!*color6: #2aa198
+!!*color14: #93a1a1
+!!
+!!!! white dark/light
+!!*color7: #eee8d5
+!!*color15: #fdf6e3
+</p>
+</blockquote>
+<p>
+Sources: <a href="https://www.emacswiki.org/emacs/XftGnuEmacs#toc17">https://www.emacswiki.org/emacs/XftGnuEmacs#toc17</a>
+</p>
+
+<blockquote>
+<p>
+
+</p>
+
+<p>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM "fonts.dtd"&gt;
+&lt;fontconfig&gt;
+  &lt;match target="font"&gt;
+    &lt;edit name="embeddedbitmap" mode="assign"&gt;
+      &lt;bool&gt;false&lt;/bool&gt;
+    &lt;/edit&gt;
+  &lt;/match&gt;
+&lt;/fontconfig&gt;
+</p>
+</blockquote>
+<p>
+Sources: <a href="https://wiki.archlinux.org/index.php/font_configuration#Disable_bitmap_fonts">https://wiki.archlinux.org/index.php/font_configuration#Disable_bitmap_fonts</a>
+</p>
+
+<p>
+xserver<sub>arguments</sub>   -nolisten tcp vt07 -dpi 96
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28"><span class="section-number-2">28</span> DPI</h2>
+<div class="outline-text-2" id="text-28">
+<ol class="org-ol">
+<li>SDDM
+vim /etc/sddm.conf 
+</li>
+</ol>
+<blockquote>
+<p>
+[Autologin]
+Relogin=false
+Session=
+User=
+</p>
+
+<p>
+[General]
+HaltCommand=
+RebootCommand=
+</p>
+
+<p>
+[Theme]
+Current=breeze
+CursorTheme=Breeze<sub>Snow</sub>
+</p>
+
+<p>
+[Users]
+MaximumUid=65000
+MinimumUid=1000
+</p>
+
+<p>
+[X11]
+ServerArguments=-nolisten tcp -dpi 144
+</p>
+</blockquote>
+<ol class="org-ol">
+<li>Xresource
+<blockquote>
+<p>
+Xft.antialias: 1
+</p>
+
+<p>
+Xft.autohint: 0
+</p>
+
+<p>
+Xft.dpi: 144
+</p>
+
+<p>
+Xft.hinting: 1
+</p>
+
+<p>
+Xft.hintstyle: hintfull
+</p>
+
+<p>
+Xft.lcdfilter: lcddefault
+</p>
+
+<p>
+Xft.rgba: rgb
+</p>
+</blockquote>
+</li>
+</ol>
+
+<blockquote>
+<p>
+4.Smaller - 100% = 96 DPI(Pixels/Dots Per Inch) 
+5.Medium - 125% = 120 DPI (Pixels/Dots Per Inch)
+6.Larger - 150% = 144 DPI (Pixels/Dots Per Inch). 
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-sec-28-1" class="outline-3">
+<h3 id="sec-28-1"><span class="section-number-3">28.1</span> Dell XPS 13</h3>
+<div class="outline-text-3" id="text-28-1">
+<blockquote>
+<p>
+Enabling
+</p>
+
+<p>
+Note: In most cases, this should be enabled automatically during Debian installation.
+</p>
+
+<p>
+Install the cpufrequtils package:
+</p>
+
+<p>
+aptitude install cpufrequtils
+Configuration
+</p>
+
+<p>
+Specify the governor to use at boot
+Edit /etc/default/cpufrequtils (you might need to create it if it doesn't exist). Specify the governor with the GOVERNOR variable:
+</p>
+
+<p>
+GOVERNOR="conservative"
+Keeping the governor settings between boots
+Install sysfsutils:
+</p>
+
+<p>
+aptitude install sysfsutils
+The sysfs values will be configured in /etc/sysfs.conf.
+</p>
+
+<p>
+Here are some examples for the conservative governor:
+</p>
+
+<p>
+mode devices/system/cpu/cpufreq/conservative = 644
+devices/system/cpu/cpufreq/conservative/freq<sub>step</sub> = 10
+devices/system/cpu/cpufreq/conservative/up<sub>threshold</sub> = 45
+devices/system/cpu/cpufreq/conservative/ignore<sub>nice</sub><sub>load</sub> = 1
+devices/system/cpu/cpufreq/conservative/sampling<sub>down</sub><sub>factor</sub> = 10
+After you made the changes in /etc/sysfs.conf, apply them with /etc/init.d/sysfsutils start or with  service sysfsutils start.
+</p>
+</blockquote>
+
+<p>
+Source:<a href="https://wiki.debian.org/HowTo/CpuFrequencyScaling">https://wiki.debian.org/HowTo/CpuFrequencyScaling</a>
+</p>
+
+
+<p>
+-&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;Just Use
+Markdown Format-&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+www.baidu.com
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: zhangtao</p>
+<p class="date">Created: 2017-05-19 五 13:30</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

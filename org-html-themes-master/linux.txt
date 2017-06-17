@@ -1,0 +1,2277 @@
+#+TITLE: The Manual Of System
+
+#+SETUPFILE: theme-readtheorg.setup
+
+* Gentoo 
+FORM WIKI OR BASH HISTORY!
+** Package Manage - emerge
+It will across all manager and the tourioul.
+** The make.conf file
+make.conf  *Backup important + /etc/portage +/var/lib/world*
+
+** Parted and mount
+parted -a optimal /dev/sda
+
+Number  Start   End     Size    File system     Name    标志
+ 1      1049kB  3146kB  2097kB  ntfs            grub    bios_grub
+ 2      3146kB  137MB   134MB   fat16           boot    启动, esp
+ 3      137MB   8000MB  7862MB  linux-swap(v1)  swap
+ 4      8000MB  62.0GB  54.0GB  ext4            rootfs
+ 5      62.0GB  1000GB  938GB   ext4            home
+ 
+mklabel gpt ; rm 2; unit mib ;mkpart name 1 3;print
+
+set 1 bios_grub on
+set 2 boot on
+
+mkfs.vfat /dev/sda2;mkfs.ext4 /dev/sda3;mkswap /dev/sda3
+
+mount /dev/sda4 /mnt/gentoo/
+mkdir -p /mnt/gentoo/boot
+mount ... ../boot
+
+/etc/fstab]]
+# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+/dev/sda2		/boot/efi	vfat		noauto,noatime	0 1
+/dev/sda4		/		ext4		noatime		0 1
+/dev/sda3		none		swap		sw		0 0
+/dev/sda5               /home		ext4		noatime		0 1
+/dev/cdrom		/mnt/cdrom	auto		noauto,ro	0 0
+/dev/fd0		/mnt/floppy	auto		noauto		0 0
+
+** install stage3
+1. date
+2. dowload stage3 and check
+3. tar xvjpf stage3-*.tar.bz2 --xattrs
+
+** kernel
+*** sound
+Intel AL97 --power-mode
+root #euse -E alsa
+root #emerge --ask --changed-use --deep @world
+root #emerge --ask alsa-utils
+
+*** network
+*** gpu
+Device Drivers --->
+   Graphics support --->
+	  Frame Buffer Devices --->
+		 <*> Support for frame buffer devices --->
+		 ## (Disable all drivers, including VGA, Intel, nVidia, and ATI, except EFI-based Framebuffer Support, only if you are using UEFI)
+ 
+	## (Further down, enable basic console support. KMS uses this.)
+	Console display driver support --->
+	  <*>  Framebuffer Console Support
+
+Device Drivers --->
+	Graphics support --->
+		Frame buffer Devices --->
+			<*> Support for frame buffer devices --->
+			< >   nVidia Framebuffer Support
+			< >   nVidia Riva support
+
+nvidia-xconfig
+eselect opengl set nvidia
+eselect opencl set nvidia
+
+*** efi
+Enable GPT partition label support if that was used previously when partitioning the disk:
+
+KERNEL Enable support for GPT
+-*- Enable the block layer --->
+	...
+	Partition Types --->
+	[*] Advanced partition selection
+	  ...
+	  [*] EFI GUID Partition support
+
+Enable EFI stub support and EFI variables in the Linux kernel if UEFI is used to boot the system:
+
+KERNEL Enable support for UEFI
+Processor type and features  --->
+	[*] EFI runtime service support 
+	[*]   EFI stub support
+  
+Firmware Drivers  --->
+	<*> EFI Variable Support via sysfs
+
+** make and install
+cd /usr/src/linux
+root #make menuconfig
+make && make modules_install
+root #make install
+
+With UEFI systems, create the /boot/efi/boot/ location, and then copy the kernel into this location, calling it bootx64.efi:
+
+mount /dev/sda1 /boot*
+root #mkdir -p /boot/efi/boot
+root #cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi
+grub2-install --target=x86_64-efi --efi-directory=/boot
+grub2-mkconfig -o /boot/grub/grub.cfg
+emerge @module-rebuild
+reboot
+
+** Desktop Enviorment
+*** Xfce4
+x11-base/xorg-server x11-misc/compton x11-misc/slim x11-terms/xfce4-terminal x11-themes/gtk-engines-murrine xfce-base/xfce4-meta xfce-extra/thunar-volman xfce-extra/tumbler xfce-extra/xfce4-battery-plugin xfce-extra/xfce4-mixer xfce-extra/xfce4-notifyd xfce-extra/xfce4-power-manager
+**** slim with xdm
+FILE /etc/conf.d/xdm
+DISPLAYMANAGER="slim"
+
+root #rc-update add xdm default
+root #/etc/init.d/xdm start
+
+FILE /etc/env.d/90xsession
+XSESSION="XFCE4"
+
+*** emacs
+解决 emacs 下 fcitx 无法输入中文
+
+1. “LC_CTYPE=zh_CN.utf8 emacs” 
+2. media-fonts/font-misc-misc
+3. fcitx config in .bashrc .xprofile .xinitrc .xssetion
+   
+   export GTK_IM_MODULE=fcitx
+   export QT_IM_MODULE=fcitx
+   export XMODIFIERS=@im=fcitx
+
+*** terminal
+zsh+git
+sudo emerge --ask dev-vcs/git
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+----------
+alias en='emacs -nw'
+export TERM=xterm-256color
+
+*** shadowsocks
+wget -O- https://bootstrap.pypa.io/get-pip.py | sudo python3
+apt install python-m2crypto 
+sudo pip install shadowsocks
+
+- Bug:
+  e .local/lib/python2.7/site-packages/shadowsocks/crypto/openssl.py
+
+  EVP_CIPHER_CTX_cleanup replace "EVP_CIPHER_CTX_reset"
+
+#+BEGIN_SRC 
+{
+	"server"       : "my_server_ip",
+	"server_port"  : 8388,
+	"local_address": "127.0.0.1",
+	"local_port"   : 1080,
+	"password"     : "mypassword",
+	"timeout"      : 300,
+	"method"       : "aes-256-cfb",
+	"fast_open"    : false,
+	"workers"      : 1
+}
+#+END_SRC
+
+*** dropbox
+
+32-bit:
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+
+64-bit:
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+
+~/.dropbox-dist/dropboxd
+
+sudo apt-get install libxslt1.1
+
+1. cd ~/Dropnox
+2. ln -s ~/.emacs.d
+
+~/Dropbox/Linux/xflux -l 30 -g 120 -k 4200
+~/.ssh/config
+Host host.does.not.exist
+ConnectTimeout=1
+
+*** fictx
+#+BEGIN_SRC .xinitrc
+!#/bin/bash
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+
+exec startxfce4
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome
+#exec fvwm-themes-start
+#exec fvwm
+export LC_CTYPE=zh_CN.UTF-8 
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+
+# export XMODIFIERS="@im=ibus"
+# export GTK_IM_MODULE="ibus"
+# export QT_IM_MODULE="ibus"
+# ibus-daemon -d -x
+
+#+END_SRC
+** Network
+
+wpa-supplicant
+rp-pppoe
+ping
+
+nano -w /etc/conf.d/hostname
+emerge --ask --noreplace net-misc/netifrc
+nano -w /etc/conf.d/net
+nano -w /etc/resolv.conf ;;DNS
+
+FILE /etc/conf.d/netStatic IP definition
+config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
+routes_eth0="default via 192.168.0.1"
+To use DHCP, define config_eth0:
+
+FILE /etc/conf.d/netDHCP definition
+config_eth0="dhcp"
+
+root #cd /etc/init.d
+root #ln -s net.lo net.eth0
+root #rc-update add net.eth0 default
+
+nano -w /etc/hosts
+
+nano -w /etc/hostname
+
+FILE /etc/dhcp/dhclient.conf
+
+FILE ~/.xinitrc
+dbus-launch nm-applet &
+For gnome-base/gnome-keyring support, add the following lines before the previous line. This will ease password management for GnuPG, ssh and Wifi:
+
+eval $(gnome-keyring-daemon --components=pkcs11,secrets,ssh,gpg)
+export GNOME_KEYRING_PID
+export GNOME_KEYRING_SOCKET
+export SSH_AUTH_SOCK
+export GPG_AGENT_INFO
+
+Dnsmasq
+
+NetworkManager can be set up to use Dnsmasq as a local DNS server that passes the DNS queries on to your provider's DNS server. /etc/resolv.conf will be set to point to 127.0.0.1, where dnsmasq runs and processes the queries. This can be useful for example if an application chroots for security reasons and before doing so copies /etc/resolv.conf. Then it would never be informed about changes to the DNS servers as your laptop moves from Wifi to Wifi.
+
+FILE /etc/NetworkManager/NetworkManager.conf
+[keyfile]
+hostname=your_hostname
+
+
+root #gpasswd -a <user_name> plugdev
+Service
+OpenRC
+
+Remove any existing network management services (if installed):
+
+root #for service in $(rc-update show default | grep 'net\.' | awk '{ print $1 }'); do rc-update del $service default; done
+root #rc-update del dhcpcd default
+Start NetworkManager:
+
+root #/etc/init.d/NetworkManager start
+To start NetworkManager at boot time add it the default runlevel:
+
+root #rc-update add NetworkManager default
+
+** Sync and Chroot
+mkdir /mnt/gentoo/etc/portage/repos.conf
+root #cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
+
+root #chroot /mnt/gentoo /bin/bash
+root #source /etc/profile
+root #export PS1="(chroot) $PS1"
+
+-----------------------
+emerge-webrsync
+
+root #emerge --sync
+root #emerge --sync --quiet
+
+** profile and locale and timezone
+zh_CN.UTF-8 Asia/Shanghai UTC 
+eselect profile set(list)
+etc-upate
+** Power
+*** laptop-mode-tool
+## Valid set
+BATT_CPU_MAXFREQ=fastest
+LM_AC_CPU_MAXFREQ=fastest
+NOLM_AC_CPU_MAXFREQ=fastest
+
+AUTOSUSPEND_RUNTIME_DEVTYPE_BLACKLIST=""
+1
+AUTOSUSPEND_RUNTIME_DEVTYPE_BLACKLIST=""
+更改为：
+
+AUTOSUSPEND_RUNTIME_DEVTYPE_BLACKLIST="usbhid usb-storage"
+1
+AUTOSUSPEND_RUNTIME_DEVTYPE_BLACKLIST="usbhid usb-storage"
+
+/usr/portage/distfiles
+** passwd and add user
+
+root #emerge --ask app-admin/sysklogd
+root #rc-update add sysklogd default
+emerge --ask net-misc/dhcpcd ppp
+
+root #exit
+cdimage ~#cd
+cdimage ~#umount -l /mnt/gentoo/dev{/shm,/pts,}
+cdimage ~#umount /mnt/gentoo{/boot,/sys,/proc,}
+cdimage ~#reboot
+
+root #useradd -m -G users,wheel,audio -s /bin/bash larry
+root #passwd larry
+
+* SSD
+
+** OPEN BIOS AHCI SUPPORT
+closed hibernation
+** Update to the newer kernel and the newer SSD Firmware
+sudo smartctl -a /dev/sda
+** Ext4 Filesystem /etc/fstab for mount
+jornal and notime
+** TRIM SUPPORT
+sudo hdparm -I /dev/sda | grep "TRIM supported"
+
+/etc/fstab Add noatime
+
+discard参数启动SSD的TRIM功能，可以提升性能和使用持久性。
+notime参数告诉文件系统不要记录文件的最后访问（读取）时间，只记录最后修改时间。可以有效减少对磁盘的读写次数，因为访问频率相对修改来说非常多。如果发现noatime参数影响了某些应用的使用，可以修改notime为relatime，将会让文件系统将最后修改时间作为文件的最后访问时间。
+
+/etc/cron.daily/trim
+
+#!/bin/sh
+LOG=/var/log/trim.log
+echo "*** $(date -R) ***" >> $LOG
+fstrim -v / >> $LOG
+fstrim -v /home >> $LOG
+fstrim -v /boot >> $LOG
+
+if you use the encrypt you should :dm-crypt
+Set "discard" option in /etc/crypttab for dm-crypt.
+
+** 4K对齐
+~$ sudo sfdisk -d /dev/sda 
+Warning: extended partition does not start at a cylinder boundary. 
+DOS and Linux will interpret the contents differently. 
+# partition table of /dev/sda 
+unit: sectors 
+
+/dev/sda1 : start=     2048, size=   497664, Id=83, bootable 
+/dev/sda2 : start=   501758, size=155799554, Id= 5 
+/dev/sda3 : start=        0, size=        0, Id= 0 
+/dev/sda4 : start=        0, size=        0, Id= 0 
+/dev/sda5 : start=   501760, size=155799552, Id=83
+
+** SWAP
+$ sudo vim /etc/sysctl.d/99-sysctl.conf
+vm.swappiness = 1
+vm.vfs_cache_pressure = 50
+vm.swappiness=0
+
+** Reduction of SSD write frequency via RAMDISK
+Use of RAMDISK can stop constantly changing files from hitting on the SSD (it may hit SSD via swap). RAMDISK configuration may be performed via 
+
+Set RAMTMP, RAMRUN and RAMLOCK to "yes" (in /etc/default/rcS or /etc/default/tmpfs since Wheezy). Of course, this will not improve writing to the SSD if your system (filesystem holding / or /tmp) is not located on it. 
+/!\ /etc/default/tmpfs is a sysvinit specific config file. If you are running systemd: 
+
+sudo cp /usr/share/systemd/tmp.mount /etc/systemd/system/
+sudo systemctl enable tmp.mount
+/etc/fstab: line such as "tmpfs /tmp tmpfs noatime,nosuid 0 0" 
+Optionally, make system only flush data to the disk every 10 minutes or more: 
+Kernel settings like the "dirty_buffer_ratio" etc. may only be available as non-path/mount specific global settings. 
+Mount option "commit=600" in /etc/fstab. See mount(8). 
+Or better, use pm-utils (Debian BTS #659260), tlp, or laptop-mode-tools (also optimizes read buffers) to configure the laptop-mode even under AC operation. 
+/!\ Attention: Increasing the flushing interval from the default 5 seconds (maybe even until proper shutdown) leaves your data much more vulnerable in case of lock-ups or power failures, and seems to be a global setting. 
+Enabling RAMTMP may cause some (broken) applications to run out of temporary write disk space. In this case, setting TMPDIR environment variable for those programs pointing to a writable disk space should fix their situation. It might as well cause other unwanted side effects if the disk space occupied in your /tmp is high (e.g. unexpected swapping). 
+
+Please note files in /tmp are wiped out upon reboot unless /etc/default/rcS is set to something other than TMPTIME=0 (if not set, 0 is the default value). 
+
+Persistent RAMDISK
+
+As an advanced option, you may consider to use persistent RAMDISK (dedicated read/write RAM buffer that gets synced periodically and on startup/shutdown) with anything-sync-daemon or goanysync set up: 
+
+/home (synced to work-data-fs raid only once a day?), you only risk settings the true work in /home/*/work-data is on a dedicated raid 
+/home/*/work-data/volatile (synced more frequently, once per hour?) 
+/home/*/Downloads (synced to bulk-data-fs once a day?) 
+/var completely if supported (syncing once a day? avoids spin-ups and allows to save /var also to SSD), at least set this up for 
+/var/log if supported 
+/var/cache/apt/archives 
+Configure apt to delete package files after installing, to minimize the data to sync. 
+Options to having logs copied into RAM: 
+
+http://www.debian-administration.org/articles/661
+http://www.tremende.com/ramlog
+https://github.com/graysky2/anything-sync-daemon (if it supports this) 
+https://github.com/wor/goanysync
+If /home is not on a persistent ramdisk, use profile-sync-daemon to have the browser database and cache copied into RAM during uptime (http://ubuntuforums.org/showthread.php?t=1921800 https://github.com/graysky2/profile-sync-daemon) 
+
+/home/*/<browser-cache-and-profiles> (synced to root-fs or home-fs) 
+Further improvement: Patch anything-sync-daemon or goanysync to use a (copy-on-write) union filesystem mount (e.g. http://aufs.sourceforge.net) to keep changes in RAM and only save to SSD on unmount/shutdown (aubrsync), instead of copying all data to RAM and having to sync it all back. 
+
+
+** IO-Scheduler ——NOOP
+/etc/default/grub
+
+GRUB_CMDLINE_LINUX_DEFAULT="elevator=noop quiet splash video-1024x768M@75m"
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+maurits@nuc:~$ sudo smartctl -data -A /dev/sda
+smartctl 5.41 2011-06-09 r3365 [x86_64-linux-3.8.0-26-generic] (local build)
+Copyright (C) 2002-11 by Bruce Allen, http://smartmontools.sourceforge.net
+
+=== START OF READ SMART DATA SECTION ===
+SMART Attributes Data Structure revision number: 18
+Vendor Specific SMART Attributes with Thresholds:
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+1   Raw_Read_Error_Rate     0x0000   006   000   000    Old_age   Offline      -       6
+3   Spin_Up_Time            0x0000   100   100   000    Old_age   Offline      -       0
+4   Start_Stop_Count        0x0000   100   100   000    Old_age   Offline      -       0
+5   Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0
+9   Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       2592
+12  Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       258
+232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       4914564640
+233 Media_Wearout_Indicator 0x0000   100   000   000    Old_age   Offline      -       100
+
+** The Cache
+tmpfs /home/username/.cache/google-chrome/Default tmpfs noexec,defaults,noatime,nodiratime 0 0
+
+browser.cache.disk.parent_directory /tmp
+
+operation	journal	w/o journal	percent change
+git clone	367.0	353.0	3.81 %
+make	207.6	199.4	3.95 %
+make clean	6.45	3.73	42.17 %
+
+Make Clean should be in the cache.
+
+** Tools
+sys-apps/smartmontools
+sudo smartctl -a /dev/sda | less
+https://www.maketecheasier.com/monitor-hard-disk-health-linux/
+
+
+#+BEGIN_QUOTE
+这些数据里，我们需要注意的首先是ID为AD的一项，即Wear Leveling Count（颗粒平均擦写次数），图中显示的数据为108，即这块128G的M4的全盘P/E数为108次，因为M4使用的闪存颗粒官方标称寿命为3000次，108约为3000的3%，所以此项的Current（当前）值为97，即剩余97%的寿命（亦即CA）。
+
+第2项要注意的就是ID为AA的Grown Failing Block Count（使用中新增坏块数），此项代表SSD的闪存颗粒在使用时出现的坏块（类似于HDD的坏道）数量，此处数据为0即尚未有出现坏块，若新购买回来的M4在正常使用（不包括疯狂跑测试）下，短期内此项数据产生较大变化，那代表盘可能有问题，用户可申请售后服务。
+
+B5即Non-4k Aligned Access（非4KB对齐访问数）此项，可能很多用户会产生疑问，为什么我明明对齐了，这里还有数据呢？这是因为虽然我们分区对齐了，但我们写入和读取的数据不一定都是4KB或它的整数倍，因此这里就会有数据，我们不需要在意，这一项是m4的开发人员留给他们自己看的；还有C7即Ultra DMA CRC Error Rate（主机到接口之间传输CRC错误率）此项，若此项出现数据，并不代表磁盘有问题，这是数据线有问题或接口接触不良而引起的，一般重新接好或更换数据线后，数值就不会再增加。
+#+END_QUOTE
+** Windows
+1. 关闭休眠
+2. Superfech,WIndowsSearch
+3. 25%的预留空间
+
+** Health
+
+For Samsung SSDs, check SMART attribute 177 (Wear Leveling Count).
+
+ID # 177 Wear Leveling Count
+
+This attribute represents the number of media program and erase operations (the number of times a block has been erased). This value is directly related to the lifetime of the SSD. The raw value of this attribute shows the total count of P/E Cycles.
+Source: http://www.samsung.com/global/business/semiconductor/minisite/SSD/M2M/download/07_Communicating_With_Your_SSD.pdf
+
+The wear level indicator starts at 100 and decreases linearly down to 1 from what I can tell. At 1 the drive will have exceeded all of its rated p/e cycles, but in reality the drive's total endurance can significantly exceed that value.
+Source: http://www.anandtech.com/show/7173/samsung-ssd-840-evo-review-120gb-250gb-500gb-750gb-1tb-models-tested/3
+
+I would suggest you take that last statement about exceeding that value with a grain of salt.
+
+* KDE
+root #/etc/init.d/xdm start
+emerge --ask kde-base/kdeplasma-addons
+export KWIN_TRIPLE_BUFFER=1
+
+If you get some bugs,can change the display manager to try!*
+* Backup
+~/.bash_history]]
+~/.zsh_history]]
+/etc/fstab]]
+/etc/default/grub]]
+~/.bashrc]]
+~/.zshrc]]
+~/.config/awesome/rc.lua]]
+~/.vim/ .vimrc]]
+~/.emacs.d]]
+* Virtualbox
+ gpasswd -a <user> vboxusers
+ gpasswd -a <user> vboxguest
+ FILE /etc/conf.d/modules
+ merge --ask app-emulation/virtualbox-guest-additions
+ modules="vboxdrv vboxnetadp vboxnetflt
+** Install Extension Pack At Global Setting Enable USB 2.0 To Camero
+* Debian Nvidia
+
+# Debian 8 "Jessie" <2016-07-04 一>
+deb http://httpredir.debian.org/debian/ jessie main contrib non-free
+
+## KernelModuleBlacklisting
+
+
+As mentioned in the comment headers in /etc/modprobe.d/blacklist.conf adding modules there ...does not affect autoloading of modules by the kernel.; this means that to blacklist a kernel driver such as ipv6 you must do a fake install.
+(Re)move /etc/modprobe.conf, if present, as it supersedes anything in /etc/modprobe.d/* (unless you add include /etc/modprobe.d).
+The modules listed in /etc/initramfs-tools/modules aren't subject to blacklists so comment it first.
+Howto:
+
+Create a file '/etc/modprobe.d/<modulename>.conf' containing 'blacklist <modulename>'.
+Run 'depmod -ae' as root
+Recreate your initrd with 'update-initramfs -u'
+
+
+# aptitude update
+# aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
+
+- Nvidia
+  Option "NoLogo" "1"
+  Option "RenderAccel" "1"
+  Option "TripleBuffer" "true"
+  Option "MigrationHeuristic" "greedy"
+  
+  /etc/X11/xorg.conf.d/20-nvidia.conf
+  
+  Section "Device"
+  Identifier "My GPU"
+  Driver "nvidia"
+  Option "NoLogo" "1"
+  Option "RenderAccel" "1"
+  Option "TripleBuffer" "true"
+  Option "MigrationHeuristic" "greedy"
+  EndSection
+ 
+  nouveau rcutree.rcu_idle_gp_delay=1
+ 
+  cat /etc/profile.d/tearfree_kde.sh
+
+  Option "TripleBuffer" "On" 
+
+  export KWIN_TRIPLE_BUFFER=1
+  export __GL_YIELD="USLEEP"
+  export CLUTTER_PAINT=disable-clipped-redraws:disable-culling
+  export CLUTTER_VBLANK=True
+  export KWIN_EXPLICIT_SYNC=0
+  
+  In /etc/X11/xorg.conf.d/20-nvidia.conf, add
+  Option "TripleBuffer" "False"
+
+  ```sh
+#1 Add these lines (if they don't exist, else make necessary changes in them) to ~/.kde/share/config/nepomukserverrc
+
+[Basic Settings]
+Start Nepomuk=false
+
+[Service-nepomukmigration1]
+autostart=false
+
+[Service-nepomukstrigiservice]
+autostart=false
+
+#2 Then add these lines (if they don't exist, else make necessary changes in them) to ~/.config/akonadi/akonadiserverrc
+
+[QMYSQL]
+Name=akonadi
+Host=
+User=
+Password=
+Options="UNIX_SOCKET=/home/manmath/.local/share/akonadi/db_misc/mysql.socket"
+ServerPath=/usr/sbin/mysqld-akonadi
+StartServer=false
+
+#3 Open ~/.kde/share/config/kdedrc and set "autoload" to false for nepomuksearchmodule
+
+[Module-nepomuksearchmodule]
+autoload=false
+
+
+#4 Finally, remove the file nepomukcontroller.desktop and akonaditray.desktop from /usr/share/autostart/, if they exist.
+
+Log out or restart your system to experience the lightness and speed of your sexy KDE workspace.
+
+```
+- virtualbox
+/usr/lib/virtualbox/VirtualBox --comment "win10" --startvm "f7320602-1a86-4461-8af6-2bce9dbccdda"  
+- compelete gnome or gnome 
+  aptitude purge `dpkg --get-selections | grep gnome | cut -f 1`
+  apt-get --purge remove ...
+  aptitude purge remove
+ aptitude -f install
+ aptitude purge `dpkg --get-selections | grep deinstall | cut -f 1`
+ aptitude -f install
+ 
+- clean
+  dpkg -l |grep "^rc"|awk '{print $2}' |xargs aptitude -y purge
+
+
+- apt-get install
+  zsh git awesome emacs audacious google-chrome thunar lxappearance fcitx textlive-full cjk shadowsocks slim xfce4-terminal compton nvidia xserver-xorg virtualbox
+
+- desktop file
+xdg-open gtk-launch exo-open
+* Grub
+
+grub command- quiet+3 or 5 ,init 3
+
+* Awesome wm
+  - kde theme with awesome
+    #+BEGIN_QUOTE
+    # WINDOWS MANAGER AND DESKTOP ENVIRONMENT:
+    # -- Window manager
+    export XDG_CURRENT_DESKTOP="kde"
+    # -- Desktop Environment
+    export DESKTOP_SESSION="kde"
+    export DE="kde"
+    
+    # QT:
+    # -- QT icon Settings
+    export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+    # -- Options and characters
+    export QT_XFT="true"
+    # -- Default QT version in qtchooser (Arch suggest "4", but i have no problem settings QT$
+    export QT_SELECT="5"
+    # -- KDE-QT5 settings
+    export QT_QPA_PLATFORMTHEME="kde"
+    # -- Only QT5 settings
+    #export QT_QPA_PLATFORMTHEME="qt5ct"
+    # -- For pure QT4 application (non KDE4) to find KDE's styles.
+    #    This line is here for compatibility issues, there are still kde4 applications that a$
+    #    Feel free to comment it out.
+    export QT_PLUGIN_PATH=$HOME/.kde4/lib/kde4/plugins/:/usr/lib/kde4/plugins/
+    
+    #+END_QUOTE
+  - autostart write in xinitrc
+  - 70-synapatics
+  - compton
+  - redshift
+  - synaptics
+    vim /usr/share/X11/xorg.conf.d/70-syna...
+  - /etc/X11/display-manager.....
+
+| Mod4 | + | Left   | 切换到上一个Tag        |              |                               |
+| Mod4 | + | Right  | 切换到下一个Tag        |              |                               |
+| Mod4 | + | 1~9    | 切换到指定Tag          |              |                               |
+| Mod4 | + | t      | 标记当前窗口           |              |                               |
+| Mod4 | + | Ctrl   | +                      | 1~9          | 把标记的窗口移动到指定桌面    |
+| Mod4 | + | Esc    | 切换到最后使用过的Tag  |              |                               |
+| Mod4 | + | Ctrl   | +                      | r            | 重启awesome                   |
+| Mod4 | + | Ctrl   | +                      | q            | 退出awesome                   |
+| Mod4 | + | m      | 最大化/还原当前窗口    |              |                               |
+| Mod4 | + | f      | 全屏/恢复当前窗口      |              |                               |
+| Mod4 | + | Shift  | +c                     | 关闭当前窗口 |                               |
+| Mod4 | + | j      | 切换到下一个窗口       |              |                               |
+| Mod4 | + | k      | 切换到上一个窗口       |              |                               |
+| Mod4 | + | Shift  | +                      | j            | 当前窗口和前一个窗口互换位置  |
+| Mod4 | + | Shift  | +                      | k            | 当前窗口和后一个窗口互换位置  |
+| Mod4 | + | Ctrl   | +                      | j            | 切换到下一个屏幕              |
+| Mod4 | + | Ctrl   | +                      | k            | 切换到前一个屏幕              |
+| Mod4 | + | Ctrl   | +                      | Space        | 切换当前窗口是否为浮动的      |
+| Mod4 | + | Ctrl   | +                      | Return       |                               |
+| Mod4 | + | Return |                        |              |                               |
+| Mod4 | + | Tab    | 切换到最后使用过的窗口 |              |                               |
+| Mod4 | + | o      |                        |              |                               |
+| Mod4 | + | u      |                        |              |                               |
+| Mod4 | + | Shift  | +                      | r            | 重绘当前窗口                  |
+| Mod4 | + | l      | 当前窗口的宽度减小5%   |              |                               |
+| Mod4 | + | h      | 当前窗口的宽度增大5%   |              |                               |
+| Mod4 | + | Shilt  | +                      | h            | 增加主区域窗口的数量          |
+| Mod4 | + | Shift  | +                      | l            | 减少主区域窗口的数量          |
+| Mod4 | + | Ctrl   | +                      | h            | 增加非主区域窗口的数量        |
+| Mod4 | + | Ctrl   | +                      | l            | 减少非主区域窗口的数量        |
+| Mod4 | + | Space  | 切换下一布局           |              |                               |
+| Mod4 | + | Shift  | +                      | Space        | 切换上一个布局                |
+| Mod4 | + | r      | 运行程序               |              |                               |
+| Mod4 | + | F4     | 运行Lua命令            |              |                               |
+| Mod4 | + | Ctrl   | +                      | i            | 显示当前窗口的class和instance |
+| Ctrl | + | Alt    | +                      | BackSpace    | 注销当前登录                  |
+| Mod4 | + | Shift  | +                      | F1~F9        | 把当前桌面和1~9桌面同时显示   |
+
+
+* LINUX COMMAND
+ln -s ls-mv-cp-rm -r -l -a -h grep find rm cp mv rename -r
+** github
+1. 创建ssh密钥
+   ssh-keygen -t rsa -C "your_email@youremail.com"
+   copy .ssh/id_rsa.pub to github:https://github.com/settings/keys
+2. 链接到github
+   ssh -T git@github.com
+   git config --global user.name "cnfeat"//用户名
+   git config --global user.email  "cnfeat@gmail.com"//填写自己的邮箱
+3. 创建目录以及git克隆和推送——目录名字要一致
+   $ mkdir tmp      //创建推送目录
+   $ cd tmp         //进入推送目录    
+   *$ git init       //设置该目录为推送*
+   $ touch README   //生成readme
+   git add .
+   $ git add README //加入修改列表
+   $ git commit -m 'first commit' //递交修改声明
+   2790  git remote rm origin
+   $ git remote add origin git@github.com:abcd/tmp.git //为远程Git更名为origin
+   $ git push -u origin master //推送此次修改
+
+   git push -f
+   git pull
+   
+   通过先add文件到更改再评论文件到项目中，然后就可以把项目中的文件，push到服务器上了。 这是通过commit文件来对比需要提交哪些？需要将文件链接添加到这个文件中管理！
+
+4. 安装hexo
+   apt-get install curl
+   curl -sL https://deb.nodesource.com/setup | bash -
+   apt-get install -y nodejs npm nodejs-legacy
+   npm install -g hexo-cli
+   hexo init
+   hexo g(generate)
+   hexo s(server) http://localhost:4000
+   hexo clean 
+   vim _config.yml
+   ```
+   deploy:                                                
+     type: git                                            
+       repo: https://github.com/ztao1991/ztao1991.github.io.git                      
+         branch: master 
+
+   ```
+   npm install hexo-deployer-git --save
+
+   hexo d(deploy)
+
+   hexo clean
+
+   hexo generate
+
+   hexo deploy
+
+
+git clone https://github.com/iissnan/hexo-theme-next themes/next
+
+
+
+   - config
+	 # Deployment
+	 ## Docs: https://hexo.io/docs/deployment.html
+	 deploy: 
+	 type: git
+	 repo: git@github.com:ztao1991/ztao1991.github.io.git
+	 branch: master
+
+   hexo g
+   hexo s
+   npm install hexo-deployer-git --save
+   hexo d
+
+* Emacs
+=code= ~code~
+** Emacs With Windows
+HKCU\SOFTWARE\WOW6432Node\GNU\Emacs\HOME
+
+	1. Click Start -> Run
+
+	2. Type: regedit, and click OK
+
+	3. Go to: HKEY_LOCAL_MACHINE -> System -> CurrentControlSet -> Control -> KeyBoard Layout
+Note: KeyBoard Layout, and NOT KeyBoard Layouts
+
+	4. Right-click: Keyboard Layout, and select New -> Binary value
+
+	5. Rename: New Value #1 -> Scancode Map
+
+	6. Right click: Scancode Map -> Modify
+		0000  00 00 00 00 00 00 00 00       
+		0008  03 00 00 00 1d 00 3a 00
+		0010  3a 00 1d 00 00 00 00 00
+		0018
+
+
+	7. Close regedit and restart your computer
+
+
+Procedure
+
+- Go to Start > Type in regedit and start it
+- Navigate to HKEY_CURRENT_USER/Control Panel/Input Method/Hot Keys
+- Select the key named:
+  - 00000070 for the Chinese (Traditional) IME - Ime/NonIme Toggle hotkey
+  - 00000010 for the Chinese (Simplified) IME - Ime/NonIme Toggle hotkey
+- In the right sub-window, there are three subkeys.
+  - Key Modifiers designate Alt/Ctrl/Shift/etc and is set to Ctrl (02c00000).
+  - Virtual Key designates the finishing key and is set to Space (20000000).
+- Change the first byte in Key Modifiers from 02 to 00
+- Change the first byte in Virtual Key from 20 to FF
+- Log off and log back on. I don't think it's necessary to restart.
+- Do not change the Hot keys for input languages in Control Panel, unless you want to do this all over again.
+
+Notes: Symptoms
+
+Each registry key (thing that looks like a folder) is for each specific hotkey setting that you would normally find in Control Panel > Region and Language > Keyboards and Languages > Change keyboards... > Advanced Key Settings > Hot keys for input languages. The recurring bug is the hotkey being automatically reset to Ctrl+space even if changed via the GUI.
+
+I can personally confirm this for Windows 7 64-bit and Windows 8.1, though from my research, it looks like it may work for XP and Vista as well.
+
+https://www.zhihu.com/question/22288432
+
+#+BEGIN_QUOTE
+When i type Ctrl+Space, Windows switches me to other language input. What to do?
+You can disable the Windows shortcut that switches you among input methods of different languages.
+
+On Microsoft Windows 10:
+
+go to Control Panel
+Under icon “Clock, Language, and Region”, click link “change input methods”
+Click “Advanced settings” on the left panel.
+Change language bar hot keys.
+Here's the exact instruction for Windows Vista.
+
+Go to 〖Start ▸ Control Panel〗.
+Choose Classic View on the left.
+Double click on the “Regional and Language Options” icon, then go to “Keyboards and Languages” tab, click on “Change Keyboards…”.
+Then, go to “Advanced Key Settings” tab, then, it should list Key sequences on the right column.
+Select a input choice that has shortcut key, then click the button “Change Key Sequence”.
+#+END_QUOTE
+
+** Strike-Through
+C-c C-x C-f + / *
+** Input C-\
+** org-mode
+- 格式
+like_ *change* =change= +make+ /like away/
+
+bold*
+italic/
+underlined_
+strike-through+
+code~
+
+*** Lord of the Rings
+   My favorite scenes are (in this order)
+   1. The attack of the Rohirrim
+   2. Eowyn's fight with the witch king
+	  + this was already my favorite scene in the book
+	  + I really like Miranda Otto.
+   3. Peter Jackson being shot by Legolas
+	  - on DVD only
+	  He makes a really funny face when it happens.
+ORG-LIST-END-MARKER
+   But in the end, no individual scenes matter but the film as a whole.
+   Important actors in this film are:
+   - Elijah Wood :: He plays Frodo
+   - Sean Austin :: He plays Sam, Frodo's friend.  I still remember
+	 him very well from his role as Mikey Walsh in The Goonies.
+ORG-LIST-END-MARKER
+**** This is a headline
+Still outside the drawer
+:DRAWERNAME: 
+This is inside the drawer.
+:END:
+After the drawer.
+c-c c-x d
+*** 4.4.2 列表/标题快捷键
+折叠
+快捷键	说明
+S-TAB	循环切换整个文档的大纲状态（折叠、打开下一级、打开全部）
+TAB	循环切换光标所在的大纲状态
+
+快捷键	说明
+C-c C-n/p	移动到下上一个标题（不断标题是哪一级）
+C-c C-f/b	移动到同一级别的下/上标题
+C-c C-u	跳到上一级标题
+C-c C-j	切换到大纲预览状态
+基于大纲/标题的编辑
+快捷键	说明
+M-RET	插入一个同级别的标题
+M-S-RET	插入一个同级别的TODO标题
+M-LEFT/RIGHT	将当前标题升/降级
+M-S-LEFT/RIGHT	将子树升/降级
+M-S-UP/DOWN	将子树上/下移动
+C-c *	将本行设为标题或者正文
+C-c C-w	将子树或者区域移动到另一个标题处（跨缓冲区）
+C-c C-x b	在新缓冲区显示当前分支
+C-c /	只列出包含搜索结果的大纲，并高亮，支持多种搜索方式
+*** 元数据
+# s    #+begin_src ... #+end_src 
+# e    #+begin_example ... #+end_example  : 单行的例子以冒号开头
+# q    #+begin_quote ... #+end_quote      通常用于引用，与默认格式相比左右都会留出缩进
+# v    #+begin_verse ... #+end_verse      默认内容不换行，需要留出空行才能换行
+# c    #+begin_center ... #+end_center 
+# l    #+begin_latex ... #+end_latex 
+# L    #+latex: 
+# h    #+begin_html ... #+end_html 
+# H    #+html: 
+# a    #+begin_ascii ... #+end_ascii 
+# A    #+ascii: 
+# i    #+index: line 
+# I    #+include: line
+*** 4.7.3 内部连接
+内部链接就类似于HTML的锚点（实际上export成HTML文件后就变成了锚点），可以实现在一个文档内部的跳转。如下命令定义了一个名为target的跳转目标：
+<<change>> [[change]]
+#<<target>> (这里我把锚点设置到*连接*这一部分开始处，大家可以点击下面效果中两个连接试试效果)
+如下方式可以设置到target的链接：
+target]] 或 [[target][猛击锚点]]
+效果为： target 或 猛击锚点
+*** 4.7.4 其他常用的连接命令
+C-c l 可以在光标所在处创建一个跳转目标点，在需要跳转至该目标的位置输入命令C-c C-l可以建立到目标的链接当输入C-c C-l命令，光标若处在已经存在的一个链接上的时候，可以编辑改链接。命令C-c %可以记录当前光标所在位置，当光标移到其他地方后，可以用C-c &跳转回来。这里的位置记录类似一个 kill-ring，重复输入C-c %可以记录多个位置，重复输入C-c &可以连续跳转到之前记录的对应位置上。
+*** 4.8 注脚
+在 org mode中，你可以为你的文章添加注脚（footnote）。注脚的格式有两种，一是方括号+数字，二是方括号+fn+名字。比如下面有两个例子：在 org mode 的正文中写下这两句话：
+The Org homepage1 now looks a lot better than it used to. The Org homepage2 now looks a lot better than it used to.
+插入脚注：C-c C-x f 接下俩你可以写一些其他东西，然后在文章的末尾写上下面两句话（注意：必须要顶格写）：
+[1] The link is: http://orgmode.org
+[fn:orghome] The link is: http://orgmode.org
+把光标移动到正文的1处，按 C-c C-c，可以跳转到注脚1处，在注脚1处按 C-c C-c，可以跳转到正文的1 处。
+*** 4.9 分割线
+五条短线或以上显示为分隔线。
+-----
+*** 书签
+| C-x r m Bookmark | bookmark-set         | 设置一个名为 Bookmark 的书签。              |
+| C-x r l          | bookmarks-bmenu-list | 列出所有已保存的书签。                      |
+|                  | bookmark-delete      | 删除一个书签。                              |
+| C-x r b Bookmark | bookmark-jump        | 跳转至名为 Bookmark 的书签中所设置的位置。  |
+| 未定义           | bookmark-save        | 将所有的书签保存到书签文件 ~/.emac.bmk 中。 |
+
+
+必須用「一個中文字＝ 兩個英文字」寬度的字體
+例如文泉驛正黒、微米黒
+#+BEGIN_EXAMPLE
+(set-default-font "Consolas")
+(set-fontset-font "fontset-default" 'chinese-gbk "微软雅黑")
+(setq face-font-rescale-alist '(("宋体" . 1.2)
+				("微软雅黑" . 1.1)
+				))
+;;;中文与英文字体设置
+;; Setting English Font
+(set-face-attribute
+'default nil :font "Monaco 14")
+;; Chinese Font
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+(set-fontset-font (frame-parameter nil 'font)
+charset
+(font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))
+
+#+END_EXAMPLE
+
+Baidu [fn:1]
+
+[fn:1]www.baidu.com
+
+
+\(E=mc^2\)和\[\]作为行内公式和行间公式标志
+
+[1] A plain numeric footnote marker. Compatible with footnote.el, but not recommended
+because something like ‘[1]’ could easily be part of a code snippet.
+[fn:name]
+A named footnote reference, where name is a unique label word, or, for simplicity
+of automatic creation, a number.
+Chapter 2: Document structure 17
+[fn:: This is the inline definition of this footnote]
+A LATEX-like anonymous footnote where the definition is given directly at the
+reference point.
+[fn:name: a definition]
+
+
+
+Name | Phone | Age |
+|-------+------+----|
+| Peter | 1234 | 17 |
+| Anna  | 4321 | 25 |
+calc- mode
+*** Help
+c-h t
+c-h k
+# #+HTML_HEAD: <link rel="stylesheet" href="/home/zhangtao/Dropbox/Linux/worg-classic.css" type="text/css" />
+
+# # #+LATEX_HEADER: \usepackage{xeCJK}
+# # #+LATEX_HEADER: \setCJKmainfont{WenQuanYi Micro Hei}
+# #+DATE: <2016-06-16 四>
+# #+OPTIONS: texht:t
+# #+LATEX_CLASS: article
+# #+LATEX_CLASS_OPTIONS:
+# #+LATEX_HEADER:
+# #+LATEX_HEADER_EXTRA:
+*** 模板的使用
+YASSNIET
+yas/new-sss
+c-c c-c 
+c-c c-t
+.emacs.d\snieet\。。。...
+*** helm 搜索
+*** ido
+c-s c-r
+c-x c-d
+*** Something
+*** 正则表达
+*** 加密
+*** 字体
+　{"Dejavu Sans Mono 10" 与 "WenQuanyi Micro Hei Mono 12"}　{"Consolas
+11"  与 "Microsoft  Yahei  16"}　{"Liberation Mono  12" 与  "WenQuanYi
+Micro Hei Mono 15"}
+
+*** 插入日期: C-c .
+*** 窗口管理和缓存管理：frame + buffer
+*** cua-mode
+lt+x string-insert-rectange 是块插入
+alt+s clear-rectange            是块删除
+M-x rectange-mark-mode
+
+emacs以C-x r开头的命令来进行矩形操作。先用C-space或者C-@设一个mark，移动光标到另一点，用以下命令进行列操作：
+
+C-x r k 剪切一个矩形块
+C-x r y 粘贴一个矩形块
+C-x r o 插入一个矩形块
+C-x r c 清除一个矩形块(使其变成空白)
+C-x r t 在选定区域的所有列前插入样的字符
+
+*** open with the file with oyher app in emacs 
+openwith.el
+http://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs
+*** export
+# #+BEGIN_EXAMPLE
+# #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+# #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" /> #+HTML_HEAD_EXTRA: <link rel="alternate stylesheet" type="text/css" href="style2.css" />
+# #+END_EXAMPLE
+
+#+BEGIN_EXAMPLE 换行
+;;; 下面一段是 Feng Shu 的
+(defun eh-org-clean-space (text backend info)
+  "在export为HTML时,删除中文之间不必要的空格"
+  (when (org-export-derived-backend-p backend 'html)
+	(let ((regexp "[[:multibyte:]]")
+		  (string text))
+	  ;; org默认将一个换行符转换为空格,但中文不需要这个空格,删除.
+	  (setq string
+			(replace-regexp-in-string
+			 (format "\\(%s\\) *\n *\\(%s\\)" regexp regexp)
+			 "\\1\\2" string))
+	  ;; 删除粗体之前的空格
+	  (setq string
+			(replace-regexp-in-string
+			 (format "\\(%s\\) +\\(<\\)" regexp)
+			 "\\1\\2" string))
+	  ;; 删除粗体之后的空格
+	  (setq string
+			(replace-regexp-in-string
+			 (format "\\(>\\) +\\(%s\\)" regexp)
+			 "\\1\\2" string))
+	  string)))
+(add-to-list 'org-export-filter-paragraph-functions
+			 'eh-org-clean-space)
+
+
+;;; 下面一段是 zwz 的, 作者声明只适应 org-mode 8.0 以及以上版本
+(defun clear-single-linebreak-in-cjk-string (string)
+  "clear single line-break between cjk characters that is usually soft line-breaks"
+  (let* ((regexp "\\([\u4E00-\u9FA5]\\)\n\\([\u4E00-\u9FA5]\\)")
+		 (start (string-match regexp string)))
+	(while start
+	  (setq string (replace-match "\\1\\2" nil nil string)
+			start (string-match regexp string start))))
+  string)
+
+(defun ox-html-clear-single-linebreak-for-cjk (string backend info)
+  (when (org-export-derived-backend-p backend 'html)
+	(clear-single-linebreak-in-cjk-string string)))
+
+(add-to-list 'org-export-filter-final-output-functions
+			 'ox-html-clear-single-linebreak-for-cjk)
+#+END_EXAMPLE
+*** 1. C-c C-x C-i”开始计时，在需要结束计时时按”C-c C-x C-o
+2. C-c [ ]
+3. org-agneda C-c a
+4. C-c /
+** 大小写
+从光标位置开始，处理单词后半部分
+capitalize-word (M-c) ;; 单词首字母转为大写
+upcase-word (M-u)     ;; 整个单词转为大写
+downcase-word (M-l)   ;; 整个单词转为小写（注意，这里是 META － l(* 小写字母 L)）
+从光标位置开始，处理单词前半部分
+negtive-argument; capitalize-word (M-- M-c) ;; 单词首字母转为大写
+negtive-argument; upcase-word (M-- M-u)     ;; 整个单词转为大写
+negtive-argument; downcase-word (M-- M-l)   ;; 整个单词转为小写
+改变选定区域的大小写
+
+downcase-region (C-x C-l) ;; 选定区域全部改为小写
+upcase-region (C-x C-u)   ;; 选定区域全部改为大写
+** MovingTheCtrlKey
+On Debian and derivatives (Ubuntu, Mint etc.)
+To make Caps Lock another Ctrl key, edit the file /etc/default/keyboard and change the line which reads
+
+XKBOPTIONS="ctrl:nocaps"		# Some people prefer "ctrl:swapcaps"
+XKBOPTIONS="caps:swapescape"
+sudo dpkg-reconfigure -phigh console-setup
+** emacsclient -c
+emacs -damenon
+#+BEGIN_EXAMPLE shell
+# alias emacs
+alias emacsd='emacs --daemon'
+alias e='emacsclient -t'
+alias ec='emacsclient -c'
+
+# run emacs daemon
+[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd
+
+# add kill emacs function
+function kill-emacs(){
+	emacsclient -e "(kill-emacs)"
+	emacs_pid=$( ps -C 'emacs --daemon' -o pid= )
+	if [[ -n "${emacs_pid}" ]];then
+		kill -9 "${emacs_pid}"
+	fi
+
+}
+
+#+END_EXAMPLE
+
+
+** Lisp
+1. lisp-interaction-mode
+2. C-j or C-x C-e the end!
+
+** offlineimap+mu4e+emacs+gmail
+
+http://www.djcbsoftware.nl/code/mu/mu4e/index.html
+
+1. install mu4e offilineimap
+2. mu index --maildir=~/Mail
+
+# .offlineimaprc
+[general]
+accounts = Gmail
+nmaxsyncaccounts = 1
+pythonfile = ~/.offlineimap.py
+
+[Account Gmail]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir
+
+[Repository Remote]
+type = Gmail
+remoteuser = ztao1991@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "ztao1991@gmail.com", "993")
+realdelete = yes
+
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# .offlineimap.py
+
+#!/usr/bin/python
+import re, os
+
+def get_password_emacs(machine, login, port):
+	s = "machine %s login %s port %s password ([^ ]*)\n" % (machine, login, port)
+	p = re.compile(s)
+	authinfo = os.popen("gpg2 -q --no-tty -d ~/.authinfo.gpg").read()
+	return p.search(authinfo).group(1)
+
+# .authinfo
+
+machine imap.gmail.com login ztao1991@gmail.com port 993 password 
+machine smtp.gmail.com login ztao1991@gmail.com port 587 password 
+
+M-x epa-encrypt-file (generate ~/.authinfo.gpg and remove original).Set +ztao1991+
+
+apt install mu4e offlineimap gpgv12 
+
+Then offlinemap & mu index --maildir=~/mail
+
+#+BEGIN_SRC sh
+#!/bin/bash
+_fname=$(mktemp)
+echo "<html>" > ${_fname}
+cat - >> ${_fname}
+echo "</html>" >> ${_fname}
+/usr/bin/firefox --new-window ${_fname}
+
+#+END_SRC
+
+# init.el
+
+(require 'mu4e)
+
+;; default
+(setq mu4e-maildir (expand-file-name "~/Maildir"))
+
+(setq mu4e-drafts-folder "/[Gmail].Drafts")
+(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
+(setq mu4e-trash-folder  "/[Gmail].Trash")
+
+;; don't save message to Sent Messages, GMail/IMAP will take care of this
+(setq mu4e-sent-messages-behavior 'delete)
+
+;; setup some handy shortcuts
+(setq mu4e-maildir-shortcuts
+	  '(("/INBOX"             . ?i)
+		("/[Gmail].Sent Mail" . ?s)
+		("/[Gmail].Trash"     . ?t)))
+
+;; allow for updating mail using 'U' in the main view:
+(setq mu4e-get-mail-command "offlineimap")
+
+;; something about ourselves
+;; I don't use a signature...
+(setq
+ user-mail-address "ztao1991@gmail.com"
+ user-full-name  "张陶"
+ ;; message-signature
+ ;;  (concat
+ ;;    "Foo X. Bar\n"
+ ;;    "http://www.example.com\n")
+)
+
+;; sending mail -- replace USERNAME with your gmail username
+;; also, make sure the gnutls command line utils are installed
+;; package 'gnutls-bin' in Debian/Ubuntu, 'gnutls' in Archlinux.
+
+(require 'smtpmail)
+
+(setq message-send-mail-function 'smtpmail-send-it
+	  starttls-use-gnutls t
+	  smtpmail-starttls-credentials
+	  '(("smtp.gmail.com" 587 nil nil))
+	  smtpmail-auth-credentials
+	  (expand-file-name "~/.authinfo.gpg")
+	  smtpmail-default-smtp-server "smtp.gmail.com"
+	  smtpmail-smtp-server "smtp.gmail.com"
+	  smtpmail-smtp-service 587
+	  smtpmail-debug-info t)
+          
+# Some Keybinding
+          C-x m mail-mode
+          C-c C-c   send the message and exit the message buffer
+          C-c C-a   add an attachment
+          C-c C-k   cancel the message
+          C-c C-d  postpone the message
+          C-c C-s  send the message but don't exit the message buffer
+          C-c C-b  go to the start of the message
+          C-c C-z  kill text from point until end of buffer
+          key          description
+          ---          -----------
+          C-c C-c      send message
+          C-c C-d      save to drafts and leave
+          C-c C-k      kill the message buffer (the message remains in the draft folder)
+          C-c C-a      attach a file (pro-tip: drag & drop works as well)
+          
+          (mu4e-specific)
+          C-S-u        update mail & reindex
+** gpg+gpg-agent 
+file://~/.profile 
+file://~/.gunpg/gpg-agent.conf
+http://tech.memoryimprintstudio.com/the-ultimate-emailing-agent-with-mu4e-and-emacs/
+
+** Emacs Tur
+#+BEGIN_SRC html
+<title>The Emacs Tip</title>
+<h1>1.Move</h1>
+M-/ 补全
+C-x h 全选
+C-j 下一行
+<h1>2.Setting</h1>
+<h1>3.Plugin</h1>
+<h1>4.Make yours emacs</h1>
+1. Your habit
+2. Elisp
+#+END_SRC
+** Emacs Plugin 
+*** ace-jump-mode
+If you use the default configuration, which binds to “C-c SPC”.
+“C-c SPC” ⇒ ace-jump-word-mode
+enter first char of a word, select the highlight key to move to.
+“C-u C-c SPC” ⇒ ace-jump-char-mode
+enter a char for query, select the highlight key to move to.
+“C-u C-u C-c SPC” ⇒ ace-jump-line-mode
+each non-empty line will be marked, select the highlight key to move to.
+*** avy
+*** emacs server
+#+BEGIN_EXAMPLE
+(defun frame-setting ()
+	(set-frame-font "文泉驿等宽微米黑 8")
+	(set-fontset-font "fontset-default"
+			  'gb18030 '("文泉驿等宽微米黑" . "unicode-bmp")))
+ 
+(if (and (fboundp 'daemonp) (daemonp))
+	(add-hook 'after-make-frame-functions
+		  (lambda (frame)
+		(with-selected-frame frame
+		  (frame-setting))))
+  (frame-setting))
+
+
+
+----------------------------------------------------------------
+
+
+
+
+(setq window-system-default-frame-alist
+	  '(
+		;; if frame created on x display
+		(x
+	 (menu-bar-lines . 1)
+	 (tool-bar-lines . nil)
+	 ;; mouse
+	 (mouse-wheel-mode . 1)
+	 (mouse-wheel-follow-mouse . t)
+	 (mouse-avoidance-mode . 'exile)
+	 ;; face
+	 (font . "文泉驿等宽微米黑 8")
+	 )
+		;; if on term
+		(nil
+	 (menu-bar-lines . 0) (tool-bar-lines . 0)
+	 ;; (background-color . "black")
+	 ;; (foreground-color . "white")
+	 )
+	)
+	  )
+
+#+END_EXAMPLE
+
+*** evil
+basic: i x :wq dd p hjkl :help
+insert: a o O cw 
+move:0 ^ $ g_ / NG gg G w e
+copy:yy p
+Undo:u Redo:C-r
+Save:s w x bn bp :saves 
+
+#+BEGIN_EXAMPLE emacs-lisp
+;-------------------------------------------------------------------------------------------------------------------------
+;evil-mode
+;-------------------------------------------------------------------------------------------------------------------------
+;; (add-to-list 'load-path "~/.emacs.d/elpa/evil-20160608.229/")
+;; (require 'evil) 
+;; (evil-mode 1) 
+
+;;(setq evil-default-state 'emacs)
+;;(define-key evil-emacs-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;;(define-key evil-normal-state-map "M-x" 'execute-extended-command)
+;;(define-key evil-motion-state-map ";" 'smex)
+;;(define-key evil-motion-state-map ":" 'evil-ex)
+;;(global-set-key (kbd "C-s") 'evil-write)
+
+;;(evil-set-initial-state 'ibuffer-mode 'normal)
+
+;; esc quits
+;; (defun minibuffer-keyboard-quit ()
+;;   "Abort recursive edit.
+;; In Delete Selection mode, if the mark is active, just deactivate it;
+;; then it takes a second \\[keyboard-quit] to abort the minibuffer."
+;;   (interactive)
+;;   (if (and delete-selection-mode transient-mark-mode mark-active)
+;;       (setq deactivate-mark  t)
+;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+;;     (abort-recursive-edit)))
+;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
+;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
+;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; (global-set-key [escape] 'evil-exit-emacs-state)
+
+;; change mode-line color by evil state
+;; (lexical-let ((default-color (cons (face-background 'mode-line)
+;;                                    (face-foreground 'mode-line))))
+;;   (add-hook 'post-command-hook
+;;     (lambda ()
+;;       (let ((color (cond ((minibufferp) default-color)
+;;                          ((evil-insert-state-p) '("#e80000" . "#ffffff"))
+;;                          ((evil-emacs-state-p)  '("#af00d7" . "#ffffff"))
+;;                          ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+;;                          (t default-color))))
+;;         (set-face-background 'mode-line (car color))
+;;         (set-face-foreground 'mode-line (cdr color))))))
+
+;; (defun evil-toggle-input-method ()
+;;   "when toggle on input method, switch to evil-insert-state if possible.
+;;     when toggle off input method, switch to evil-normal-state if current state is evil-insert-state"
+;;       (interactive)
+;;       (if (not current-input-method)
+;;           (if (not (string= evil-state "insert"))
+;;               (evil-insert-state))
+;;         (if (string= evil-state "insert")
+;;             (evil-normal-state)
+;;           ))
+;;       (toggle-input-method))
+	
+;; (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
+
+;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+
+;; ;;evil-leader
+;; (require 'evil-leader)
+;; (global-evil-leader-mode)
+;; (evil-leader/set-leader ";")
+;; (setq evil-leader/in-all-states 1)
+
+
+
+;; (evil-leader/set-key "e" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
+;; (evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
+;; (evil-leader/set-key "x" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+
+;; (setq-default tab-width 4 indent-tabs-mode nil)
+;; (define-key global-map (kbd "RET") 'newline-and-indent)
+;; (setq evil-move-cursor-back nil)
+
+
+;; (require 'evil-surround)
+;; (global-evil-surround-mode 1)
+
+
+;;-----------------------------------------------------------------------------------------------------------------------------------
+
+#+END_EXAMPLE
+
+
+# funy command 
+- cmatrix
+- xeyes
+- zenthura
+
+** Bug
+
+*** Dependency Problems
+sudo apt-get purge emacsen-common emacs24-common emacs24-bin-common emacs24 xemacs21-mule xemacs21 xemacs21-support gettext-el emacs xemacs21-bin
+
+sudo apt-get update
+sudo apt-get autoremove
+sudo apt-get autoclean
+Please post any errors.
+
+
+** magit-mode
+M-x magit-status .c c. C-c C-c. M-x magit-push master orig.. s uncharge file $ staus
+** Latex
+sudo apt-get install okular texlive-full auctex
+Paragraphs are separated by at least one empty line. If you need to enforce a line break within a paragraph, use ‘\\’ at the end of a line.
+
+#+BEGIN_SRC emacs-lisp
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;        LaTeX         ;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; ##### Run emacs in server mode in order to be able to use
+;; ##### emacsclient in Okular. Don't forget to configure
+;; ##### Okular to use emacs in
+;; ##### "Configuration/Configure Okular/Editor"
+;; ##### => Editor => Emacsclient. (you should see
+;; ##### emacsclient -a emacs --no-wait +%l %f
+;; ##### in the field "Command".
+(server-start)
+
+(setq TeX-PDF-mode t) ;; use pdflatex instead of latex
+
+(setq-default TeX-master nil)
+;; ##### Enable synctex correlation. From Okular just press
+;; ##### Shift + Left click to go to the good line.
+(setq TeX-source-correlate-method 'synctex)
+;; ##### Enable synctex generation. Even though the command shows
+;; ##### as "latex" pdflatex is actually called
+(custom-set-variables '(LaTeX-command "latex -synctex=1") )
+
+;; ##### Use Okular to open your document at the good
+;; ##### point. It can detect the master file.
+(add-hook 'LaTeX-mode-hook '(lambda ()
+                  (add-to-list 'TeX-expand-list
+                       '("%u" Okular-make-url))))
+
+(defun Okular-make-url () (concat
+               "file://"
+               (expand-file-name (funcall file (TeX-output-extension) t)
+                         (file-name-directory (TeX-master-file)))
+               "#src:"
+               (TeX-current-line)
+               (expand-file-name (TeX-master-directory))
+               "./"
+               (TeX-current-file-name-master-relative)))
+
+;; ## Use these lines if you want a confirmation of the
+;; ## command line to run...
+;; (setq TeX-view-program-selection '((output-pdf "Okular")))
+;; (setq TeX-view-program-list '(("Okular" "okular --unique %u")))
+;; ## And theses if you don't want any confirmation.
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list 
+		'("View" "okular --unique %u" TeX-run-discard-or-function nil t :help "View file")))
+#+END_SRC
+** Emacs Init
+Some Time Color Should #.... 
+* Debian
+** 磁盘分区
+
+#+BEGIN_EXAMPLE :Lenovo Y400
+Device         Start       End   Sectors   Size Type
+/dev/sda1       2048    491519    489472   239M EFI System
+/dev/sda2     491520 102053887 101562368  48.4G Linux filesystem
+/dev/sda3  102053888 336429055 234375168 111.8G Linux filesystem
+/dev/sda4  336429056 350490623  14061568   6.7G Linux swap
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE :Dell XPS 13
+
+#+END_EXAMPLE
+lsblk -l:
+#+BEGIN_EXAMPLE
+sda1   8:1    0   239M  0 part /boot/efi
+sda2   8:2    0  48.4G  0 part /
+sda3   8:3    0 111.8G  0 part /home
+sda4   8:4    0   6.7G  0 part [SWAP]
+#+END_EXAMPLE
+
+parted:
+#+BEGIN_EXAMPLE
+ 1      1049kB  252MB   251MB   fat32                 boot, esp
+ 2      252MB   52.3GB  52.0GB  ext4
+ 3      52.3GB  172GB   120GB   ext4
+ 4      172GB   179GB   7200MB  linux-swap(v1)
+#+END_EXAMPLE
+
+edit /etc/fstab:
+#+BEGIN_EXAMPLE
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda2 during installation
+UUID=420c1b6e-2ffd-4ba8-951e-288d30f7e223 /               ext4    noatime 0       1
+# /boot/efi was on /dev/sda1 during installation
+UUID=58B3-610B  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/sda3 during installation
+UUID=b9bd3d3a-b287-4ca1-ae92-fb18e1b85873 /home           ext4    noatime         0       2
+# swap was on /dev/sda4 during installation
+UUID=47314620-42bc-4bb0-83a3-979b694b2bab none            swap    sw              0       0
+
+tmpfs     /home/zhangtao/.cache/google-chrome/Default      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+tmpfs     /tmp      tmpfs   noexec,defaults,noatime,nodiratime 0       0 
+
+
+--------------------------------------
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>                                                                                                    
+# / was on /dev/sda2 during installation                                                                                                                                  
+UUID=67c98dc7-979a-4ce0-a417-a7de33449b42 /               ext4    noatime,errors=remount-ro 0       1
+# /boot/efi was on /dev/sda1 during installation                                                                                                                          
+UUID=43F2-1E96  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/sda3 during installation                                                                                                                              
+UUID=9a2e596f-7d64-4cf8-abb8-0ca18f9246bf /home           ext4    noatime         0       2
+# swap was on /dev/sda4 during installation                                                                                                                               
+UUID=a8467b42-b0b9-4a00-a677-f3181f5d8bea none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+
+
+tmpfs     /home/zhangtao/.cache/chromium//Default      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+
+tmpfs     /home/zhangtao/.cache/mozilla/firefox      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+#tmpfs     /home/zhangtao/.cache/google-chrome/Default      tmpfs   noexec,defaults,noatime,nodiratime 0       0                                                          
+tmpfs     /tmp      tmpfs   noexec,defaults,noatime,nodiratime 0       0
+
+#+END_EXAMPLE
+
+** 硬件类型
+
+lspci:
+#+BEGIN_EXAMPLE
+00:00.0 Host bridge: Intel Corporation 3rd Gen Core processor DRAM Controller (rev 09)
+00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v2/3rd Gen Core processor PCI Express Root Port (rev 09)
+00:14.0 USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB xHCI Host Controller (rev 04)
+00:16.0 Communication controller: Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1 (rev 04)
+00:1a.0 USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2 (rev 04)
+00:1b.0 Audio device: Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller (rev 04)
+00:1c.0 PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1 (rev c4)
+00:1c.1 PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2 (rev c4)
+00:1c.3 PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 4 (rev c4)
+00:1d.0 USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1 (rev 04)
+00:1f.0 ISA bridge: Intel Corporation HM76 Express Chipset LPC Controller (rev 04)
+00:1f.2 SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04)
+00:1f.3 SMBus: Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller (rev 04)
+*01:00.0 VGA compatible controller: NVIDIA Corporation GK107M [GeForce GT 650M] (rev a1)*
+01:00.1 Audio device: NVIDIA Corporation GK107 HDMI Audio Controller (rev a1)
+*02:00.0 Ethernet controller: Qualcomm Atheros AR8161 Gigabit Ethernet (rev 10)*
+*03:00.0 Network controller: Broadcom Corporation BCM4313 802.11bgn Wireless Network Adapter (rev 01)*
+04:00.0 System peripheral: JMicron Technology Corp. SD/MMC Host Controller (rev 30)
+04:00.2 SD Host controller: JMicron Technology Corp. Standard SD Host Controller (rev 30)
+04:00.3 System peripheral: JMicron Technology Corp. MS Host Controller (rev 30)
+04:00.4 System peripheral: JMicron Technology Corp. xD Host Controller (rev 30)
+#+END_EXAMPLE
+
+** 网络连接
+Use NetworkManager.
+
+- 有线
+  apt-get install pppoe dhcp-client
+
+- 无线
+  apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
+
+  modprobe -r b44 b43 b43legacy ssb brcmsmac
+
+  modprobe wl
+
+  apt-get install wpasupplicant
+
+  wpa_passphrase myssid my_very_secret_passphrase
+
+  wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+- 配置网卡
+
+  ifconfig
+
+  ifup/ifdown wlan0/eth0
+
+  chmod 0600 /etc/network/interfaces
+
+  edit /etc/network/interfaces
+  #+BEGIN_EXAMPLE
+  source /etc/network/interfaces.d/*
+  
+  # The loopback network interface
+  auto lo
+  iface lo inet loopback
+
+  # auto eth0
+  # iface eth0 inet dhcp
+  # iface eth0 inet static
+  # address 192.168.1.156
+  # netmask 255.
+  # iface eth0 inet static
+  # address 192.168.1.156
+  # netmask 255.255.255.0
+  # gateway 192.168.1.1
+  wpa-ssid A-12	
+  wpa-psk 463b73516245f5a6f96f8a109c90bf208f883b3524395adf973ea03973249829
+
+  #+END_EXAMPLE
+
+** 显卡驱动
+
+aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
+nvdia-xconfig
+Option "NoLogo" "1"
+
+一些问题：
+eidt /etc/default/grub
+
+#+BEGIN_EXAMPLE
+GRUB_CMDLINE_LINUX_DEFAULT="elevator=noop quiet nouveau rcutree.rcu_idle_gp_delay=1"
+#+END_EXAMPLE
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+Option "NoLogo" "1"
+
+** 安装软件
+aptitude install xserver-xorg-core awesome fcitx-rime xfce4-terminal google-chrome audacious smplayer vlc slim thunar emacs virtualbox lxappearance git zsh alsa-utils gimp pcmanfm networkmanager-gnome redshift
+
+sudo apt-get install thunar thunar-archive-plugin thunar-gtkhash thunar-volman thunar-media-tags-plugin thunar-vcs-plugin
+
+
+** Dekstop 
+kde-standar+awesome
+
+*** Firewall Install gufw
+#+BEGIN_QUOTE
+安装方法
+ sudo apt-get install ufw
+当然，这是有图形界面的(比较简陋)，在新立得里搜索gufw试试……
+使用方法
+1 启用
+ sudo ufw enable
+ sudo ufw default deny 
+作用：开启了防火墙并随系统启动同时关闭所有外部对本机的访问（本机访问外部正常）。
+2 关闭
+ sudo ufw disable 
+2 查看防火墙状态
+ sudo ufw status 
+3 开启/禁用相应端口或服务举例
+ sudo ufw allow 80 允许外部访问80端口
+ sudo ufw delete allow 80 禁止外部访问80 端口
+ sudo ufw allow from 192.168.1.1 允许此IP访问所有的本机端口
+ sudo ufw deny smtp 禁止外部访问smtp服务
+ sudo ufw delete allow smtp 删除上面建立的某条规则
+ sudo ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 22 要拒绝所有的TCP流量从10.0.0.0/8 到192.168.0.1地址的22端口
+ 可以允许所有RFC1918网络（局域网/无线局域网的）访问这个主机（/8,/16,/12是一种网络分级）：
+sudo ufw allow from 10.0.0.0/8
+sudo ufw allow from 172.16.0.0/12
+sudo ufw allow from 192.168.0.0/16
+推荐设置
+ sudo apt-get install ufw
+ sudo ufw enable
+ sudo ufw default deny 
+这样设置已经很安全，如果有特殊需要，可以使用sudo ufw allow开启相应服务。
+#+END_QUOTE
+** 软件配置
+*** awesome wm
+mkdir -p .config/awesome/
+
+cp /xdg/awesome/rc.lua ~/.config/awesome
+
+*** fonts
+vi /etc/apt/sources.list
+
+deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main
+deb-src http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main
+
+Import the public PGP key of this PPA to verify package integrity during the installation process：
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B
+
+apt-get update
+apt-get install fontconfig-infinality
+
+Configure Font Rendering:
+sudo bash /etc/fonts/infinality/infctl.sh setstyle
+
+** Others
+ deb extract: ar -vx @debian 
+* Enconding
+
+enca filename
+enconv -L zh_CN -x UTF-8 filename
+iconv -f encoding -t encoding inputfile
+iconv -f GBK -t UTF-8 file1 -o file2
+
+* Vim
+
+## Edit 
+- Ctrl-p
+	<leader>-f模糊搜索最近打开的文件(MRU)
+	<leader>-p模糊搜索当前目录及其子目录下的所有文件
+	
+	ctrl + j/k 进行上下选择
+
+	ctrl + x 在当前窗口水平分屏打开文件
+
+	ctrl + v 同上, 垂直分屏
+
+	ctrl + t 在tab中打开
+----------------------------------------------------------------------
+	Press <F5> to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
+	Press <c-f> and <c-b> to cycle between modes.
+	Press <c-d> to switch to filename only search instead of full path.
+	Press <c-r> to switch to regexp mode.
+	Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+	Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
+	Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+	Use <c-y> to create a new file and its parent directories.
+	Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+
+- Ag+grep
+	:vim[grep][!] /{pattern}/[g][j] {file} ...
+	:Ag [options] {pattern} [{directory}]
+   
+## Writer
+
+
+## Splitline
+
+'''vim
+set fillchars=stl:―,stlnc:—,vert:│,fold:۰,diff:·
+
+highlight folded       cterm=bold ctermbg=none ctermfg=5
+highlight vertsplit    cterm=none ctermbg=none ctermfg=9
+highlight statusline   cterm=none ctermbg=none ctermfg=9
+highlight statuslinenc cterm=none ctermbg=none ctermfg=9
+highlight specialkey   cterm=none ctermbg=none ctermfg=1
+highlight matchparen   cterm=none ctermbg=none ctermfg=5
+highlight wildmenu     cterm=bold ctermbg=none ctermfg=3
+highlight visual       cterm=bold ctermbg=7    ctermfg=none
+highlight user1        cterm=none ctermbg=none ctermfg=3
+
+set statusline=
+set statusline+=%1*%f%*
+set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)
+set statusline+=%=
+set statusline+=[%(%l,%c%V%)]
+set statusline+=\ %1*%P%*
+
+* Windows 10
+
+** Windows下开发环境配置
+
+*** Python Environment Install
+Python 3 version.
+
+把默认使用的Python版本路径加到 PATH 环境变量中，避免每次使用时都要冗余地写全Python 解释器路径。假设安装路径是 C:\Python27\, 将这段加入到 PATH 中:
+C:\Python27\;C:\Python27\Scripts\
+
+或在 powershell 中运行:
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+
+*The User Name Should Be English.And Install Pip install foo.whl or jupyter*
+
++pip install foo.whl+
+- Editor
+  - Atom
+  - Sublime Text
+  - VSCode
+*** C Environment Install 
+MinGW gcc gcc++
+
+1、在PATH里加入C:\MinGW\bin，记得，如果里面还有其他的变量，记得要加个分号啊，分号得在英文输入模式下输入的。
+2、新建LIBRARY_PATH变量，如果有的话，在值中加入C:\MinGW\lib，这是标准库的位置。
+3、新建C_INCLUDEDE_PATH变量，值设为C:\MinGW\include。
+4、新建CPLUS_INCLUDE_PATH变量，值为C:\MinGW\include\c++\3.4.5;C:\MinGW\include\c++\3.4.5;C:\MinGW\include\c++\3.4.5\backward;C:\MinGW\include
+
+*** Latex
+Texlive
+
+*** Vmware
+
+
+* Colors
+
+#32cd32 Lime Green
+#fffff0 Color Hex Ivory
+
+http://www.color-hex.com/color/32cd32
+
+* Matlab 
+sudo mkdir /media/matlab  
+sudo mount -o loop [path]MATHWORKS_R2014A.iso /media/matlab  
+cd /media/matlab  
+sudo ./install
+cp libmwservices.so /usr/local/MATLAB/R2014a/bin/glnxa64
+sudo apt-get install matlab-support
+sudo chown username -R ~/.matlab
+ln -s /usr/local/MATLAB/R2014b/bin/matlab /usr/bin
+- Java Gui Displayp In Awesome Wm
+  sudo apt-get install suckless-tools
+  wmname LG3D
+* Build And Compile Emacs
+1. apt-get install build-enseential lib...-dev
+2. apt-get build-deb emacs vim
+./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp=yes \
+            --enable-pythoninterp=yes \
+            --with-python-config-dir=/usr/lib/python2.7/config \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=/usr/lib/python3.5/config \
+            --enable-perlinterp=yes \
+            --enable-luainterp=yes \
+            --enable-gui=gtk2 --enable-cscope --prefix=/usr
+3. ./configure
+4. make
+5. make install
+6. make uninstall
+
+7. xwidget 
+sudo apt-get remove libwxgtk3.0-dev
+./autogen.sh 
+./configure --with-xwidgets --with-cairo --with-modules
+
+$ cd /where/you/unpacked/or/branched/emacs
+$ ./autogen.sh    # not needed when installing from tarball
+$ ./configure
+$ make
+$ make install
+* Latex_AucTex
+** Latex
+#+BEGIN_QUOTE
+From: Carsten Dominik <carsten.dominik <at> gmail.com>
+Subject: Re: Re: LaTeX export of images
+Newsgroups: gmane.emacs.orgmode
+Date: Tuesday 20th October 2009 10:18:21 UTC (over 7 years ago)
+On Oct 13, 2009, at 12:03 PM, Francesco Pizzolante wrote:
+
+> Hi Carsten,
+>
+> Sorry for my late reply on this subject.
+>
+>> OK, I have now modified image placement in LaTeX.
+>>
+>> 1. Image in text
+>>
+>>   [[./img/x.png]]
+>>
+>> 2. Floating image with caption and modified size and placement
+>>
+>>   #+CAPTION: My caption
+>>   #+ATTR_LATEX: placement=[H] width=0.6\textwidth
+>>   [[./img/x.png]]
+>>
+>> 3. Wrapping text around the image
+>>
+>>   #+ATTR_LaTeX: wrap
+>>   #+ATTR_HTML: align="left"
+>>   [[./img/x.png]]
+>>
+>> 4. Wrapping text around the image with modified size and wrapfigure  
+>> placement
+>>
+>>   #+ATTR_LaTeX: wrap width=0.38\textwidth placement={r}{0.4\textwidth
+>>   #+ATTR_HTML: align="right" width="250"
+>>   [[./img/x.png]]
+>>
+>> Even if there is a caption, wrap will work and force the
+>> image to be non-floating with text wrapped around.
+>>
+>> Comments?
+>
+> I did not test the wrap option yet, but the rest is perfect (images  
+> in text,
+> placements, width, captions, labels).
+>
+> I still miss one single option: "float" in order to force the  
+> centered figure
+> environment if if no caption/label is present.
+>
+> I would add something like
+>
+> #+ATTR_LATEX: float
+
+
+Have you actually tried?  The following works for me.
+
+
+#+ATTR_LaTeX: float
+[[./blue_1.png]]
+This is text
+
+- Carsten
+
+>
+> or
+>
+> #+ATTR_LATEX: float=t
+>
+> Is this feasible?
+>
+> Thanks a lot!
+>
+> Francesco
+
+- Carsten
+
+
+
+
+
+_______________________________________________
+Emacs-orgmode mailing list
+Remember: use `Reply All' to send replies to the list.
+Emacs-orgmode@gnu.org
+http://lists.gnu.org/mailman/listinfo/emacs-orgmode
+#+END_QUOTE
+** Keybinding
+| C_c C-e   | Environment |
+| C_c C-m   | Top matter  |
+| C_c C-c v | Compile     |
+| C_c C_s   | Sectioning  |
+** Ctex
+#+BEGIN_SRC txt
+#+LATEX_CLASS: ctexart
+#+LATEX_CLASS_OPTIONS: [nofonts]
+#+LATEX_HEADER: \usepackage{mylinuxfonts}
+
+#+LATEX_HEADER: \documentclass[nofonts]{ctexart}
+#+LATEX_HEADER: \setmainfont{Times New Roman}
+#+LATEX_HEADER: \setsansfont{Helvetica}
+#+LATEX_HEADER: \setmonofont{Courier New}
+
+#+LATEX_HEADER: \setCJKmainfont{SimSun} 
+#+LATEX_HEADER: \setCJKsansfont{Microsoft YaHei} 
+#+LATEX_HEADER: \setCJKmonofont{FZLanTingHei} 
+
+ctexart , ctexrep , ctexbook 分别对应于 article , report , book 三个类
+#+END_SRC
+
+
+* Didplay
+
+关闭指定显示器：xrandr --output VGA-0 --off
+设置指定显示器的分辨率：xrandr --output DVI-I-1 --mode 1680x1050
+让指定显示器自动选择分辨率与屏幕位置：xrandr --output DVI-I-1 --auto
+使用扩展模式
+设置指定显示器为主屏幕：xrandr --output DVI-I-1 --primary
+设置多个显示器之间的相对位置：xrandr --output DVI-I-1 --left-of VGA-0
+使用同步显示模式：xrandr --output DVI-I-1 --same-as VGA-0
+以上不同选项是可以组合在一起一次完成设定的。例如：
+
+xrandr --output VGA-0 --mode 1280x1024 --output DVI-I-1 --mode 1920x1080 --primary --right-of VGA-0
+* Python
+** Cal With Gpu _ CUDA
+* Flash
+
+tar -zxvf flash_player_ppapi_linux.x86_64\ .tar.gz 
+sudo cp libpepflashplayer.so /usr/lib/chromium/plugins
+
+sudo vim /etc/chromium.d/default： CHROMIUM_FLAGS="--ppapi-flash-path=/usr/lib/chromium/plugins/libpepflashplayer.so --ppapi-flash-version=24.0.0.189" 
+
+sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
+** Chrome With Linux
+mkdir .config/google-chrome/PepperFlash
+sudo vim /usr/share/applications/google-chrome.desktop
+
+Exec=/usr/bin/google-chrome-stable %U --ppapi-flash-path=/home/zhangtao/.config/google-chrome/PepperFlash/libpepflashplayer.so
+
+* Windows U Under Linux
+fdisk /dev/sdb n a p w
+sudo mkfs -t ntfs /dev/sdb1
+sudo dd  if=/home/peter/Downloads/WindowsTechnicalPreview-x64-ZH-CN.iso of=/dev/sdb1 bs=4M iflag=direct​
+sudo apt-get install lilo
+sudo lilo -M /dev/sdb mbr
+
+* Debian 9 Bug
+
+** sddm blank screen cause by nvidia-driver so use debian sources nvidia driver to solve.
+
+** Texlive bug that tex-common can't setting:First Remove All Texlive-full and tex-common .Install texlive-base form unstable.
+
+** Nvidia Install:
+
+- First Blacklist: blacklist nouveau in .modeprobe.d/
+- sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
+- ./Nv.....
+- add grub:
+
+** Sometimes Some problem maybe should  remove and reinstall to solve
+
+** Sometimes Should Solve some Dependency(New Or Older Vesion) With dpkg install.
+
+* Web And Internet
+更新和升级+网页设计+服务框架+硬件配置+代码托管+维护和管理+域名和地址
+[[file:~/Dropbox/Picture/Web_Internet.png]]
+
+# Install youcompleteme
+sudo apt-get install vim-youcompleteme
+vam install youcompleteme
+
+* C Programming
+
+** Boost Lib
+    sudo apt-get install libboost-all-dev
+    sudo apt-get install libgnuplot-iostream-dev
+    sudo apt-get install libmgl-dev mathgl
+** random
+** Config Gnuplot Lib
+      http://gnuplot.sourceforge.net/demo/
+
+#+BEGIN_QUOTE
+
+#+BEGIN_SRC 
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#define random(a,b) (rand()%(b-a+1)+a)
+using namespace std;
+int main()
+{
+    srand((unsigned)time(NULL));
+    for(int i=0;i<10;i++)
+    cout<<random(1,100)<<' ';
+    return 0;
+}
+#+END_SRC
+取得(0,x)的随机整数：rand()%x；
+取得(a,b)的随机整数：rand()%(b-a)；
+取得[a,b)的随机整数：rand()%(b-a)+a；
+取得[a,b]的随机整数：rand()%(b-a+1)+a；
+取得(a,b]的随机整数：rand()%(b-a)+a+1；
+取得0-1之间的浮点数：rand()/double(RAND_MAX)。
+
+#+END_QUOTE
+** Segmentation fault ulimit for shell
+
+* Markdown + Html + Css
+
+- [ ] TODO Wirte the css with html for pdf and ppt
+- links
+<div style="text-align:left"><font size="2" face="Helvetica"><a href="https://github.com/ztao1991/Networks/blob/master/Exercise/Net2_ex1/sandpile-model_version0.2.cpp">sandpile-model.cpp<b></b></a></font></div>
+
+- img
+<div style="text-align:center"><img src="figure_1-2.png"/><p><font size="4" face="Helvetica"><b>Sandpile-Model</b></font></p></div>
+
+- pdf and ppt tool with markdown and html
+markdown to chrome or pandoc to pdf or ppt
+
+* Fonts Redering With Monaco
+#+BEGIN_QUOTE .Xresources
+Xft.antialias: 1
+
+Xft.autohint: 0
+
+Xft.dpi: 144
+
+Xft.hinting: 1
+
+Xft.hintstyle: hintmedium
+
+Xft.lcdfilter: lcddefault
+
+Xft.rgba: rgb
+
+emacs.FontBackend: xft
+Emacs.font: Monaco-10
+
+URxvt.font:xft:Monaco for Powerline:size=9:antialias=true,xft:文泉驿等宽微米黑:size=10
+Rxvt.scrollBar:False
+Rxvt.scrollBar_right:True
+Rxvt.scrollBar_floating: False
+Rxvt.scrollstyle:plain
+
+
+URxvt*cursorColor: red
+
+! Colors
+URxvt*background: black
+URxvt*foreground: white
+
+!!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!!URxvt.iso14755: False
+!!URxvt.perl-ext-common: default,clipboard
+!!
+!!
+!!!!Source http://github.com/altercation/solarized
+!!
+!!*background: #002b36
+!!*foreground: #657b83
+!!!!*fading: 40
+!!*fadeColor: #002b36
+!!*cursorColor: #93a1a1
+!!*pointerColorBackground: #586e75
+!!*pointerColorForeground: #93a1a1
+!!
+!!!! black dark/light
+!!*color0: #073642
+!!*color8: #002b36
+!!
+!!!! red dark/light
+!!*color1: #dc322f
+!!*color9: #cb4b16
+!!
+!!!! green dark/light
+!!*color2: #859900
+!!*color10: #586e75
+!!
+!!!! yellow dark/light
+!!*color3: #b58900
+!!*color11: #657b83
+!!
+!!!! blue dark/light
+!!*color4: #268bd2
+!!*color12: #839496
+!!
+!!!! magenta dark/light
+!!*color5: #d33682
+!!*color13: #6c71c4
+!!
+!!!! cyan dark/light
+!!*color6: #2aa198
+!!*color14: #93a1a1
+!!
+!!!! white dark/light
+!!*color7: #eee8d5
+!!*color15: #fdf6e3
+
+#+END_QUOTE
+Sources: https://www.emacswiki.org/emacs/XftGnuEmacs#toc17
+
+#+BEGIN_QUOTE ~/.config/fontconfig/conf.d 20-no-embedded.conf
+
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <match target="font">
+    <edit name="embeddedbitmap" mode="assign">
+      <bool>false</bool>
+    </edit>
+  </match>
+</fontconfig>
+
+#+END_QUOTE
+Sources: https://wiki.archlinux.org/index.php/font_configuration#Disable_bitmap_fonts
+
+xserver_arguments   -nolisten tcp vt07 -dpi 96
+
+* DPI 
+1. SDDM
+   vim /etc/sddm.conf 
+#+BEGIN_QUOTE
+[Autologin]
+Relogin=false
+Session=
+User=
+
+[General]
+HaltCommand=
+RebootCommand=
+
+[Theme]
+Current=breeze
+CursorTheme=Breeze_Snow
+
+[Users]
+MaximumUid=65000
+MinimumUid=1000
+
+[X11]
+ServerArguments=-nolisten tcp -dpi 144
+
+#+END_QUOTE
+2. Xresource
+   #+BEGIN_QUOTE
+   Xft.antialias: 1
+
+Xft.autohint: 0
+
+Xft.dpi: 144
+
+Xft.hinting: 1
+
+Xft.hintstyle: hintfull
+
+Xft.lcdfilter: lcddefault
+
+Xft.rgba: rgb
+
+   #+END_QUOTE
+
+#+BEGIN_QUOTE
+4.Smaller - 100% = 96 DPI(Pixels/Dots Per Inch) 
+5.Medium - 125% = 120 DPI (Pixels/Dots Per Inch)
+6.Larger - 150% = 144 DPI (Pixels/Dots Per Inch). 
+#+END_QUOTE
+
+** Dell XPS 13 
+#+BEGIN_QUOTE
+Enabling
+
+Note: In most cases, this should be enabled automatically during Debian installation.
+
+Install the cpufrequtils package:
+
+aptitude install cpufrequtils
+Configuration
+
+Specify the governor to use at boot
+Edit /etc/default/cpufrequtils (you might need to create it if it doesn't exist). Specify the governor with the GOVERNOR variable:
+
+# valid values: userspace conservative powersave ondemand performance
+# get them from cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors 
+GOVERNOR="conservative"
+Keeping the governor settings between boots
+Install sysfsutils:
+
+aptitude install sysfsutils
+The sysfs values will be configured in /etc/sysfs.conf.
+
+Here are some examples for the conservative governor:
+
+# by default it's 444, so we have to change permissions to be able to change values
+mode devices/system/cpu/cpufreq/conservative = 644
+devices/system/cpu/cpufreq/conservative/freq_step = 10
+devices/system/cpu/cpufreq/conservative/up_threshold = 45
+devices/system/cpu/cpufreq/conservative/ignore_nice_load = 1
+devices/system/cpu/cpufreq/conservative/sampling_down_factor = 10
+After you made the changes in /etc/sysfs.conf, apply them with /etc/init.d/sysfsutils start or with  service sysfsutils start.
+
+#+END_QUOTE
+
+Source:https://wiki.debian.org/HowTo/CpuFrequencyScaling
+
+
+----------------------------------------------------------------Just Use
+Markdown Format----------------------------------------------------------
