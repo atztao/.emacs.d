@@ -280,7 +280,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-
+;;(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)

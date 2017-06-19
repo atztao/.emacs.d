@@ -24,21 +24,21 @@
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
 ;;(load-theme 'zenburn t)
 
-(setq solarized-termcolors 256)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
-(load-theme 'solarized t)
+;; (setq solarized-termcolors 256)
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
+;; (load-theme 'solarized t)
 
 
-;; (add-hook 'after-make-frame-functions
-;;           (lambda (frame)
-;;             (let ((mode (if (display-graphic-p frame) 'light )))
-;;               (set-frame-parameter frame 'background-mode mode)
-;;               (set-terminal-parameter frame 'background-mode mode))
-;;              (enable-theme 'solarized)))
+;; ;; (add-hook 'after-make-frame-functions
+;; ;;           (lambda (frame)
+;; ;;             (let ((mode (if (display-graphic-p frame) 'light )))
+;; ;;               (set-frame-parameter frame 'background-mode mode)
+;; ;;               (set-terminal-parameter frame 'background-mode mode))
+;; ;;              (enable-theme 'solarized)))
 
 
-(set-frame-parameter nil 'background-mode 'dark)    
-(enable-theme 'solarized)
+;; (set-frame-parameter nil 'background-mode 'dark)    
+;; (enable-theme 'solarized)
 
 ;;(set-face-attribute 'default nil :height 82)
 
@@ -48,20 +48,23 @@
 
 (make-face-bold 'isearch)
 (make-face-bold 'lazy-highlight)
-(set-face-foreground 'isearch "#002b36")
+;;(set-face-foreground 'isearch "#002b36")
+(set-face-foreground 'isearch "#000000")
 (set-face-background 'isearch "#ffff00")
-(set-face-foreground 'lazy-highlight "#002b36")
+;;(set-face-foreground 'lazy-highlight "#002b36")
+(set-face-foreground 'lazy-highlight "#000000")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :foreground "#F0E68C" :background "#002b36" ) ;;#EEE8D6
+(set-face-attribute 'region nil :background "#F0E68C" :foreground "black" ) ;;#EEE8D6 F0E68C
+
 
 ;; (set-cursor-color "green")
 (set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
-;;(set-background-color "#f0f0f0")
+(set-background-color "#f0f0f0")
 ;; (set-background-color "ivory")
-;;(set-foreground-color "#000000")
+(set-foreground-color "#000000")
 
 ;;--------------------------
 ;;mode-line
@@ -80,11 +83,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "gray27")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "gray27")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
