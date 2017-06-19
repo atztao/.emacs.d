@@ -9,9 +9,9 @@
  (position . 893))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** NEXT Orgnize ")
- (rear-context-string . "EXT 6.12 NBA G5\n")
- (position . 2199))
+ (front-context-string . "** TODO 可以尝试一份工作")
+ (rear-context-string . "              \n\n")
+ (position . 4841))
 ("todo.txt"
  (filename . "~/Dropbox/Txt/todo.txt")
  (front-context-string . "#+TAGS: Wait Som")

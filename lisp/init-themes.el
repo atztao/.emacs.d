@@ -22,7 +22,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;;(load-theme 'zenburn t)
+(load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -48,23 +48,21 @@
 
 (make-face-bold 'isearch)
 (make-face-bold 'lazy-highlight)
-;;(set-face-foreground 'isearch "#002b36")
 (set-face-foreground 'isearch "#000000")
 (set-face-background 'isearch "#ffff00")
-;;(set-face-foreground 'lazy-highlight "#002b36")
 (set-face-foreground 'lazy-highlight "#000000")
 (set-face-background 'lazy-highlight "#ffff00")
 
-(set-face-attribute 'region nil :background "#F0E68C" :foreground "black" ) ;;#EEE8D6 F0E68C
+(set-face-attribute 'region nil :background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
 
 ;; (set-cursor-color "green")
 (set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
-(set-background-color "#f0f0f0")
-;; (set-background-color "ivory")
-(set-foreground-color "#000000")
+;; (set-background-color "#ffffff")
+;; ;; (set-background-color "ivory")
+;; (set-foreground-color "#000000")
 
 ;;--------------------------
 ;;mode-line
@@ -83,11 +81,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray27")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray32")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
@@ -139,16 +137,16 @@
 
 
 ;;smart-mode-line------------------------
-;; ;;(display-time-mode)
+;;(display-time-mode)
 ;; (require 'smart-mode-line)
 ;; ;; (require 'powerline)
 ;; (setq sml/no-confirm-load-theme t)
 
 ;; ;;(setq sml/theme 'dark)
 ;; ;;(setq sml/theme 'light)
-;; ;;(setq sml/theme 'respectful)
+;; (setq sml/theme 'respectful)
 
-;; (setq sml/theme 'powerline)
+;; ;;(setq sml/theme 'powerline)
 ;; ;; (setq sml/theme 'light-powerline)
 ;; (setq powerline-arrow-shape 'curves)
 ;; (setq powerline-default-separator-dir '(right . left))

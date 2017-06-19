@@ -81,9 +81,9 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-todo ((t (:foreground "Red"  :weight extra-bold))))
- '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t)))) ;;Gray70 light
-'(term ((t (:background "#ffffff" :foreground "#000000"))))
+ '(org-todo ((t (:foreground "#d74e48" :weight extra-bold))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "Gray" :strike-through t)))) ;;Grey70 light
+;;'(term ((t (:background "#ffffff" :foreground "#000000"))))
  )
 
 ;;the mouse cursor from highlighting lines in the agenda

@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- replace-string
- disable-theme
+ mu4e
  load-theme
- magit-push
- magit-status
- multi-term
+ disable-theme
+ set-background-color
+ iimage-mode
+ org-mode
 )
 
 ;; ----- smex-data -----
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 113)
+ (org-mode . 114)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 85)
- (load-theme . 232)
+ (replace-string . 84)
+ (load-theme . 234)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1306)
+ (eval-buffer . 1310)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -137,7 +137,7 @@
  (c-mode . 4)
  (menu-bar-mode . 3)
  (org-toggle-link-display . 6)
- (org-toggle-inline-images . 22)
+ (org-toggle-inline-images . 23)
  (org-display-inline-images . 4)
  (make-face-bold . 1)
  (helm-find . 1)
@@ -173,8 +173,8 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 154)
- (set-background-color . 5)
+ (disable-theme . 156)
+ (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
  (dired . 11)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 77)
+ (mu4e . 80)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 78)
- (magit-push . 74)
+ (magit-status . 79)
+ (magit-push . 75)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 47)
+ (multi-term . 49)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -339,7 +339,7 @@
  (magit-mode . 1)
  (display-time . 2)
  (epa-encrypt-file . 8)
- (iimage-mode . 1)
+ (iimage-mode . 2)
  (windmove-left . 1)
  (profiler-start . 1)
  (profiler-stop . 1)
@@ -357,4 +357,5 @@
  (evil-escape-mode . 1)
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
+ (mu4e-view-mode . 1)
 )
