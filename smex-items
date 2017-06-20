@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- mu4e
- load-theme
  disable-theme
- set-background-color
- iimage-mode
- org-mode
+ mu4e
+ multi-term
+ magit-status
+ package-autoremove
+ package-list-packages
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 161)
+ (package-list-packages . 163)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 5)
- (replace-string . 84)
- (load-theme . 234)
+ (replace-string . 94)
+ (load-theme . 235)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1310)
+ (eval-buffer . 1373)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 156)
+ (disable-theme . 158)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 80)
+ (mu4e . 88)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 2)
- (python-mode . 23)
+ (python-mode . 24)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 79)
- (magit-push . 75)
+ (magit-status . 81)
+ (magit-push . 76)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 25)
+ (package-autoremove . 26)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 49)
+ (multi-term . 53)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)

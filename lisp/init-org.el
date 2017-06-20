@@ -74,17 +74,17 @@
 ;;(add-hook 'org-mode-hook (lambda () (variable-pitch-mode t)))
 ;;org-mode display
 (setq org-fontify-done-headline t)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-todo ((t (:foreground "#d74e48" :weight extra-bold))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "Gray" :strike-through t)))) ;;Grey70 light
-;;'(term ((t (:background "#ffffff" :foreground "#000000"))))
- )
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+;;  ;; '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+;;  '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "Gray" :strike-through t))))
+
+;; ;;'(term ((t (:background "#ffffff" :foreground "#000000"))))
+;;  )
 
 ;;the mouse cursor from highlighting lines in the agenda
 (add-hook 'org-agenda-finalize-hook
