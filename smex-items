@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ mu4e
+ customize-themes
+ multi-term
+ package-list-packages
  load-theme
  disable-theme
- mu4e
- magit-push
- magit-status
- multi-term
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 163)
+ (package-list-packages . 166)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 114)
+ (org-mode . 115)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -49,7 +49,7 @@
  (color-theme-billw . 17)
  (artist-mode . 1)
  (helm-help . 3)
- (auto-fill-mode . 6)
+ (auto-fill-mode . 8)
  (color-theme-word-perfect . 7)
  (pyim-dicts-manager . 1)
  (describe-char . 10)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 94)
- (load-theme . 236)
+ (load-theme . 243)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -108,14 +108,14 @@
  (org-beamer-export-to-pdf . 96)
  (org-export-insert-default-template . 6)
  (latex-mode . 2)
- (describe-coding-system . 2)
+ (describe-coding-system . 4)
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 74)
+ (writeroom-mode . 77)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1392)
+ (eval-buffer . 1449)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,11 +173,11 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 159)
+ (disable-theme . 160)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
- (dired . 11)
+ (dired . 14)
  (desktop-save . 2)
  (toggle-read-only . 1)
  (read-only-mode . 7)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 90)
+ (mu4e . 102)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -280,7 +280,7 @@
  (xwidget-webkit-mode . 3)
  (html-autoview-mode . 1)
  (helm-do-ag . 1)
- (undo-tree-mode . 2)
+ (undo-tree-mode . 3)
  (TeX-mode . 2)
  (tex-mode . 1)
  (TeX-view . 1)
@@ -303,7 +303,7 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 82)
+ (magit-status . 84)
  (magit-push . 78)
  (magit-log-all . 2)
  (jdb . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 53)
+ (multi-term . 57)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -358,4 +358,5 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
+ (customize-themes . 1)
 )

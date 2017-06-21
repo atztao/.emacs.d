@@ -57,65 +57,87 @@
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
-;;ido-mode--------------------------------
-(require 'ido)
-(ido-mode t)
-(ido-everywhere t)
-(setq ido-file-extensions-order '(".org" ".txt" ))
-(setq ido-use-filename-at-point 'guess)
-(setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
-(setq org-completion-use-ido t)
+;; ;;ido-mode--------------------------------
+;; (require 'ido)
+;; (ido-mode t)
+;; (ido-everywhere t)
+;; (setq ido-file-extensions-order '(".org" ".txt" ))
+;; (setq ido-use-filename-at-point 'guess)
+;; (setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
+;; (setq org-completion-use-ido t)
 
-(defun ido-bookmark-jump (bname)
-  "*Switch to bookmark interactively using `ido'."
-  (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
-  (bookmark-jump bname))
-(global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
-;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+;; (defun ido-bookmark-jump (bname)
+;;   "*Switch to bookmark interactively using `ido'."
+;;   (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
+;;   (bookmark-jump bname))
+;; (global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
+;; ;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
-;;(setq ido-separator "\n")
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-;;(setq max-mini-window-height 0.5)
+;; (setq ido-separator "\n")
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; ;;(setq max-mini-window-height 0.5)
 
-;;(setq ido-use-virtual-buffers t)
+;; ;;(setq ido-use-virtual-buffers t)
 
-(savehist-mode 1)
+;; (savehist-mode 1)
 
 
-;;keep a list of recently opened files                                                                      
+;; ;;keep a list of recently opened files                                              
+
 (require 'recentf)
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
 (setq-default recent-save-file "~/.emacs.d/recentf")
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to find a recent file."
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
+;; (defun ido-recentf-open ()
+;;   "Use `ido-completing-read' to find a recent file."
+;;   (interactive)
+;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+;;       (message "Opening file...")
+;;     (message "Aborting")))
 
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-(setq recentf-max-saved-items 150)
+;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+;; (setq recentf-max-saved-items 150)
 
 
-;; (require 'flx-ido)
-;; (flx-ido-mode 1)
-;; ;; disable ido faces to see flx highlights.
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-use-faces nil)
+;; ;; (require 'flx-ido)
+;; ;; (flx-ido-mode 1)
+;; ;; ;; disable ido faces to see flx highlights.
+;; ;; (setq ido-enable-flex-matching t)
+;; ;; (setq ido-use-faces nil)
 
-(require 'ido-ubiquitous)
-(ido-ubiquitous-mode 1)
+;; (require 'ido-ubiquitous)
+;; (ido-ubiquitous-mode 1)
 
 ;;(require 'ido-describe-fns)
 
 (require 'ido-yes-or-no)
 (ido-yes-or-no-mode 1)
-;---------------
-;smex
-;---------------
+
+;;ivy-mode
+;;Ivy is split into three packages: ivy, swiper and counsel
+(require 'ivy)
+(ivy-mode 1)
+(setq ivy-virtual-abbreviate 'full)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-initial-inputs-alist nil)
+(setq ivy-height 10)
+(setq ivy-count-format "")
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
+(setq counsel-ag-base-command "ag -U --nocolor --nogroup %s -- .")
+
+
+(global-set-key (kbd "C-s") 'swiper)
+(setq projectile-completion-system 'ivy)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+
+;;---------------
+;;smex
+;;---------------
 
 (add-to-list 'load-path "~/.emacs.d/elpa/smex/")
 (require 'smex)
@@ -167,47 +189,47 @@
 (setq ag-highlight-search t)
 (setq ag-reuse-window 't)
 (setq ag-reuse-buffers 't)
-(global-set-key (kbd "M-s a")   #'ag) ;;apt-get install silversearcher-ag
+;;(global-set-key (kbd "M-s a")   #'ag) ;;apt-get install silversearcher-ag
 
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag
 ;;-----------------------
 ;; (setq tramp-mode nil)
-(setq ad-redefinition-action 'accept)
-(require 'helm-config)
-(require 'helm)
-(helm-mode t)
+;; (setq ad-redefinition-action 'accept)
+;; (require 'helm-config)
+;; (require 'helm)
+;; (helm-mode t)
 
-(defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
-(defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
+;; (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
+;; (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
-(setq helm-ff-transformer-show-only-basename nil
-      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-      helm-ff-auto-update-initial-value nil
-      helm-yank-symbol-first                 t
-      helm-move-to-line-cycle-in-source      t
-      helm-M-x-fuzzy-match                   nil
-      ;;      helm-recentf-fuzzy-match               t
-      ;;      helm-ff-file-name-history-use-recentf  t
-      helm-buffers-fuzzy-matching            nil
-      helm-ff-auto-update-initial-value      t)
+;; (setq helm-ff-transformer-show-only-basename nil
+;;       helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
+;;       helm-ff-auto-update-initial-value nil
+;;       helm-yank-symbol-first                 t
+;;       helm-move-to-line-cycle-in-source      t
+;;       helm-M-x-fuzzy-match                   nil
+;;       ;;      helm-recentf-fuzzy-match               t
+;;       ;;      helm-ff-file-name-history-use-recentf  t
+;;       helm-buffers-fuzzy-matching            nil
+;;       helm-ff-auto-update-initial-value      t)
 
-;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+;; ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-(global-set-key (kbd "M-s i")   #'helm-swoop)
-(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
+;; (global-set-key (kbd "M-s i")   #'helm-swoop)
+;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+;; (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-;;(global-set-key (kbd "C-s")   #'helm-swoop)
+;; ;;(global-set-key (kbd "C-s")   #'helm-swoop)
 
-(helm-autoresize-mode 1)
+;; (helm-autoresize-mode 1)
 
-(setq save-place-file "~/.emacs.d/saveplace")
-(save-place-mode 1) 
+;; (setq save-place-file "~/.emacs.d/saveplace")
+;; (save-place-mode 1) 
 
-;; (define-key helm-map (kbd "C-j") 'helm-next-line)
-;; (define-key helm-map (kbd "C-k") 'helm-previous-line)
+;; ;; (define-key helm-map (kbd "C-j") 'helm-next-line)
+;; ;; (define-key helm-map (kbd "C-k") 'helm-previous-line)
 
 ;;--------------------------multilple-cursors
 (require 'multiple-cursors)
@@ -224,27 +246,27 @@
 ;; (ace-isearch-mode +1)
 ;; (global-ace-isearch-mode +1)
 
-(require 'ace-pinyin)
-(setq ace-pinyin-use-avy nil)
-(ace-pinyin-global-mode +1)
-(setq ace-pinyin-treat-word-as-char nil)
-(setq ace-pinyin-use-avy nil) ;; uncomment if you want to use `ace-jump-mode'
+;; (require 'ace-pinyin)
+;; (setq ace-pinyin-use-avy nil)
+;; (ace-pinyin-global-mode +1)
+;; (setq ace-pinyin-treat-word-as-char nil)
+;; (setq ace-pinyin-use-avy nil) ;; uncomment if you want to use `ace-jump-mode'
 
-(define-key global-map (kbd "C-c SPC") 'ace-pinyin-jump-char)
+;; (define-key global-map (kbd "C-c SPC") 'ace-pinyin-jump-char)
 
-(add-to-list 'load-path "which-folder-ace-jump-mode-file-in/")
+;; (add-to-list 'load-path "which-folder-ace-jump-mode-file-in/")
 
-;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+;; ;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; ;;(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
-;;--------------The Key Disable In org-mode
-(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-c SPC") nil))
-;; When org-mode starts it (org-mode-map) overrides the ace-jump-mode.
+;; ;;--------------The Key Disable In org-mode
+;; (with-eval-after-load 'org
+;;   (define-key org-mode-map (kbd "C-c SPC") nil))
+;; ;; When org-mode starts it (org-mode-map) overrides the ace-jump-mode.
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (local-set-key (kbd "\C-c SPC") 'ace-pinyin-jump-char)))
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "\C-c SPC") 'ace-pinyin-jump-char)))
 
 ;----------------
 ;yasnippet

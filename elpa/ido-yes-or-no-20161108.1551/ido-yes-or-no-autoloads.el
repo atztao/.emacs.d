@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "ido-yes-or-no" "ido-yes-or-no.el" (22846 38548
-;;;;;;  780314 441000))
+;;;### (autoloads nil "ido-yes-or-no" "ido-yes-or-no.el" (22858 14809
+;;;;;;  597351 657000))
 ;;; Generated autoloads from ido-yes-or-no.el
 
 (defvar ido-yes-or-no-mode nil "\

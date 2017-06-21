@@ -165,6 +165,9 @@
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
+(require 'evil-nerd-commenter)
+;;(evilnc-default-hotkeys)
+
 ;; ;;evil-leader
 (require 'evil-leader)
 (global-evil-leader-mode)
@@ -175,18 +178,28 @@
 (evil-leader/set-leader ",")
 (setq evil-leader/in-all-states 1)
 
-(evil-leader/set-key "w" 'evil-ace-jump-word-mode) ; ,e for Ace Jump (word)
-(evil-leader/set-key "l" 'evil-ace-jump-line-mode) ; ,l for Ace Jump (line)
-(evil-leader/set-key "e" 'evil-ace-jump-char-mode) ; ,x for Ace Jump (char)
+(evil-leader/set-key
+  "w" 'evil-ace-jump-word-mode ; ,e for Ace Jump (word)
+  "l" 'evil-ace-jump-line-mode ; ,l for Ace Jump (line)
+  "e" 'evil-ace-jump-char-mode ; ,x for Ace Jump (char)
 
-(evil-leader/set-key "h" 'dired-jump)
-(evil-leader/set-key "v" 'split-window-right)
-(evil-leader/set-key "," 'other-window)
-(evil-leader/set-key "b" 'ibuffer)
-(evil-leader/set-key "x" 'smex)
-(evil-leader/set-key "r" 'ido-recentf-open)
-(evil-leader/set-key "n" 'neotree-toggle)
-(evil-leader/set-key "c" 'qiang-comment-dwim-line)
+  "h" 'dired-jump
+  "v" 'split-window-right
+  "," 'other-window
+  "b" 'ibuffer
+  "x" 'smex
+  "r" 'ido-recentf-open
+  "n" 'neotree-toggle
+  ;; "ci" 'evilnc-comment-or-uncomment-lines
+  ;; "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+  ;; "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
+  ;; "cc" 'evilnc-copy-and-comment-lines ; Or use `evilnc-comment-and-kill-ring-save' instead
+  ;; "cp" 'evilnc-comment-or-uncomment-paragraphs
+  ;; "cr" 'comment-or-uncomment-region
+  ;; "cv" 'evilnc-toggle-invert-comment-line-by-line
+  ;; "."  'evilnc-copy-and-comment-operator
+  ;; "\\" 'evilnc-comment-operator)
+  )
 (setq-default tab-width 4 indent-tabs-mode nil)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (setq evil-move-cursor-back nil)
@@ -238,9 +251,6 @@
 (evil-escape-mode 1)
 
 (setq evil-move-cursor-back t)
-
-(require 'evil-nerd-commenter)
-(evilnc-default-hotkeys)
 
 ;; {{ define my own text objects, works on evil v1.0.9 using older method
 ;; @see http://stackoverflow.com/questions/18102004/emacs-evil-mode-how-to-create-a-new-text-object-to-select-words-with-any-non-sp
