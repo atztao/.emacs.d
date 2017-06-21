@@ -226,10 +226,10 @@
     `(eval-after-load ,feature
        '(progn ,@body))))
 
-(require 'highlight)
-(require 'evil-search-highlight-persist)
-(global-evil-search-highlight-persist t)
- (define-key evil-normal-state-map (kbd "<escape>") 'evil-search-highlight-persist-remove-all)
+;;(require 'highlight)
+;; (require 'evil-search-highlight-persist)
+;; (global-evil-search-highlight-persist t)
+;;  (define-key evil-normal-state-map (kbd "<escape>") 'evil-search-highlight-persist-remove-all)
 
 ;; (require 'evil-escape)
 (setq-default evil-escape-key-sequence "jk")

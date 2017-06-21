@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
+ load-theme
  disable-theme
  mu4e
- multi-term
+ magit-push
  magit-status
- package-autoremove
- package-list-packages
+ multi-term
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 5)
  (replace-string . 94)
- (load-theme . 235)
+ (load-theme . 236)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 74)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1373)
+ (eval-buffer . 1392)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 158)
+ (disable-theme . 159)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 88)
+ (mu4e . 90)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 81)
- (magit-push . 76)
+ (magit-status . 82)
+ (magit-push . 78)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)

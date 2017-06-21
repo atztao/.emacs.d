@@ -197,7 +197,7 @@ names to which it refers are bound."
      (gui-element ((,class (:background ,current-line :foreground ,foreground))))
      (mode-line ((,class (:background ,selection :foreground ,foreground))))
      (mode-line-inactive ((,class (:background ,current-line :foreground ,foreground))))
-     (mode-line-buffer-id ((,class (:foreground ,purple :background nil))))
+;;     (mode-line-buffer-id ((,class (:foreground ,purple :background nil))))
      (mode-line-emphasis ((,class (:foreground ,foreground :slant italic))))
      (mode-line-highlight ((,class (:foreground ,purple :box nil :weight bold))))
      (minibuffer-prompt ((,class (:foreground ,blue))))

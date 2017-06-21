@@ -14,8 +14,8 @@
 
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
-;;(load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+(load "~/.emacs.d/themes/color-theme-tomorrow.el")
+(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;;(load-theme 'dracula t)
 ;;(load-theme 'blackboard t)
 
@@ -23,7 +23,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;;(load-theme 'zenburn t)
+;; (load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -82,11 +82,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray27")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray27")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
