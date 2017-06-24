@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ org-mode
  eval-buffer
+ writeroom-mode
  mu4e
- customize-themes
- multi-term
- package-list-packages
- load-theme
- disable-theme
+ ag
+ notmuch
+ magit-push
 )
 
 ;; ----- smex-data -----
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 115)
+ (org-mode . 116)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -112,10 +112,10 @@
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 77)
+ (writeroom-mode . 78)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1449)
+ (eval-buffer . 1461)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -189,7 +189,7 @@
  (helm-ag-help . 2)
  (helm-grep-run-save-buffer . 1)
  (goto-last-change . 1)
- (ag . 28)
+ (ag . 29)
  (eval-region . 2)
  (ag-files . 2)
  (helm-multi-swoop-all . 1)
@@ -238,12 +238,12 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 102)
+ (mu4e . 104)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
  (rmail . 1)
- (notmuch . 19)
+ (notmuch . 21)
  (notmuch-tree . 1)
  (nnmail-split-history . 1)
  (gnus-agentize . 2)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 84)
- (magit-push . 78)
+ (magit-status . 85)
+ (magit-push . 79)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 57)
+ (multi-term . 56)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -358,5 +358,4 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
- (customize-themes . 1)
 )

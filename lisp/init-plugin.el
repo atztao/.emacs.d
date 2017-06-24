@@ -189,7 +189,7 @@
 (setq ag-highlight-search t)
 (setq ag-reuse-window 't)
 (setq ag-reuse-buffers 't)
-;;(global-set-key (kbd "M-s a")   #'ag) ;;apt-get install silversearcher-ag
+(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
 ;;-----------------------
 ;;helm-mode Helm 作为前端使用 helm-swoop+helm-ag

@@ -27,7 +27,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;;(load-theme 'zenburn t)
+;; (load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -72,7 +72,7 @@
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-;;(setq-default mode-line-format nil)
+;; (setq-default mode-line-format nil)
 
 ;;(require 'diminish)
 (column-number-mode 1)
@@ -131,8 +131,8 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-;; (set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey85" :foreground "black")
+(set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey95" :foreground "black")
 ;; (set-face-attribute 'mode-line-buffer-id nil :background "grey75" :foreground "black")
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")

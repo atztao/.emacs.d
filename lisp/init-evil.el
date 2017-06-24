@@ -1,6 +1,15 @@
 (setq evil-toggle-key "")   ; remove default evil-toggle-key C-z, manually setup later
 (setq evil-want-C-i-jump nil)   ; don't bind [tab] to evil-jump-forward
 
+(require 'evil-leader)
+(global-evil-leader-mode)
+(setq evil-leader/in-all-states 1)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(setq evil-leader/in-all-states 1)
+
+
+
 (require 'evil) 
 (evil-mode 1) 
 
@@ -35,30 +44,13 @@
 (define-key evil-motion-state-map ":" 'evil-ex)
 (define-key evil-ex-map "e" 'ido-find-file)
 ;;(define-key evil-ex-map "q" 'ido-kill-buffer)
-(global-set-key (kbd "C-s") 'evil-write)
+;;(global-set-key (kbd "C-s") 'evil-write)
 
-(evil-add-hjkl-bindings occur-mode-map 'emacs
-  (kbd "/")       'evil-search-forward
-  (kbd "n")       'evil-search-next
-  (kbd "N")       'evil-search-previous
-  (kbd "C-d")     'evil-scroll-down
-  (kbd "C-u")     'evil-scroll-up
-  (kbd "C-w C-w") 'other-window)
-(add-hook 'occur-mode-hook
-          (lambda ()
-            (evil-add-hjkl-bindings occur-mode-map 'emacs
-              (kbd "/")       'evil-search-forward
-              (kbd "n")       'evil-search-next
-              (kbd "N")       'evil-search-previous
-              (kbd "C-d")     'evil-scroll-down
-              (kbd "C-u")     'evil-scroll-up
-              (kbd "C-w C-w") 'other-window)))
-
-(evil-add-hjkl-bindings occur-mode 'emacs)
-(evil-add-hjkl-bindings ibuffer-mode 'emacs)
-(evil-set-initial-state 'magit-mode 'emacs)
-(evil-set-initial-state 'magit-popup-mode 'emacs)
-(evil-set-initial-state 'magit-popup-mode 'emacs)
+;; (evil-add-hjkl-bindings occur-mode 'emacs)
+;; (evil-add-hjkl-bindings ibuffer-mode 'emacs)
+;; (evil-set-initial-state 'magit-mode 'emacs)
+;; (evil-set-initial-state 'magit-popup-mode 'emacs)
+;; (evil-set-initial-state 'magit-popup-mode 'emacs)
 ;;magit
 (require 'evil-magit)
 ;; (define-key magit-mode-map (kbd "k") #'previous-line)
@@ -169,10 +161,6 @@
 ;;(evilnc-default-hotkeys)
 
 ;; ;;evil-leader
-(require 'evil-leader)
-(global-evil-leader-mode)
-(setq evil-leader/in-all-states 1)
-
 
 ;;(evil-leader/set-leader ", ,")
 (evil-leader/set-leader ",")
@@ -275,8 +263,11 @@
 (define-and-bind-text-object "r" "\{\{" "\}\}")
 ;; }}
 
-
-(define-key helm-map (kbd "C-j") 'helm-next-line)
-(define-key helm-map (kbd "C-k") 'helm-previous-line)
-
+(require 'evil-mu4e)
+;; (define-key helm-map (kbd "C-j") 'helm-next-line)
+;; (define-key helm-map (kbd "C-k") 'helm-previous-line)
+(loop for (mode . state) in '((el-get-package-menu-mode . emacs)
+                              (dired-mode . emacs)
+                              (wdired-mode . normal))
+      do (evil-set-initial-state mode state))
 (provide 'init-evil)
