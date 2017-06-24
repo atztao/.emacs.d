@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- org-mode
  eval-buffer
+ magit-push
+ magit-status
+ org-mode
  writeroom-mode
  mu4e
  ag
- notmuch
- magit-push
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 78)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1461)
+ (eval-buffer . 1465)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 85)
- (magit-push . 79)
+ (magit-status . 86)
+ (magit-push . 80)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)

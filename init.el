@@ -280,7 +280,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-;;(require 'init-evil)
+(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)
@@ -380,7 +380,7 @@ directory to make multiple eshell windows easier."
  ;; If there is more than one, they won't work right.
  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "#999" :strike-through t)))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))
 
 
 

@@ -18,8 +18,8 @@
 ;; (load-theme 'sanityinc-tomorrow-bright t)
 
 
-;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
-;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+ (load "~/.emacs.d/themes/color-theme-tomorrow.el")
+ (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;;(load-theme 'dracula t)
 ;;(load-theme 'blackboard t)
 
@@ -86,11 +86,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray27")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray27")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table

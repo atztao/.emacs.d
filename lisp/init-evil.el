@@ -211,9 +211,9 @@
 (setq-default evil-search-module 'evil-search)
 
 ;;expand-region
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-;;(global-set-key (kbd "C-c =") 'er/expand-region)
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
+;; ;;(global-set-key (kbd "C-c =") 'er/expand-region)
 
 ;; "after" macro definition
 (if (fboundp 'with-eval-after-load)
