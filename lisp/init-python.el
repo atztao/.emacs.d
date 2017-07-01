@@ -49,20 +49,30 @@
 ;python+c languge
 ;----------------
 
+(elpy-enable)
+(elpy-use-ipython)
+
 ;;(setq py-python-command "/usr/bin/python2")
 (setq py-python-command "/usr/bin/python3")
 ;;we should install ipython
-;; (add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
-;; (require 'python-mode)
+(add-to-list 'load-path "~/.emacs.d/elpa/python-mode")
+(require 'python-mode)
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:setup-keys t)                      ; optional
 ;; (setq jedi:complete-on-dot t)                 ; optional
 
 
-(elpy-enable)
-(elpy-use-ipython)
-(setq elpy-rpc-backend "jedi")
+(require 'ein)
+(require 'ein-loaddefs)
+(require 'ein-notebook)
+(require 'ein-subpackages)
+;; (setq ein:jupyter-default-server-command "/usr/bin/jupyter-notebook")
+(setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
+(setq ein:jupyter-server-args (list "--no-browser"))
+
+		  
+;; (setq elpy-rpc-backend "jedi")
 
 (setq python-shell-completion-native-enable nil)
 
@@ -93,8 +103,6 @@
 ;; (setq python-shell-interpreter "python2")
 ;;(elpy-use-ipython "ipython3")
 
-;; (setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
-;; (setq ein:jupyter-server-args (list "--no-browser"))
 
 
 

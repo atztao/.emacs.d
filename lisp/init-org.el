@@ -216,4 +216,17 @@
 ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 ;; (setq org-bullets-bullet-list '("•"))
 
+
+(setq org-publish-project-alist
+  '(("html"
+     ;; :base-directory "~/org/"
+     ;; :base-extension "org"
+     :publishing-directory "~/Dropbox/export"
+     :publishing-function org-publish-org-to-html)
+    ("pdf"
+     ;; :base-directory "~/org/"
+     ;; :base-extension "org"
+     :publishing-directory "~/Dropbox/export"
+     :publishing-function org-publish-org-to-pdf)))
+
 (provide 'init-org)

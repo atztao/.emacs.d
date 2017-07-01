@@ -58,29 +58,29 @@
   (mapc 'kill-buffer (buffer-list)))
 
 ;; ;;ido-mode--------------------------------
-;; (require 'ido)
-;; (ido-mode t)
-;; (ido-everywhere t)
-;; (setq ido-file-extensions-order '(".org" ".txt" ))
-;; (setq ido-use-filename-at-point 'guess)
-;; (setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
-;; (setq org-completion-use-ido t)
+(require 'ido)
+(ido-mode t)
+(ido-everywhere t)
+(setq ido-file-extensions-order '(".org" ".txt" ))
+(setq ido-use-filename-at-point 'guess)
+(setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
+(setq org-completion-use-ido t)
 
-;; (defun ido-bookmark-jump (bname)
-;;   "*Switch to bookmark interactively using `ido'."
-;;   (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
-;;   (bookmark-jump bname))
-;; (global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
-;; ;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+(defun ido-bookmark-jump (bname)
+  "*Switch to bookmark interactively using `ido'."
+  (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
+  (bookmark-jump bname))
+(global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
+;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
-;; (setq ido-separator "\n")
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-everywhere t)
-;; ;;(setq max-mini-window-height 0.5)
+;;(setq ido-separator "\n")
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+;;(setq max-mini-window-height 0.5)
 
-;; ;;(setq ido-use-virtual-buffers t)
+;;(setq ido-use-virtual-buffers t)
 
-;; (savehist-mode 1)
+(savehist-mode 1)
 
 
 ;; ;;keep a list of recently opened files                                              
@@ -90,15 +90,15 @@
 (recentf-mode 1)
 (setq-default recent-save-file "~/.emacs.d/recentf")
 
-;; (defun ido-recentf-open ()
-;;   "Use `ido-completing-read' to find a recent file."
-;;   (interactive)
-;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-;;       (message "Opening file...")
-;;     (message "Aborting")))
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to find a recent file."
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
 
-;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-;; (setq recentf-max-saved-items 150)
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(setq recentf-max-saved-items 150)
 
 
 ;; ;; (require 'flx-ido)
@@ -115,25 +115,25 @@
 (require 'ido-yes-or-no)
 (ido-yes-or-no-mode 1)
 
-;;ivy-mode
-;;Ivy is split into three packages: ivy, swiper and counsel
-(require 'ivy)
-(ivy-mode 1)
-(setq ivy-virtual-abbreviate 'full)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-initial-inputs-alist nil)
-(setq ivy-height 10)
-(setq ivy-count-format "")
-(setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
-(setq counsel-ag-base-command "ag -U --nocolor --nogroup %s -- .")
+;; ;;ivy-mode
+;; ;;Ivy is split into three packages: ivy, swiper and counsel
+;; (require 'ivy)
+;; (ivy-mode 1)
+;; (setq ivy-virtual-abbreviate 'full)
+;; (setq ivy-use-virtual-buffers t)
+;; (setq ivy-initial-inputs-alist nil)
+;; (setq ivy-height 10)
+;; (setq ivy-count-format "")
+;; (setq ivy-re-builders-alist
+;;       '((t . ivy--regex-fuzzy)))
+;; (setq counsel-ag-base-command "ag -U --nocolor --nogroup %s -- .")
 
 
-(global-set-key (kbd "C-s") 'swiper)
-(setq projectile-completion-system 'ivy)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-c k") 'counsel-ag)
+;; (global-set-key (kbd "C-s") 'swiper)
+;; (setq projectile-completion-system 'ivy)
+;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+;; ;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;; (global-set-key (kbd "C-c k") 'counsel-ag)
 
 ;;---------------
 ;;smex
@@ -174,13 +174,13 @@
 ;;   '(fringe (( (:background "black")))))
 
 ;;smooth-scroll---------------------------------
-;; (require 'smooth-scrolling)
-;; (smooth-scrolling-mode 1)
-;; (setq scroll-margin 1
-;;       scroll-conservatively 10000
-;;       scroll-step 1
-;;       scroll-up-aggressively 0.01
-;;       scroll-down-aggressively 0.01)
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+(setq scroll-margin 1
+      scroll-conservatively 10000
+      scroll-step 1
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
 
 ;;-----------------------
 ;;Ag apt-get install silversearcher-ag
@@ -295,5 +295,9 @@
 
 ;;(add-to-list 'ac-modes 'org-mode)
 (ac-set-trigger-key "TAB")
+
+;;smartparens
+(require 'smartparens-config)
+(add-hook 'js-mode-hook #'smartparens-mode)
 
 (provide 'init-plugin)

@@ -2,7 +2,7 @@
 
 (setq default-font-size-pt 10)
 
-(set-frame-font "Menlo-8")
+(set-frame-font "DejaVu Sans Mono-8")
 ;;(set-frame-font "Monaco-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -18,8 +18,8 @@
 ;; (load-theme 'sanityinc-tomorrow-bright t)
 
 
- (load "~/.emacs.d/themes/color-theme-tomorrow.el")
- (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+ ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
+ ;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;;(load-theme 'dracula t)
 ;;(load-theme 'blackboard t)
 
@@ -27,7 +27,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;; (load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -61,18 +61,18 @@
 (set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
 
-;; (set-cursor-color "green")
-(set-cursor-color "red")
+ (set-cursor-color "green")
+;;(set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
-;; (set-background-color "#ffffff")
-;; ;; (set-background-color "ivory")
-;; (set-foreground-color "#000000")
+;; (set-background-color "#000000")
+;;(set-background-color "ivory")
+;; (set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-;; (setq-default mode-line-format nil)
+;;(setq-default mode-line-format nil)
 
 ;;(require 'diminish)
 (column-number-mode 1)
@@ -86,11 +86,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "gray27")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "gray27")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
@@ -131,9 +131,9 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "grey75" :foreground "black") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey95" :foreground "black")
-;; (set-face-attribute 'mode-line-buffer-id nil :background "grey75" :foreground "black")
+(set-face-attribute 'mode-line           nil :box nil :background "grey80" :foreground "black") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey90" :foreground "black")
+;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
@@ -149,9 +149,9 @@
 
 ;; ;;(setq sml/theme 'dark)
 ;; ;;(setq sml/theme 'light)
-;; (setq sml/theme 'respectful)
+;; ;;(setq sml/theme 'respectful)
 
-;; ;;(setq sml/theme 'powerline)
+;; (setq sml/theme 'powerline)
 ;; ;; (setq sml/theme 'light-powerline)
 ;; (setq powerline-arrow-shape 'curves)
 ;; (setq powerline-default-separator-dir '(right . left))
