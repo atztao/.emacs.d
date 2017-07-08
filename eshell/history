@@ -1,6 +1,3 @@
-./hellow 
-g++ Hellow.cpp -o Hellow
-./Hellow 
 ./Hellow 
 g++ while.cpp -o while
 ./while 
@@ -126,3 +123,6 @@ ll
 python3
 Traceback (most recent call last):
 python2
+ll
+date
+ls

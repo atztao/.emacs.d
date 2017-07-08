@@ -14,8 +14,10 @@
 
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
-;; (require 'color-theme-sanityinc-tomorrow)
-;; (load-theme 'sanityinc-tomorrow-bright t)
+(require 'color-theme-sanityinc-tomorrow)
+;;(load-theme 'sanityinc-tomorrow-eighties t)
+
+(load-theme 'sanityinc-tomorrow-bright t)
 
 
  ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
@@ -86,11 +88,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray27")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray27")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
@@ -131,8 +133,8 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "grey80" :foreground "black") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey90" :foreground "black")
+;; (set-face-attribute 'mode-line           nil :box nil :background "#32cd32" :foreground "black") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey80" :foreground "black")
 ;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
