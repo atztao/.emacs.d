@@ -79,8 +79,8 @@
 ;;(require 'diminish)
 (column-number-mode 1)
 
-(set-face-attribute 'mode-line nil  :height 80)
-(set-face-attribute 'mode-line-inactive nil  :height 80)
+;; (set-face-attribute 'mode-line nil  :height 80)
+;; (set-face-attribute 'mode-line-inactive nil  :height 80)
 
 
 ;;---------------------------Vertical-border
@@ -145,46 +145,22 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-;; (require 'smart-mode-line)
-;; ;; (require 'powerline)
-;; (setq sml/no-confirm-load-theme t)
+(require 'smart-mode-line)
+;; (require 'powerline)
+(setq sml/no-confirm-load-theme t)
 
-;; ;;(setq sml/theme 'dark)
-;; ;;(setq sml/theme 'light)
-;; ;;(setq sml/theme 'respectful)
+;;(setq sml/theme 'dark)
+;;(setq sml/theme 'light)
+;;(setq sml/theme 'respectful)
 
-;; (setq sml/theme 'powerline)
-;; ;; (setq sml/theme 'light-powerline)
-;; (setq powerline-arrow-shape 'curves)
-;; (setq powerline-default-separator-dir '(right . left))
-;; (setq sml/mode-width 0)
-;; (setq sml/name-width 20)
-;; ;;(rich-minority-mode 1)
-;; (setf rm-blacklist "super-save")
-;; ;;(setq sml/theme 'powerline)
-;; (setq rm-excluded-modes
-;;       '(" Guide"			;; guide-key mode
-;;         " hc"				;; hardcore mode
-;;         " AC"				;; auto-complete
-;;         " vl"				;; global visual line mode enabled
-;;         " Wrap"				;; shows up if visual-line-mode is enabled for that buffer
-;;         " Omit"				;; omit mode in dired
-;;         " yas"				;; yasnippet
-;;         " drag"				;; drag-stuff-mode
-;;         " VHl"				;; volatile highlights
-;;         " ctagsU"			;; ctags update
-;;         " Undo-Tree"			;; undo tree
-;;         " wr"				;; Wrap Region
-;;         " SliNav"			;; elisp-slime-nav
-;;         " Fly"				;; Flycheck
-;;         " PgLn"				;; page-line-break
-;;         " GG"				;; ggtags
-;;         " ElDoc"			;; eldoc
-;;         " hl-highlight"			;; hl-anything
-;;         "AcePY"
-;;         "Helm"
-;;         ))
+(setq sml/theme 'powerline)
+;; (setq sml/theme 'light-powerline)
+(setq powerline-arrow-shape 'curves)
+(setq powerline-default-separator-dir '(right . left))
+(setq sml/mode-width 0)
+(setq sml/name-width 20)
+;;(rich-minority-mode 1)
 
-;; (sml/setup)
+(sml/setup)
 
 (provide 'init-themes)
