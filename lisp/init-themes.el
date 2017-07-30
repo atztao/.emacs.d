@@ -2,8 +2,8 @@
 
 (setq default-font-size-pt 10)
 
-(set-frame-font "DejaVu Sans Mono-8")
-;;(set-frame-font "Monaco-8")
+;;(set-frame-font "DejaVu Sans Mono-8")
+(set-frame-font "Monaco-8")
 ;;(set-frame-font "Source Code Pro-8")
 
 ;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
@@ -14,10 +14,10 @@
 
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
-(require 'color-theme-sanityinc-tomorrow)
+;;(require 'color-theme-sanityinc-tomorrow)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-(load-theme 'sanityinc-tomorrow-bright t)
+;;(load-theme 'sanityinc-tomorrow-bright t)
 
 
  ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
@@ -63,18 +63,18 @@
 (set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
 
- (set-cursor-color "green")
+(set-cursor-color "green")
 ;;(set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
-;; (set-background-color "#000000")
+(set-background-color "#000000")
 ;;(set-background-color "ivory")
-;; (set-foreground-color "#32cd32")
+(set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-;;(setq-default mode-line-format nil)
+(setq-default mode-line-format nil)
 
 ;;(require 'diminish)
 (column-number-mode 1)
@@ -145,22 +145,22 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-(require 'smart-mode-line)
-;; (require 'powerline)
-(setq sml/no-confirm-load-theme t)
+;; (require 'smart-mode-line)
+;; ;; (require 'powerline)
+;; (setq sml/no-confirm-load-theme t)
 
-;;(setq sml/theme 'dark)
-;;(setq sml/theme 'light)
-;;(setq sml/theme 'respectful)
+;; ;;(setq sml/theme 'dark)
+;; ;;(setq sml/theme 'light)
+;; ;;(setq sml/theme 'respectful)
 
-(setq sml/theme 'powerline)
-;; (setq sml/theme 'light-powerline)
-(setq powerline-arrow-shape 'curves)
-(setq powerline-default-separator-dir '(right . left))
-(setq sml/mode-width 0)
-(setq sml/name-width 20)
-;;(rich-minority-mode 1)
+;; (setq sml/theme 'powerline)
+;; ;; (setq sml/theme 'light-powerline)
+;; (setq powerline-arrow-shape 'curves)
+;; (setq powerline-default-separator-dir '(right . left))
+;; (setq sml/mode-width 0)
+;; (setq sml/name-width 20)
+;; ;;(rich-minority-mode 1)
 
-(sml/setup)
+;; (sml/setup)
 
 (provide 'init-themes)

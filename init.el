@@ -59,7 +59,6 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 
 ;; turn on highlighting current line
 ;; (global-hl-line-mode 1)
-;; (set-face-background hl-line-face "gray")
 
 (require 'tramp)
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
@@ -284,7 +283,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-;;(require 'init-evil)
+(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)

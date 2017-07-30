@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** [2017-07-04 二")
- (rear-context-string . "      spmcs4321\n")
- (position . 6162))
+ (front-context-string . "** [2017-07-26 三")
+ (rear-context-string . "i?bug=860543#22\n")
+ (position . 8173))
 )
