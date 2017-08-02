@@ -2,6 +2,8 @@
 
 (setq default-font-size-pt 10)
 
+(set-frame-parameter nil 'alpha '(90 . 100))
+
 ;;(set-frame-font "DejaVu Sans Mono-8")
 (set-frame-font "Monaco-8")
 ;;(set-frame-font "Source Code Pro-8")
@@ -67,6 +69,8 @@
 ;;(set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
+(setq frame-background-mode 'dark)
+
 (set-background-color "#000000")
 ;;(set-background-color "ivory")
 (set-foreground-color "#32cd32")
@@ -74,7 +78,7 @@
 ;;--------------------------
 ;;mode-line
 ;;--------------------------
-(setq-default mode-line-format nil)
+;;(setq-default mode-line-format nil)
 
 ;;(require 'diminish)
 (column-number-mode 1)
@@ -133,8 +137,8 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-;; (set-face-attribute 'mode-line           nil :box nil :background "#32cd32" :foreground "black") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive  nil :box nil :background "grey80" :foreground "black")
+(set-face-attribute 'mode-line           nil :box nil :background "black" :foreground "#32cd32") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "black" :foreground "#32cd32")
 ;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
@@ -145,22 +149,22 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-;; (require 'smart-mode-line)
-;; ;; (require 'powerline)
-;; (setq sml/no-confirm-load-theme t)
+(require 'smart-mode-line)
+;; (require 'powerline)
+(setq sml/no-confirm-load-theme t)
 
-;; ;;(setq sml/theme 'dark)
-;; ;;(setq sml/theme 'light)
-;; ;;(setq sml/theme 'respectful)
+;;(setq sml/theme 'dark)
+;;(setq sml/theme 'light)
+(setq sml/theme 'respectful)
 
-;; (setq sml/theme 'powerline)
-;; ;; (setq sml/theme 'light-powerline)
-;; (setq powerline-arrow-shape 'curves)
-;; (setq powerline-default-separator-dir '(right . left))
-;; (setq sml/mode-width 0)
-;; (setq sml/name-width 20)
-;; ;;(rich-minority-mode 1)
+;;(setq sml/theme 'powerline)
+;; (setq sml/theme 'light-powerline)
+(setq powerline-arrow-shape 'curves)
+(setq powerline-default-separator-dir '(right . left))
+(setq sml/mode-width 0)
+(setq sml/name-width 20)
+;;(rich-minority-mode 1)
 
-;; (sml/setup)
+(sml/setup)
 
 (provide 'init-themes)

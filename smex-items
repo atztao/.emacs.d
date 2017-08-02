@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ multi-term
  eval-buffer
  ein:jupyter-server-start
+ magit-push
+ magit-status
  load-theme
  disable-theme
- mu4e
- multi-term
- eshell
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 80)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1604)
+ (eval-buffer . 1617)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 88)
- (magit-push . 85)
+ (magit-status . 89)
+ (magit-push . 86)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 64)
+ (multi-term . 65)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -358,7 +358,7 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
- (ein:jupyter-server-start . 22)
+ (ein:jupyter-server-start . 27)
  (ein:jupyter-server-login-and-open . 8)
  (ein:console-open . 2)
  (eva . 1)

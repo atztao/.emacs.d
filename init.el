@@ -1,4 +1,4 @@
-;; /*-----------------------------------------
+; /*-----------------------------------------
 ;; Athor:Zhang Tao
 ;; Email:ztao1991@gmail.com
 ;; Gtihub:github.com/ztao1991
@@ -26,6 +26,7 @@
   (message ""))
 
 (setq x-select-enable-clipboard t)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 (tool-bar-mode 0)  
 (menu-bar-mode 0)  
@@ -58,7 +59,8 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 (setq shell-file-name "/bin/zsh")
 
 ;; turn on highlighting current line
-;; (global-hl-line-mode 1)
+(global-hl-line-mode 1)
+(set-face-background hl-line-face "gray20")
 
 (require 'tramp)
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
@@ -283,7 +285,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-(require 'init-evil)
+;; (require 'init-evil)
 
 ;--------------------email
 (require 'init-email)
