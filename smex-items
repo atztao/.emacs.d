@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- multi-term
- eval-buffer
- ein:jupyter-server-start
  magit-push
  magit-status
- load-theme
- disable-theme
+ package-autoremove
+ package-list-packages
+ mu4e
+ multi-term
+ eval-buffer
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 172)
+ (package-list-packages . 173)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 115)
+ (mu4e . 116)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 89)
- (magit-push . 86)
+ (magit-status . 91)
+ (magit-push . 93)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 29)
+ (package-autoremove . 30)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
