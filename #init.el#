@@ -1,4 +1,4 @@
-;; /*-----------------------------------------
+; /*-----------------------------------------
 ;; Athor:Zhang Tao
 ;; Email:ztao1991@gmail.com
 ;; Gtihub:github.com/ztao1991
@@ -26,6 +26,7 @@
   (message ""))
 
 (setq x-select-enable-clipboard t)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 (tool-bar-mode 0)  
 (menu-bar-mode 0)  
@@ -56,6 +57,50 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 ;;(setq shell-file-name "cmdproxy")
 
 (setq shell-file-name "/bin/zsh")
+
+;; turn on highlighting current line
+(global-hl-line-mode 1)
+(set-face-background hl-line-face "gray20")
+
+(require 'tramp)
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+(setq tramp-default-method "ssh")
+(setq password-cache-expiry nil)
+(setq tramp-verbose 20)
+(setq process-connection-type nil)
+(setq tramp-terminal-type "dumb")
+(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+;;(setq tramp-ssh-controlmaster-options nil)
+
+(setq tramp-ssh-controlmaster-options
+      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+(setq projectile-mode-line " Projectile")
+;;(projectile-global-mode 1)
+;;(set projectile-mode-line " Projectile")
+;;(setq projectile-mode-line nil)
+;; (add-hook 'text-mode-hook 'projectile-mode)
+;; (add-hook 'prog-mode-hook 'projectile-mode)
+
+
+(defun xah-open-in-desktop ()
+  "Show current file in desktop (OS's file manager).
+URL `http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html'
+Version 2015-11-30"
+  (interactive)
+  (cond
+   ((string-equal system-type "windows-nt")
+    (w32-shell-execute "explore" (replace-regexp-in-string "/" "\\" default-directory t t)))
+   ((string-equal system-type "darwin") (shell-command "open ."))
+   ((string-equal system-type "gnu/linux")
+    (let (
+          (process-connection-type nil)
+          (openFileProgram (if (file-exists-p "/usr/bin/gvfs-open")
+                               "/usr/bin/gvfs-open"
+                             "/usr/bin/xdg-open")))
+      (start-process "" nil openFileProgram "."))
+    ;; (shell-command "xdg-open .") ;; 2013-02-10 this sometimes froze emacs till the folder is closed. For example: with nautilus
+    )))
 
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
@@ -240,10 +285,10 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-;;(require 'init-evil)
+;; (require 'init-evil)
 
 ;--------------------email
-;;(require 'init-email)
+(require 'init-email)
 
 ;;-------------------this include programming seetings
 (require 'init-python)
@@ -255,6 +300,15 @@ directory to make multiple eshell windows easier."
 (require 'init-org)
 (require 'init-org-html)
 (require 'init-org-pdf)
+
+
+;;-------------------------some color setting
+(require 'init-color)
+
+;;-------------------------some warning fix
+
+(require 'init-fix)
+
 
 ;-------------------------------------------------------
 
@@ -288,9 +342,6 @@ directory to make multiple eshell windows easier."
 (setq-default ispell-program-name "aspell")
 (ispell-change-dictionary "american" t)  
 
-(custom-set-faces
- '(flyspell-duplicate ((((class color)) (:foreground "red" :underline t :weight bold))))
- )
 
 ;Backup-----------------------------------------
 (setq auto-save-interval 20)
@@ -335,6 +386,9 @@ directory to make multiple eshell windows easier."
 ;;   (quote
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
 
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -349,7 +403,7 @@ directory to make multiple eshell windows easier."
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode ein jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (ein smartparens evil-mu4e ido-yes-or-no notmuch counsel swiper color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)

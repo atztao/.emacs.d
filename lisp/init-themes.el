@@ -4,13 +4,10 @@
 
 (set-frame-parameter nil 'alpha '(90 . 100))
 
-;;(set-frame-font "DejaVu Sans Mono-8")
+;;(set-frame-font "Menlo-8")
 (set-frame-font "Monaco-8")
 ;;(set-frame-font "Source Code Pro-8")
 
-;;(set-fontset-font "fontset-default" 'han '("PingFang SC"))
-;;(set-fontset-font "fontset-default" 'han '("Hiragino Sans GB"))
-;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
 (set-fontset-font "fontset-default" 'han "Source Han Sans CN")
 
 
@@ -69,7 +66,7 @@
 ;;(set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
-(setq frame-background-mode 'dark)
+;;(setq frame-background-mode 'dark)
 
 (set-background-color "#000000")
 ;;(set-background-color "ivory")
@@ -137,8 +134,8 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "black" :foreground "#32cd32") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "black" :foreground "#32cd32")
+(set-face-attribute 'mode-line           nil :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive  nil :box nil :background "#000000" :foreground "#32cd32")
 ;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
@@ -159,10 +156,10 @@
 
 ;;(setq sml/theme 'powerline)
 ;; (setq sml/theme 'light-powerline)
-(setq powerline-arrow-shape 'curves)
-(setq powerline-default-separator-dir '(right . left))
-(setq sml/mode-width 0)
-(setq sml/name-width 20)
+;; (setq powerline-arrow-shape 'curves)
+;; (setq powerline-default-separator-dir '(right . left))
+;; (setq sml/mode-width 0)
+;; (setq sml/name-width 20)
 ;;(rich-minority-mode 1)
 
 (sml/setup)

@@ -19,7 +19,7 @@ Emacs.font: Monaco-10
 
 URxvt.font:xft:Monaco for Powerline:size=9:antialias=true,xft:文泉驿等宽微米黑:size=10
 Rxvt.scrollBar:False
-Rxvt.scrollBar_right:True
+Rxvt.scrollBar_right:False
 Rxvt.scrollBar_floating: False
 Rxvt.scrollstyle:plain
 

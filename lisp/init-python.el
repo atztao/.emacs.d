@@ -104,8 +104,6 @@
 ;;(elpy-use-ipython "ipython3")
 
 
-
-
 ;;apt-get install ipython then M-x edit-abbrevs
 ;;(require 'ipython)
 ;;(setq-default py-shell-name "ipython")
