@@ -3,9 +3,9 @@
 (
  eval-buffer
  list-faces-display
+ load-theme
  multi-term
  ein:jupyter-server-start
- load-theme
  python-mode
  mu4e
 )
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 6)
  (replace-string . 98)
- (load-theme . 265)
+ (load-theme . 266)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 80)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1633)
+ (eval-buffer . 1637)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 69)
+ (multi-term . 70)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -363,5 +363,5 @@
  (ein:console-open . 2)
  (eva . 1)
  (lua-mode . 2)
- (list-faces-display . 1)
+ (list-faces-display . 3)
 )

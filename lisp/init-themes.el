@@ -66,7 +66,7 @@
 ;;(set-cursor-color "red")
 ;; (set-mouse-color "goldenrod")
 
-;;(setq frame-background-mode 'dark)
+(setq frame-background-mode 'dark)
 
 (set-background-color "#000000")
 ;;(set-background-color "ivory")
