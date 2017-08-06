@@ -112,8 +112,8 @@
 
 ;;(require 'ido-describe-fns)
 
-(require 'ido-yes-or-no)
-(ido-yes-or-no-mode 1)
+;;(require 'ido-yes-or-no)
+;;(ido-yes-or-no-mode 1)
 
 ;; ;;ivy-mode
 ;; ;;Ivy is split into three packages: ivy, swiper and counsel

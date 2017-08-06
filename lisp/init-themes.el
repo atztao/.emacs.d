@@ -20,7 +20,7 @@
 
 
  ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
- ;; (load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
+;;(load "~/.emacs.d/themes/tomorrow-night-bright-theme.el")
 ;;(load-theme 'dracula t)
 ;;(load-theme 'blackboard t)
 

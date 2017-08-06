@@ -10,9 +10,10 @@
  '(font-lock-keyword-face ((t (:foreground "#ff54ff" :weight extra-bold ))))
  '(font-lock-comment-face ((t (:foreground "#969896" :weight normal ))))
  '(font-lock-doc-face ((t (:foreground "#af5f00" :weight normal ))))
-'(font-lock-variable-name-face ((t (:foreground "#af5f00" :weight normal ))))
+ '(font-lock-string-face ((t (:foreground "#af5f00" :weight normal ))))
+ '(font-lock-variable-name-face ((t (:foreground "#af5f00" :weight normal ))))
 
- '(minibuffer-prompt ((t (:foreground "#F0DFAF" :weight extra-bold))))
+ '(minibuffer-prompt ((t (:foreground "Magenta" :weight extra-bold))))
 
  '(term ((t (:foreground "#32cd32")))))
 

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
- list-faces-display
- load-theme
- multi-term
  ein:jupyter-server-start
- python-mode
- mu4e
+ eval-buffer
+ multi-term
+ disable-theme
+ load-theme
+ magit-push
+ magit-status
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 6)
  (replace-string . 98)
- (load-theme . 266)
+ (load-theme . 270)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 80)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1637)
+ (eval-buffer . 1640)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 177)
+ (disable-theme . 180)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 91)
- (magit-push . 93)
+ (magit-status . 92)
+ (magit-push . 94)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 70)
+ (multi-term . 75)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -358,10 +358,10 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
- (ein:jupyter-server-start . 31)
+ (ein:jupyter-server-start . 34)
  (ein:jupyter-server-login-and-open . 8)
  (ein:console-open . 2)
  (eva . 1)
  (lua-mode . 2)
- (list-faces-display . 3)
+ (list-faces-display . 2)
 )
