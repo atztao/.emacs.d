@@ -285,7 +285,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-;; (require 'init-evil)
+(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)
@@ -397,7 +397,7 @@ directory to make multiple eshell windows easier."
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
+    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
  '(org-agenda-files
    (quote
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
@@ -409,13 +409,3 @@ directory to make multiple eshell windows easier."
  '(truncate-partial-width-windows nil)
  '(user-full-name "Tao Zhang")
  '(user-mail-address "ztao1991@gmail.com"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t))))
- '(org-todo ((t (:foreground "Red" :weight extra-bold :strike-through nil))))
- '(term ((t (:foreground "#32cd32")))))

@@ -285,7 +285,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-;; (require 'init-evil)
+;;(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)
@@ -303,7 +303,7 @@ directory to make multiple eshell windows easier."
 
 
 ;;-------------------------some color setting
-(require 'init-color)
+;;(require 'init-color)
 
 ;;-------------------------some warning fix
 
@@ -397,15 +397,31 @@ directory to make multiple eshell windows easier."
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
+    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
  '(org-agenda-files
    (quote
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (ein smartparens evil-mu4e ido-yes-or-no notmuch counsel swiper color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
+    (lua-mode ein smartparens evil-mu4e ido-yes-or-no notmuch counsel swiper color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme evil-nerd-commenter evil-escape evil evil-easymotion evil-leader evil-magit evil-matchit evil-surround expand-region ujelly-theme helm-swoop undo-tree rainbow-delimiters use-package ox-reveal multiple-cursors esup window-number ace-jump-mode jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag ace-window ace-pinyin ace-isearch)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
  '(user-full-name "Tao Zhang")
  '(user-mail-address "ztao1991@gmail.com"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:foreground "#969896" :weight normal))))
+ '(font-lock-doc-face ((t (:foreground "#af5f00" :weight normal))))
+ '(font-lock-keyword-face ((t (:foreground "#ff54ff" :weight extra-bold))))
+ '(font-lock-string-face ((t (:foreground "#af5f00" :weight normal))))
+ '(font-lock-variable-name-face ((t (:foreground "#af5f00" :weight normal))))
+ '(minibuffer-prompt ((t (:foreground "Magenta" :weight extra-bold))))
+ '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t))))
+ '(org-todo ((t (:foreground "Red" :weight extra-bold :strike-through nil))))
+ '(term ((t (:foreground "#32cd32")))))

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- ein:jupyter-server-start
  eval-buffer
- multi-term
- disable-theme
+ mu4e
  load-theme
- magit-push
- magit-status
+ describe-personal-keybindings
+ elpy-mode
+ python-mode
+ ein:jupyter-server-start
 )
 
 ;; ----- smex-data -----
@@ -84,7 +84,7 @@
  (color-theme-tomorrow-night-bright . 1)
  (mode-line-widen . 7)
  (markdown-preview . 9)
- (list-colors-display . 7)
+ (list-colors-display . 8)
  (evil-mode . 11)
  (buffer-menu . 1)
  (org-agenda . 6)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 3)
  (ido-select-text . 6)
- (replace-string . 98)
- (load-theme . 270)
+ (replace-string . 100)
+ (load-theme . 273)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -112,10 +112,10 @@
  (yas/new-snippet . 6)
  (yas-reload-all . 1)
  (customize-group . 2)
- (writeroom-mode . 80)
+ (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1640)
+ (eval-buffer . 1695)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 180)
+ (disable-theme . 181)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 117)
+ (mu4e . 118)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -258,8 +258,8 @@
  (calc-edit . 1)
  (calc-db . 1)
  (calc-keypad . 1)
- (c++-mode . 2)
- (python-mode . 30)
+ (c++-mode . 3)
+ (python-mode . 36)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 92)
- (magit-push . 94)
+ (magit-status . 93)
+ (magit-push . 95)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 75)
+ (multi-term . 79)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -349,7 +349,7 @@
  (magit-pull . 1)
  (diff-mode . 2)
  (ediff-buffers . 1)
- (elpy-mode . 1)
+ (elpy-mode . 3)
  (rainbow-delimiters-mode . 1)
  (kill-all-abbrevs . 1)
  (server-force-delete . 1)
@@ -358,10 +358,11 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
- (ein:jupyter-server-start . 34)
+ (ein:jupyter-server-start . 45)
  (ein:jupyter-server-login-and-open . 8)
  (ein:console-open . 2)
  (eva . 1)
  (lua-mode . 2)
- (list-faces-display . 2)
+ (list-faces-display . 3)
+ (describe-personal-keybindings . 1)
 )

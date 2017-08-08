@@ -68,23 +68,26 @@
 (require 'ein-notebook)
 (require 'ein-subpackages)
 
-(setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
+;;(setq ein:jupyter-default-server-command "/usr/local/bin/jupyter")
+(setq ein:jupyter-default-server-command "~/anaconda3/bin/jupyter")
 (setq ein:jupyter-server-args (list "--no-browser"))
 
 		  
-(add-hook 'python-mode-hook 'elpy-mode)
-(with-eval-after-load 'elpy
-  (remove-hook 'elpy-modules 'elpy-module-flymake)
-  (add-hook 'elpy-mode-hook 'elpy-rpc-python-command "python3")
-  (add-hook 'elpy-mode-hook 'flycheck-mode)
-  (add-hook 'elpy-mode-hook 'elpy-use-ipython)
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+;; (add-hook 'python-mode-hook 'elpy-mode)
+;; (with-eval-after-load 'elpy
+;;   (remove-hook 'elpy-modules 'elpy-module-flymake)
+;;   (add-hook 'elpy-mode-hook 'elpy-rpc-python-command "python3")
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode)
+;;   (add-hook 'elpy-mode-hook 'elpy-use-ipython)
+;;   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 (setq elpy-rpc-backend "jedi")
 
 (setq python-shell-completion-native-enable nil)
 
-(elpy-use-ipython "ipython3")
+(elpy-enable)
+(elpy-use-ipython)
+
 
 (with-eval-after-load 'python
   (defun python-shell-completion-native-try ()
