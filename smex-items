@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ multi-term
  eval-buffer
- mu4e
+ package-list-packages
  load-theme
- describe-personal-keybindings
- elpy-mode
- python-mode
  ein:jupyter-server-start
+ esup
+ emacs-init-time
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 174)
+ (package-list-packages . 175)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -45,7 +45,7 @@
  (lisp-mode . 3)
  (color-theme-snow . 5)
  (color-theme-xemacs . 1)
- (flyspell-mode . 6)
+ (flyspell-mode . 8)
  (color-theme-billw . 17)
  (artist-mode . 1)
  (helm-help . 3)
@@ -82,7 +82,7 @@
  (color-theme-tomorrow . 1)
  (color-theme-tomorrow-night . 2)
  (color-theme-tomorrow-night-bright . 1)
- (mode-line-widen . 7)
+ (mode-line-widen . 9)
  (markdown-preview . 9)
  (list-colors-display . 8)
  (evil-mode . 11)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 6)
  (replace-string . 100)
- (load-theme . 273)
+ (load-theme . 278)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1695)
+ (eval-buffer . 1736)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 181)
+ (disable-theme . 183)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 118)
+ (mu4e . 120)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 79)
+ (multi-term . 85)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -344,7 +344,7 @@
  (profiler-start . 1)
  (profiler-stop . 1)
  (profiler-report . 1)
- (esup . 2)
+ (esup . 5)
  (org-reload . 2)
  (magit-pull . 1)
  (diff-mode . 2)
@@ -358,11 +358,13 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
- (ein:jupyter-server-start . 45)
+ (ein:jupyter-server-start . 47)
  (ein:jupyter-server-login-and-open . 8)
  (ein:console-open . 2)
  (eva . 1)
  (lua-mode . 2)
  (list-faces-display . 3)
- (describe-personal-keybindings . 1)
+ (describe-personal-keybindings . 2)
+ (color-theme-sanityinc-tomorrow-day . 1)
+ (emacs-init-time . 3)
 )

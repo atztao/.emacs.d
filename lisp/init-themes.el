@@ -4,8 +4,8 @@
 
 (set-frame-parameter nil 'alpha '(95 . 100))
 
-;;(set-frame-font "Menlo-8")
-(set-frame-font "Dejavu Sans Mono-8")
+(set-frame-font "Monaco-8")
+;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
 (set-fontset-font "fontset-default" 'han "Source Han Sans CN")
@@ -77,6 +77,7 @@
 ;;--------------------------
 ;;(setq-default mode-line-format nil)
 
+
 ;;(require 'diminish)
 (column-number-mode 1)
 
@@ -134,11 +135,6 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
-(set-face-attribute 'mode-line           nil :box nil :background "#BCBCBC" :foreground "#000000") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
-;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
-;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 (setq-default mode-line-buffer-identification
 	      (propertized-buffer-identification "%b"))
@@ -152,7 +148,7 @@
 
 ;; ;;(setq sml/theme 'dark)
 ;; ;;(setq sml/theme 'light)
-;; ;;(setq sml/theme 'respectful)
+;; (setq sml/theme 'respectful)
 
 ;; ;;(setq sml/theme 'powerline)
 ;; ;; (setq sml/theme 'light-powerline)
@@ -163,5 +159,13 @@
 ;; ;;(rich-minority-mode 1)
 
 ;; (sml/setup)
+
+
+(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
+;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
+;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
+;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
+;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
 (provide 'init-themes)

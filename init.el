@@ -9,8 +9,16 @@
 ;;Emacs Startup 
 ;;-----------------------------------------------
 
-;; (server-start)  
+;;(server-start)  
 ;;(desktop-save-mode) 
+
+;; Display the total loading time in the minibuffer
+
+
+;;Disable ad-handle-definition warnings
+(setq ad-redefinition-action 'accept)
+(setq gc-cons-threshold 100000000)
+
 
 (setq frame-title-format
       (list '(:eval (projectile-project-name)) 
@@ -59,21 +67,24 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 (setq shell-file-name "/bin/zsh")
 
 ;; turn on highlighting current line
-(global-hl-line-mode 1)
-(set-face-background hl-line-face "gray20")
+;;(global-hl-line-mode 1)
+;;(set-face-background hl-line-face "gray20")
+;;(set-face-background hl-line-face "black")
+;;(set-face-attribute hl-line-face  :underline t)
+;;(global-hl-line-mode 1)
 
-(require 'tramp)
-(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
-(setq tramp-default-method "ssh")
-(setq password-cache-expiry nil)
-(setq tramp-verbose 20)
-(setq process-connection-type nil)
-(setq tramp-terminal-type "dumb")
-(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
-;;(setq tramp-ssh-controlmaster-options nil)
+;; (require 'tramp)
+;; (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+;; (setq tramp-default-method "ssh")
+;; (setq password-cache-expiry nil)
+;; (setq tramp-verbose 20)
+;; (setq process-connection-type nil)
+;; (setq tramp-terminal-type "dumb")
+;; (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+;; ;;(setq tramp-ssh-controlmaster-options nil)
 
-(setq tramp-ssh-controlmaster-options
-      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+;; (setq tramp-ssh-controlmaster-options
+;;       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
 (setq projectile-mode-line " Projectile")
 ;;(projectile-global-mode 1)
@@ -285,7 +296,7 @@ directory to make multiple eshell windows easier."
 (require 'init-plugin)
 
 ;--------------------Vim Way To Move - Evil-Mode
-(require 'init-evil)
+;;(require 'init-evil)
 
 ;--------------------email
 (require 'init-email)
@@ -339,8 +350,8 @@ directory to make multiple eshell windows easier."
 
 ;;flyspell-----------------------------------
 ;;apt install aspell
-(setq-default ispell-program-name "aspell")
-(ispell-change-dictionary "american" t)  
+;; (setq-default ispell-program-name "aspell")
+;; (ispell-change-dictionary "american" t)  
 
 
 ;Backup-----------------------------------------
@@ -385,8 +396,6 @@ directory to make multiple eshell windows easier."
 ;; '(org-agenda-files
 ;;   (quote
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
-
-
 
 
 (custom-set-variables
