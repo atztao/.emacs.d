@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- multi-term
  eval-buffer
- package-list-packages
  load-theme
+ multi-term
+ python-mode
+ mu4e
+ package-list-packages
  ein:jupyter-server-start
- esup
- emacs-init-time
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 6)
  (replace-string . 100)
- (load-theme . 278)
+ (load-theme . 283)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1736)
+ (eval-buffer . 1751)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 120)
+ (mu4e . 122)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -259,7 +259,7 @@
  (calc-db . 1)
  (calc-keypad . 1)
  (c++-mode . 3)
- (python-mode . 36)
+ (python-mode . 37)
  (other-frame . 1)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 85)
+ (multi-term . 87)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)

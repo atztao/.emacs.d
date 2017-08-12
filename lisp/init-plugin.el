@@ -177,10 +177,8 @@
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 (setq scroll-margin 1
-      scroll-conservatively 10000
-      scroll-step 1
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01)
+      scroll-conservatively 10000)
+
 
 ;;-----------------------
 ;;Ag apt-get install silversearcher-ag
@@ -294,7 +292,7 @@
 (add-hook 'c-mode-hook 'my:ac-c-headers-init)
 
 ;;(add-to-list 'ac-modes 'org-mode)
-(ac-set-trigger-key "TAB")
+;;(ac-set-trigger-key "TAB")
 
 ;;smartparens
 (require 'smartparens-config)

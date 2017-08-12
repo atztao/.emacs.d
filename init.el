@@ -1,9 +1,12 @@
-; /*-----------------------------------------
+;; init.el -- ztao1991's emacs initialization file
+
+;; Copyright (c) 2010-2017 Zhang Tao
+
 ;; Athor:Zhang Tao
 ;; Email:ztao1991@gmail.com
 ;; Gtihub:github.com/ztao1991
 ;; Version:v2017.5.11
-;; ------------------------------------------*/
+
 
 ;;-----------------------------------------------
 ;;Emacs Startup 
@@ -13,7 +16,6 @@
 ;;(desktop-save-mode) 
 
 ;; Display the total loading time in the minibuffer
-
 
 ;;Disable ad-handle-definition warnings
 (setq ad-redefinition-action 'accept)
@@ -62,7 +64,7 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 ;;(setq-default fill-column 80)
 
 ;;eshell
-;;(setq shell-file-name "cmdproxy")
+;;(setq shell-file-name "cmdproxy");; Copyright (c) 2010-2017 Dennis Ogbe
 
 (setq shell-file-name "/bin/zsh")
 
@@ -165,7 +167,6 @@ directory to make multiple eshell windows easier."
 ;;(setq line-spacing '0.20)
 ;; (setq-default line-spacing 2)
 (setq-default line-spacing 0)
-
 
 ;;(setq-default major-mode 'org-mode)
 (eval-after-load "linum"
@@ -312,14 +313,11 @@ directory to make multiple eshell windows easier."
 (require 'init-org-html)
 (require 'init-org-pdf)
 
-
 ;;-------------------------some color setting
-(require 'init-color)
+;;(require 'init-color)
 
 ;;-------------------------some warning fix
-
 (require 'init-fix)
-
 
 ;-------------------------------------------------------
 

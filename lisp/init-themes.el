@@ -1,22 +1,22 @@
 ;;fonts-------------------------------------
 
-;;(setq default-font-size-pt 10)
+(setq default-font-size-pt 10)
 
-(set-frame-parameter nil 'alpha '(95 . 100))
+(set-frame-parameter nil 'alpha '(92 . 100))
 
-(set-frame-font "Monaco-8")
+(set-frame-font "Inconsolata-8")
+;;(set-frame-font "Monaco-8")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
 (set-fontset-font "fontset-default" 'han "Source Han Sans CN")
-
 
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
 ;;(require 'color-theme-sanityinc-tomorrow)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-;;(load-theme 'sanityinc-tomorrow-bright t)
+(load-theme 'sanityinc-tomorrow-bright t)
 
 
  ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
@@ -68,9 +68,9 @@
 
 ;;(setq frame-background-mode 'dark)
 
-(set-background-color "#000000")
+;;(set-background-color "#000000")
 ;; ;; ;;(set-background-color "ivory")
-(set-foreground-color "#32cd32")
+;;(set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
@@ -142,27 +142,27 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-;; (require 'smart-mode-line)
-;; ;; (require 'powerline)
-;; (setq sml/no-confirm-load-theme t)
+(require 'smart-mode-line)
+;; (require 'powerline)
+(setq sml/no-confirm-load-theme t)
 
-;; ;;(setq sml/theme 'dark)
-;; ;;(setq sml/theme 'light)
-;; (setq sml/theme 'respectful)
+;;(setq sml/theme 'dark)
+;;(setq sml/theme 'light)
+(setq sml/theme 'respectful)
 
-;; ;;(setq sml/theme 'powerline)
-;; ;; (setq sml/theme 'light-powerline)
-;; ;; (setq powerline-arrow-shape 'curves)
-;; ;; (setq powerline-default-separator-dir '(right . left))
-;; ;; (setq sml/mode-width 0)
-;; ;; (setq sml/name-width 20)
-;; ;;(rich-minority-mode 1)
+;;(setq sml/theme 'powerline)
+;; (setq sml/theme 'light-powerline)
+;; (setq powerline-arrow-shape 'curves)
+;; (setq powerline-default-separator-dir '(right . left))
+;; (setq sml/mode-width 0)
+;; (setq sml/name-width 20)
+;;(rich-minority-mode 1)
 
-;; (sml/setup)
+(sml/setup)
 
 
-(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
+;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7
 ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
 ;;  (set-face-attribute 'mode-line-buffer-id nil :background "#32cd32" :foreground "black" )
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
