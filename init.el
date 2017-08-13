@@ -15,15 +15,12 @@
 ;;(server-start)  
 ;;(desktop-save-mode) 
 
-;; Display the total loading time in the minibuffer
-
 ;;Disable ad-handle-definition warnings
 (setq ad-redefinition-action 'accept)
 (setq gc-cons-threshold 100000000)
 
-
 (setq frame-title-format
-      (list '(:eval (projectile-project-name)) 
+      (list ;;'(:eval (projectile-project-name)) 
             "(●—●) I'm Here @ "
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 

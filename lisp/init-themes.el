@@ -4,8 +4,9 @@
 
 (set-frame-parameter nil 'alpha '(92 . 100))
 
+(set-frame-font "Menlo-8")
 ;;(set-frame-font "Inconsolata-8")
-(set-frame-font "Monaco-7")
+;;(set-frame-font "Monaco-7")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 

@@ -194,6 +194,7 @@
 ;;-----------------------
 ;; (setq tramp-mode nil)
 ;; (setq ad-redefinition-action 'accept)
+
 ;; (require 'helm-config)
 ;; (require 'helm)
 ;; (helm-mode t)
@@ -267,17 +268,20 @@
 ;;             (local-set-key (kbd "\C-c SPC") 'ace-pinyin-jump-char)))
 
 ;----------------
-;yasnippet
+;yasnippet - A template system for Emacs
 ;----------------
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+;; (yas-reload-all)
+;; (add-hook 'prog-mode-hook #'yas-minor-mode)
+
 (setq yas-snippet-dirs "~/.emacs.d/snippets/")
-;;(setq yas-snippet-dirs "~/.emacs.d/elpa/elpy-20161211.1045/snippets/")
 ;;(setq debug-on-error t)
 
 ;----------------
-;auto-complete
+;auto-complete - An Intelligent auto-completion extension for Emacs
 ;----------------
 (require 'popup)
 (require 'auto-complete-config)
@@ -290,6 +294,11 @@
 
 (add-hook 'c++-mode-hook 'my:ac-c-headers-init)
 (add-hook 'c-mode-hook 'my:ac-c-headers-init)
+
+;; auto-completion with snippets
+(setq-default dotspacemacs-configuration-layers
+              '((auto-completion :variables
+                                 auto-completion-enable-snippets-in-popup t)))
 
 ;;(add-to-list 'ac-modes 'org-mode)
 ;;(ac-set-trigger-key "TAB")

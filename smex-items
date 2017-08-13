@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ magit-status
+ magit-push
+ package-autoremove
+ package-list-packages
  eval-buffer
  disable-theme
  smart-mode-line-enable
- package-autoremove
- package-list-packages
- magit-push
- load-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 176)
+ (package-list-packages . 177)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -115,7 +115,7 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1749)
+ (eval-buffer . 1750)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 94)
- (magit-push . 96)
+ (magit-status . 97)
+ (magit-push . 97)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 32)
+ (package-autoremove . 33)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
