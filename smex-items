@@ -2,17 +2,17 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- load-theme
- multi-term
- python-mode
- mu4e
+ disable-theme
+ smart-mode-line-enable
+ package-autoremove
  package-list-packages
- ein:jupyter-server-start
+ magit-push
+ load-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 175)
+ (package-list-packages . 176)
  (indent-region . 18)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -21,7 +21,7 @@
  (imenu . 2)
  (highlight-indentation-mode . 1)
  (highlight-changes-rotate-faces . 2)
- (smart-mode-line-enable . 4)
+ (smart-mode-line-enable . 6)
  (sml/setup . 2)
  (highlight-tail-mode . 4)
  (isearch-forward-regexp . 1)
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 6)
  (replace-string . 100)
- (load-theme . 283)
+ (load-theme . 282)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1751)
+ (eval-buffer . 1749)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 183)
+ (disable-theme . 185)
  (set-background-color . 6)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -223,7 +223,7 @@
  (align-highlight-rule . 1)
  (set-justification . 5)
  (helm-mini . 1)
- (tabbar-mode . 1)
+ (tabbar-mode . 3)
  (markdown-live-preview-switch-to-output . 1)
  (xterm-color-test . 2)
  (thumbs . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 93)
- (magit-push . 95)
+ (magit-status . 94)
+ (magit-push . 96)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 31)
+ (package-autoremove . 32)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)

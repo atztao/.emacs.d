@@ -4,8 +4,8 @@
 
 (set-frame-parameter nil 'alpha '(92 . 100))
 
-(set-frame-font "Inconsolata-8")
-;;(set-frame-font "Monaco-8")
+;;(set-frame-font "Inconsolata-8")
+(set-frame-font "Monaco-7")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -142,23 +142,23 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-(require 'smart-mode-line)
-;; (require 'powerline)
-(setq sml/no-confirm-load-theme t)
+;; (require 'smart-mode-line)
+;; ;; (require 'powerline)
+;; (setq sml/no-confirm-load-theme t)
 
-;;(setq sml/theme 'dark)
-;;(setq sml/theme 'light)
-(setq sml/theme 'respectful)
+;; ;;(setq sml/theme 'dark)
+;; ;;(setq sml/theme 'light)
+;; (setq sml/theme 'respectful)
 
-;;(setq sml/theme 'powerline)
-;; (setq sml/theme 'light-powerline)
-;; (setq powerline-arrow-shape 'curves)
-;; (setq powerline-default-separator-dir '(right . left))
-;; (setq sml/mode-width 0)
-;; (setq sml/name-width 20)
-;;(rich-minority-mode 1)
+;; ;;(setq sml/theme 'powerline)
+;; ;; (setq sml/theme 'light-powerline)
+;; ;; (setq powerline-arrow-shape 'curves)
+;; ;; (setq powerline-default-separator-dir '(right . left))
+;; ;; (setq sml/mode-width 0)
+;; ;; (setq sml/name-width 20)
+;; ;;(rich-minority-mode 1)
 
-(sml/setup)
+;; (sml/setup)
 
 
 ;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "#32cd32") ;;#A7A5A7

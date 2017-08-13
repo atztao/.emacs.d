@@ -28,7 +28,7 @@
             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 (add-hook 'term-mode-hook
           (lambda ()
-            (setq term-buffer-maximum-size 0)))
+            (setq term-buffer-maximum-size 10000)))
 (add-hook 'term-mode-hook
           (lambda ()
             (setq show-trailing-whitespace nil)
@@ -112,8 +112,8 @@
 
 ;;(require 'ido-describe-fns)
 
-;;(require 'ido-yes-or-no)
-;;(ido-yes-or-no-mode 1)
+(require 'ido-yes-or-no)
+(ido-yes-or-no-mode 1)
 
 ;; ;;ivy-mode
 ;; ;;Ivy is split into three packages: ivy, swiper and counsel
@@ -155,7 +155,7 @@
 ;;----------------
 ;;windows switch
 ;;----------------
-(global-set-key (kbd "M-p") 'ace-window)
+;;(global-set-key (kbd "M-p") 'ace-window)
 
 ;; (require 'window-number)
 ;; (window-number-mode)
