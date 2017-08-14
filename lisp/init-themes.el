@@ -2,11 +2,11 @@
 
 (setq default-font-size-pt 10)
 
-(set-frame-parameter nil 'alpha '(92 . 100))
+(set-frame-parameter nil 'alpha '(96 . 100))
 
-(set-frame-font "Menlo-8")
+;;(set-frame-font "Menlo-8")
 ;;(set-frame-font "Inconsolata-8")
-;;(set-frame-font "Monaco-7")
+(set-frame-font "Monaco-7")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -17,7 +17,7 @@
 ;;(require 'color-theme-sanityinc-tomorrow)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-(load-theme 'sanityinc-tomorrow-bright t)
+;;(load-theme 'sanityinc-tomorrow-bright t)
 
 
  ;; (load "~/.emacs.d/themes/color-theme-tomorrow.el")
@@ -29,7 +29,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;;(load-theme 'zenburn t)
+(load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -62,10 +62,8 @@
 
 (set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
-
-(set-cursor-color "green")
-;;(set-cursor-color "red")
-;; (set-mouse-color "goldenrod")
+;;(set-cursor-color "green")
+(set-cursor-color "red")
 
 ;;(setq frame-background-mode 'dark)
 

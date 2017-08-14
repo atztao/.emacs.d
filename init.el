@@ -45,7 +45,7 @@
 (setq ring-bell-function 'ignore)
 (set-fringe-mode '(0 . 0))
 
-(fset 'yes-or-no-p 'y-or-n-p)
+;;(fset 'yes-or-no-p 'y-or-n-p)
 
 (add-to-list 'default-frame-alist '(height . 20))
 (add-to-list 'default-frame-alist '(width . 52))
@@ -311,7 +311,7 @@ directory to make multiple eshell windows easier."
 (require 'init-org-pdf)
 
 ;;-------------------------some color setting
-;;(require 'init-color)
+(require 'init-color)
 
 ;;-------------------------some warning fix
 (require 'init-fix)
@@ -407,7 +407,7 @@ directory to make multiple eshell windows easier."
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (ein smartparens ido-yes-or-no notmuch counsel color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme expand-region helm-swoop undo-tree rainbow-delimiters ox-reveal multiple-cursors esup window-number jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag)))
+    (xterm-color ein smartparens ido-yes-or-no notmuch counsel color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme expand-region helm-swoop undo-tree rainbow-delimiters ox-reveal multiple-cursors esup window-number jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
@@ -418,4 +418,7 @@ directory to make multiple eshell windows easier."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+ '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t))))
+ '(org-todo ((t (:foreground "Red" :weight extra-bold :strike-through nil)))))
