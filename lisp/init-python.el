@@ -1,22 +1,3 @@
-;;;--------------------
-;;flycheck
-;;--------------------
-
-(require 'flycheck)
-;; Force flycheck to always use c++11 support. We use
-;; the clang language backend so this is set to clang
-(add-hook 'c++-mode-hook
-          (lambda () (setq flycheck-clang-language-standard "c++11")))
-;; Turn flycheck on everywhere
-;;(global-flycheck-mode)
-
-;;turn off SOME unwanted flycheck warnings(https://lists.gnu.org/archive/html/help-gnu-emacs/2015-02/msg00134.html)
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc emacs-lisp))
-
-;; Use flycheck-pyflakes for python. Seems to work a little better.
-;; (require 'flycheck-pyflakes)
-
-;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;-------------------------
 ;;C++

@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/todo.txt")
- (front-context-string . "** TODO  Piano C")
- (rear-context-string . "五>\n** TODO 干锅鸡 \n")
- (position . 891))
+ (front-context-string . "** TODO Switch T")
+ (rear-context-string . "-08-15 二 11:14]\n")
+ (position . 1270))
 )

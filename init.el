@@ -8,7 +8,6 @@
 ;; Version:v2017.5.11
 
 
-;;-----------------------------------------------
 ;;Emacs Startup 
 ;;-----------------------------------------------
 
@@ -43,7 +42,9 @@
 (global-visual-line-mode 1)
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore)
-(set-fringe-mode '(0 . 0))
+
+;;Disable Fringer Mode
+;;(set-fringe-mode '(0 . 0))
 
 ;;(fset 'yes-or-no-p 'y-or-n-p)
 
@@ -91,7 +92,6 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 ;;(setq projectile-mode-line nil)
 ;; (add-hook 'text-mode-hook 'projectile-mode)
 ;; (add-hook 'prog-mode-hook 'projectile-mode)
-
 
 (defun xah-open-in-desktop ()
   "Show current file in desktop (OS's file manager).
@@ -293,7 +293,7 @@ directory to make multiple eshell windows easier."
 ;;necessary plugin you must need
 (require 'init-plugin)
 
-;--------------------Vim Way To Move - Evil-Mode
+;--------------------Vim Way To Move - Evilode
 ;;(require 'init-evil)
 
 ;--------------------email
@@ -345,9 +345,8 @@ directory to make multiple eshell windows easier."
 
 ;;flyspell-----------------------------------
 ;;apt install aspell
-;; (setq-default ispell-program-name "aspell")
-;; (ispell-change-dictionary "american" t)  
-
+(setq-default ispell-program-name "aspell")
+(ispell-change-dictionary "american" t)  
 
 ;Backup-----------------------------------------
 (setq auto-save-interval 20)
@@ -407,7 +406,7 @@ directory to make multiple eshell windows easier."
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (xterm-color ein smartparens ido-yes-or-no notmuch counsel color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme expand-region helm-swoop undo-tree rainbow-delimiters ox-reveal multiple-cursors esup window-number jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag)))
+    (sr-speedbar evil evil-easymotion evil-escape evil-leader evil-magit evil-matchit evil-mu4e evil-multiedit evil-nerd-commenter evil-surround molokai-theme xterm-color ein smartparens ido-yes-or-no notmuch counsel color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme expand-region helm-swoop undo-tree rainbow-delimiters ox-reveal multiple-cursors esup window-number jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
@@ -420,5 +419,4 @@ directory to make multiple eshell windows easier."
  ;; If there is more than one, they won't work right.
  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t))))
- '(org-todo ((t (:foreground "Red" :weight extra-bold :strike-through nil)))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))

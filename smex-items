@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ helm-select-xfont
  eval-buffer
- load-theme
  mu4e
  multi-term
+ fringe-mode
+ load-theme
  magit-push
- magit-status
- package-autoremove
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-M-x . 3)
  (ido-select-text . 6)
  (replace-string . 100)
- (load-theme . 291)
+ (load-theme . 284)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,9 +115,9 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1763)
+ (eval-buffer . 1776)
  (org-md-export-as-markdown . 1)
- (org-md-export-to-markdown . 12)
+ (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
  (font-lock-mode . 3)
  (enriched-mode . 1)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 123)
+ (mu4e . 127)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 1)
- (multi-term . 88)
+ (multi-term . 93)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -367,4 +367,6 @@
  (describe-personal-keybindings . 2)
  (color-theme-sanityinc-tomorrow-day . 1)
  (emacs-init-time . 3)
+ (fringe-mode . 1)
+ (helm-select-xfont . 1)
 )

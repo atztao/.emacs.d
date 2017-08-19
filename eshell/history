@@ -1,5 +1,3 @@
-./while 
-cd
 cd Dropbox/Networks/Exercise/Net2_ex1/
 g++ sandpile-model.cpp -o sanpile-model
 g++ sandpile-model.cpp -o sanpile-model
@@ -126,3 +124,5 @@ date
 ls
 ls
 ll
+ll
+exit

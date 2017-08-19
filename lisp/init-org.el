@@ -4,7 +4,7 @@
 
 
 ;; (setq org-todo-keywords
-;;       '((sequence "TODO" "NEXT" "|" "DONE" "REVIEW")))
+;;       '((sequence "☐" "☑")))
 
 (defun my/org-mode-hook ()
   "Stop the org-level headers from increasing in height relative to the other text."

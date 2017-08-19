@@ -1,4 +1,13 @@
-#ido.last#
-.bookmarks.bmk
 ido.last
 ido.last~
+session.[*]
+recentf
+recentf~
+saveplace
+abbrev_defs
+ac-comphist.dat
+history
+bookmarks
+smex-items
+places
+helm-history.txt

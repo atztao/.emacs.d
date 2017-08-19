@@ -112,8 +112,8 @@
 
 ;;(require 'ido-describe-fns)
 
-(require 'ido-yes-or-no)
-(ido-yes-or-no-mode 1)
+;; (require 'ido-yes-or-no)
+;; (ido-yes-or-no-mode 1)
 
 ;; ;;ivy-mode
 ;; ;;Ivy is split into three packages: ivy, swiper and counsel
@@ -166,8 +166,15 @@
 (global-set-key [M-up] 'windmove-up)              ; move to upper window
 (global-set-key [M-down] 'windmove-down)          ; move to lower window
 
+;;SrSpeedbar
+(require 'sr-speedbar)
+(setq speedbar-use-images nil)
+
 ;;fringer
 ;;(set-window-fringes (selected-window) 0 0 nil)
+
+;;Disable Fringer Mode
+(set-fringe-mode '(0 . 0))
 
 ;; (custom-set-faces
 ;;   '(default ((t (:backgroun "black" :foreground "grey"))))
@@ -179,11 +186,11 @@
 (setq scroll-margin 1
       scroll-conservatively 10000)
 
-
 ;;-----------------------
 ;;Ag apt-get install silversearcher-ag
 ;;-----------------------
 (require 'ag)
+;;(defalias 'find-grep 'ag)
 (setq ag-highlight-search t)
 (setq ag-reuse-window 't)
 (setq ag-reuse-buffers 't)
@@ -195,40 +202,40 @@
 ;; (setq tramp-mode nil)
 ;; (setq ad-redefinition-action 'accept)
 
-;; (require 'helm-config)
-;; (require 'helm)
-;; (helm-mode t)
+(require 'helm-config)
+(require 'helm)
+(helm-mode t)
 
-;; (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
-;; (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
+(defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
+(defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
-;; (setq helm-ff-transformer-show-only-basename nil
-;;       helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-;;       helm-ff-auto-update-initial-value nil
-;;       helm-yank-symbol-first                 t
-;;       helm-move-to-line-cycle-in-source      t
-;;       helm-M-x-fuzzy-match                   nil
-;;       ;;      helm-recentf-fuzzy-match               t
-;;       ;;      helm-ff-file-name-history-use-recentf  t
-;;       helm-buffers-fuzzy-matching            nil
-;;       helm-ff-auto-update-initial-value      t)
+(setq helm-ff-transformer-show-only-basename nil
+      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
+      helm-ff-auto-update-initial-value nil
+      helm-yank-symbol-first                 t
+      helm-move-to-line-cycle-in-source      t
+      helm-M-x-fuzzy-match                   nil
+      ;;      helm-recentf-fuzzy-match               t
+      ;;      helm-ff-file-name-history-use-recentf  t
+      helm-buffers-fuzzy-matching            nil
+      helm-ff-auto-update-initial-value      t)
 
-;; ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-;; (global-set-key (kbd "M-s i")   #'helm-swoop)
-;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
-;; (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
+(global-set-key (kbd "M-s i")   #'helm-swoop)
+(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+(global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-;; ;;(global-set-key (kbd "C-s")   #'helm-swoop)
+;;(global-set-key (kbd "C-s")   #'helm-swoop)
 
-;; (helm-autoresize-mode 1)
+(helm-autoresize-mode 1)
 
-;; (setq save-place-file "~/.emacs.d/saveplace")
-;; (save-place-mode 1) 
+(setq save-place-file "~/.emacs.d/saveplace")
+(save-place-mode 1) 
 
-;; ;; (define-key helm-map (kbd "C-j") 'helm-next-line)
-;; ;; (define-key helm-map (kbd "C-k") 'helm-previous-line)
+;; (define-key helm-map (kbd "C-j") 'helm-next-line)
+;; (define-key helm-map (kbd "C-k") 'helm-previous-line)
 
 ;;--------------------------multilple-cursors
 (require 'multiple-cursors)
@@ -302,6 +309,35 @@
 
 ;;(add-to-list 'ac-modes 'org-mode)
 ;;(ac-set-trigger-key "TAB")
+
+
+;;--------------------
+;;Flycheck - On the fly syntax checking for GNU Emacs
+;;--------------------
+(require 'flycheck)
+;; Force flycheck to always use c++11 support. We use
+;; the clang language backend so this is set to clang
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;;(add-hook 'python-mode-hook             #'flycheck-mode)
+(add-hook 'c++-mode-hook
+          (lambda () (setq flycheck-clang-language-standard "c++11")))
+;; Turn flycheck on everywhere
+;;(global-flycheck-mode)
+
+;;turn off SOME unwanted flycheck warnings(https://lists.gnu.org/archive/html/help-gnu-emacs/2015-02/msg00134.html)
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc emacs-lisp))
+
+
+;;(setq flycheck-check-syntax-automatically '(mode-enabled save idle-change))
+;;(setq flycheck-highlighting-mode 'lines)
+;;(setq flycheck-indication-mode 'left-fringe)
+(set-face-attribute 'flycheck-warning nil :underline nil)
+
+
+;; Use flycheck-pyflakes for python. Seems to work a little better.
+;; (require 'flycheck-pyflakes)
+
+;;(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;smartparens
 (require 'smartparens-config)

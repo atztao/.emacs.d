@@ -8,8 +8,6 @@
 (global-evil-leader-mode)
 (setq evil-leader/in-all-states 1)
 
-
-
 (require 'evil) 
 (evil-mode 1) 
 
@@ -20,9 +18,8 @@
 ;;(add-to-list 'evil-emacs-state-modes 'org-mode)
 (add-to-list 'evil-emacs-state-modes 'el-get-package-menu-mode)
 
-
 ;; remove all keybindings from insert-state keymap, use emacs-state when editing
-(setcdr evil-insert-state-map nil)
+;;(setcdr evil-insert-state-map nil)
  
 ;; ESC to switch back normal-state
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
@@ -53,28 +50,6 @@
 ;; (evil-set-initial-state 'magit-popup-mode 'emacs)
 ;;magit
 (require 'evil-magit)
-;; (define-key magit-mode-map (kbd "k") #'previous-line)
-;; (define-key magit-mode-map (kbd "K") #'magit-discard)
-;; (define-key magit-mode-map (kbd "j") #'next-line)
-
-;; (evil-set-initial-state 'magit-mode 'normal)
-;; (evil-set-initial-state 'magit-status-mode 'normal)
-;; (evil-set-initial-state 'magit-diff-mode 'normal)
-;; (evil-set-initial-state 'magit-log-mode 'normal)
-;;   (evil-set-initial-state 'magit-commit-mode 'normal)
-
-;; (evil-define-key 'normal magit-mode-map
-;; (kbd "j" ) 'magit-goto-next-section
-;; (kbd "k" ) 'magit-goto-previous-section)
-;; (evil-define-key 'normal magit-log-mode-map
-;; (kbd "j" ) 'magit-goto-next-section
-;; (kbd "k" ) 'magit-goto-previous-section)
-;; (evil-define-key 'normal magit-diff-mode-map
-;; (kbd "j"  )'magit-goto-next-section
-;; (kbd "k"  )'magit-goto-previous-section)
-;; (evil-define-key 'normal magit-commit-mode-map
-;; (kbd "j" ) 'magit-goto-next-section
-;; (kbd "k" ) 'magit-goto-previous-section)
 
 ;;evil helm
 (evil-set-initial-state 'ibuffer-mode 'normal)
