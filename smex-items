@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ eval-buffer
+ magit-push
+ magit-status
+ list-colors-display
  multi-term
  mu4e
  ansi-term
- eval-buffer
- set-frame-font
- set-default-font
- company-oddmuse
 )
 
 ;; ----- smex-data -----
@@ -84,7 +84,7 @@
  (color-theme-tomorrow-night-bright . 1)
  (mode-line-widen . 9)
  (markdown-preview . 9)
- (list-colors-display . 8)
+ (list-colors-display . 9)
  (evil-mode . 11)
  (buffer-menu . 1)
  (org-agenda . 6)
@@ -115,7 +115,7 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1805)
+ (eval-buffer . 1806)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 100)
- (magit-push . 99)
+ (magit-status . 101)
+ (magit-push . 101)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
