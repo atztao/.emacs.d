@@ -1,12 +1,12 @@
 ;;fonts-------------------------------------
 
-;;(setq default-font-size-pt 12)
+(setq default-font-size-pt 12)
 
-(set-frame-parameter nil 'alpha '(98 . 100))
+(set-frame-parameter nil 'alpha '(90 . 100))
 
 ;;(set-frame-font "Menlo-8")
-(set-frame-font "Inconsolata\-g-8")
-;;(set-frame-font "Monaco-8")
+;;(set-frame-font "Inconsolata\-g-8")
+(set-frame-font "Inconsolata-8")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -16,7 +16,7 @@
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
 ;;(require 'color-theme-sanityinc-tomorrow)
-(load-theme 'sanityinc-tomorrow-eighties t)
+;;(load-theme 'sanityinc-tomorrow-eighties t)
 
 ;;(load-theme 'sanityinc-tomorrow-bright t)
 
@@ -24,7 +24,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;;(load-theme 'zenburn t)
+;(load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -61,9 +61,9 @@
 
 ;;(setq frame-background-mode 'dark)
 
-;;(set-background-color "#000000")
-;; ;; ;;(set-background-color "ivory")
-;;(set-foreground-color "#32cd32")
+(set-background-color "#000000")
+;; ;;(set-background-color "ivory")
+(set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
@@ -155,10 +155,10 @@
 
 ;; (sml/setup)
 
-;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "Grey27") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "Grey27") ;;#A7A5A7
+(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "Grey50") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "Grey30") ;;#A7A5A7
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-;; (set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "#32cd32" :bold t )
+(set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "#32cd32" :bold t )
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
