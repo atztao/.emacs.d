@@ -93,6 +93,10 @@
 
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
+(setq org-use-speed-commands t)
+
+(setq org-odd-level-only nil) 
+(setq org-insert-heading-respect-content nil)
 
 (setq org-confirm-babel-evaluate nil)
 

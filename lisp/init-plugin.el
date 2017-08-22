@@ -50,55 +50,51 @@
 (setq calendar-holidays my-holidays)
 ;;(holiday-lunar 9 17 "宝宝生日" 0)
 
-(require 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (require 'ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(defun close-all-buffers ()
-  (interactive)
-  (mapc 'kill-buffer (buffer-list)))
+;; (defun close-all-buffers ()
+;;   (interactive)
+;;   (mapc 'kill-buffer (buffer-list)))
 
 ;; ;;ido-mode--------------------------------
-(require 'ido)
-(ido-mode t)
-(ido-everywhere t)
-(setq ido-file-extensions-order '(".org" ".txt" ))
-(setq ido-use-filename-at-point 'guess)
-(setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
-(setq org-completion-use-ido t)
+;; (require 'ido)
+;; (ido-mode t)
+;; (ido-everywhere t)
+;; (setq ido-file-extensions-order '(".org" ".txt" ))
+;; (setq ido-use-filename-at-point 'guess)
+;; (setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
+;; (setq org-completion-use-ido t)
 
-(defun ido-bookmark-jump (bname)
-  "*Switch to bookmark interactively using `ido'."
-  (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
-  (bookmark-jump bname))
-(global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
-;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+;; (defun ido-bookmark-jump (bname)
+;;   "*Switch to bookmark interactively using `ido'."
+;;   (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
+;;   (bookmark-jump bname))
+;; (global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
+;; ;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
-;;(setq ido-separator "\n")
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-;;(setq max-mini-window-height 0.5)
+;; ;;(setq ido-separator "\n")
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; ;;(setq max-mini-window-height 0.5)
 
-;;(setq ido-use-virtual-buffers t)
+;; ;;(setq ido-use-virtual-buffers t)
 
-(savehist-mode 1)
+;; (savehist-mode 1)
 
 
-;; ;;keep a list of recently opened files                                              
+;; ;; ;;keep a list of recently opened files                                              
 
-(require 'recentf)
-(setq recentf-auto-cleanup 'never)
-(recentf-mode 1)
-(setq-default recent-save-file "~/.emacs.d/recentf")
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to find a recent file."
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
+;; (defun ido-recentf-open ()
+;;   "Use `ido-completing-read' to find a recent file."
+;;   (interactive)
+;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+;;       (message "Opening file...")
+;;     (message "Aborting")))
 
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-(setq recentf-max-saved-items 150)
+;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+;; (setq recentf-max-saved-items 150)
 
 
 ;; ;; (require 'flx-ido)
@@ -139,7 +135,6 @@
 ;;smex
 ;;---------------
 
-(add-to-list 'load-path "~/.emacs.d/elpa/smex/")
 (require 'smex)
 (smex-initialize)
 
@@ -202,32 +197,46 @@
 ;; (setq tramp-mode nil)
 ;; (setq ad-redefinition-action 'accept)
 
+
+(require 'recentf)
+(setq recentf-auto-cleanup 'never)
+(recentf-mode 1)
+(setq-default recent-save-file "~/.emacs.d/recentf")
+
+
 (require 'helm-config)
 (require 'helm)
 (helm-mode t)
+;;(helm-recent t)
 
 (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
 (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))
 
 (setq helm-ff-transformer-show-only-basename nil
-      helm-adaptive-history-file             "~/.emacs.d/helm-history.txt"
-      helm-ff-auto-update-initial-value nil
+      ;;helm-adaptive-history-file           "~/.emacs.d/recentf.txt"
+      helm-ff-auto-update-initial-value t
       helm-yank-symbol-first                 t
       helm-move-to-line-cycle-in-source      t
-      helm-M-x-fuzzy-match                   nil
-      ;;      helm-recentf-fuzzy-match               t
-      ;;      helm-ff-file-name-history-use-recentf  t
-      helm-buffers-fuzzy-matching            nil
+      helm-completion-in-region-fuzzy-match  t
+      helm-M-x-fuzzy-match                   t
+      helm-recentf-fuzzy-match               t
+      helm-ff-file-name-history-use-recentf  t
+      helm-buffers-fuzzy-matching            t
       helm-ff-auto-update-initial-value      t)
+
+(global-set-key (kbd "C-x C-f")   #'helm-find-files) 
+(global-set-key (kbd "C-x C-r") 'helm-for-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-b") 'helm-mini)
+(global-set-key (kbd "C-s")   #'helm-swoop)
+;;(global-set-key (kbd "M-x")   #'helm-M-x)
 
 ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-(global-set-key (kbd "M-s i")   #'helm-swoop)
 (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
 (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
-;;(global-set-key (kbd "C-s")   #'helm-swoop)
 
 (helm-autoresize-mode 1)
 

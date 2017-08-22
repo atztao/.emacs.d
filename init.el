@@ -48,8 +48,8 @@
 
 ;;(fset 'yes-or-no-p 'y-or-n-p)
 
-(add-to-list 'default-frame-alist '(height . 20))
-(add-to-list 'default-frame-alist '(width . 52))
+(add-to-list 'default-frame-alist '(height . 15))
+(add-to-list 'default-frame-alist '(width . 62))
 
 sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
 sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空格。

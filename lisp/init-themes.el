@@ -1,12 +1,12 @@
 ;;fonts-------------------------------------
 
-(setq default-font-size-pt 12)
+;;(setq default-font-size-pt 12)
 
-(set-frame-parameter nil 'alpha '(90 . 100))
+;;(set-frame-parameter nil 'alpha '(90 . 100))
 
 ;;(set-frame-font "Menlo-8")
-;;(set-frame-font "Inconsolata\-g-8")
-(set-frame-font "Inconsolata-8")
+(set-frame-font "Inconsolata-10")
+;;(set-frame-font "Monaco-8")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -54,16 +54,16 @@
 (set-face-foreground 'lazy-highlight "#000000")
 (set-face-background 'lazy-highlight "#ffff00")
 
-;;(set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
+(set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
-;;(set-cursor-color "green")
-(set-cursor-color "red")
+(set-cursor-color "green")
+;;(set-cursor-color "red")
 
 ;;(setq frame-background-mode 'dark)
 
-(set-background-color "#000000")
-;; ;;(set-background-color "ivory")
-(set-foreground-color "#32cd32")
+;; (set-background-color "#000000")
+;; ;; ;; ;;(set-background-color "ivory")
+;; (set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
@@ -85,11 +85,11 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "gray27")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "gray27")
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
@@ -155,10 +155,11 @@
 
 ;; (sml/setup)
 
-(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "Grey50") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "Grey30") ;;#A7A5A7
-;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-(set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "#32cd32" :bold t )
+;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "Grey50") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "Grey30") ;;#A7A5A7
+;; ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
+;; (set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "Grey70" :bold t )
+
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 

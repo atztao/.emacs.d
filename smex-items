@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  eval-buffer
- magit-push
- magit-status
- list-colors-display
  multi-term
- mu4e
- ansi-term
+ helm-imenu
+ imenu
+ magit-push
+ list-colors-display
+ load-theme
 )
 
 ;; ----- smex-data -----
@@ -18,7 +18,7 @@
  (markdown-enable-math . 3)
  (markdown-mode . 95)
  (package-list-packages-no-fetch . 1)
- (imenu . 2)
+ (imenu . 3)
  (highlight-indentation-mode . 1)
  (highlight-changes-rotate-faces . 2)
  (smart-mode-line-enable . 6)
@@ -84,7 +84,7 @@
  (color-theme-tomorrow-night-bright . 1)
  (mode-line-widen . 9)
  (markdown-preview . 9)
- (list-colors-display . 9)
+ (list-colors-display . 10)
  (evil-mode . 11)
  (buffer-menu . 1)
  (org-agenda . 6)
@@ -92,10 +92,10 @@
  (recover-this-file . 12)
  (message-mode . 2)
  (eshell-mode . 6)
- (helm-M-x . 3)
+ (helm-M-x . 4)
  (ido-select-text . 6)
  (replace-string . 100)
- (load-theme . 284)
+ (load-theme . 285)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 82)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1806)
+ (eval-buffer . 1825)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -128,7 +128,7 @@
  (list-load-path-shadows . 1)
  (helm-colors . 1)
  (helm-buffers-list . 2)
- (helm-find-files . 4)
+ (helm-find-files . 6)
  (helm-top . 1)
  (grep . 9)
  (grep-find . 7)
@@ -222,7 +222,7 @@
  (align . 1)
  (align-highlight-rule . 1)
  (set-justification . 5)
- (helm-mini . 1)
+ (helm-mini . 3)
  (tabbar-mode . 3)
  (markdown-live-preview-switch-to-output . 1)
  (xterm-color-test . 2)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 101)
- (magit-push . 101)
+ (magit-status . 102)
+ (magit-push . 103)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 2)
- (multi-term . 102)
+ (multi-term . 104)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -361,7 +361,7 @@
  (ein:jupyter-server-start . 48)
  (ein:jupyter-server-login-and-open . 8)
  (ein:console-open . 2)
- (eva . 1)
+ (eva . 2)
  (lua-mode . 2)
  (list-faces-display . 3)
  (describe-personal-keybindings . 2)
@@ -372,4 +372,5 @@
  (company-oddmuse . 1)
  (set-default-font . 2)
  (set-frame-font . 4)
+ (helm-imenu . 1)
 )
