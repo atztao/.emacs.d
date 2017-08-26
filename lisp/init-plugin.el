@@ -150,7 +150,7 @@
 ;;----------------
 ;;windows switch
 ;;----------------
-;;(global-set-key (kbd "M-p") 'ace-window)
+(global-set-key (kbd "M-p") 'ace-window)
 
 ;; (require 'window-number)
 ;; (window-number-mode)
@@ -238,7 +238,7 @@
 (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
 
-(helm-autoresize-mode 1)
+;;(helm-autoresize-mode 1)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 

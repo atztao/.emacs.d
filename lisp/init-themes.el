@@ -1,17 +1,18 @@
 ;;fonts-------------------------------------
 
-;;(setq default-font-size-pt 12)
+(setq default-font-size-pt 12)
 
 ;;(set-frame-parameter nil 'alpha '(90 . 100))
 
 ;;(set-frame-font "Menlo-8")
-(set-frame-font "Inconsolata-10")
-;;(set-frame-font "Monaco-8")
+;;(set-frame-font "Inconsolata-9")
+(set-frame-font "Monaco-8")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
-(setq default-font-size-pt 10)
+;;(setq default-font-size-pt 10)
 (set-fontset-font "fontset-default" 'han "Source Han Sans CN")
+;;(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
 
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
@@ -24,7 +25,7 @@
 
 ;; (defvar zenburn-override-colors-alist
 ;;    '(("zenburn-bg" . "#2d2d2d"))) ;#1d1f21 #111111 #2d2d2d #1C1C1C
-;(load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
@@ -62,7 +63,7 @@
 ;;(setq frame-background-mode 'dark)
 
 ;; (set-background-color "#000000")
-;; ;; ;; ;;(set-background-color "ivory")
+;; ;; ;; ;; ;;(set-background-color "ivory")
 ;; (set-foreground-color "#32cd32")
 
 ;;--------------------------
@@ -88,8 +89,10 @@
 (set-face-foreground 'vertical-border "gray")
 (set-face-background 'vertical-border "#FFFFFF")
 
+
 ;; (set-face-background 'vertical-border (face-background 'default))
 ;; (set-face-foreground 'vertical-border "gray27")
+
 ;;(set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
@@ -143,12 +146,12 @@
 
 ;; ;;(setq sml/theme 'dark)
 ;; ;;(setq sml/theme 'light)
-;; (setq sml/theme 'respectful)
+;; ;;(setq sml/theme 'respectful)
 
 ;; ;;(setq sml/theme 'powerline)
-;; ;; (setq sml/theme 'light-powerline)
-;; ;; (setq powerline-arrow-shape 'curves)
-;; ;; (setq powerline-default-separator-dir '(right . left))
+;; (setq sml/theme 'light-powerline)
+;; (setq powerline-arrow-shape 'curves)
+;; (setq powerline-default-separator-dir '(right . left))
 ;; ;; (setq sml/mode-width 0)
 ;; ;; (setq sml/name-width 20)
 ;; ;;(rich-minority-mode 1)

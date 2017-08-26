@@ -45,8 +45,9 @@
       '(("CANCELLED" ("ARCHIVE" . t)))) 
 ;;export image width
 (setq org-image-actual-width 100)
+
 ;;Auto Fill
-    (add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook   
