@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
- writeroom-mode
- focus-mode
- fringe-mode
- org-mode
- shell
  multi-term
- notmuch
+ mu4e
+ eval-buffer
+ indent-region
+ replace-string
+ load-theme
+ disable-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 177)
- (indent-region . 19)
+ (package-list-packages . 179)
+ (indent-region . 20)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
  (markdown-mode . 95)
@@ -37,7 +37,7 @@
  (w3m-search . 3)
  (w3m-browse-url . 1)
  (shell-mode . 8)
- (shell . 16)
+ (shell . 17)
  (org-insert-link . 3)
  (org-plot/gnuplot . 8)
  (emacs-lisp-mode . 5)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 4)
  (ido-select-text . 6)
- (replace-string . 100)
- (load-theme . 295)
+ (replace-string . 104)
+ (load-theme . 306)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -106,7 +106,7 @@
  (powerline-reset . 1)
  (number-to-register . 1)
  (org-beamer-export-to-pdf . 96)
- (org-export-insert-default-template . 6)
+ (org-export-insert-default-template . 7)
  (latex-mode . 2)
  (describe-coding-system . 4)
  (yas/new-snippet . 6)
@@ -115,7 +115,7 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1854)
+ (eval-buffer . 1875)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 187)
+ (disable-theme . 193)
  (set-background-color . 7)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 138)
+ (mu4e . 141)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 111)
- (magit-push . 117)
+ (magit-status . 112)
+ (magit-push . 118)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -317,7 +317,7 @@
  (close-all-buffers . 3)
  (comment-box . 1)
  (jde-gen-section-comment . 2)
- (package-autoremove . 33)
+ (package-autoremove . 34)
  (package-delete . 1)
  (org-agenda-convert-date . 2)
  (save-place-mode . 2)
@@ -328,8 +328,8 @@
  (gdb . 1)
  (compile . 2)
  (term . 11)
- (ansi-term . 2)
- (multi-term . 111)
+ (ansi-term . 3)
+ (multi-term . 119)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -375,4 +375,5 @@
  (helm-imenu . 1)
  (magit-process-mode . 1)
  (Python3 . 1)
+ (helm-themes . 1)
 )

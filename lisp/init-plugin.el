@@ -58,43 +58,43 @@
 ;;   (mapc 'kill-buffer (buffer-list)))
 
 ;; ;;ido-mode--------------------------------
-;; (require 'ido)
-;; (ido-mode t)
-;; (ido-everywhere t)
-;; (setq ido-file-extensions-order '(".org" ".txt" ))
-;; (setq ido-use-filename-at-point 'guess)
-;; (setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
-;; (setq org-completion-use-ido t)
+(require 'ido)
+(ido-mode t)
+(ido-everywhere t)
+(setq ido-file-extensions-order '(".org" ".txt" ))
+(setq ido-use-filename-at-point 'guess)
+(setq ido-file-extensions-order '(".txt" ".org" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf" "" t))
+(setq org-completion-use-ido t)
 
-;; (defun ido-bookmark-jump (bname)
-;;   "*Switch to bookmark interactively using `ido'."
-;;   (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
-;;   (bookmark-jump bname))
-;; (global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
-;; ;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+(defun ido-bookmark-jump (bname)
+  "*Switch to bookmark interactively using `ido'."
+  (interactive (list (ido-completing-read "Bookmark: " (bookmark-all-names) nil t)))
+  (bookmark-jump bname))
+(global-set-key (kbd "C-x r l") 'ido-bookmark-jump)
+;;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
-;; ;;(setq ido-separator "\n")
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-everywhere t)
-;; ;;(setq max-mini-window-height 0.5)
+;;(setq ido-separator "\n")
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+;;(setq max-mini-window-height 0.5)
 
-;; ;;(setq ido-use-virtual-buffers t)
+;;(setq ido-use-virtual-buffers t)
 
-;; (savehist-mode 1)
-
-
-;; ;; ;;keep a list of recently opened files                                              
+(savehist-mode 1)
 
 
-;; (defun ido-recentf-open ()
-;;   "Use `ido-completing-read' to find a recent file."
-;;   (interactive)
-;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-;;       (message "Opening file...")
-;;     (message "Aborting")))
+;; ;;keep a list of recently opened files                                              
 
-;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-;; (setq recentf-max-saved-items 150)
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to find a recent file."
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(setq recentf-max-saved-items 150)
 
 
 ;; ;; (require 'flx-ido)
@@ -224,21 +224,21 @@
       helm-buffers-fuzzy-matching            t
       helm-ff-auto-update-initial-value      t)
 
-(global-set-key (kbd "C-x C-f")   #'helm-find-files) 
-(global-set-key (kbd "C-x C-r") 'helm-for-files)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-b") 'helm-mini)
-(global-set-key (kbd "C-s")   #'helm-swoop)
+;; (global-set-key (kbd "C-x C-f")   #'helm-find-files) 
+;; (global-set-key (kbd "C-x C-r") 'helm-for-files)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x C-b") 'helm-mini)
+;; (global-set-key (kbd "C-s")   #'helm-swoop)
 ;;(global-set-key (kbd "M-x")   #'helm-M-x)
 
 ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
-(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-(global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
+;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+;; (global-set-key (kbd "M-s /") 'helm-multi-swoop-all)
 (global-set-key (kbd "M-s a")   #'helm-ag) ;;apt-get install silversearcher-ag
 
 
-;;(helm-autoresize-mode 1)
+(helm-autoresize-mode 1)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (save-place-mode 1) 

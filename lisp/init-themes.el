@@ -19,7 +19,7 @@
 ;;(require 'color-theme-sanityinc-tomorrow)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-;;(load-theme 'sanityinc-tomorrow-bright t)
+(load-theme 'sanityinc-tomorrow-bright t)
 
 ;;zenburn
 
@@ -57,8 +57,8 @@
 
 (set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
-(set-cursor-color "green")
-;;(set-cursor-color "red")
+;;(set-cursor-color "green")
+(set-cursor-color "red")
 
 ;;(setq frame-background-mode 'dark)
 
@@ -86,12 +86,12 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray27")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray27")
 
 ;;(set-face-background 'vertical-border "#284b54")
 

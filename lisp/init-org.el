@@ -49,10 +49,14 @@
 ;;Auto Fill
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-(add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines nil)))
+(add-hook 'hack-local-variables-hook (lambda () (setq
+truncate-lines nil)))
 (add-hook 'org-mode-hook   
           (lambda () (setq truncate-lines nil)))  
 
+(defun comment-auto-fill ()
+      (setq-local comment-auto-fill-only-comments t)
+      (auto-fill-mode 1))
 
 ;;Archive All Done Tas
 (setq org-archive-location (concat "archive/archive-" (format-time-string "%Y%m" (current-time)) ".org_archive::"))
