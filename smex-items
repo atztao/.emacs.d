@@ -1,24 +1,24 @@
 
 ;; ----- smex-history -----
 (
- multi-term
- mu4e
  eval-buffer
- indent-region
- replace-string
  load-theme
+ mu4e
+ other-frame
+ magit-push
+ magit-status
  disable-theme
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 179)
+ (package-list-packages . 180)
  (indent-region . 20)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
  (markdown-mode . 95)
  (package-list-packages-no-fetch . 1)
- (imenu . 3)
+ (imenu . 4)
  (highlight-indentation-mode . 1)
  (highlight-changes-rotate-faces . 2)
  (smart-mode-line-enable . 6)
@@ -84,7 +84,7 @@
  (color-theme-tomorrow-night-bright . 1)
  (mode-line-widen . 9)
  (markdown-preview . 9)
- (list-colors-display . 10)
+ (list-colors-display . 11)
  (evil-mode . 11)
  (buffer-menu . 1)
  (org-agenda . 6)
@@ -95,7 +95,7 @@
  (helm-M-x . 4)
  (ido-select-text . 6)
  (replace-string . 104)
- (load-theme . 306)
+ (load-theme . 327)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1875)
+ (eval-buffer . 1989)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 193)
+ (disable-theme . 195)
  (set-background-color . 7)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,12 +238,12 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 141)
+ (mu4e . 147)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
  (rmail . 1)
- (notmuch . 23)
+ (notmuch . 24)
  (notmuch-tree . 1)
  (nnmail-split-history . 1)
  (gnus-agentize . 2)
@@ -260,7 +260,7 @@
  (calc-keypad . 1)
  (c++-mode . 3)
  (python-mode . 37)
- (other-frame . 1)
+ (other-frame . 4)
  (flymake-goto-next-error . 1)
  (flymake-mode . 1)
  (outline-presentation-mode . 2)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 112)
- (magit-push . 118)
+ (magit-status . 114)
+ (magit-push . 120)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 3)
- (multi-term . 119)
+ (multi-term . 122)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -363,17 +363,18 @@
  (ein:console-open . 2)
  (eva . 2)
  (lua-mode . 2)
- (list-faces-display . 3)
+ (list-faces-display . 4)
  (describe-personal-keybindings . 2)
  (color-theme-sanityinc-tomorrow-day . 1)
  (emacs-init-time . 3)
- (fringe-mode . 3)
+ (fringe-mode . 6)
  (helm-select-xfont . 1)
  (company-oddmuse . 1)
  (set-default-font . 2)
  (set-frame-font . 4)
- (helm-imenu . 1)
+ (helm-imenu . 2)
  (magit-process-mode . 1)
  (Python3 . 1)
  (helm-themes . 1)
+ (helm-info-menu . 1)
 )

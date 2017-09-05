@@ -143,7 +143,7 @@ directory to make multiple eshell windows easier."
 ;;     (shell-file-name "cmdproxy") (comint-dynamic-complete t))
 ;;     (shell)))
 
-(global-set-key [f2] 'eshell)
+(global-set-key [f2] 'multi-term)
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t)
 (add-hook
@@ -443,7 +443,7 @@ directory to make multiple eshell windows easier."
     ("~/Dropbox/Txt/inbox.txt" "~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (ace-window helm-themes sr-speedbar evil evil-easymotion evil-escape evil-leader evil-magit evil-matchit evil-mu4e evil-multiedit evil-nerd-commenter evil-surround molokai-theme xterm-color ein smartparens ido-yes-or-no notmuch counsel color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme expand-region helm-swoop undo-tree rainbow-delimiters ox-reveal multiple-cursors esup window-number jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag)))
+    (org-bullets ace-window helm-themes sr-speedbar evil evil-easymotion evil-escape evil-leader evil-magit evil-matchit evil-mu4e evil-multiedit evil-nerd-commenter evil-surround molokai-theme xterm-color ein smartparens ido-yes-or-no notmuch counsel color-theme-sanityinc-tomorrow blackboard-theme org projectile dracula-theme expand-region helm-swoop undo-tree rainbow-delimiters ox-reveal multiple-cursors esup window-number jedi zenburn-theme writeroom-mode window-numbering websocket web-mode super-save solarized-theme smooth-scrolling smex smart-mode-line-powerline-theme semi rtags request relative-line-numbers python-mode py-autopep8 pos-tip neotree multi-term minimap matlab-mode markdown-mode magit linum-relative key-chord jdee htmlize ht helm-ag gntp focus emmet-mode elpy cmake-ide clang-format cl-generic cal-china-x autopair auto-complete-clang auto-complete-c-headers ag)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(show-paren-mode t)
@@ -491,4 +491,5 @@ directory to make multiple eshell windows easier."
  ;; If there is more than one, they won't work right.
  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
+  '(org-todo ((t (:weight extra-bold ))))
  '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "#999" :strike-through t)))))

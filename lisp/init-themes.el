@@ -1,17 +1,17 @@
 ;;fonts-------------------------------------
 
-(setq default-font-size-pt 12)
+;;(setq default-font-size-pt 10)
 
-;;(set-frame-parameter nil 'alpha '(90 . 100))
+;;(set-frame-parameter nil 'alpha '(92 . 100))
 
 ;;(set-frame-font "Menlo-8")
-;;(set-frame-font "Inconsolata-9")
-(set-frame-font "Monaco-8")
+(set-frame-font "Inconsolata-10")
+;;(set-frame-font "Monaco-8")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
 ;;(setq default-font-size-pt 10)
-(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
+(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
 ;;(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
 
 ;Themes-------------------------------------------
@@ -19,7 +19,8 @@
 ;;(require 'color-theme-sanityinc-tomorrow)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-(load-theme 'sanityinc-tomorrow-bright t)
+;;(load-theme 'sanityinc-tomorrow-bright t)
+;;(load-theme 'sanityinc-tomorrow-night t)
 
 ;;zenburn
 
@@ -57,14 +58,14 @@
 
 (set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
-;;(set-cursor-color "green")
-(set-cursor-color "red")
+(set-cursor-color "green")
+;;(set-cursor-color "red")
 
 ;;(setq frame-background-mode 'dark)
 
-;; (set-background-color "#000000")
-;; ;; ;; ;; ;;(set-background-color "ivory")
-;; (set-foreground-color "#32cd32")
+(set-background-color "#000000")
+;; ;; ;; ;;(set-background-color "ivory")
+(set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
@@ -158,12 +159,21 @@
 
 ;; (sml/setup)
 
-;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "Grey50") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "Grey30") ;;#A7A5A7
+(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
+;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
+(set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "grey70" :bold t )
+
+;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#e7ea" :foreground "#000000") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#ffffff" :foreground "#000000") ;;#A7A5A7
 ;; ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-;; (set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "Grey70" :bold t )
+;; (set-face-attribute 'mode-line-buffer-id nil :background "#ffffff" :foreground "#000000" :bold t )
 
 ;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
 ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
 
+;; (load-file "~/.emacs.d/elpa//writeroom-mode-20170623.327/writeroom-mode.el")
+;; (setq mode-line-format writeroom-mode-line)
+
+;;(setq writeroom-mode-line t)
 (provide 'init-themes)
