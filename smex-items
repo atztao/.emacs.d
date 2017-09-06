@@ -3,11 +3,11 @@
 (
  eval-buffer
  load-theme
- mu4e
- other-frame
- magit-push
- magit-status
  disable-theme
+ mu4e
+ multi-term
+ org-mode
+ magit-push
 )
 
 ;; ----- smex-data -----
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 119)
+ (org-mode . 120)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -95,7 +95,7 @@
  (helm-M-x . 4)
  (ido-select-text . 6)
  (replace-string . 104)
- (load-theme . 327)
+ (load-theme . 340)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 1989)
+ (eval-buffer . 2029)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 1)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 195)
+ (disable-theme . 197)
  (set-background-color . 7)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 4)
  (eww . 1)
- (mu4e . 147)
+ (mu4e . 150)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 114)
- (magit-push . 120)
+ (magit-status . 115)
+ (magit-push . 122)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 3)
- (multi-term . 122)
+ (multi-term . 125)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)

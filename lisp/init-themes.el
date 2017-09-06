@@ -2,7 +2,7 @@
 
 ;;(setq default-font-size-pt 10)
 
-;;(set-frame-parameter nil 'alpha '(92 . 100))
+(set-frame-parameter nil 'alpha '(95 . 100))
 
 ;;(set-frame-font "Menlo-8")
 (set-frame-font "Inconsolata-10")
@@ -30,7 +30,7 @@
 
 ;; (setq solarized-termcolors 256)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/color-theme-solarized/")
-;;(load-theme 'solarized t)
+;; (load-theme 'solarized-dark t)
 
 
 ;; ;; (add-hook 'after-make-frame-functions
@@ -63,9 +63,9 @@
 
 ;;(setq frame-background-mode 'dark)
 
-(set-background-color "#000000")
-;; ;; ;; ;;(set-background-color "ivory")
-(set-foreground-color "#32cd32")
+;; (set-background-color "#000000")
+;; ;; ;; ;; ;;(set-background-color "ivory")
+;; (set-foreground-color "#32cd32")
 
 ;;--------------------------
 ;;mode-line
@@ -87,12 +87,12 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
-;; (set-face-background 'vertical-border "#FFFFFF")
+(set-face-foreground 'vertical-border "gray")
+(set-face-background 'vertical-border "#FFFFFF")
 
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "gray27")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "gray27")
 
 ;;(set-face-background 'vertical-border "#284b54")
 
@@ -112,12 +112,12 @@
                 (golden-ratio-mode . "")
                 (flymake-mode . " Fly")
                 ;; major mode
-                (fundamental-mode . "Fd")
-                (ibuffer-mode . "iBuf")
-                (python-mode . "Py")
-                (lisp-interaction-mode . "iEL")
-                (emacs-lisp-mode . "EL")
-                (super-save-mode . "XS")
+                (fundamental-mode . " Fd")
+                (ibuffer-mode . " iBuf")
+                (python-mode . " Py")
+                (lisp-interaction-mode . " iEL")
+                (emacs-lisp-mode . " EL")
+                (super-save-mode . " XS")
 		(helm-mode . " H")))
 
 (defun clean-mode-line ()
@@ -141,39 +141,27 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-;; (require 'smart-mode-line)
-;; ;; (require 'powerline)
-;; (setq sml/no-confirm-load-theme t)
+(require 'smart-mode-line)
+;; (require 'powerline)
+(setq sml/no-confirm-load-theme t)
 
-;; ;;(setq sml/theme 'dark)
-;; ;;(setq sml/theme 'light)
-;; ;;(setq sml/theme 'respectful)
+;;(setq sml/theme 'dark)
+;(setq sml/theme 'light)
+(setq sml/theme 'respectful)
 
-;; ;;(setq sml/theme 'powerline)
-;; (setq sml/theme 'light-powerline)
+;;(setq sml/theme 'powerline)
+;; ;;(setq sml/theme 'light-powerline)
 ;; (setq powerline-arrow-shape 'curves)
 ;; (setq powerline-default-separator-dir '(right . left))
-;; ;; (setq sml/mode-width 0)
-;; ;; (setq sml/name-width 20)
-;; ;;(rich-minority-mode 1)
+;; (setq sml/mode-width 0)
+;; (setq sml/name-width 20)
+;;(rich-minority-mode 1)
 
-;; (sml/setup)
+(sml/setup)
 
-(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
-;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-(set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "grey70" :bold t )
-
-;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#e7ea" :foreground "#000000") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#ffffff" :foreground "#000000") ;;#A7A5A7
+;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
 ;; ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-;; (set-face-attribute 'mode-line-buffer-id nil :background "#ffffff" :foreground "#000000" :bold t )
+;; (set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "grey70" :bold t )
 
-;; ;; (set-face-attribute 'mode-line-highlight nil :box nil :background "deep sky blue")
-;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "grey52" :foreground "black")
-
-;; (load-file "~/.emacs.d/elpa//writeroom-mode-20170623.327/writeroom-mode.el")
-;; (setq mode-line-format writeroom-mode-line)
-
-;;(setq writeroom-mode-line t)
 (provide 'init-themes)
