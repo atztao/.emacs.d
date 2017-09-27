@@ -5,21 +5,23 @@
 (set-frame-parameter nil 'alpha '(95 . 100))
 
 ;;(set-frame-font "Menlo-8")
-(set-frame-font "Inconsolata-10")
-;;(set-frame-font "Monaco-8")
+;;(set-frame-font "Inconsolata-10")
+(set-frame-font "Monaco-7")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
 ;;(setq default-font-size-pt 10)
-(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
-;;(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
+;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
+(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
 
 ;Themes-------------------------------------------
 ;;(load "~/.emacs.d/themes/monokai-theme.el")
+;;(load "~/.emacs.d/themes/plan9-theme.el")
+;;(load "~/.emacs.d/themes/retro-green-theme.el")
 ;;(require 'color-theme-sanityinc-tomorrow)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-;;(load-theme 'sanityinc-tomorrow-bright t)
+(load-theme 'sanityinc-tomorrow-bright t)
 ;;(load-theme 'sanityinc-tomorrow-night t)
 
 ;;zenburn
@@ -87,12 +89,12 @@
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-(set-face-foreground 'vertical-border "gray")
-(set-face-background 'vertical-border "#FFFFFF")
+;; (set-face-foreground 'vertical-border "gray")
+;; (set-face-background 'vertical-border "#FFFFFF")
 
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "gray27")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "gray27")
 
 ;;(set-face-background 'vertical-border "#284b54")
 
@@ -141,27 +143,39 @@
 
 ;;smart-mode-line------------------------
 ;;(display-time-mode)
-(require 'smart-mode-line)
-;; (require 'powerline)
-(setq sml/no-confirm-load-theme t)
+;; (require 'smart-mode-line)
+;; ;; (require 'powerline)
+;; (setq sml/no-confirm-load-theme t)
 
-;;(setq sml/theme 'dark)
-;(setq sml/theme 'light)
-(setq sml/theme 'respectful)
+;; (setq sml/theme 'dark)
+;; ;;(setq sml/theme 'light)
+;; ;;(setq sml/theme 'respectful)
 
-;;(setq sml/theme 'powerline)
-;; ;;(setq sml/theme 'light-powerline)
-;; (setq powerline-arrow-shape 'curves)
-;; (setq powerline-default-separator-dir '(right . left))
-;; (setq sml/mode-width 0)
-;; (setq sml/name-width 20)
-;;(rich-minority-mode 1)
+;; ;;(setq sml/theme 'powerline)
+;; ;; ;; ;(setq sml/theme 'light-powerline)
+;; ;; (setq powerline-arrow-shape 'curves)
+;; ;; (setq powerline-default-separator-dir '(right . left))
+;; ;; (setq sml/mode-width 0)
+;; ;; (setq sml/name-width 20)
+;; ;;(rich-minority-mode 1)
 
-(sml/setup)
+;; (sml/setup)
 
-;; (set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
+;; (custom-theme-set-faces
+;;  'smart-mode-line-respectful
+;;  '(mode-line-inactive ((t :inverse-video nil :underline t :background "#000000" :foreground "grey70")))
+;;  '(mode-line     ((t :inverse-video nil :underline t :background "#000000" :foreground "grey80")))
+;;  '(sml/global    ((t :inherit font-lock-preprocessor-face)))
+;;  '(sml/filename  ((t :inherit mode-line-buffer-id :weight bold)))
+;;  '(sml/prefix    ((t :inherit (font-lock-variable-name-face sml/global))))
+;;  '(sml/read-only ((t :inherit (font-lock-type-face sml/not-modified))))
+;;  '(sml/modes     ((t :foreground "grey70" :inherit sml/filename :weight normal))))
+
+;; (set-face-attribute 'mode-line           nil :underline t :box nil ) ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil ) ;;#A7A5A7
+(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
+(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "grey50") ;;#A7A5A7
 ;; ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-;; (set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "grey70" :bold t )
+(set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "grey70" :bold t )
 
 (provide 'init-themes)

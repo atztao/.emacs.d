@@ -231,6 +231,10 @@
 (global-set-key (kbd "C-s")   #'helm-swoop)
 ;;(global-set-key (kbd "M-x")   #'helm-M-x)
 
+
+;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+;; (define-key helm-map (kbd "C-z") 'helm-select-action)
+
 ;;(global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 
 ;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)

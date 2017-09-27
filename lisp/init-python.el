@@ -91,7 +91,8 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (setq elpy-rpc-python-command "python3")
-(setq python-shell-interpreter "python3")
+;;(setq python-shell-interpreter "python3")
+(setq python-shell-interpreter "/home/zhangtao/anaconda3/bin/python3")
 ;; (setq elpy-rpc-python-command "python2")
 ;; (setq python-shell-interpreter "python2")
 ;;(elpy-use-ipython "ipython3")
