@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ org-mode
  eval-buffer
  replace-string
- org-mode
- mu4e
- python-mode
- disable-theme
+ overwrite-mode
+ highlight-regexp
+ ag-regexp-project-at-point
  load-theme
 )
 
 ;; ----- smex-data -----
 (
  (package-list-packages . 184)
- (indent-region . 25)
+ (indent-region . 27)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
  (markdown-mode . 95)
@@ -28,7 +28,7 @@
  (org-store-link . 2)
  (ace-jump-word-mode . 5)
  (ace-jump-line-mode . 2)
- (org-mode . 130)
+ (org-mode . 145)
  (outline-mode . 5)
  (bookmark-rename . 1)
  (bookmark-insert . 2)
@@ -54,7 +54,7 @@
  (pyim-dicts-manager . 1)
  (describe-char . 10)
  (describe-fontset . 2)
- (helm-bookmarks . 3)
+ (helm-bookmarks . 5)
  (color-theme-gnome . 1)
  (color-theme-gray1 . 1)
  (color-theme-select . 6)
@@ -94,8 +94,8 @@
  (eshell-mode . 6)
  (helm-M-x . 4)
  (ido-select-text . 6)
- (replace-string . 113)
- (load-theme . 381)
+ (replace-string . 148)
+ (load-theme . 391)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,10 +115,10 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 2172)
+ (eval-buffer . 2205)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
- (highlight-regexp . 1)
+ (highlight-regexp . 6)
  (font-lock-mode . 3)
  (enriched-mode . 1)
  (hide-body . 2)
@@ -157,7 +157,7 @@
  (html-mode . 6)
  (query-replace . 5)
  (replace-regexp . 46)
- (query-replace-regexp . 2)
+ (query-replace-regexp . 3)
  (flush-lines . 3)
  (sort-lines . 1)
  (org-indent-mode . 4)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 207)
+ (disable-theme . 210)
  (set-background-color . 7)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 5)
  (eww . 1)
- (mu4e . 164)
+ (mu4e . 165)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -303,8 +303,8 @@
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 128)
- (magit-push . 138)
+ (magit-status . 129)
+ (magit-push . 139)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -329,7 +329,7 @@
  (compile . 2)
  (term . 11)
  (ansi-term . 3)
- (multi-term . 125)
+ (multi-term . 127)
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
@@ -367,7 +367,7 @@
  (describe-personal-keybindings . 2)
  (color-theme-sanityinc-tomorrow-day . 1)
  (emacs-init-time . 3)
- (fringe-mode . 7)
+ (fringe-mode . 10)
  (helm-select-xfont . 1)
  (company-oddmuse . 1)
  (set-default-font . 2)
@@ -378,4 +378,8 @@
  (helm-themes . 1)
  (helm-info-menu . 1)
  (epa-decrypt-region . 2)
+ (list-matching-lines . 1)
+ (ag-regexp-project-at-point . 1)
+ (show-all . 1)
+ (overwrite-mode . 2)
 )

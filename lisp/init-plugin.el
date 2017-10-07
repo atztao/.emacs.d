@@ -198,7 +198,10 @@
 ;; (setq ad-redefinition-action 'accept)
 
 
+;;Save Recent File
 (require 'recentf)
+(setq recentf-max-saved-items 200
+      recentf-max-menu-items 10)
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
 (setq-default recent-save-file "~/.emacs.d/recentf")
@@ -207,7 +210,14 @@
 (require 'helm-config)
 (require 'helm)
 (helm-mode t)
-;;(helm-recent t)
+;;(helm-recentf t)
+
+(setq helm-mini-default-sources '(helm-source-buffers-list
+                                  helm-source-recentf
+                                  helm-source-bookmarks
+                                  helm-source-buffer-not-found))
+;;empty search words
+(setq helm-swoop-pre-input-function (lambda () ""))
 
 (defadvice helm-display-mode-line (after undisplay-header activate) (setq header-line-format nil))
 (defun helm-display-mode-line (source &optional force) (setq mode-line-format nil))

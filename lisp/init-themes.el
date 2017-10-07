@@ -5,8 +5,8 @@
 (set-frame-parameter nil 'alpha '(95 . 100))
 
 ;;(set-frame-font "Menlo-8")
-;;(set-frame-font "Inconsolata-10")
-(set-frame-font "Monaco-7")
+(set-frame-font "Inconsolata-8")
+;;(set-frame-font "Monaco-7")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -161,21 +161,6 @@
 
 ;; (sml/setup)
 
-;; (custom-theme-set-faces
-;;  'smart-mode-line-respectful
-;;  '(mode-line-inactive ((t :inverse-video nil :underline t :background "#000000" :foreground "grey70")))
-;;  '(mode-line     ((t :inverse-video nil :underline t :background "#000000" :foreground "grey80")))
-;;  '(sml/global    ((t :inherit font-lock-preprocessor-face)))
-;;  '(sml/filename  ((t :inherit mode-line-buffer-id :weight bold)))
-;;  '(sml/prefix    ((t :inherit (font-lock-variable-name-face sml/global))))
-;;  '(sml/read-only ((t :inherit (font-lock-type-face sml/not-modified))))
-;;  '(sml/modes     ((t :foreground "grey70" :inherit sml/filename :weight normal))))
 
-;; (set-face-attribute 'mode-line           nil :underline t :box nil ) ;;#A7A5A7
-;; (set-face-attribute 'mode-line-inactive           nil :underline t :box nil ) ;;#A7A5A7
-(set-face-attribute 'mode-line           nil :underline t :box nil :background "#000000" :foreground "grey70") ;;#A7A5A7
-(set-face-attribute 'mode-line-inactive           nil :underline t :box nil :background "#000000" :foreground "grey50") ;;#A7A5A7
-;; ;; ;;(set-face-attribute 'mode-line-inactive  nil :box nil :background "#BCBCBC" :foreground "#000000")
-(set-face-attribute 'mode-line-buffer-id nil :background "#000000" :foreground "grey70" :bold t )
 
 (provide 'init-themes)

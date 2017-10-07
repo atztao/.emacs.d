@@ -79,9 +79,14 @@
              '("org-book"
                "\\documentclass{book}
 \\usepackage[slantfont, boldfont]{xeCJK}
+\\usepackage{titlesec}
+\\usepackage{hyperref}
+\\usepackage[table]{xcolor}
+
 % chapter set
 \\usepackage{titlesec}
             \\usepackage{hyperref}
+
 
 [NO-DEFAULT-PACKAGES]
 [PACKAGES]
@@ -123,8 +128,11 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
                  "\\documentclass{article}
 \\usepackage[slantfont, boldfont]{xeCJK}
 \\usepackage{titlesec}
-\\usepackage{hyperref}
+% \\usepackage[colorlinks=false]{hyperref}
+\\usepackage[hidelinks]{hyperref}
 \\usepackage[table]{xcolor}
+
+\\pagestyle{fancy}             % do not remove
 
 [NO-DEFAULT-PACKAGES]
 [PACKAGES]
@@ -255,11 +263,11 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
                               TeX-command-list)))
 
 ;;(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
-(setq org-latex-remove-logfiles t)
+;; (setq org-latex-remove-logfiles t)
 
-(setq org-latex-logfiles-extensions (quote ("lof" "lot" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
+;; (setq org-latex-logfiles-extensions (quote ("lof" "lot" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "pyg")))
 
-(advice-add 'org-latex-compile :after #'delete-file)
+;; (advice-add 'org-latex-compile :after #'delete-file)
 
 
 (provide 'init-org-pdf)
