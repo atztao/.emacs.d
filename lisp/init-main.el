@@ -168,7 +168,7 @@
 ;;(set-window-fringes (selected-window) 0 0 nil)
 
 ;;Disable Fringer Mode
-(set-fringe-mode '(0 . 0))
+;;(set-fringe-mode '(0 . 0))
 
 ;; (custom-set-faces
 ;;   '(default ((t (:backgroun "black" :foreground "grey"))))

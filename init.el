@@ -10,7 +10,7 @@
 ;;Emacs Startup 
 ;;-----------------------------------------------
 
-(server-start)  
+;;(server-start)  
 ;;(desktop-save-mode) 
 
 ;;Disable ad-handle-definition warnings

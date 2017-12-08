@@ -115,7 +115,7 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 2459)
+ (eval-buffer . 2458)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 7)

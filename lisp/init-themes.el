@@ -76,8 +76,8 @@
 ;;(require 'diminish)
 (column-number-mode 1)
 
-(set-face-attribute 'mode-line nil  :height 80)
-(set-face-attribute 'mode-line-inactive nil  :height 80)
+(set-face-attribute 'mode-line nil  :height 70)
+(set-face-attribute 'mode-line-inactive nil  :height 70)
 
 ;; (set-face-attribute 'mode-line nil :font "Monaco-7")
 ;; (set-face-attribute 'mode-line-inactive nil :font "Monaco-7")
@@ -103,12 +103,12 @@
 ;;(set-face-background 'fringe "#809088")
 
 (setq-default mode-line-cleaner-alist
-              `((auto-complete-mode . " á")
+              `((auto-complete-mode . " ac")
                 (company-mode . " CA")
-                (undo-tree-mode-lighter " Ü")
+                (undo-tree-mode-lighter " u")
                 (helm-completion-mode-string " H")
-                (yas-minor-mode . " ý")
-                (undo-tree-mode . " Út")
+                (yas-minor-mode . " ys")
+                (undo-tree-mode . " ut")
                 (golden-ratio-mode . "")
                 (flymake-mode . " Fly")
                 ;; major mode
