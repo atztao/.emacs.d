@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** [2017-09-28 四")
- (rear-context-string . "\n线上，越早学习越能抢占先机。\n")
- (position . 9554))
+ (front-context-string . "** [2017-12-07 四")
+ (rear-context-string . "29 三 15:27]\n学习率\n")
+ (position . 9812))
 )

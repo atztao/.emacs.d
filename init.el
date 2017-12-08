@@ -10,13 +10,11 @@
 ;;Emacs Startup 
 ;;-----------------------------------------------
 
-;;(server-start)  
+(server-start)  
 ;;(desktop-save-mode) 
 
 ;;Disable ad-handle-definition warnings
 (setq ad-redefinition-action 'accept)
-
-(setq projectile-enable-caching t)
 
 (setq gc-cons-threshold 100000000)
 
@@ -72,8 +70,8 @@
 
 ;;(fset 'yes-or-no-p 'y-or-n-p)
 
-(add-to-list 'default-frame-alist '(height . 15))
-(add-to-list 'default-frame-alist '(width . 62))
+;; (add-to-list 'default-frame-alist '(height . 15))
+;; (add-to-list 'default-frame-alist '(width . 62))
 
 sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
 sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空格。
@@ -117,6 +115,8 @@ sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文�
 ;; (add-hook 'text-mode-hook 'projectile-mode)
 ;; (add-hook 'prog-mode-hook 'projectile-mode)
 
+
+;;This Functions For Paste And Copy
 (defun xah-open-in-desktop ()
   "Show current file in desktop (OS's file manager).
 URL `http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html'
@@ -311,22 +311,23 @@ directory to make multiple eshell windows easier."
 
 ;;-------------------Some Provide
 
+(require 'init-main)
 ;;emacs theme
 ;;(require 'smart-mode-line-respectful)
 (require 'init-themes)
 
 ;;necessary plugin you must need
-(require 'init-plugin)
+(require 'init-main)
 
 ;--------------------Vim Way To Move - Evilode
 ;;(require 'init-evil)
 
 ;--------------------email
-(require 'init-email)
+;;(require 'init-email)
 
 ;;-------------------this include programming seetings
 (require 'init-python)
-
+(require 'init-python-1)
 ;;--------------------------support latex
 (require 'init-latex)
 
@@ -341,7 +342,7 @@ directory to make multiple eshell windows easier."
 ;;-------------------------some warning fix
 (require 'init-fix)
 
-(require 'init-mode-line)
+;;(require 'init-mode-line)
 
 ;-------------------------------------------------------
 
@@ -372,8 +373,8 @@ directory to make multiple eshell windows easier."
 
 ;;flyspell-----------------------------------
 ;;apt install aspell
-(setq-default ispell-program-name "aspell")
-(ispell-change-dictionary "american" t)  
+;; (setq-default ispell-program-name "aspell")
+;; (ispell-change-dictionary "american" t)  
 
 ;Backup-----------------------------------------
 (setq auto-save-interval 20)
@@ -396,9 +397,9 @@ directory to make multiple eshell windows easier."
       )
 
 ;;Save---------------------------------------------
-(super-save-mode +1)
-;; ;; (setq auto-save-default nil)
-(setq super-save-auto-save-when-idle t)
+;; (super-save-mode +1)
+;; ;; ;; (setq auto-save-default nil)
+;; (setq super-save-auto-save-when-idle t)
 
 ;; (defun full-auto-save ()
 ;; 	  (interactive)
@@ -419,23 +420,63 @@ directory to make multiple eshell windows easier."
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
 
 
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
- '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+;;  '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
+;;  '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#eaeaea" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#424242"))
+ '(beacon-color "#f2777a")
+ '(custom-safe-themes
+   (quote
+    ("2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" default)))
+ '(fci-rule-color "#424242")
+ '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt")))
  '(package-selected-packages
    (quote
-    (leuven-theme green-phosphor-theme zenburn-theme xterm-color writeroom-mode window-numbering window-number web-mode super-save sr-speedbar solarized-theme smooth-scrolling smex smartparens smart-mode-line-powerline-theme semi rtags relative-line-numbers rainbow-delimiters python-mode py-autopep8 projectile pos-tip ox-reveal org-bullets notmuch neotree multiple-cursors multi-term molokai-theme minimap matlab-mode markdown-mode linum-relative key-chord jedi jdee ido-yes-or-no htmlize ht helm-themes helm-swoop helm-ag gntp focus expand-region evil-surround evil-nerd-commenter evil-multiedit evil-mu4e evil-matchit evil-magit evil-leader evil-escape evil-easymotion esup emmet-mode elpy ein dracula-theme counsel color-theme-sanityinc-tomorrow cmake-ide clang-format cal-china-x blackboard-theme autopair auto-complete-clang auto-complete-c-headers ag ace-window)))
- '(python-shell-interpreter "/home/zhangtao/anaconda3/bin/python3"))
+    (helm-projectile graphviz-dot-mode jedi virtualenv go-mode visual-regexp leuven-theme green-phosphor-theme zenburn-theme xterm-color writeroom-mode window-numbering window-number web-mode super-save sr-speedbar solarized-theme smooth-scrolling smex smartparens smart-mode-line-powerline-theme semi rtags relative-line-numbers rainbow-delimiters python-mode py-autopep8 projectile pos-tip ox-reveal org-bullets notmuch neotree multiple-cursors multi-term molokai-theme minimap matlab-mode markdown-mode linum-relative key-chord jdee ido-yes-or-no htmlize ht helm-themes helm-swoop helm-ag gntp focus expand-region evil-surround evil-nerd-commenter evil-multiedit evil-mu4e evil-matchit evil-magit evil-leader evil-escape evil-easymotion esup emmet-mode elpy ein dracula-theme counsel color-theme-sanityinc-tomorrow cmake-ide clang-format cal-china-x blackboard-theme autopair auto-complete-clang auto-complete-c-headers ag ace-window)))
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#d54e53")
+     (40 . "#e78c45")
+     (60 . "#e7c547")
+     (80 . "#b9ca4a")
+     (100 . "#70c0b1")
+     (120 . "#7aa6da")
+     (140 . "#c397d8")
+     (160 . "#d54e53")
+     (180 . "#e78c45")
+     (200 . "#e7c547")
+     (220 . "#b9ca4a")
+     (240 . "#70c0b1")
+     (260 . "#7aa6da")
+     (280 . "#c397d8")
+     (300 . "#d54e53")
+     (320 . "#e78c45")
+     (340 . "#e7c547")
+     (360 . "#b9ca4a"))))
+ '(vc-annotate-very-old-color nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

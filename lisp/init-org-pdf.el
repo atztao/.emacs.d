@@ -175,10 +175,14 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
                '("org-beamer"
                  "\\documentclass{beamer}
 \\usepackage[SlantFont, BoldFont]{xeCJK}
+\\usetheme{Madrid}
+
 % beamer set
 \\usepackage[none]{hyphenat}
 \\usepackage[abs]{overpic}
-
+\\usepackage{caption}
+\\usepackage{caption}
+\\usepackage{subfigure}
 [NO-DEFAULT-PACKAGES]
 [PACKAGES]
 
@@ -234,7 +238,7 @@ rulesepcolor= \\color{ red!20!green!20!blue!20}
 (setq org-export-latex-tables-centered nil)
 
 ;; specify the justification you want
-(plist-put org-format-latex-options :justify 'center)
+(plist-put org-format-latex-options :justify 'left)
 
 
 ;; (setq org-latex-pdf-process

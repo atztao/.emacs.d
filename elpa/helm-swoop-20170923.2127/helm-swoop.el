@@ -99,9 +99,10 @@
 
 ;;; @ helm-swoop ----------------------------------------------
 
-(defgroup helm-swoop nil
-  "Open helm-swoop."
-  :prefix "helm-swoop-" :group 'helm)
+
+;; (set-face-attribute 'helm-swoop-target-word-face nil 
+;;                     :background "#7700ff"
+;;                     :foreground "#ffffff")
 
 (defface helm-swoop-target-line-face
   '((t (:background "#e3e300" :foreground "#222222")))
@@ -111,10 +112,7 @@
   '((t (:background "#cccc00" :foreground "#222222")))
   "Face for target line"
   :group 'helm-swoop)
-(defface helm-swoop-target-word-face
-  '((t (:background "#7700ff" :foreground "#ffffff")))
-  "Face for target word"
-  :group 'helm-swoop)
+
 (defface helm-swoop-line-number-face
   '((t (:foreground "#999999")))
   "Face for line numbers"

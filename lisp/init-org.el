@@ -30,7 +30,7 @@
 ;; (require 'org)
 (setq org-list-description-max-indent 5)
 (setq org-adapt-indentation nil)
-(org-indent-mode 1)
+;;(org-indent-mode 1)
 
 (setq org-latex-images-centered t)
 (setq org-startup-xindented t)
@@ -45,7 +45,9 @@
 (setq org-todo-state-tags-triggers
       '(("CANCELLED" ("ARCHIVE" . t)))) 
 ;;export image width
-(setq org-image-actual-width 100)
+ (setq org-image-actual-width '(300))
+
+;;(setq org-image-actual-width 80)
 
 ;;Auto Fill
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -225,6 +227,11 @@ truncate-lines nil)))
 ;; (setq org-bullets-face-name (quote org-bullet-face))
 ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 ;; (setq org-bullets-bullet-list '(" "))
+
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t)))
 
 
 (setq org-publish-project-alist

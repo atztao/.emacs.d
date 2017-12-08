@@ -1,6 +1,3 @@
-cd Dropbox/Networks/Exercise/Net2_ex1/
-g++ sandpile-model.cpp -o sanpile-model
-g++ sandpile-model.cpp -o sanpile-model
 ./sanpile-model
 g++ sandpile-model.cpp -o sanpile-model
 ./sanpile-model
@@ -126,3 +123,6 @@ ls
 ll
 ll
 exit
+ls
+ls
+ls
