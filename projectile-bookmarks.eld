@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/Dropbox/")
+("~/Dropbox/" "~/.emacs.d/" "~/tmp/test/")

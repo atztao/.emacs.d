@@ -5,12 +5,19 @@
 ;; Athor:Zhang Tao
 ;; Email:ztao1991@gmail.com
 ;; Gtihub:github.com/ztao1991
-;; Version:v2017.5.11
+;; Version:v2017.12.10
+
+;;Plugin List:
+;;1. Helm For Search
+;;2. Auto-Complete
+;;3. Yasnippet
+;;4. Org-Mode
+;;5. For Python With Elpy
 
 ;;Emacs Startup 
 ;;-----------------------------------------------
 
-;;(server-start)  
+(server-start)  
 ;;(desktop-save-mode) 
 
 ;;Disable ad-handle-definition warnings
@@ -323,7 +330,7 @@ directory to make multiple eshell windows easier."
 ;;(require 'init-evil)
 
 ;--------------------email
-;;(require 'init-email)
+(require 'init-email)
 
 ;;-------------------this include programming seetings
 (require 'init-python)
@@ -420,63 +427,13 @@ directory to make multiple eshell windows easier."
 ;;    ("~/Dropbox/Txt/todo.txt" "~/Dropbox/Txt/inbox.txt")))
 
 
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
-;;  '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
-;;  '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   (vector "#eaeaea" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#424242"))
- '(beacon-color "#f2777a")
- '(custom-safe-themes
-   (quote
-    ("2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" default)))
- '(fci-rule-color "#424242")
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
- '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt")))
- '(package-selected-packages
-   (quote
-    (helm-projectile graphviz-dot-mode jedi virtualenv go-mode visual-regexp leuven-theme green-phosphor-theme zenburn-theme xterm-color writeroom-mode window-numbering window-number web-mode super-save sr-speedbar solarized-theme smooth-scrolling smex smartparens smart-mode-line-powerline-theme semi rtags relative-line-numbers rainbow-delimiters python-mode py-autopep8 projectile pos-tip ox-reveal org-bullets notmuch neotree multiple-cursors multi-term molokai-theme minimap matlab-mode markdown-mode linum-relative key-chord jdee ido-yes-or-no htmlize ht helm-themes helm-swoop helm-ag gntp focus expand-region evil-surround evil-nerd-commenter evil-multiedit evil-mu4e evil-matchit evil-magit evil-leader evil-escape evil-easymotion esup emmet-mode elpy ein dracula-theme counsel color-theme-sanityinc-tomorrow cmake-ide clang-format cal-china-x blackboard-theme autopair auto-complete-clang auto-complete-c-headers ag ace-window)))
- '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#d54e53")
-     (40 . "#e78c45")
-     (60 . "#e7c547")
-     (80 . "#b9ca4a")
-     (100 . "#70c0b1")
-     (120 . "#7aa6da")
-     (140 . "#c397d8")
-     (160 . "#d54e53")
-     (180 . "#e78c45")
-     (200 . "#e7c547")
-     (220 . "#b9ca4a")
-     (240 . "#70c0b1")
-     (260 . "#7aa6da")
-     (280 . "#c397d8")
-     (300 . "#d54e53")
-     (320 . "#e78c45")
-     (340 . "#e7c547")
-     (360 . "#b9ca4a"))))
- '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
+ '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt")))
+ '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))
+

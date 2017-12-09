@@ -34,7 +34,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Txt/inbox.txt")
- (front-context-string . "** [2017-12-07 四")
- (rear-context-string . "29 三 15:27]\n学习率\n")
- (position . 9812))
+ (front-context-string . "** [2017-12-09 六")
+ (rear-context-string . " TODO 具体的有意义的例子\n")
+ (position . 10735))
 )

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ mu4e
  eval-buffer
  graphviz-dot-mode
  load-theme
  disable-theme
  package-list-packages
  jedi:install-server
- mu4e
 )
 
 ;; ----- smex-data -----
@@ -115,7 +115,7 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 2458)
+ (eval-buffer . 2459)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 7)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 5)
  (eww . 1)
- (mu4e . 165)
+ (mu4e . 169)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)

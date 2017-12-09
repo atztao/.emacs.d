@@ -7,15 +7,15 @@
 
 ;;(set-frame-font "Menlo-8")
 ;;(set-frame-font "Inconsolata-g-8" nil)
-;;(set-frame-font "Inconsolata-10")
+;;(set-frame-font "Inconsolata-8")
 (set-frame-font "Monaco-8")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
 
 ;;(set-frame-font "Consolas-10")
-;;(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
-(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
+(set-fontset-font "fontset-default" 'han "WenQuanYi Micro Hei Mono")
+;;(set-fontset-font "fontset-default" 'han "Source Han Sans CN")
 
 ;Themes-------------------------------------------
 ;;(load-theme 'sanityinc-tomorrow-bright t)
@@ -34,27 +34,6 @@
 (set-face-foreground 'lazy-highlight "#000000")
 (set-face-background 'lazy-highlight "#ffff40")
 
-;; (set-face-attribute 'helm-swoop-target-word-face nil 
-;;                     :background "#ffff40"
-;;                     :foreground "#000000")
-
-;; (set-face-attribute 'helm-swoop-target-line-block-face nil 
-;;                     :background "#ffff00"
-;;                     :foreground "#000000")
-
-;; (defface helm-swoop-target-line-face
-;;   '((t (:background "#e3e300" :foreground "#222222")))
-;;   "Face for helm-swoop target line"
-;;   :group 'helm-swoop)
-;; (defface helm-swoop-target-line-block-face
-;;   '((t (:background "#cccc00" :foreground "#222222")))
-;;   "Face for target line"
-;;   :group 'helm-swoop)
-
-;; (defface helm-swoop-line-number-face
-;;   '((t (:foreground "#999999")))
-;;   "Face for line numbers"
-;;   :group 'helm-swoop)
 
 ;;(set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
 
@@ -76,8 +55,8 @@
 ;;(require 'diminish)
 (column-number-mode 1)
 
-(set-face-attribute 'mode-line nil  :height 70)
-(set-face-attribute 'mode-line-inactive nil  :height 70)
+;; (set-face-attribute 'mode-line nil  :height 72)
+;; (set-face-attribute 'mode-line-inactive nil  :height 72)
 
 ;; (set-face-attribute 'mode-line nil :font "Monaco-7")
 ;; (set-face-attribute 'mode-line-inactive nil :font "Monaco-7")
