@@ -30,7 +30,7 @@
 ;; (require 'org)
 (setq org-list-description-max-indent 5)
 (setq org-adapt-indentation nil)
-;;(org-indent-mode 1)
+(org-indent-mode 1)
 
 (setq org-latex-images-centered t)
 (setq org-startup-xindented t)
@@ -234,16 +234,16 @@ truncate-lines nil)))
  '((dot . t)))
 
 
-(setq org-publish-project-alist
-  '(("html"
-     ;; :base-directory "~/org/"
-     ;; :base-extension "org"
-     :publishing-directory "~/Dropbox/export"
-     :publishing-function org-publish-org-to-html)
-    ("pdf"
-     ;; :base-directory "~/org/"
-     ;; :base-extension "org"
-     :publishing-directory "~/Dropbox/export"
-     :publishing-function org-publish-org-to-pdf)))
+;; (setq org-publish-project-alist
+;;   '(("html"
+;;      ;; :base-directory "~/org/"
+;;      ;; :base-extension "org"
+;;      :publishing-directory "~/Dropbox/export"
+;;      :publishing-function org-publish-org-to-html)
+;;     ("pdf"
+;;      ;; :base-directory "~/org/"
+;;      ;; :base-extension "org"
+;;      :publishing-directory "~/Dropbox/export"
+;;      :publishing-function org-publish-org-to-pdf)))
 
 (provide 'init-org)

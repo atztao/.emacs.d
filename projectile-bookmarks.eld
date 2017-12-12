@@ -1,1 +1,1 @@
-("~/Dropbox/" "~/.emacs.d/" "~/tmp/test/")
+("~/.emacs.d/" "~/Dropbox/" "~/Downloads/pytorch-0.3.0/" "~/tmp/test/")

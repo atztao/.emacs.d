@@ -238,7 +238,7 @@
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-mini)
-(global-set-key (kbd "C-s")   #'helm-swoop)
+;;(global-set-key (kbd "C-s")   #'helm-swoop)
 ;;(global-set-key (kbd "M-x")   #'helm-M-x)
 
 

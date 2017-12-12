@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- mu4e
  eval-buffer
- graphviz-dot-mode
+ magit-status
+ mu4e
+ ein:jupyter-server-start
  load-theme
+ elpy-mode
  disable-theme
- package-list-packages
- jedi:install-server
 )
 
 ;; ----- smex-data -----
 (
- (package-list-packages . 200)
+ (package-list-packages . 201)
  (indent-region . 28)
  (electric-indent-mode . 2)
  (markdown-enable-math . 3)
@@ -89,13 +89,13 @@
  (buffer-menu . 1)
  (org-agenda . 6)
  (shell-command . 6)
- (recover-this-file . 12)
+ (recover-this-file . 13)
  (message-mode . 2)
  (eshell-mode . 6)
  (helm-M-x . 4)
  (ido-select-text . 6)
  (replace-string . 149)
- (load-theme . 405)
+ (load-theme . 407)
  (auto-complete . 6)
  (org-previous-block . 1)
  (load-file . 8)
@@ -115,7 +115,7 @@
  (writeroom-mode . 84)
  (org-pomodoro . 1)
  (cua-mode . 10)
- (eval-buffer . 2459)
+ (eval-buffer . 2521)
  (org-md-export-as-markdown . 1)
  (org-md-export-to-markdown . 11)
  (highlight-regexp . 7)
@@ -173,7 +173,7 @@
  (sublimity-mode . 4)
  (diff-buffer-with-file . 1)
  (diff . 1)
- (disable-theme . 212)
+ (disable-theme . 215)
  (set-background-color . 7)
  (ace-window . 1)
  (ace-jump-mode . 4)
@@ -238,7 +238,7 @@
  (describe-face . 2)
  (markdown-live-preview-mode . 5)
  (eww . 1)
- (mu4e . 169)
+ (mu4e . 178)
  (smtpmail-send-queued-mail . 1)
  (gnus . 5)
  (gnus-msg-mail . 1)
@@ -296,15 +296,15 @@
  (jdee-mode . 11)
  (cvs-status-mode . 1)
  (key-chord-mode . 2)
- (ein:notebooklist-open . 14)
+ (ein:notebooklist-open . 20)
  (ipython3 . 4)
  (pyhotn . 1)
  (search-forward . 1)
  (magit-clone . 8)
  (magit-stash . 5)
  (magit-commit . 5)
- (magit-status . 137)
- (magit-push . 141)
+ (magit-status . 141)
+ (magit-push . 142)
  (magit-log-all . 2)
  (jdb . 2)
  (jdee-make . 2)
@@ -333,7 +333,7 @@
  (counsel-M-x . 1)
  (flycheck-mode . 5)
  (web-mode . 2)
- (jedi:install-server . 43)
+ (jedi:install-server . 44)
  (global-evil-matchit-mode . 1)
  (magit-branch . 1)
  (magit-mode . 1)
@@ -349,7 +349,7 @@
  (magit-pull . 2)
  (diff-mode . 2)
  (ediff-buffers . 1)
- (elpy-mode . 6)
+ (elpy-mode . 7)
  (rainbow-delimiters-mode . 1)
  (kill-all-abbrevs . 2)
  (server-force-delete . 1)
@@ -358,8 +358,8 @@
  (gomoku . 1)
  (tramp-cleanup-all-connections . 1)
  (mu4e-view-mode . 1)
- (ein:jupyter-server-start . 57)
- (ein:jupyter-server-login-and-open . 8)
+ (ein:jupyter-server-start . 62)
+ (ein:jupyter-server-login-and-open . 11)
  (ein:console-open . 2)
  (eva . 2)
  (lua-mode . 2)
@@ -385,7 +385,7 @@
  (irc . 1)
  (rcirc . 1)
  (erc . 1)
- (elpy-company-backend . 2)
+ (elpy-company-backend . 3)
  (yas-minor-mode . 2)
  (jedi:pop-to-epc-buffer . 5)
  (jedi:start-dedicated-server . 5)
@@ -394,4 +394,7 @@
  (jedi:setup . 2)
  (grep-mode . 1)
  (graphviz-dot-mode . 2)
+ (insert-file . 1)
+ (jedi:ac-setup . 1)
+ (ein:notebooklist-login . 2)
 )

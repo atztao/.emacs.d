@@ -435,5 +435,13 @@ directory to make multiple eshell windows easier."
  '(org-agenda-done ((t (:foreground "Gray" :weight normal :strike-through t))))
  '(org-agenda-files (quote ("~/Dropbox/Txt/todo.txt")))
  '(org-done ((t (:foreground "Gray" :weight extra-bold :strike-through t))))
- '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "#999" :strike-through t)))))
+ '(org-headline-done ((((class color) (min-colors 16) (background light)) (:foreground "#999" :strike-through t)))))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (zenburn-theme xterm-color writeroom-mode window-numbering window-number web-mode visual-regexp virtualenv super-save sr-speedbar solarized-theme smooth-scrolling smex smartparens smart-mode-line-powerline-theme semi rtags relative-line-numbers rainbow-delimiters python-mode py-autopep8 pos-tip ox-reveal org-bullets notmuch neotree multiple-cursors multi-term molokai-theme minimap matlab-mode markdown-mode linum-relative leuven-theme key-chord jedi jdee ido-yes-or-no htmlize ht helm-themes helm-swoop helm-projectile helm-ag green-phosphor-theme graphviz-dot-mode go-mode gntp focus expand-region evil-surround evil-nerd-commenter evil-multiedit evil-mu4e evil-matchit evil-magit evil-leader evil-escape evil-easymotion esup emmet-mode elpy ein dracula-theme counsel color-theme-sanityinc-tomorrow cmake-ide clang-format cal-china-x blackboard-theme autopair auto-complete-clang auto-complete-c-headers ag ace-window))))

@@ -1,6 +1,6 @@
 ;;fonts-------------------------------------
 
-(setq default-font-size-pt 10)
+;;(setq default-font-size-pt 10)
 
 ;;(set-frame-parameter nil 'alpha '(98 . 100))
 
@@ -8,7 +8,7 @@
 ;;(set-frame-font "Menlo-8")
 ;;(set-frame-font "Inconsolata-g-8" nil)
 ;;(set-frame-font "Inconsolata-8")
-(set-frame-font "Monaco-8")
+(set-frame-font "Monaco-10")
 ;;(set-frame-font "Dejavu Sans Mono-8")
 ;;(set-frame-font "Source Code Pro-8")
 
@@ -19,7 +19,7 @@
 
 ;Themes-------------------------------------------
 ;;(load-theme 'sanityinc-tomorrow-bright t)
-(load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
 ;;(load-theme 'sanityinc-tomorrow-night t)
 
 ;;(set-face-attribute 'default nil :height 82)
@@ -30,9 +30,9 @@
 (make-face-bold 'isearch)
 (make-face-bold 'lazy-highlight)
 (set-face-foreground 'isearch "#000000")
-(set-face-background 'isearch "#ffff40")
+(set-face-background 'isearch "#ffff99")
 (set-face-foreground 'lazy-highlight "#000000")
-(set-face-background 'lazy-highlight "#ffff40")
+(set-face-background 'lazy-highlight "#ffff99")
 
 
 ;;(set-face-attribute 'region nil :foreground "#000000":background "#F0E68C" ) ;;#EEE8D6 F0E68C
@@ -58,22 +58,25 @@
 ;; (set-face-attribute 'mode-line nil  :height 72)
 ;; (set-face-attribute 'mode-line-inactive nil  :height 72)
 
-;; (set-face-attribute 'mode-line nil :font "Monaco-7")
-;; (set-face-attribute 'mode-line-inactive nil :font "Monaco-7")
+(set-face-attribute 'mode-line nil :box nil )
+(set-face-attribute 'mode-line-inactive nil :box nil )
+
+;; (set-face-attribute 'mode-line          nil :underline nil :box nil :background "Grey70" :foreground "#000000") ;;#A7A5A7
+;; (set-face-attribute 'mode-line-inactive          nil :underline nil :box nil :background "#000000" :foreground "grey27") ;;#A7A5A7
 
 ;;---------------------------Vertical-border
 ;; Reverse colors for the border to have nicer line  
 
 (set-face-inverse-video-p 'vertical-border nil)
 
-;; (set-face-foreground 'vertical-border "gray")
+(set-face-foreground 'vertical-border "gray")
 ;; (set-face-background 'vertical-border "#FFFFFF")
 
 
 (set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "gray37")
+;;(set-face-foreground 'vertical-border "gray37")
 
-;;(set-face-background 'vertical-border "#284b54")
+;; (set-face-background 'vertical-border "#284b54")
 
 (set-display-table-slot standard-display-table
                         'vertical-border 
